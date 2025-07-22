@@ -63,13 +63,6 @@
     ul {
       padding-left: 20px;
     }
-    .highlight {
-      background-color: #fff4d1;
-      border-left: 4px solid #f39c12;
-      padding: 10px;
-      margin-top: 20px;
-      font-weight: 600;
-    }
     .product-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -152,8 +145,28 @@
       text-decoration: none;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
+    #whatsapp-label {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      background-color: #25D366;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 14px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      font-family: 'Poppins', sans-serif;
+    }
     label {
       font-size: 0.95em;
+    }
+    .highlight {
+      background-color: #fff3cd;
+      padding: 10px;
+      border-left: 5px solid #ffc107;
+      margin-top: 20px;
+      border-radius: 4px;
     }
   </style>
 </head>
@@ -173,9 +186,9 @@
   <section id="chi-siamo">
     <h2>Chi siamo</h2>
     <p>Siamo un’azienda multimarche specializzata nella fornitura e assistenza di soluzioni professionali per il punto vendita. Operiamo nel settore dei registratori di cassa, sistemi touch, bilance elettroniche, consumabili e accessori tecnologici per attività commerciali, negozi, mercati e ristoranti.</p>
-
-    <div class="highlight">✅ Verifica periodica dei registratori di cassa</div>
-    <div class="highlight">✅ Verifica periodica delle bilance elettroniche</div>
+    
+    <div class="highlight"><strong>✅ Verifica periodica dei registratori di cassa</strong></div>
+    <div class="highlight"><strong>✅ Verifica periodica delle bilance elettroniche</strong></div>
   </section>
 
   <section id="prodotti">
@@ -199,7 +212,7 @@
     <p>📧 <a href="mailto:spisystem@libero.it">spisystem@libero.it</a></p>
     <p>📧 <a href="mailto:spizzicotecnica@libero.it">spizzicotecnica@libero.it</a></p>
     <p>📞 <a href="tel:+393382247948">338 224 7948</a></p>
-    <p>📍 <a href="https://www.google.com/maps?q=Via+Monterosa+22,+Palo+del+Colle,+BA" target="_blank">Via Monterosa 22, Palo del Colle (BA)</a></p>
+    <p>📍 <a href="https://www.google.com/maps?q=Via+Monterosa+22,+Palo+del+Colle+(BA)" target="_blank">Via Monterosa 22, Palo del Colle (BA)</a></p>
 
     <a href="#form-preventivo" class="button">Richiedi un preventivo</a>
 
@@ -219,6 +232,8 @@
     <p>&copy; 2025 Spizzicotecnica & SPI System – Tutti i diritti riservati</p>
   </footer>
 
-  <a id="whatsapp" href="https://wa.me/393382247948" target="_blank" title="Contattaci su WhatsApp">💬</a>
+  <a id="whatsapp" href="https://wa.me/393382247948" target="_blank" title="Chatta con noi su WhatsApp">💬</a>
+  <div id="whatsapp-label">WhatsApp</div>
+
 </body>
 </html>
