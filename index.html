@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Spizzicotecnica & SPI System</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; }
     body {
@@ -20,10 +20,10 @@
       padding: 80px 20px;
     }
     header h1 {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-size: 3.2em;
       margin: 0;
-      letter-spacing: 1px;
+      letter-spacing: 0.5px;
     }
     header p {
       font-size: 1.2em;
@@ -38,7 +38,7 @@
     nav a {
       color: white;
       text-decoration: none;
-      margin: 0 18px;
+      margin: 0 20px;
       font-weight: 600;
     }
     nav a:hover {
@@ -46,81 +46,58 @@
     }
     section {
       max-width: 1000px;
-      margin: 60px auto;
+      margin: 50px auto;
       background: white;
       padding: 40px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     }
     h2 {
       color: #1f2d3d;
       font-size: 1.8em;
+      margin-top: 0;
     }
-    p, li {
-      font-size: 1em;
-      line-height: 1.6;
-    }
-    ul {
-      padding-left: 20px;
-    }
-    .product-grid {
+    .prodotti-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 20px;
       margin-top: 30px;
     }
-    .product-box {
-      background-color: #f9fafb;
-      border-radius: 8px;
+    .prodotto {
       padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
       text-align: center;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      font-weight: 500;
     }
-    .product-box:hover {
-      background-color: #eef1f5;
-    }
-    .product-box span {
-      font-size: 2em;
-      display: block;
-      margin-bottom: 10px;
-    }
-    .button {
+    .button, button {
       display: inline-block;
       margin-top: 25px;
       background-color: #1f2d3d;
       color: white;
-      padding: 14px 28px;
+      padding: 12px 24px;
       text-decoration: none;
-      border-radius: 4px;
-      font-weight: 600;
-      transition: background-color 0.3s;
-    }
-    .button:hover {
-      background-color: #0f1a25;
-    }
-    form {
-      margin-top: 30px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    input, textarea {
-      padding: 12px;
-      border-radius: 4px;
-      border: 1px solid #ccc;
-      font-family: 'Poppins', sans-serif;
-    }
-    button[type="submit"] {
-      background-color: #1f2d3d;
-      color: white;
-      padding: 12px;
       border: none;
       border-radius: 4px;
-      cursor: pointer;
       font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s;
     }
-    button[type="submit"]:hover {
+    .button:hover, button:hover {
       background-color: #0f1a25;
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-family: 'Poppins', sans-serif;
+    }
+    form label {
+      display: block;
+      margin-top: 15px;
+      font-size: 0.9em;
     }
     footer {
       background-color: #2c3e50;
@@ -129,24 +106,20 @@
       padding: 20px;
       margin-top: 60px;
     }
-    #whatsapp {
+    .whatsapp {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background-color: #25D366;
+      background-color: #25d366;
       color: white;
-      border-radius: 50%;
-      width: 55px;
-      height: 55px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 28px;
+      padding: 12px 18px;
+      border-radius: 50px;
+      font-weight: bold;
       text-decoration: none;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
-    label {
-      font-size: 0.95em;
+    .whatsapp:hover {
+      background-color: #1ebe5d;
     }
   </style>
 </head>
@@ -154,61 +127,228 @@
 
   <header>
     <h1>Spizzicotecnica & SPI System</h1>
-    <p>Soluzioni professionali multimarche per il punto vendita</p>
+    <p>Soluzioni multimarche per il punto vendita • Ristorazione • Retail</p>
   </header>
 
   <nav>
     <a href="#chi-siamo">Chi siamo</a>
     <a href="#prodotti">Prodotti</a>
+    <a href="#preventivo">Preventivo</a>
     <a href="#contatti">Contatti</a>
   </nav>
 
   <section id="chi-siamo">
     <h2>Chi siamo</h2>
-    <p>Siamo un’azienda multimarche specializzata nella fornitura e assistenza di soluzioni professionali per il punto vendita. Operiamo nel settore dei registratori di cassa, sistemi touch, bilance elettroniche, consumabili e accessori tecnologici per attività commerciali, negozi, mercati e ristoranti.</p>
+    <p>Siamo un’azienda specializzata in soluzioni tecnologiche per negozi, mercati e attività commerciali. Offriamo assistenza e fornitura di registratori di cassa, sistemi touchscreen, bilance elettroniche, palmari, stampanti comande e verifica banconote. Servizio multimarche e supporto tecnico professionale.</p>
   </section>
 
   <section id="prodotti">
     <h2>Prodotti</h2>
-    <div class="product-grid">
-      <div class="product-box"><span>🧾</span>Registratori di cassa</div>
-      <div class="product-box"><span>📲</span>Sistemi touch screen</div>
-      <div class="product-box"><span>⚖️</span>Bilance elettroniche</div>
-      <div class="product-box"><span>🧻</span>Rotoli termici</div>
-      <div class="product-box"><span>🏷️</span>Prezzatrici manuali</div>
-      <div class="product-box"><span>📦</span>Etichette adesive</div>
-      <div class="product-box"><span>🍽️</span>Palmari per ristoranti</div>
-      <div class="product-box"><span>🖨️</span>Stampanti comande cucina</div>
-      <div class="product-box"><span>💶</span>Verificatori banconote</div>
-      <div class="product-box"><span>💰</span>Casse automatiche rendiresto</div>
+    <div class="prodotti-grid">
+      <div class="prodotto">🧾 Registratori di cassa</div>
+      <div class="prodotto">🖥️ Sistemi touchscreen</div>
+
+
+Eccoti il **codice HTML completo aggiornato**, con:
+
+- ✅ Titolo “Spizzicotecnica & SPI System” con font elegante (`Cormorant Garamond`)
+- ✅ Sfondo sfumato professionale
+- ✅ Sezione “Chi siamo”
+- ✅ Sezione “Prodotti” con tutte le categorie aggiornate
+- ✅ Sezione “Preventivo” con tutti i campi richiesti
+- ✅ Sezione “Contatti” con simboli
+- ✅ Pulsante WhatsApp fisso
+
+---
+
+### ✅ Codice HTML finale:
+
+```html
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Spizzicotecnica & SPI System</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #e0e4ec, #f4f6f8);
+      color: #2c3e50;
+    }
+    header {
+      background: linear-gradient(to right, #1f2d3d, #2c3e50);
+      color: white;
+      text-align: center;
+      padding: 80px 20px;
+    }
+    header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.2em;
+      margin: 0;
+      letter-spacing: 0.5px;
+    }
+    header p {
+      font-size: 1.2em;
+      margin-top: 15px;
+      font-weight: 400;
+    }
+    nav {
+      background-color: #2c3e50;
+      text-align: center;
+      padding: 12px 0;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 20px;
+      font-weight: 600;
+    }
+    nav a:hover {
+      color: #f39c12;
+    }
+    section {
+      max-width: 1000px;
+      margin: 50px auto;
+      background: white;
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    h2 {
+      color: #1f2d3d;
+      font-size: 1.8em;
+      margin-top: 0;
+    }
+    .prodotti-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .prodotto {
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      text-align: center;
+      font-weight: 500;
+    }
+    .button, button {
+      display: inline-block;
+      margin-top: 25px;
+      background-color: #1f2d3d;
+      color: white;
+      padding: 12px 24px;
+      text-decoration: none;
+      border: none;
+      border-radius: 4px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .button:hover, button:hover {
+      background-color: #0f1a25;
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-family: 'Poppins', sans-serif;
+    }
+    form label {
+      display: block;
+      margin-top: 15px;
+      font-size: 0.9em;
+    }
+    footer {
+      background-color: #2c3e50;
+      color: #ccc;
+      text-align: center;
+      padding: 20px;
+      margin-top: 60px;
+    }
+    .whatsapp {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25d366;
+      color: white;
+      padding: 12px 18px;
+      border-radius: 50px;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    .whatsapp:hover {
+      background-color: #1ebe5d;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Spizzicotecnica & SPI System</h1>
+    <p>Soluzioni multimarche per il punto vendita • Ristorazione • Retail</p>
+  </header>
+
+  <nav>
+    <a href="#chi-siamo">Chi siamo</a>
+    <a href="#prodotti">Prodotti</a>
+    <a href="#preventivo">Preventivo</a>
+    <a href="#contatti">Contatti</a>
+  </nav>
+
+  <section id="chi-siamo">
+    <h2>Chi siamo</h2>
+    <p>Siamo un’azienda specializzata in soluzioni tecnologiche per negozi, mercati e attività commerciali. Offriamo assistenza e fornitura di registratori di cassa, sistemi touchscreen, bilance elettroniche, palmari per ristoranti, stampanti comande, verifica banconote e prodotti di consumo. Servizio multimarche e supporto tecnico professionale.</p>
+  </section>
+
+  <section id="prodotti">
+    <h2>Prodotti</h2>
+    <div class="prodotti-grid">
+      <div class="prodotto">🧾 Registratori di cassa</div>
+      <div class="prodotto">🖥️ Sistemi touchscreen</div>
+      <div class="prodotto">⚖️ Bilance elettroniche</div>
+      <div class="prodotto">📱 Palmari per ristoranti</div>
+      <div class="prodotto">🖨️ Stampanti comande</div>
+      <div class="prodotto">💶 Verifica banconote</div>
+      <div class="prodotto">🎫 Prezzatrici</div>
+      <div class="prodotto">🧻 Rotoli termici</div>
+      <div class="prodotto">💰 Casse automatiche rendi resto</div>
     </div>
   </section>
 
-  <section id="contatti">
-    <h2>Contattaci</h2>
-    <p>📧 <a href="mailto:spisystem@libero.it">spisystem@libero.it</a></p>
-    <p>📞 <a href="tel:+393382247948">338 224 7948</a></p>
-    <p>📍 Via Monterosa 22, Palo del Colle (BA)</p>
-
-    <a href="#form-preventivo" class="button">Richiedi un preventivo</a>
-
-    <form id="form-preventivo">
+  <section id="preventivo">
+    <h2>Richiedi un preventivo</h2>
+    <form>
       <input type="text" placeholder="Nome" required>
       <input type="text" placeholder="Telefono" required>
       <input type="text" placeholder="Città" required>
-      <input type="text" placeholder="Tipologia attività (es. Bar, Supermercato...)" required>
+      <input type="text" placeholder="Tipologia attività (es. bar, supermercato...)" required>
       <input type="email" placeholder="Email" required>
       <textarea rows="5" placeholder="Messaggio"></textarea>
       <label><input type="checkbox" required> Accetto l'informativa sulla privacy</label>
-      <label><input type="checkbox" required> Non sono un robot</label>
       <button type="submit">Invia richiesta</button>
     </form>
+  </section>
+
+  <section id="contatti">
+    <h2>Contatti</h2>
+    <p><strong>📧 Email:</strong> <a href="mailto:spisystem@libero.it">spisystem@libero.it</a></p>
+    <p><strong>📞 Telefono:</strong> <a href="tel:+393382247948">338 224 7948</a></p>
+    <p><strong📍> Indirizzo:</strong> Via Monterosa 22, Palo del Colle (BA)</p>
   </section>
 
   <footer>
     <p>&copy; 2025 Spizzicotecnica & SPI System – Tutti i diritti riservati</p>
   </footer>
 
-  <a id="whatsapp" href="https://wa.me/393382247948" target="_blank" title="Contattaci su WhatsApp">💬</a>
+  <a class="whatsapp" href="https://wa.me/393382247948" target="_blank">💬 Contattaci su WhatsApp</a>
+
 </body>
 </html>
