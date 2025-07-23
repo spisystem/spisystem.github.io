@@ -79,11 +79,6 @@
     .product-box:hover {
       background-color: #eef1f5;
     }
-    .product-box span {
-      font-size: 2em;
-      display: block;
-      margin-bottom: 10px;
-    }
     .button {
       display: inline-block;
       margin-top: 25px;
@@ -162,11 +157,24 @@
       font-size: 0.95em;
     }
     .highlight {
-      background-color: #fff3cd;
+      background-color: #fdfdfd;
       padding: 10px;
       border-left: 5px solid #ffc107;
       margin-top: 20px;
       border-radius: 4px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .highlight img {
+      width: 40px;
+      height: 40px;
+      border-radius: 4px;
+    }
+    .product-box img {
+      width: 100%;
+      border-radius: 6px;
+      margin-bottom: 10px;
     }
   </style>
 </head>
@@ -186,61 +194,34 @@
   <section id="chi-siamo">
     <h2>Chi siamo</h2>
     <p>Siamo un’azienda multimarche specializzata nella fornitura e assistenza di soluzioni professionali per il punto vendita. Operiamo nel settore dei registratori di cassa, sistemi touch, bilance elettroniche, consumabili e accessori tecnologici per attività commerciali, negozi, mercati e ristoranti.</p>
-    
-    <div class="highlight"><strong>✅ Verifica periodica dei registratori di cassa</strong></div>
-    <div class="highlight"><strong>✅ Verifica periodica delle bilance elettroniche</strong></div>
+
+    <div class="highlight">
+      <img src="qrcodeagen.jpeg" alt="QR Code Agenzia">
+      <strong>Verifica periodica dei registratori di cassa</strong>
+    </div>
+    <div class="highlight">
+      <img src="bollino.jpeg" alt="Bollino Verificato">
+      <strong>Verifica periodica delle bilance elettroniche</strong>
+    </div>
   </section>
 
   <section id="prodotti">
-  <h2>Prodotti</h2>
-  <div class="product-grid">
-
-    <!-- SISTEMI TOUCH SCREEN -->
-    <a href="modelli.html#sistemi" style="text-decoration: none; color: inherit;">
-      <div class="product-box">
-        <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 10px;">
-          <img src="IMG_0411.jpeg" alt="Sistema touch screen Wypos" width="100" style="border-radius: 6px;">
-          <img src="IMG_0417.jpeg" alt="Altro sistema" width="100" style="border-radius: 6px;">
-        </div>
-        <div>Sistemi touch screen</div>
-      </div>
-    </a>
-
-    <!-- REGISTRATORI DI CASSA -->
-    <a href="modelli.html#registratori" style="text-decoration: none; color: inherit;">
-      <div class="product-box"><span>🧾</span>Registratori di cassa</div>
-    </a>
-
-    <!-- BILANCE ELETTRONICHE -->
-    <a href="modelli.html#bilance" style="text-decoration: none; color: inherit;">
-      <div class="product-box"><span>⚖️</span>Bilance elettroniche</div>
-    </a>
-
-    <!-- ROTOLI TERMICI -->
-    <div class="product-box"><span>🧻</span>Rotoli termici</div>
-
-    <!-- PREZZATRICI -->
-    <div class="product-box"><span>🏷️</span>Prezzatrici manuali</div>
-
-    <!-- ETICHETTE -->
-    <div class="product-box"><span>📦</span>Etichette adesive</div>
-
-    <!-- PALMARI -->
-    <div class="product-box"><span>📲</span>Palmari per ristoranti</div>
-
-    <!-- STAMPANTI COMANDE -->
-    <div class="product-box"><span>🖨️</span>Stampanti comande cucina</div>
-
-    <!-- VERIFICATORI BANCONOTE -->
-    <div class="product-box"><span>💶</span>Verificatori banconote</div>
-
-    <!-- CASSE AUTOMATICHE -->
-    <a href="modelli.html#casse" style="text-decoration: none; color: inherit;">
-      <div class="product-box"><span>💰</span>Casse automatiche rendiresto</div>
-    </a>
-
-  </div>
-</section>
+    <h2>Prodotti</h2>
+    <div class="product-grid">
+      <a href="modelli.html#registratori"><div class="product-box"><img src="registratori.jpeg" alt="Registratori di cassa"><div>Registratori di cassa</div></div></a>
+      <a href="modelli.html#sistemi"><div class="product-box"><img src="sistemapos.jpeg" alt="Sistema touch screen"><div>Sistemi touch screen</div></div></a>
+      <a href="modelli.html#casse"><div class="product-box"><img src="casse.jpeg" alt="Casse automatiche"><div>Casse automatiche rendiresto</div></div></a>
+      <div class="product-box"><img src="kiosk.jpeg" alt="Kiosk"><div>Kiosk interattivi</div></div>
+      <a href="modelli.html#bilance"><div class="product-box"><img src="bilance.jpeg" alt="Bilance elettroniche"><div>Bilance elettroniche</div></div></a>
+      <div class="product-box"><img src="affettatrici.jpeg" alt="Affettatrici"><div>Affettatrici professionali</div></div>
+      <div class="product-box"><img src="palmari.jpeg" alt="Palmari"><div>Palmari per ristoranti</div></div>
+      <div class="product-box"><img src="stampanti.jpeg" alt="Stampanti"><div>Stampanti comande cucina</div></div>
+      <div class="product-box"><img src="verificatori.jpeg" alt="Verificatori"><div>Verificatori banconote</div></div>
+      <div class="product-box"><img src="rotoli.jpeg" alt="Rotoli termici"><div>Rotoli termici</div></div>
+      <div class="product-box"><img src="prezzatrici.jpeg" alt="Prezzatrici"><div>Prezzatrici manuali</div></div>
+      <div class="product-box"><img src="etichette.jpeg" alt="Etichette"><div>Etichette adesive</div></div>
+    </div>
+  </section>
 
   <section id="contatti">
     <h2>Contattaci</h2>
