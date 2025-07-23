@@ -1,1 +1,83 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Modelli Sistemi Touch Screen</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 40px;
+      background: #f4f6f8;
+      color: #2c3e50;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    .model {
+      margin-bottom: 40px;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .model h2 {
+      margin-top: 0;
+    }
+    .model-content {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+    .model img {
+      max-width: 220px;
+      border-radius: 6px;
+    }
+    .model a.pdf-link {
+      display: inline-block;
+      margin-top: 10px;
+      background-color: #1f2d3d;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: 600;
+      transition: background-color 0.3s;
+    }
+    .model a.pdf-link:hover {
+      background-color: #0f1a25;
+    }
+  </style>
+</head>
+<body>
 
+  <h1 id="sistemi">Sistemi Touch Screen</h1>
+
+  <!-- Modello 1 -->
+  <div class="model">
+    <h2>Wycash 2600</h2>
+    <div class="model-content">
+      <img src="img/IMG_0418.jpeg" alt="Wycash 2600">
+      <div>
+        <p>Il modello Wycash 2600 offre prestazioni elevate per punti vendita moderni.</p>
+        <a class="pdf-link" href="pdf/wycash-2600.pdf" target="_blank">Scarica Scheda PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modello 2 -->
+  <div class="model">
+    <h2>Wycash 1300</h2>
+    <div class="model-content">
+      <div>
+        <p>Il modello Wycash 1300 è compatto e ideale per piccole attività commerciali.</p>
+        <a class="pdf-link" href="pdf/wycash-1300.pdf" target="_blank">Scarica Scheda PDF</a>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
