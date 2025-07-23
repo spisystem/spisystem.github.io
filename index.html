@@ -168,6 +168,27 @@
       margin-top: 20px;
       border-radius: 4px;
     }
+    #touch-models {
+      margin-top: 30px;
+      padding: 20px;
+      background: #f0f4f8;
+      border-radius: 8px;
+    }
+    #touch-models ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    #touch-models li {
+      margin-bottom: 10px;
+    }
+    #touch-models a {
+      text-decoration: none;
+      color: #1f2d3d;
+      font-weight: 600;
+    }
+    #touch-models a:hover {
+      color: #f39c12;
+    }
   </style>
 </head>
 <body>
@@ -194,13 +215,14 @@
   <section id="prodotti">
     <h2>Prodotti</h2>
     <div class="product-grid">
-      <div class="product-box">
-  <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 10px;">
-    <img src="IMG_0411.jpeg" alt="Sistema touch screen Wypos" width="100" style="border-radius: 6px;">
-    <img src="IMG_0417.jpeg" alt="Altro sistema" width="100" style="border-radius: 6px;">
-  </div>
-  <div>Sistemi touch screen</div>
-</div>
+      <div class="product-box" onclick="toggleTouchModels()" style="cursor: pointer;">
+        <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 10px;">
+          <img src="IMG_0411.jpeg" alt="Sistema touch screen Wypos" width="100" style="border-radius: 6px;">
+          <img src="IMG_0417.jpeg" alt="Altro sistema" width="100" style="border-radius: 6px;">
+        </div>
+        <div><strong>Sistemi touch screen</strong><br><small>(clicca per vedere modelli)</small></div>
+      </div>
+
       <div class="product-box"><span>⚖️</span>Bilance elettroniche</div>
       <div class="product-box"><span>🧻</span>Rotoli termici</div>
       <div class="product-box"><span>🏷️</span>Prezzatrici manuali</div>
@@ -209,6 +231,16 @@
       <div class="product-box"><span>🖨️</span>Stampanti comande cucina</div>
       <div class="product-box"><span>💶</span>Verificatori banconote</div>
       <div class="product-box"><span>💰</span>Casse automatiche rendiresto</div>
+    </div>
+
+    <div id="touch-models" style="display: none;">
+      <h3>Modelli disponibili:</h3>
+      <ul>
+        <li><a href="pdf/wycash-2600.pdf" target="_blank">📄 Wycash 2600</a></li>
+        <li><a href="pdf/wycash-1300.pdf" target="_blank">📄 Wycash 1300</a></li>
+        <li><a href="pdf/wycash-600.pdf" target="_blank">📄 Wycash 600</a></li>
+        <li><a href="pdf/wycash-800.pdf" target="_blank">📄 Wycash 800</a></li>
+      </ul>
     </div>
   </section>
 
@@ -240,5 +272,11 @@
   <a id="whatsapp" href="https://wa.me/393382247948" target="_blank" title="Chatta con noi su WhatsApp">💬</a>
   <div id="whatsapp-label">WhatsApp</div>
 
+  <script>
+    function toggleTouchModels() {
+      const section = document.getElementById('touch-models');
+      section.style.display = section.style.display === 'none' ? 'block' : 'none';
+    }
+  </script>
 </body>
 </html>
