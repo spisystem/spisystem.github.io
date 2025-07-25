@@ -271,7 +271,9 @@
     const dati = prodotti[prodottoSelezionato];
 
     if (!dati) {
-      document.body.innerHTML = "<h1 style='text-align:center;'>Prodotto non trovato</h1>";
+  document.getElementById("contenuto").innerHTML = "<h2>Prodotto non trovato</h2>";
+  return; // ← aggiungi questo per evitare errore nel forEach
+}
     } else {
       document.querySelector("header h1").textContent = dati.titolo;
 
