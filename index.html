@@ -3,278 +3,287 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Modelli</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <title>Spizzicotecnica & SPI System</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Poppins:wght@400;600&family=Roboto+Slab:wght@600&display=swap" rel="stylesheet">
   <style>
+    * { box-sizing: border-box; }
     body {
+      margin: 0;
       font-family: 'Poppins', sans-serif;
-      background: #f0f4f8;
-      color: #1f2d3d;
-      line-height: 1.7;
-      margin: 0;
-      padding: 40px 20px;
-      max-width: 1200px;
-      margin-left: auto;
-      margin-right: auto;
+      background: linear-gradient(to right, #e6ebf4, #f5f9fd);
+      color: #1d2b40;
     }
-
     header {
+      background: linear-gradient(to right, #1f3556, #2e4972);
+      color: white;
       text-align: center;
-      margin-bottom: 60px;
+      padding: 80px 20px;
     }
-
     header h1 {
-      font-size: 2.4em;
-      color: #003566;
-      letter-spacing: 1px;
-      text-transform: uppercase;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.2em;
       margin: 0;
-    }
-
-    .models-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-    }
-
-    .model {
-      background: #ffffff;
-      border-left: 5px solid #0077b6;
-      border-radius: 12px;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
-      padding: 25px;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .model:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.1);
-    }
-
-    .model h2 {
-      margin: 0 0 15px 0;
-      font-size: 1.4em;
-      color: #003566;
-      text-transform: uppercase;
       letter-spacing: 1px;
     }
+    header p {
+      font-size: 1.2em;
+      margin-top: 15px;
+      font-weight: 400;
+    }
+    nav {
+      background-color: #2e4972;
+      text-align: center;
+      padding: 12px 0;
+    }
+    nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 18px;
+  font-weight: 600;
+  font-size: 1.05em;
+  padding: 8px 16px;
+  transition: color 0.3s;
+}
 
-    .model-content {
+    nav a:hover {
+      background-color: #4c6da3;
+    }
+    section {
+      max-width: 1000px;
+      margin: 60px auto;
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      border-left: 8px solid #2e4972;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+    h2 {
+      color: #1f3556;
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    p, li {
+      font-size: 1em;
+      line-height: 1.6;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .product-box {
+      background-color: #edf1f8;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      transition: transform 0.2s ease;
+    }
+    .product-box:hover {
+      transform: scale(1.03);
+      background-color: #d7e2f0;
+    }
+    .product-box img {
+      width: 80%;
+      max-width: 160px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+    .product-box div {
+      font-family: 'Roboto Slab', serif;
+      font-size: 1.1em;
+      font-weight: 700;
+      color: #1f3556;
+      text-transform: uppercase;
+    }
+    .button {
+      display: inline-block;
+      margin-top: 25px;
+      background-color: #1f3556;
+      color: white;
+      padding: 14px 28px;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: 600;
+      transition: background-color 0.3s;
+    }
+    .button:hover {
+      background-color: #162945;
+    }
+    form {
+      margin-top: 30px;
       display: flex;
       flex-direction: column;
-      align-items: center;
+      gap: 12px;
     }
-
-    .model img {
-      max-width: 180px;
-      border-radius: 8px;
-      border: 4px solid #e0e0e0;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.05);
-      margin-bottom: 15px;
-      transition: transform 0.3s ease;
+    input, textarea {
+      padding: 12px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      font-family: 'Poppins', sans-serif;
     }
-
-    .model img:hover {
-      transform: scale(1.05);
-    }
-
-    .model p {
-      font-size: 0.95em;
-      color: #333;
-      text-align: center;
-    }
-
-    .model p strong {
-      color: #0077b6;
-      font-weight: 700;
-    }
-
-    .pdf-link {
-      display: inline-block;
-      margin-top: 18px;
-      background: #0077b6;
-      color: #ffffff;
-      padding: 10px 24px;
-      text-decoration: none;
-      border-radius: 30px;
+    button[type="submit"] {
+      background-color: #1f3556;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
       font-weight: 600;
-      font-size: 0.85em;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      transition: background 0.3s, transform 0.2s;
     }
-
-    .pdf-link:hover {
-      background: #023e8a;
-      transform: translateY(-2px);
+    button[type="submit"]:hover {
+      background-color: #162945;
     }
-
-    @media (max-width: 768px) {
-      .model-content {
-        text-align: center;
-      }
+    footer {
+      background-color: #2e4972;
+      color: #e0e0e0;
+      text-align: center;
+      padding: 20px;
+      margin-top: 60px;
+    }
+    #whatsapp {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25D366;
+      color: white;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 28px;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    #whatsapp-label {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      background-color: #25D366;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 14px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      font-family: 'Poppins', sans-serif;
+    }
+    label {
+      font-size: 0.95em;
+    }
+    .highlight {
+      background-color: #f0f3f9;
+      padding: 15px 20px;
+      border-left: 5px solid #2e4972;
+      margin-top: 20px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    .highlight img {
+      width: 60px;
+      height: 60px;
+      border-radius: 4px;
     }
   </style>
 </head>
 <body>
-
   <header>
-    <h1>Modelli</h1>
+    <h1>Spizzicotecnica & SPI System</h1>
+    <p>Soluzioni professionali multimarche per il punto vendita</p>
   </header>
 
-  <div class="models-grid"></div>
+  <nav>
+    <a href="#chi-siamo">Chi Siamo</a>
+    <a href="#prodotti">Prodotti</a>
+    <a href="#contatti">Contatti</a>
+  </nav>
 
-  <script>
-    const prodotti = {
-      touch: {
-        titolo: "Sistemi Touch",
-        modelli: [
-          {
-            nome: "WYCASH 2600",
-            immagine: "img/IMG_0418.jpeg",
-            descrizione: "Soluzione di cassa elegante e contemporanea. Wycash 2600 è potente e versatile: gestisci il tuo negozio con semplicità. Display touch 15,6” full HD super brillante.",
-            pdf: "pdf/wycash-2600.pdf"
-          },
-          {
-            nome: "WYCASH 1300",
-            immagine: "img/IMG_0417.jpeg",
-            descrizione: "Punto cassa touch screen con stampante telematica integrata. Ideale per negozi e ristorazione.",
-            pdf: "pdf/wycash-1300.pdf"
-          }
-        ]
-      },
-      registratori: {
-        titolo: "Registratori di Cassa",
-        modelli: [
-          {
-            nome: "RT ONE",
-            immagine: "img/rtone.jpeg",
-            descrizione: "Registratore di cassa telematico compatto, perfetto per ogni tipo di attività.",
-            pdf: "pdf/rt-one.pdf"
-          }
-        ]
-      },
-      bilance: {
-        titolo: "Bilance Elettroniche",
-        modelli: [
-          {
-            nome: "Smart Scale 500",
-            immagine: "img/bilancia-smart.jpeg",
-            descrizione: "Bilancia elettronica con interfaccia touch e stampa scontrino.",
-            pdf: "pdf/bilancia-smart.pdf"
-          }
-        ]
-      },
-      affettatrici: {
-        titolo: "Affettatrici Professionali",
-        modelli: [
-          {
-            nome: "Affettatrice 300 INOX",
-            immagine: "img/affettatrice.jpeg",
-            descrizione: "Affettatrice professionale in acciaio inox per uso intensivo.",
-            pdf: "pdf/affettatrice-300.pdf"
-          }
-        ]
-      },
-      casse: {
-        titolo: "Casse Automatiche Rendiresto",
-        modelli: [
-          {
-            nome: "CashGuard Pro",
-            immagine: "img/casse.jpeg",
-            descrizione: "Sistema automatico rendiresto per una gestione sicura del denaro.",
-            pdf: "pdf/cashguard-pro.pdf"
-          }
-        ]
-      },
-      kiosk: {
-        titolo: "Kiosk Interattivi",
-        modelli: [
-          {
-            nome: "Kiosk SelfOrder",
-            immagine: "img/kiosk.jpeg",
-            descrizione: "Totem touchscreen per ordini self-service in ristoranti e negozi.",
-            pdf: "pdf/kiosk-selforder.pdf"
-          }
-        ]
-      },
-      "palmari-stampanti": {
-        titolo: "Palmari & Stampanti Cucina",
-        modelli: [
-          {
-            nome: "Palmare WiFi X5",
-            immagine: "img/palmari.jpeg",
-            descrizione: "Dispositivo portatile per gestione comande in sala, veloce e affidabile.",
-            pdf: "pdf/palmare-x5.pdf"
-          },
-          {
-            nome: "Stampante K80",
-            immagine: "img/stampanti.jpeg",
-            descrizione: "Stampante termica da cucina con taglio automatico e avviso acustico.",
-            pdf: "pdf/stampante-k80.pdf"
-          }
-        ]
-      },
-      "prezzatrici-verificatori": {
-        titolo: "Prezzatrici & Verificabanconote",
-        modelli: [
-          {
-            nome: "Prezzatrice Duo",
-            immagine: "img/prezzatrici.jpeg",
-            descrizione: "Etichettatrice manuale a doppia linea per prezzo e scadenza.",
-            pdf: "pdf/prezzatrice-duo.pdf"
-          },
-          {
-            nome: "Verificatore UV PRO",
-            immagine: "img/verificatori.jpeg",
-            descrizione: "Dispositivo per il controllo rapido delle banconote.",
-            pdf: "pdf/verificatore-uv.pdf"
-          }
-        ]
-      },
-      rotoli: {
-        titolo: "Rotoli Termici",
-        modelli: [
-          {
-            nome: "Rotoli 80x80",
-            immagine: "img/rotoli.jpeg",
-            descrizione: "Rotoli termici per stampanti fiscali e POS. Carta di alta qualità.",
-            pdf: "pdf/rotoli-80x80.pdf"
-          }
-        ]
-      }
-    };
+  <section id="chi-siamo">
+    <h2>Chi Siamo</h2>
+    <p>Siamo un’azienda multimarche specializzata nella fornitura e assistenza di soluzioni professionali per il punto vendita...</p>
+    <div class="highlight">
+      <img src="qrcodeagen.jpeg" alt="QR Code Agenzia">
+      <strong>Verifica periodica dei registratori di cassa</strong>
+    </div>
+    <div class="highlight">
+      <img src="bollino.jpeg" alt="Bollino Verificato">
+      <strong>Verifica periodica delle bilance elettroniche</strong>
+    </div>
+  </section>
 
-    function getParametroURL(nome) {
-      const urlParams = new URLSearchParams(window.location.search);
-      return urlParams.get(nome);
-    }
+  <section id="prodotti">
+    <h2>Prodotti</h2>
+    <div class="product-grid">
+  <a href="modelli.html?prodotto=registratori"><div class="product-box"><img src="registratori.jpeg"><div>REGISTRATORI DI CASSA</div></div></a>
+  <a href="modelli.html?prodotto=touch"><div class="product-box"><img src="sistemapos.jpeg"><div>SISTEMI TOUCH SCREEN</div></div></a>
+  <a href="modelli.html?prodotto=casse"><div class="product-box"><img src="casse.jpeg"><div>CASSE AUTOMATICHE RENDIRESTO</div></div></a>
+  <a href="modelli.html?prodotto=kiosk"><div class="product-box"><img src="kiosk.jpeg"><div>KIOSK INTERATTIVI</div></div></a>
+  <a href="modelli.html?prodotto=bilance"><div class="product-box"><img src="bilance.jpeg"><div>BILANCE ELETTRONICHE</div></div></a>
+  <a href="modelli.html?prodotto=affettatrici"><div class="product-box"><img src="affettatrici.jpeg"><div>AFFETTATRICI PROFESSIONALI</div></div></a>
 
-    const prodottoSelezionato = getParametroURL("prodotto");
-    const dati = prodotti[prodottoSelezionato];
+  <!-- PALMARI + STAMPANTI -->
+  <a href="modelli.html?prodotto=palmari-stampanti">
+    <div class="product-box">
+      <div style="display: flex; justify-content: center; gap: 10px;">
+        <img src="palmari.jpeg" style="width: 48%; max-width: 120px;">
+        <img src="stampanti.jpeg" style="width: 48%; max-width: 120px;">
+      </div>
+      <div>PALMARI & STAMPANTI CUCINA</div>
+    </div>
+  </a>
 
-    if (!dati) {
-      document.body.innerHTML = "<h1 style='text-align:center;'>Prodotto non trovato</h1>";
-    } else {
-      document.querySelector("header h1").textContent = dati.titolo;
+  <!-- PREZZATRICI + VERIFICABANCONOTE -->
+  <a href="modelli.html?prodotto=prezzatrici-verificatori">
+    <div class="product-box">
+      <div style="display: flex; justify-content: center; gap: 10px;">
+        <img src="prezzatrici.jpeg" style="width: 48%; max-width: 120px;">
+        <img src="verificatori.jpeg" style="width: 48%; max-width: 120px;">
+      </div>
+      <div>PREZZATRICI & VERIFICABANCONOTE</div>
+    </div>
+  </a>
 
-      const container = document.querySelector(".models-grid");
-      container.innerHTML = "";
+  <a href="modelli.html?prodotto=rotoli"><div class="product-box"><img src="rotoli.jpeg"><div>ROTOLI TERMICI</div></div></a>
+</div>
 
-      dati.modelli.forEach(modello => {
-        const div = document.createElement("div");
-        div.className = "model";
-        div.innerHTML = `
-          <h2>${modello.nome}</h2>
-          <div class="model-content">
-            <img src="${modello.immagine}" alt="${modello.nome}">
-            <p>${modello.descrizione}</p>
-            <a class="pdf-link" href="${modello.pdf}" target="_blank">Scarica Brochure</a>
-          </div>
-        `;
-        container.appendChild(div);
-      });
-    }
-  </script>
+  </a>
+</section>
 
+  <section id="contatti">
+    <h2>Contattaci</h2>
+    <p>📧 <a href="mailto:spisystem@libero.it">spisystem@libero.it</a></p>
+    <p>📧 <a href="mailto:spizzicotecnica@libero.it">spizzicotecnica@libero.it</a></p>
+    <p>📞 <a href="tel:+393382247948">338 224 7948</a></p>
+    <p>📍 <a href="https://www.google.com/maps?q=Via+Monterosa+22,+Palo+del+Colle+(BA)" target="_blank">Via Monterosa 22, Palo del Colle (BA)</a></p>
+
+    <a href="#form-preventivo" class="button">Richiedi un preventivo</a>
+
+    <form id="form-preventivo">
+      <input type="text" placeholder="Nome" required>
+      <input type="text" placeholder="Telefono" required>
+      <input type="text" placeholder="Città" required>
+      <input type="text" placeholder="Tipologia attività (es. Bar, Supermercato...)" required>
+      <input type="email" placeholder="Email" required>
+      <textarea rows="5" placeholder="Messaggio"></textarea>
+      <label><input type="checkbox" required> Accetto l'informativa sulla privacy</label>
+      <button type="submit">Invia richiesta</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Spizzicotecnica & SPI System – Tutti i diritti riservati</p>
+  </footer>
+
+  <a id="whatsapp" href="https://wa.me/393382247948" target="_blank" title="Chatta con noi su WhatsApp">💬</a>
+  <div id="whatsapp-label">WhatsApp</div>
 </body>
 </html>
