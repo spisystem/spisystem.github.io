@@ -18,19 +18,6 @@
       color: white;
       text-align: center;
       padding: 80px 20px;
-      position: relative;
-    }
-    #language-selector {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-    }
-    select {
-      padding: 6px;
-      font-family: 'Poppins', sans-serif;
-      border-radius: 6px;
-      border: none;
-      font-weight: 600;
     }
     header h1 {
       font-family: 'Cormorant Garamond', serif;
@@ -178,69 +165,57 @@
   </style>
 </head>
 <body>
-<!-- CONTINUA QUI CON IL RESTO DELL'HTML COME DA STRUTTURA CHE AVEVI -->
-<section id="preventivo">
-  <h2 data-i18n="section.estimate">Richiedi un Preventivo</h2>
-  <form action="https://formsubmit.co/spisystem@libero.it" method="POST">
-    <input type="text" name="Nome" placeholder="Nome" required>
-    <input type="text" name="Cognome" placeholder="Cognome" required>
-    <input type="tel" name="Telefono" placeholder="Numero di telefono" required>
-    <input type="text" name="Indirizzo" placeholder="Indirizzo" required>
-    <input type="text" name="Tipologia attività" placeholder="Tipologia attività (es. Bar, Supermercato)" required>
-    <textarea name="Prodotti di interesse" placeholder="Prodotti di interesse" rows="5" required></textarea>
-    <input type="hidden" name="_captcha" value="false">
-    <button type="submit" data-i18n="form.submit">Invia richiesta</button>
-  </form>
-</section>
-
-<footer>
-  <p>&copy; 2025 Spizzicotecnica & SPI System – Tutti i diritti riservati</p>
-</footer>
-
-<a id="whatsapp" href="https://wa.me/393382247948" target="_blank" title="Chatta con noi su WhatsApp">💬</a>
-<div id="whatsapp-label">WhatsApp</div>
-
-<script>
-  const translations = {
-    en: {
-      "nav.about": "About Us",
-      "nav.products": "Products",
-      "nav.contact": "Contact",
-      "section.about": "About Us",
-      "section.aboutText": "We are a multi-brand company specialized in providing and servicing professional point-of-sale solutions...",
-      "section.products": "Products",
-      "section.contact": "Contact Us",
-      "section.estimate": "Request a Quote",
-      "products.registratori": "CASH REGISTERS",
-      "products.bilance": "ELECTRONIC SCALES",
-      "products.touch": "TOUCH SCREEN SYSTEMS",
-      "products.casse": "CASH AUTOMATIC SYSTEMS",
-      "products.kiosk": "INTERACTIVE KIOSKS",
-      "products.affettatrici": "PROFESSIONAL SLICERS",
-      "products.palmari": "KITCHEN PRINTERS & HANDHELD DEVICES",
-      "products.prezzatrici": "PRICE GUNS & MONEY DETECTORS",
-      "products.rotoli": "THERMAL ROLLS",
-      "form.submit": "Send Request"
-    },
-    it: {}
-  };
-
-  const switcher = document.getElementById("lang-switcher");
-  const elements = document.querySelectorAll("[data-i18n]");
-
-  function updateLanguage(lang) {
-    elements.forEach(el => {
-      const key = el.getAttribute("data-i18n");
-      if (translations[lang] && translations[lang][key]) {
-        el.innerText = translations[lang][key];
-      }
-    });
-  }
-
-  switcher.addEventListener("change", e => {
-    updateLanguage(e.target.value);
-  });
-</script>
+  <header>
+    <h1>Spizzicotecnica & SPI System</h1>
+    <p>Soluzioni professionali multimarche per il punto vendita</p>
+  </header>
+  <nav>
+    <a href="#chi-siamo">Chi Siamo</a>
+    <a href="#prodotti">Prodotti</a>
+    <a href="#contatti">Contatti</a>
+  </nav>
+  <section id="chi-siamo">
+    <h2>Chi Siamo</h2>
+    <p>Siamo un’azienda multimarche specializzata nella fornitura e assistenza di soluzioni professionali per il punto vendita...</p>
+  </section>
+  <section id="prodotti">
+    <h2>Prodotti</h2>
+    <div class="product-grid">
+      <a href="modelli.html?prodotto=registratori"><div class="product-box"><img src="registratori.jpeg"><div>REGISTRATORI DI CASSA</div></div></a>
+      <a href="modelli.html?prodotto=bilance"><div class="product-box"><img src="bilance.jpeg"><div>BILANCE ELETTRONICHE</div></div></a>
+      <a href="modelli.html?prodotto=sistemi-touch"><div class="product-box"><img src="sistemapos.jpeg"><div>SISTEMI TOUCH SCREEN</div></div></a>
+      <a href="modelli.html?prodotto=casse"><div class="product-box"><img src="casse.jpeg"><div>CASSE AUTOMATICHE RENDIRESTO</div></div></a>
+      <a href="modelli.html?prodotto=kiosk"><div class="product-box"><img src="kiosk.jpeg"><div>KIOSK INTERATTIVI</div></div></a>
+      <a href="modelli.html?prodotto=affettatrici"><div class="product-box"><img src="affettatrici.jpeg"><div>AFFETTATRICI PROFESSIONALI</div></div></a>
+      <a href="modelli.html?prodotto=palmari-stampanti"><div class="product-box"><div style="display: flex; justify-content: center; gap: 10px;"><img src="palmari.jpeg" style="width: 48%; max-width: 120px;"><img src="stampanti.jpeg" style="width: 48%; max-width: 120px;"></div><div>PALMARI & STAMPANTI CUCINA</div></div></a>
+      <div class="product-box"><div style="display: flex; justify-content: center; gap: 10px;"><img src="prezzatrici.jpeg" style="width: 48%; max-width: 120px;"><img src="verificatori.jpeg" style="width: 48%; max-width: 120px;"></div><div>PREZZATRICI & VERIFICABANCONOTE</div></div>
+      <div class="product-box"><img src="rotoli.jpeg"><div>ROTOLI TERMICI</div></div>
+    </div>
+  </section>
+  <section id="contatti">
+    <h2>Contattaci</h2>
+    <p>📧 <a href="mailto:spisystem@libero.it">spisystem@libero.it</a></p>
+    <p>📧 <a href="mailto:spizzicotecnica@libero.it">spizzicotecnica@libero.it</a></p>
+    <p>📞 <a href="tel:+393382247948">338 224 7948</a></p>
+    <p>📍 <a href="https://www.google.com/maps?q=Via+Monterosa+22,+Palo+del+Colle+(BA)" target="_blank">Via Monterosa 22, Palo del Colle (BA)</a></p>
+  </section>
+  <section id="preventivo">
+    <h2>Richiedi un Preventivo</h2>
+   <form action="https://formsubmit.co/spisystem@libero.it" method="POST">
+  <input type="text" name="Nome" placeholder="Nome" required>
+  <input type="text" name="Cognome" placeholder="Cognome" required>
+  <input type="tel" name="Telefono" placeholder="Numero di telefono" required>
+  <input type="text" name="Indirizzo" placeholder="Indirizzo" required>
+  <input type="text" name="Tipologia attività" placeholder="Tipologia attività (es. Bar, Supermercato)" required>
+  <textarea name="Prodotti di interesse" placeholder="Prodotti di interesse" rows="5" required></textarea>
+  <input type="hidden" name="_captcha" value="false">
+  <button type="submit">Invia richiesta</button>
+</form>
+  </section>
+  <footer>
+    <p>&copy; 2025 Spizzicotecnica & SPI System – Tutti i diritti riservati</p>
+  </footer>
+  <a id="whatsapp" href="https://wa.me/393382247948" target="_blank" title="Chatta con noi su WhatsApp">💬</a>
+  <div id="whatsapp-label">WhatsApp</div>
 </body>
 </html>
-
