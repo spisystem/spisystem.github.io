@@ -162,43 +162,42 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
       font-family: 'Poppins', sans-serif;
     }
-     #verifiche {
-  max-width: 1000px;
-  margin: 40px auto;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-.verifica-box {
+     .row-box {
   display: flex;
   align-items: center;
-  background-color: #f0f4f9;
-  padding: 16px;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  gap: 20px;
+  margin-bottom: 20px;
 }
-.verifica-box img {
-  width: 100px;
-  height: 80px;
-  object-fit: cover;
-  border-radius: 6px;
-  margin-right: 16px;
+
+.row-box img {
+  width: 110px;
+  height: auto;
+  border-radius: 8px;
 }
-.verifica-box p {
-  margin: 0;
+
+.row-box p {
   font-size: 1.1em;
   font-weight: 600;
-  color: #1f3556;
+  margin: 0;
+  line-height: 1.4;
 }
-@media (max-width: 600px) {
-  .verifica-box {
+
+@media screen and (max-width: 600px) {
+  .row-box {
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
   }
-  .verifica-box p {
+
+  .row-box img {
+    width: 90px;
+  }
+
+  .row-box p {
     font-size: 1em;
+    padding-top: 5px;
   }
 }
+
 </style>
 </head>
 <body>
@@ -214,12 +213,12 @@
   <section id="chi-siamo">
     <h2>Chi Siamo</h2>
     <p>Siamo un’azienda multimarche specializzata nella fornitura e assistenza di soluzioni professionali per il punto vendita...</p>
- <div class="verifica-row">
-  <img src="verifica-registratori.jpg" alt="Verifica registratori">
+ <div class="row-box">
+  <img src="verifiche-registratori.jpg" alt="Verifiche registratori">
   <p>Verifiche periodiche registratori di cassa</p>
 </div>
-<div class="verifica-row">
-  <img src="verifica-bilance.jpg" alt="Verifica bilance">
+<div class="row-box">
+  <img src="verifiche-bilance.jpg" alt="Verifiche bilance">
   <p>Verifiche periodiche bilance</p>
 </div>
 </section>
