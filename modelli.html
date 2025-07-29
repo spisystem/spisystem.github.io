@@ -120,32 +120,11 @@
   <header>
     <h1>Modelli</h1>
   </header>
-  
+
   <div class="models-grid"></div>
 
   <script>
     const prodotti = {
-       "registratori": {
-        titolo: "Registratori di Cassa",
-        modelli: [
-          {
-            nome: "SERIE HELIOS PLUS RT",
-            immagine: "img/helios.jpeg",
-            descrizione: "Design compatto, cambio carta facilitato. Omologato per lo scontrino digitale",
-            pdf: "pdf/helios.pdf"
-            ]
-          },
-      "bilance": {
-        titolo: "Bilance Elettroniche",
-        modelli: [
-          {
-            nome: "Smart Scale 500",
-            immagine: "img/bilancia-smart.jpeg",
-            descrizione: "Bilancia elettronica con interfaccia touch e stampa scontrino.",
-            pdf: "pdf/bilancia-smart.pdf"
-          }
-        ]
-      },
       "sistemi-touch": {
         titolo: "Sistemi Touch",
         modelli: [
@@ -175,7 +154,47 @@
           }
         ]
       },
-         casse: {
+      "registratori": {
+        titolo: "Registratori di Cassa",
+        modelli: [
+          {
+            nome: "SERIE HELIOS PLUS RT",
+            immagine: "img/helios.jpeg",
+            descrizione: "Design compatto, cambio carta facilitato. Omologato per lo scontrino digitale",
+            pdf: "pdf/helios.pdf"
+          },
+          {
+            nome: "SERIE HELIOS TOUCH RT",
+            immagine: "img/heliost.jpeg",
+            descrizione: "Videotastiera touch 7\", customer display LCD 4\", scontrino digitale da QR code. Accendi il tuo business.",
+            pdf: ""
+          }
+        ]
+      },
+      "bilance": {
+        titolo: "Bilance Elettroniche",
+        modelli: [
+          {
+            nome: "Smart Scale 500",
+            immagine: "img/bilancia-smart.jpeg",
+            descrizione: "Bilancia elettronica con interfaccia touch e stampa scontrino.",
+            pdf: "pdf/bilancia-smart.pdf"
+          }
+        ]
+      },
+  
+      affettatrici: {
+        titolo: "Affettatrici Professionali",
+        modelli: [
+          {
+            nome: "Affettatrice 300 INOX",
+            immagine: "img/affettatrice.jpeg",
+            descrizione: "Affettatrice professionale in acciaio inox per uso intensivo.",
+            pdf: "pdf/affettatrice-300.pdf"
+          }
+        ]
+      },
+      casse: {
         titolo: "Casse Automatiche Rendiresto",
         modelli: [
           {
@@ -186,7 +205,7 @@
           }
         ]
       },
-       kiosk: {
+      kiosk: {
         titolo: "Kiosk Interattivi",
         modelli: [
           {
@@ -194,17 +213,6 @@
             immagine: "img/kiosk.jpeg",
             descrizione: "Totem touchscreen per ordini self-service in ristoranti e negozi.",
             pdf: "pdf/kiosk-selforder.pdf"
-          }
-        ]
-      },
-       affettatrici: {
-       titolo: "Affettatrici Professionali",
-        modelli: [
-          {
-            nome: "Affettatrice 300 INOX",
-            immagine: "img/affettatrice.jpeg",
-            descrizione: "Affettatrice professionale in acciaio inox per uso intensivo.",
-            pdf: "pdf/affettatrice-300.pdf"
           }
         ]
       },
@@ -243,7 +251,15 @@
         ]
       },
       rotoli: {
-        titolo: "Rotoli Termici"
+        titolo: "Rotoli Termici",
+        modelli: [
+          {
+            nome: "Rotoli 80x80",
+            immagine: "img/rotoli.jpeg",
+            descrizione: "Rotoli termici per stampanti fiscali e POS. Carta di alta qualità.",
+            pdf: "pdf/rotoli-80x80.pdf"
+          }
+        ]
       }
     };
 
