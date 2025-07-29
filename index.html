@@ -65,6 +65,9 @@
       font-size: 1em;
       line-height: 1.6;
     }
+    ul {
+      padding-left: 20px;
+    }
     .product-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -96,20 +99,6 @@
       color: #1f3556;
       text-transform: uppercase;
     }
-    .button {
-      display: inline-block;
-      margin-top: 25px;
-      background-color: #1f3556;
-      color: white;
-      padding: 14px 28px;
-      text-decoration: none;
-      border-radius: 4px;
-      font-weight: 600;
-      transition: background-color 0.3s;
-    }
-    .button:hover {
-      background-color: #162945;
-    }
     form {
       margin-top: 30px;
       display: flex;
@@ -140,6 +129,16 @@
       text-align: center;
       padding: 20px;
       margin-top: 60px;
+    }
+    .button {
+      background-color: #1f3556;
+      color: white;
+      padding: 14px 28px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-block;
+      margin-top: 15px;
     }
     #whatsapp {
       position: fixed;
@@ -173,44 +172,55 @@
   </style>
 </head>
 <body>
-<header>
-<h1>Spizzicotecnica & SPI System</h1>
-<p>Soluzioni professionali multimarche per il punto vendita</p>
-</header>
-<nav>
-<a href="#chi-siamo">Chi Siamo</a>
-<a href="#prodotti">Prodotti</a>
-<a href="#contatti">Contatti</a>
-</nav>
-<section id="chi-siamo">
-<h2>Chi Siamo</h2>
-<p>Siamo un’azienda multimarche specializzata nella fornitura e assistenza di soluzioni professionali per il punto vendita...</p>
-</section>
-<section id="prodotti">
-<h2>Prodotti</h2>
-<div class="product-grid">
-<a href="modelli.html?prodotto=registratori"><div class="product-box"><img src="registratori.jpeg"><div>REGISTRATORI DI CASSA</div></div></a>
-<a href="modelli.html?prodotto=bilance"><div class="product-box"><img src="bilance.jpeg"><div>BILANCE ELETTRONICHE</div></div></a>
-<a href="modelli.html?prodotto=sistemi-touch"><div class="product-box"><img src="sistemapos.jpeg"><div>SISTEMI TOUCH SCREEN</div></div></a>
-<a href="modelli.html?prodotto=casse"><div class="product-box"><img src="casse.jpeg"><div>CASSE AUTOMATICHE</div></div></a>
-<a href="modelli.html?prodotto=kiosk"><div class="product-box"><img src="kiosk.jpeg"><div>KIOSK INTERATTIVI</div></div></a>
-<a href="modelli.html?prodotto=affettatrici"><div class="product-box"><img src="affettatrici.jpeg"><div>AFFETTATRICI PROFESSIONALI</div></div></a>
-<a href="modelli.html?prodotto=palmari-stampanti"><div class="product-box"><div style="display: flex; justify-content: center; gap: 10px;"><img src="palmari.jpeg" style="width: 48%; max-width: 120px;"><img src="stampanti.jpeg" style="width: 48%; max-width: 120px;"></div><div>PALMARI & STAMPANTI</div></div></a>
-<div class="product-box"><div style="display: flex; justify-content: center; gap: 10px;"><img src="prezzatrici.jpeg" style="width: 48%; max-width: 120px;"><img src="verificatori.jpeg" style="width: 48%; max-width: 120px;"></div><div>PREZZATRICI & VERIFICABANCONOTE</div></div>
-<div class="product-box"><img src="rotoli.jpeg"><div>ROTOLI TERMICI</div></div>
-</div>
-</section>
-<section id="contatti">
-<h2>Contattaci</h2>
-<p>📧 <a href="mailto:spisystem@libero.it">spisystem@libero.it</a></p>
-<p>📧 <a href="mailto:spizzicotecnica@libero.it">spizzicotecnica@libero.it</a></p>
-<p>📞 <a href="tel:+393382247948">338 224 7948</a></p>
-<p>📍 <a href="https://www.google.com/maps?q=Via+Monterosa+22,+Palo+del+Colle+(BA)" target="_blank">Via Monterosa 22, Palo del Colle (BA)</a></p>
-</section>
-<footer>
-<p>&copy; 2025 Spizzicotecnica & SPI System – Tutti i diritti riservati</p>
-</footer>
-<a id="whatsapp" href="https://wa.me/393382247948" target="_blank" title="Chatta con noi su WhatsApp">💬</a>
-<div id="whatsapp-label">WhatsApp</div>
+  <header>
+    <h1>Spizzicotecnica & SPI System</h1>
+    <p>Soluzioni professionali multimarche per il punto vendita</p>
+  </header>
+  <nav>
+    <a href="#chi-siamo">Chi Siamo</a>
+    <a href="#prodotti">Prodotti</a>
+    <a href="#contatti">Contatti</a>
+  </nav>
+  <section id="chi-siamo">
+    <h2>Chi Siamo</h2>
+    <p>Siamo un’azienda multimarche specializzata nella fornitura e assistenza di soluzioni professionali per il punto vendita...</p>
+  </section>
+  <section id="prodotti">
+    <h2>Prodotti</h2>
+    <div class="product-grid">
+      <a href="modelli.html?prodotto=registratori"><div class="product-box"><img src="registratori.jpeg"><div>REGISTRATORI DI CASSA</div></div></a>
+      <a href="modelli.html?prodotto=bilance"><div class="product-box"><img src="bilance.jpeg"><div>BILANCE ELETTRONICHE</div></div></a>
+      <a href="modelli.html?prodotto=sistemi-touch"><div class="product-box"><img src="sistemapos.jpeg"><div>SISTEMI TOUCH SCREEN</div></div></a>
+      <a href="modelli.html?prodotto=casse"><div class="product-box"><img src="casse.jpeg"><div>CASSE AUTOMATICHE RENDIRESTO</div></div></a>
+      <a href="modelli.html?prodotto=kiosk"><div class="product-box"><img src="kiosk.jpeg"><div>KIOSK INTERATTIVI</div></div></a>
+      <a href="modelli.html?prodotto=affettatrici"><div class="product-box"><img src="affettatrici.jpeg"><div>AFFETTATRICI PROFESSIONALI</div></div></a>
+      <a href="modelli.html?prodotto=palmari-stampanti"><div class="product-box"><div style="display: flex; justify-content: center; gap: 10px;"><img src="palmari.jpeg" style="width: 48%; max-width: 120px;"><img src="stampanti.jpeg" style="width: 48%; max-width: 120px;"></div><div>PALMARI & STAMPANTI CUCINA</div></div></a>
+      <div class="product-box"><div style="display: flex; justify-content: center; gap: 10px;"><img src="prezzatrici.jpeg" style="width: 48%; max-width: 120px;"><img src="verificatori.jpeg" style="width: 48%; max-width: 120px;"></div><div>PREZZATRICI & VERIFICABANCONOTE</div></div>
+      <div class="product-box"><img src="rotoli.jpeg"><div>ROTOLI TERMICI</div></div>
+    </div>
+  </section>
+  <section id="contatti">
+    <h2>Contattaci</h2>
+    <p>📧 <a href="mailto:spisystem@libero.it">spisystem@libero.it</a></p>
+    <p>📧 <a href="mailto:spizzicotecnica@libero.it">spizzicotecnica@libero.it</a></p>
+    <p>📞 <a href="tel:+393382247948">338 224 7948</a></p>
+    <p>📍 <a href="https://www.google.com/maps?q=Via+Monterosa+22,+Palo+del+Colle+(BA)" target="_blank">Via Monterosa 22, Palo del Colle (BA)</a></p>
+  </section>
+  <section id="preventivo">
+    <h2>Richiedi un Preventivo</h2>
+    <form action="mailto:spisystem@libero.it" method="POST" enctype="text/plain">
+      <input type="text" name="Nome" placeholder="Nome" required>
+      <input type="text" name="Cognome" placeholder="Cognome" required>
+      <input type="text" name="Indirizzo" placeholder="Indirizzo" required>
+      <input type="text" name="Attività" placeholder="Tipologia attività" required>
+      <textarea name="Prodotti" rows="4" placeholder="Prodotti di interesse (es. registratori, bilance, etc.)" required></textarea>
+      <button type="submit">Invia richiesta</button>
+    </form>
+  </section>
+  <footer>
+    <p>&copy; 2025 Spizzicotecnica & SPI System – Tutti i diritti riservati</p>
+  </footer>
+  <a id="whatsapp" href="https://wa.me/393382247948" target="_blank" title="Chatta con noi su WhatsApp">💬</a>
+  <div id="whatsapp-label">WhatsApp</div>
 </body>
 </html>
