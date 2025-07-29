@@ -162,48 +162,43 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
       font-family: 'Poppins', sans-serif;
     }
-      .verifica-row {
-    display: flex;
+     #verifiche {
+  max-width: 1000px;
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.verifica-box {
+  display: flex;
+  align-items: center;
+  background-color: #f0f4f9;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.verifica-box img {
+  width: 100px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-right: 16px;
+}
+.verifica-box p {
+  margin: 0;
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #1f3556;
+}
+@media (max-width: 600px) {
+  .verifica-box {
+    flex-direction: row;
     align-items: center;
-    background-color: #f2f6fb;
-    padding: 16px;
-    margin-top: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-    gap: 16px;
-    flex-wrap: nowrap;
   }
-
-  .verifica-row img {
-    width: 80px;
-    height: auto;
-    border-radius: 6px;
-    flex-shrink: 0;
+  .verifica-box p {
+    font-size: 1em;
   }
-
-  .verifica-row p {
-    font-family: 'Roboto Slab', serif;
-    font-weight: 600;
-    font-size: 1.05em;
-    color: #1f3556;
-    margin: 0;
-    line-height: 1.2;
-  }
-
-  @media (max-width: 600px) {
-    .verifica-row {
-      flex-direction: row;
-      align-items: flex-start;
-    }
-
-    .verifica-row img {
-      width: 70px;
-    }
-
-    .verifica-row p {
-      font-size: 0.95em;
-    }
-  }
+}
 </style>
 </head>
 <body>
