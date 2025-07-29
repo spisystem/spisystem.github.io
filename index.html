@@ -171,17 +171,30 @@
   border-radius: 10px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
-.verifica-row img {
-  width: 100px;
-  height: auto;
-  margin-right: 20px;
-  border-radius: 6px;
-}
-.verifica-row p {
-  margin: 0;
-  font-weight: 500;
-  font-size: 1.05em;
-}
+.verifica-row {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    background-color: #f0f4f9;
+    padding: 16px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  }
+  .verifica-row img {
+    width: 80px;
+    height: 60px;
+    object-fit: cover;
+    margin-right: 20px;
+    border-radius: 4px;
+  }
+  .verifica-row p {
+    margin: 0;
+    font-weight: 700;
+    font-size: 1.1em;
+    color: #1f3556;
+    font-family: 'Roboto Slab', serif;
+    text-transform: uppercase;
+  }
 </style>
 </head>
 <body>
@@ -197,12 +210,12 @@
   <section id="chi-siamo">
     <h2>Chi Siamo</h2>
     <p>Siamo un’azienda multimarche specializzata nella fornitura e assistenza di soluzioni professionali per il punto vendita...</p>
-    <div class="verifica-row">
-  <img src="verifica-registratori.jpg" alt="Verifica Registratori" style="width: 120px; border-radius: 8px; margin-right: 16px;">
+ <div class="verifica-row">
+  <img src="verifica-registratori.jpg" alt="Verifica registratori">
   <p>Verifiche periodiche registratori di cassa</p>
 </div>
 <div class="verifica-row">
-  <img src="verifica-bilance.jpg" alt="Verifica Bilance" style="width: 120px; border-radius: 8px; margin-right: 16px;">
+  <img src="verifica-bilance.jpg" alt="Verifica bilance">
   <p>Verifiche periodiche bilance</p>
 </div>
 </section>
