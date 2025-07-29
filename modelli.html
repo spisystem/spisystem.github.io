@@ -50,7 +50,7 @@
       transform: translateY(-5px);
       box-shadow: 0 14px 40px rgba(0, 0, 0, 0.1);
     }
-    
+
     .model h2 {
       margin: 0 0 15px 0;
       font-size: 1.4em;
@@ -69,7 +69,7 @@
       max-width: 180px;
       border-radius: 8px;
       border: 4px solid #e0e0e0;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
       margin-bottom: 15px;
       transition: transform 0.3s ease;
     }
@@ -99,7 +99,7 @@
       border-radius: 30px;
       font-weight: 600;
       font-size: 0.85em;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
       transition: background 0.3s, transform 0.2s;
     }
 
@@ -124,6 +124,16 @@
   <div class="models-grid"></div>
 
   <script>
+    const ordineCategorie = [
+      "registratori",
+      "bilance",
+      "sistemi-touch",
+      "casse",
+      "kiosk",
+      "palmari-stampanti",
+      "affettatrici"
+    ];
+
     const prodotti = {
       "sistemi-touch": {
         titolo: "Sistemi Touch",
@@ -131,25 +141,25 @@
           {
             nome: "WYCASH 2600",
             immagine: "img/IMG_0418.jpeg",
-            descrizione: "Soluzione di cassa elegante e contemporanea. Wycash 2600 è potente e versatile: gestisci il tuo negozio con semplicità. Display touch 15,6” full HD super brillante.",
+            descrizione: "Soluzione di cassa elegante e contemporanea...",
             pdf: "pdf/wycash-2600.pdf"
           },
           {
             nome: "WYCASH 1300",
             immagine: "img/IMG_0417.jpeg",
-            descrizione: "Punto cassa touch screen con stampante telematica integrata. Ideale per negozi e ristorazione.",
+            descrizione: "Punto cassa touch screen con stampante telematica integrata...",
             pdf: "pdf/wycash-1300.pdf"
           },
           {
             nome: "WYCASH 800",
             immagine: "img/wycash800.jpeg",
-            descrizione: "Sistema di cassa touch screen con stampante telematica integrata, Wycash 800 è la soluzione di cassa intelligente che ti aiuta a tenere sotto controllo tutta la tua attività. Dal comodo display touch screen 10” puoi controllare ogni cosa in pochi tocchi, grazie all’applicazione di cassa Wycash integrata.",
+            descrizione: "Sistema di cassa touch screen con stampante telematica integrata...",
             pdf: "pdf/wycash800.pdf"
           },
           {
             nome: "WYCASH 600",
             immagine: "img/wycash-600.jpeg",
-            descrizione: "Con Wycash 600 hai tutti i vantaggi di una soluzione di cassa touch screen compatta e flessibile per la gestione integrata del tuo punto vendita.",
+            descrizione: "Con Wycash 600 hai tutti i vantaggi di una soluzione di cassa compatta...",
             pdf: "pdf/wycash-600.pdf"
           }
         ]
@@ -160,13 +170,13 @@
           {
             nome: "SERIE HELIOS PLUS RT",
             immagine: "img/helios.jpeg",
-            descrizione: "Design compatto, cambio carta facilitato. Omologato per lo scontrino digitale",
+            descrizione: "Design compatto, cambio carta facilitato...",
             pdf: "pdf/helios.pdf"
           },
           {
             nome: "SERIE HELIOS TOUCH RT",
             immagine: "img/heliost.jpeg",
-            descrizione: "Videotastiera touch 7\", customer display LCD 4\", scontrino digitale da QR code. Accendi il tuo business.",
+            descrizione: "Videotastiera touch 7\", customer display LCD 4\"...",
             pdf: ""
           }
         ]
@@ -177,12 +187,11 @@
           {
             nome: "Smart Scale 500",
             immagine: "img/bilancia-smart.jpeg",
-            descrizione: "Bilancia elettronica con interfaccia touch e stampa scontrino.",
+            descrizione: "Bilancia elettronica con interfaccia touch...",
             pdf: "pdf/bilancia-smart.pdf"
           }
         ]
       },
-  
       affettatrici: {
         titolo: "Affettatrici Professionali",
         modelli: [
@@ -222,65 +231,30 @@
           {
             nome: "Palmare WiFi X5",
             immagine: "img/palmari.jpeg",
-            descrizione: "Dispositivo portatile per gestione comande in sala, veloce e affidabile.",
+            descrizione: "Dispositivo portatile per gestione comande in sala...",
             pdf: "pdf/palmare-x5.pdf"
           },
           {
             nome: "Stampante K80",
             immagine: "img/stampanti.jpeg",
-            descrizione: "Stampante termica da cucina con taglio automatico e avviso acustico.",
+            descrizione: "Stampante termica da cucina con taglio automatico...",
             pdf: "pdf/stampante-k80.pdf"
-          }
-        ]
-      },
-      "prezzatrici-verificatori": {
-        titolo: "Prezzatrici & Verificabanconote",
-        modelli: [
-          {
-            nome: "Prezzatrice Duo",
-            immagine: "img/prezzatrici.jpeg",
-            descrizione: "Etichettatrice manuale a doppia linea per prezzo e scadenza.",
-            pdf: "pdf/prezzatrice-duo.pdf"
-          },
-          {
-            nome: "Verificatore UV PRO",
-            immagine: "img/verificatori.jpeg",
-            descrizione: "Dispositivo per il controllo rapido delle banconote.",
-            pdf: "pdf/verificatore-uv.pdf"
-          }
-        ]
-      },
-      rotoli: {
-        titolo: "Rotoli Termici",
-        modelli: [
-          {
-            nome: "Rotoli 80x80",
-            immagine: "img/rotoli.jpeg",
-            descrizione: "Rotoli termici per stampanti fiscali e POS. Carta di alta qualità.",
-            pdf: "pdf/rotoli-80x80.pdf"
           }
         ]
       }
     };
 
-    function getParametroURL(nome) {
-      const urlParams = new URLSearchParams(window.location.search);
-      return urlParams.get(nome);
-    }
-
-    const prodottoSelezionato = getParametroURL("prodotto");
+    const prodottoSelezionato = new URLSearchParams(window.location.search).get("prodotto");
     const dati = prodotti[prodottoSelezionato];
     const container = document.querySelector(".models-grid");
 
     if (!dati) {
       container.innerHTML = `<p>Prodotto non trovato o non selezionato.</p>`;
     } else {
-      // Optional: mostra titolo categoria
       const header = document.createElement("h2");
       header.textContent = dati.titolo;
       container.parentElement.insertBefore(header, container);
 
-      // Cicla i modelli
       dati.modelli.forEach(modello => {
         const div = document.createElement("div");
         div.className = "model";
@@ -300,4 +274,5 @@
   </script>
 </body>
 </html>
+
 
