@@ -162,58 +162,46 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
       font-family: 'Poppins', sans-serif;
     }
-    .verifica-row {
-  display: flex;
-  align-items: center;
-  margin-top: 20px;
-  background-color: #f0f4f9;
-  padding: 16px;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-}
- .verifica-row {
+      .verifica-row {
     display: flex;
     align-items: center;
     background-color: #f2f6fb;
-    padding: 20px;
+    padding: 16px;
     margin-top: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-    gap: 20px;
+    gap: 16px;
     flex-wrap: nowrap;
   }
 
   .verifica-row img {
-    width: 110px;
+    width: 80px;
     height: auto;
     border-radius: 6px;
     flex-shrink: 0;
   }
 
   .verifica-row p {
-    font-weight: 700;
-    font-size: 1.1em;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 600;
+    font-size: 1.05em;
     color: #1f3556;
     margin: 0;
-    flex: 1;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    line-height: 1.2;
   }
 
   @media (max-width: 600px) {
     .verifica-row {
       flex-direction: row;
-      align-items: center;
+      align-items: flex-start;
     }
 
     .verifica-row img {
-      width: 90px;
+      width: 70px;
     }
 
     .verifica-row p {
-      font-size: 1em;
-      white-space: normal;
+      font-size: 0.95em;
     }
   }
 </style>
