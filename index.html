@@ -42,10 +42,11 @@
       font-weight: 600;
       font-size: 1.05em;
       padding: 8px 16px;
-      transition: color 0.3s;
+      transition: background-color 0.3s;
     }
     nav a:hover {
       background-color: #4c6da3;
+      border-radius: 6px;
     }
     section {
       max-width: 1000px;
@@ -80,7 +81,7 @@
       padding: 20px;
       text-align: center;
       box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-      transition: transform 0.2s ease;
+      transition: transform 0.2s ease, background-color 0.3s ease;
     }
     .product-box:hover {
       transform: scale(1.03);
@@ -107,18 +108,20 @@
     }
     input, textarea {
       padding: 12px;
-      border-radius: 4px;
+      border-radius: 6px;
       border: 1px solid #ccc;
       font-family: 'Poppins', sans-serif;
+      font-size: 1em;
     }
     button[type="submit"] {
       background-color: #1f3556;
       color: white;
-      padding: 12px;
+      padding: 14px;
       border: none;
-      border-radius: 4px;
+      border-radius: 6px;
       cursor: pointer;
       font-weight: 600;
+      font-size: 1.1em;
     }
     button[type="submit"]:hover {
       background-color: #162945;
@@ -129,16 +132,6 @@
       text-align: center;
       padding: 20px;
       margin-top: 60px;
-    }
-    .button {
-      background-color: #1f3556;
-      color: white;
-      padding: 14px 28px;
-      border-radius: 4px;
-      text-decoration: none;
-      font-weight: 600;
-      display: inline-block;
-      margin-top: 15px;
     }
     #whatsapp {
       position: fixed;
@@ -208,15 +201,15 @@
   </section>
   <section id="preventivo">
     <h2>Richiedi un Preventivo</h2>
-   <form action="https://formsubmit.co/spisystem@libero.it" method="POST">
-  <input type="text" name="Nome" placeholder="Nome" required>
-  <input type="text" name="Cognome" placeholder="Cognome" required>
-  <input type="text" name="Indirizzo" placeholder="Indirizzo" required>
-  <input type="text" name="Tipologia attività" placeholder="Tipologia attività (es. Bar, Supermercato)" required>
-  <textarea name="Prodotti di interesse" placeholder="Prodotti di interesse" rows="5" required></textarea>
-  <input type="hidden" name="_captcha" value="false">
-  <button type="submit">Invia richiesta</button>
-</form>
+    <form action="https://formsubmit.co/spisystem@libero.it" method="POST">
+      <input type="text" name="Nome" placeholder="Nome" required>
+      <input type="text" name="Cognome" placeholder="Cognome" required>
+      <input type="text" name="Indirizzo" placeholder="Indirizzo" required>
+      <input type="text" name="Tipologia attività" placeholder="Tipologia attività (es. Bar, Supermercato)" required>
+      <textarea name="Prodotti di interesse" placeholder="Prodotti di interesse" rows="5" required></textarea>
+      <input type="hidden" name="_captcha" value="false">
+      <button type="submit">Invia richiesta</button>
+    </form>
   </section>
   <footer>
     <p>&copy; 2025 Spizzicotecnica & SPI System – Tutti i diritti riservati</p>
@@ -225,3 +218,4 @@
   <div id="whatsapp-label">WhatsApp</div>
 </body>
 </html>
+
