@@ -196,15 +196,34 @@
     font-size: 1em;
     padding-top: 5px;
   }
+  .header-container {
+  position: relative;
+  padding-top: 20px;
 }
 
+.logo-top-left {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  height: 70px;
+}
+
+.header-text {
+  text-align: center;
+}
+}
 </style>
 </head>
 <body>
   <header>
-    <h1>Spizzicotecnica & SPI System</h1>
-    <p>Soluzioni professionali multimarche per il punto vendita</p>
-  </header>
+  <div class="header-container">
+    <img src="img/logo.jpg" alt="Logo" class="logo-top-left">
+    <div class="header-text">
+      <h1>Spizzicotecnica & SPI System</h1>
+      <p>Soluzioni professionali multimarche per il punto vendita</p>
+    </div>
+  </div>
+</header>
   <nav>
     <a href="#chi-siamo">Chi Siamo</a>
     <a href="#prodotti">Prodotti</a>
