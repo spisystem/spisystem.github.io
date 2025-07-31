@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Spizzicotecnica & SPI System</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Poppins:wght@400;600&family=Roboto+Slab:wght@600&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Poppins:wght@400;600&family=Roboto+Slab:wght@600&display=swap" rel="stylesheet">
   <style>
   * { box-sizing: border-box; }
 body {
@@ -89,18 +89,11 @@ ul {
   box-sizing: border-box;
 }
 .product-box div {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
+  font-family: 'Roboto Slab', serif;
   font-size: 1.1em;
+  font-weight: 700;
   color: #355070;
   text-transform: uppercase;
-  cursor: pointer;
-  transition: color 0.3s ease;
-}
-.product-box div:hover {
-  color: #4a6ca3;
-  /* niente sottolineatura */
-  text-decoration: none;
 }
 form {
   margin-top: 30px;
@@ -213,27 +206,6 @@ footer {
   pointer-events: none;
   user-drag: none;
   -webkit-user-drag: none;
-}
-  /* Rimuove sottolineatura e mantiene colore originale dei nomi prodotto */
-.product-grid a {
-  text-decoration: none;
-  color: inherit;
-}
-
-/* Aggiunge simbolo ↗ accanto ai nomi prodotto per indicare che sono cliccabili */
-.product-box div::after {
-  content: ' ↗';
-  font-size: 0.85em;
-  color: #4a6ca3;
-  margin-left: 4px;
-  vertical-align: middle;
-}
-  nav a, .product-grid a div {
-  color: #264673;             /* colore blu scuro per i link */
-  text-decoration: none;      /* niente sottolineatura */
-  cursor: pointer;            /* cursore a mano */
-  font-family: 'Montserrat', sans-serif;  /* font moderno */
-  font-weight: 600;
 }
 }
 </style>
