@@ -202,6 +202,11 @@ footer {
     margin-bottom: 10px;
     margin-top: -10px; /* margine negativo per ridurre spazio */
   }
+  img {
+  pointer-events: none;
+  user-drag: none;
+  -webkit-user-drag: none;
+}
 }
 </style>
 </head>
@@ -267,5 +272,12 @@ footer {
   </footer>
   <a id="whatsapp" href="https://wa.me/393382247948" target="_blank" title="Chatta con noi su WhatsApp">💬</a>
   <div id="whatsapp-label">WhatsApp</div>
+<script>
+  document.addEventListener('contextmenu', event => {
+    if (event.target.tagName === 'IMG') {
+      event.preventDefault();
+    }
+  });
+</script>
 </body>
 </html>
