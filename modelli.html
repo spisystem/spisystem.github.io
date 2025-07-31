@@ -9,7 +9,7 @@
     body {
   font-family: 'Poppins', sans-serif;
   background: linear-gradient(135deg, #e6f0ff 0%, #ffffff 100%);
-  color: #002d5a; /* testo principale scuro */
+  color: #003366; /* blu scuro per il testo */
   line-height: 1.7;
   margin: 0 auto;
   padding: 40px 20px;
@@ -18,7 +18,7 @@
 
 header h1 {
   font-size: 2.6em;
-  color: #004080; /* titolo principale */
+  color: #004080; /* blu più scuro */
   letter-spacing: 2px;
   text-transform: uppercase;
   margin: 0;
@@ -27,11 +27,12 @@ header h1 {
 
 .model {
   background: #f9fbff;
-  border-left: 6px solid #0059b3; /* bordo più scuro */
+  border-left: 6px solid #0059b3; /* bordo blu scuro */
   border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0, 89, 179, 0.15); /* ombra più scura */
+  box-shadow: 0 10px 25px rgba(0, 89, 179, 0.15);
   padding: 25px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 20px;
 }
 
 .model:hover {
@@ -42,26 +43,34 @@ header h1 {
 .model h2 {
   margin: 0 0 15px 0;
   font-size: 1.6em;
-  color: #004080; /* titolo modello */
+  color: #004080; /* blu più scuro */
   text-transform: uppercase;
   letter-spacing: 1.5px;
   font-weight: 600;
   text-decoration: none;
 }
 
+.model-content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 15px;
+  border-radius: 8px;
+}
+
 .model p {
   font-size: 1em;
-  color: #002d5a; /* testo descrizione */
+  color: #003366; /* testo blu scuro */
   margin: 0 0 15px;
 }
 
 .model p strong {
-  color: #004080; /* parole in grassetto */
+  color: #004080; /* blu più scuro */
   font-weight: 700;
 }
 
 .pdf-link {
-  background: #004080; /* bottone */
+  background: #004080; /* blu più scuro */
   color: #ffffff;
   padding: 10px 24px;
   text-decoration: none;
@@ -70,10 +79,11 @@ header h1 {
   font-size: 0.9em;
   box-shadow: 0 5px 15px rgba(0, 64, 128, 0.3);
   transition: background 0.3s ease, transform 0.2s ease;
+  display: inline-block;
 }
 
 .pdf-link:hover {
-  background: #002d5a; /* bottone hover */
+  background: #002d5a; /* blu ancora più scuro */
   transform: translateY(-3px);
 }
 
