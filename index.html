@@ -7,40 +7,34 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Poppins:wght@400;600&family=Roboto+Slab:wght@600&display=swap" rel="stylesheet">
   <style>
   * { box-sizing: border-box; }
-
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(to right, #e8f3fc, #f1f8ff); /* azzurro molto chiaro */
-  color: #1e1e1e;
+  background: linear-gradient(to right, #fefefe, #f0f4f8);
+  color: #355070;
 }
-
 header {
   background: linear-gradient(to right, #355070, #4a6ca3);
   color: white;
   text-align: center;
   padding: 80px 20px;
 }
-
 header h1 {
   font-family: 'Cormorant Garamond', serif;
   font-size: 3.2em;
   margin: 0;
   letter-spacing: 1px;
 }
-
 header p {
-  font-size: 1.3em;
+  font-size: 1.2em;
   margin-top: 15px;
-  font-weight: 300;
+  font-weight: 400;
 }
-
 nav {
   background-color: #4a6ca3;
   text-align: center;
   padding: 12px 0;
 }
-
 nav a {
   color: white;
   text-decoration: none;
@@ -51,101 +45,75 @@ nav a {
   border-radius: 6px;
   transition: background-color 0.3s;
 }
-
 nav a:hover {
   background-color: #5a7599;
 }
-
 section {
   max-width: 1000px;
   margin: 60px auto;
-  background: linear-gradient(135deg, #f5fbff, #eaf4fa);
+  background: linear-gradient(135deg, #fafcff, #f9f7f2);
   padding: 40px;
   border-radius: 12px;
-  border-left: 6px solid #4a6ca3;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border-left: 8px solid #4a6ca3;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
-
 h2 {
   color: #355070;
-  font-size: 2.2em;
-  margin-bottom: 25px;
-  font-family: 'Roboto Slab', serif;
+  font-size: 2em;
+  margin-bottom: 20px;
 }
-
 p, li {
-  font-size: 1.05em;
+  font-size: 1em;
   line-height: 1.6;
 }
-
-a {
-  color: #1a3c70;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-a:hover {
-  color: #4a6ca3;
-  text-decoration: underline;
-}
-
 ul {
   padding-left: 20px;
 }
-
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 24px;
+  gap: 20px;
   margin-top: 30px;
 }
-
 .product-box {
-  background-color: #e2ecf7;
-  border-radius: 12px;
+  background-color: #edf1f8;
+  border-radius: 10px;
   padding: 20px;
   text-align: center;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease, background-color 0.3s ease;
 }
-
 .product-box:hover {
   transform: scale(1.03);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  background-color: #d7e2f0;
 }
-
 .product-box img {
   width: 80%;
   max-width: 160px;
-  border-radius: 8px;
+  border-radius: 6px;
   margin-bottom: 10px;
   box-sizing: border-box;
 }
-
 .product-box div {
   font-family: 'Roboto Slab', serif;
   font-size: 1.1em;
   font-weight: 700;
-  color: #1e1e1e;
+  color: #355070;
   text-transform: uppercase;
-  margin-top: 10px;
 }
-
 form {
   margin-top: 30px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
 }
-
 input, textarea {
-  padding: 14px;
+  padding: 12px;
   border-radius: 6px;
   border: 1px solid #ccc;
-  background-color: #f9fcff;
+  font-family: 'Poppins', sans-serif;
   font-size: 1em;
 }
-
 button[type="submit"] {
   background-color: #355070;
   color: white;
@@ -157,20 +125,16 @@ button[type="submit"] {
   font-size: 1.1em;
   transition: background-color 0.3s ease;
 }
-
 button[type="submit"]:hover {
   background-color: #4a6ca3;
 }
-
 footer {
   background-color: #355070;
   color: white;
   text-align: center;
-  padding: 24px;
-  font-size: 0.95em;
+  padding: 20px;
   margin-top: 60px;
 }
-
 #whatsapp {
   position: fixed;
   bottom: 20px;
@@ -187,7 +151,6 @@ footer {
   text-decoration: none;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
-
 #whatsapp-label {
   position: fixed;
   bottom: 90px;
@@ -201,37 +164,31 @@ footer {
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   font-family: 'Poppins', sans-serif;
 }
-
 .row-box {
   display: flex;
   align-items: center;
   gap: 20px;
   margin-bottom: 20px;
 }
-
 .row-box img {
   width: 110px;
   height: auto;
   border-radius: 8px;
 }
-
 .row-box p {
   font-size: 1.1em;
   font-weight: 600;
   margin: 0;
   line-height: 1.4;
 }
-
 @media screen and (max-width: 600px) {
   .row-box {
     flex-direction: row;
     align-items: flex-start;
   }
-
   .row-box img {
     width: 90px;
   }
-
   .row-box p {
     font-size: 1em;
     padding-top: 5px;
