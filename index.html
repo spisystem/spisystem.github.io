@@ -17,7 +17,7 @@ header {
   background: linear-gradient(to right, #355070, #4a6ca3);
   color: white;
   text-align: center;
-  padding: 80px 20px;
+  padding: 40px 20px 80px 20px; /* meno spazio sopra */
 }
 header h1 {
   font-family: 'Cormorant Garamond', serif;
@@ -182,9 +182,10 @@ footer {
   line-height: 1.4;
 }
 @media screen and (max-width: 600px) {
-  .row-box {
-    flex-direction: row;
-    align-items: flex-start;
+  .logo-pic {
+    width: 80px;
+    margin-bottom: 10px;
+    margin-top: -20px; /* margine negativo solo su mobile */
   }
   .row-box img {
     width: 90px;
@@ -193,10 +194,11 @@ footer {
     font-size: 1em;
     padding-top: 5px;
   }
-  .logo-pic {
-  width: 80px;
-  margin-bottom: 10px;
-  margin-top: -20px;
+ .logo-pic {
+  width: 110px;
+  height: auto;
+  border-radius: 8px;
+  margin-top: 0; /* niente margine sopra su desktop */
 }
 }
 </style>
