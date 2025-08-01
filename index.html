@@ -282,6 +282,15 @@ footer {
   <input type="text" name="Indirizzo" placeholder="Indirizzo" required>
   <input type="text" name="Tipologia attività" placeholder="Tipologia attività (es. Bar, Supermercato)" required>
   <textarea name="Prodotti di interesse" placeholder="Prodotti di interesse" rows="5" required></textarea>
+
+  <!-- ✅ CHECKBOX GDPR -->
+  <label style="font-size: 0.9em; line-height: 1.4;">
+    <input type="checkbox" name="privacy" required>
+    Acconsento al trattamento dei miei dati personali ai sensi del Regolamento UE 2016/679 (GDPR) esclusivamente per essere ricontattato e ricevere un preventivo. 
+    <br>
+    <a href="privacy.html" target="_blank">Leggi l’informativa sulla privacy</a>.
+  </label>
+
   <input type="hidden" name="_captcha" value="false">
   <button type="submit">Invia richiesta</button>
 </form>
