@@ -30,19 +30,18 @@ nav {
   padding: 8px 0; /* riduci da 12px a 8px */
 }
 nav a {
-  color: white;
+  color: #F28C28; /* Arancione acceso */
   text-decoration: none;
   margin: 0 18px;
   font-weight: 600;
   font-size: 1.05em;
   padding: 8px 16px;
   border-radius: 6px;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, color 0.3s;
 }
-
 nav a:hover {
-  background-color: #F28C28;
-  color: white;
+  background-color: rgba(242, 140, 40, 0.15); /* leggero arancione trasparente */
+  color: #F28C28;
 }
 section {
   max-width: 1000px;
@@ -226,9 +225,6 @@ footer {
   pointer-events: none;
   user-drag: none;
   -webkit-user-drag: none;
-}
-  header p {
-  color: #F28C28;
 }
 }
 </style>
