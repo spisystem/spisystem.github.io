@@ -230,6 +230,11 @@ footer {
 </style>
 </head>
 <body>
+  <div id="cookie-banner" style="position: fixed; bottom: 0; left: 0; right: 0; background: #355070; color: white; padding: 15px; text-align: center; font-family: 'Poppins', sans-serif; z-index: 9999;">
+  Questo sito utilizza cookie per migliorare la tua esperienza. 
+  <a href="cookie.html" style="color: #F28C28; text-decoration: underline;">Leggi di più</a>.
+  <button id="accept-cookies" style="margin-left: 15px; background-color: #F28C28; border: none; padding: 8px 15px; border-radius: 6px; cursor: pointer; font-weight: 600;">Accetta</button>
+</div>
 <header>
   <img src="img/B0F190C1-ED18-45F3-B492-572A76ED7803.png" alt="Logo Spizzicotecnica" class="logo-pic">
   <h1>Spizzicotecnica & SPI System</h1>
@@ -307,5 +312,17 @@ footer {
     }
   });
 </script>
+ <script>
+  // Controlla se il cookie è già stato accettato
+  if(localStorage.getItem('cookieAccepted') === 'true'){
+    document.getElementById('cookie-banner').style.display = 'none';
+  }
+
+  // Al click del bottone
+  document.getElementById('accept-cookies').addEventListener('click', function() {
+    localStorage.setItem('cookieAccepted', 'true');
+    document.getElementById('cookie-banner').style.display = 'none';
+  });
+</script> 
 </body>
 </html>
