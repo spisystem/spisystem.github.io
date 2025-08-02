@@ -230,11 +230,27 @@ footer {
 </style>
 </head>
 <body>
-  <div id="cookie-banner" style="position: fixed; bottom: 0; left: 0; right: 0; background: #355070; color: white; padding: 15px; text-align: center; font-family: 'Poppins', sans-serif; z-index: 9999;">
-  Questo sito utilizza cookie tecnici necessari e cookie analitici per migliorare la tua esperienza. Puoi 
-  <a href="cookie.html" style="color: #F28C28; text-decoration: underline;">gestire le tue preferenze</a>.
-  <button id="accept-cookies" style="margin-left: 15px; background-color: #F28C28; border: none; padding: 8px 15px; border-radius: 6px; cursor: pointer; font-weight: 600;">Accetta tutti</button>
-  <button id="reject-cookies" style="margin-left: 10px; background-color: #777; border: none; padding: 8px 15px; border-radius: 6px; cursor: pointer; font-weight: 600;">Rifiuta</button>
+  <div id="cookie-banner" style="
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: #355070;
+  color: white;
+  padding: 20px 30px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1em;
+  text-align: center;
+  z-index: 9999;
+  box-shadow: 0 -3px 10px rgba(0,0,0,0.3);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+">
+  Questo sito utilizza cookie tecnici e cookie analitici per migliorare la tua esperienza e offrirti servizi personalizzati.  
+  <button id="manage-preferences" style="background:none; border:none; text-decoration: underline; color:#F28C28; cursor:pointer; font-weight:600; font-size:1.1em;">Gestisci preferenze</button>
+  <button id="accept-cookies" style="background-color: #F28C28; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 1.1em;">Accetta tutti</button>
+  <button id="reject-cookies" style="background-color: #777; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 1.1em;">Rifiuta</button>
 </div>
 <header>
   <img src="img/B0F190C1-ED18-45F3-B492-572A76ED7803.png" alt="Logo Spizzicotecnica" class="logo-pic">
@@ -315,25 +331,69 @@ footer {
 </script>
  <script>
   const banner = document.getElementById('cookie-banner');
+  const modal = document.getElementById('cookie-modal');
+  const form = document.getElementById('cookie-preferences-form');
+
+  // Controlla se l'utente ha già scelto
   const accepted = localStorage.getItem('cookieAccepted');
   const rejected = localStorage.getItem('cookieRejected');
+  const analyticsAllowed = localStorage.getItem('analyticsAllowed');
+
+  function hideBanner() {
+    banner.style.display = 'none';
+  }
 
   if (accepted === 'true' || rejected === 'true') {
-    banner.style.display = 'none';
+    hideBanner();
+    if (analyticsAllowed === 'true') {
+      // Attiva cookie analitici qui (es. Google Analytics)
+      console.log('Cookie analitici attivati');
+    }
   }
 
   document.getElementById('accept-cookies').addEventListener('click', () => {
     localStorage.setItem('cookieAccepted', 'true');
-    localStorage.removeItem('cookieRejected');
-    banner.style.display = 'none';
-    // Qui inserisci eventuale codice per attivare cookie analitici
+    localStorage.setItem('cookieRejected', 'false');
+    localStorage.setItem('analyticsAllowed', 'true');
+    hideBanner();
+    // Qui attiva cookie analitici
+    console.log('Accettati tutti i cookie');
   });
 
   document.getElementById('reject-cookies').addEventListener('click', () => {
     localStorage.setItem('cookieRejected', 'true');
-    localStorage.removeItem('cookieAccepted');
-    banner.style.display = 'none';
-    // Non caricare cookie non tecnici
+    localStorage.setItem('cookieAccepted', 'false');
+    localStorage.setItem('analyticsAllowed', 'false');
+    hideBanner();
+    // Non attivare cookie analitici
+    console.log('Rifiutati i cookie non tecnici');
+  });
+
+  document.getElementById('manage-preferences').addEventListener('click', () => {
+    modal.style.display = 'flex';
+    // Imposta checkbox in base alle preferenze salvate
+    form.analytics.checked = localStorage.getItem('analyticsAllowed') === 'true';
+  });
+
+  document.getElementById('cancel-preferences').addEventListener('click', () => {
+    modal.style.display = 'none';
+  });
+
+  document.getElementById('save-preferences').addEventListener('click', () => {
+    const analyticsChecked = form.analytics.checked;
+    localStorage.setItem('cookieAccepted', 'true');
+    localStorage.setItem('cookieRejected', analyticsChecked ? 'false' : 'true');
+    localStorage.setItem('analyticsAllowed', analyticsChecked ? 'true' : 'false');
+    hideBanner();
+    modal.style.display = 'none';
+
+    if (analyticsChecked) {
+      // Attiva cookie analitici
+      console.log('Cookie analitici attivati via preferenze');
+    } else {
+      // Non attivare cookie analitici
+      console.log('Cookie analitici disattivati via preferenze');
+    }
   });
 </script>
 </body>
