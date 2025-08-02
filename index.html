@@ -363,51 +363,62 @@ footer {
     }
   });
 </script>
- <script>
+<script>
   document.addEventListener('DOMContentLoaded', () => {
     const banner = document.getElementById('cookie-banner');
     const modal = document.getElementById('cookie-modal');
     const form = document.getElementById('cookie-preferences-form');
 
-    // Controlla se l'utente ha già scelto
+    // Leggi preferenze salvate
     const accepted = localStorage.getItem('cookieAccepted');
     const rejected = localStorage.getItem('cookieRejected');
     const analyticsAllowed = localStorage.getItem('analyticsAllowed');
+    const marketingAllowed = localStorage.getItem('marketingAllowed');
 
     function hideBanner() {
       banner.style.display = 'none';
     }
 
+    function applyCookies() {
+      if (analyticsAllowed === 'true') {
+        console.log('Cookie analitici attivati');
+        // Inserisci qui Google Analytics, ecc.
+      }
+      if (marketingAllowed === 'true') {
+        console.log('Cookie di marketing attivati');
+        // Inserisci qui script pubblicitari, es. Meta Pixel, ecc.
+      }
+    }
+
     if (accepted === 'true' || rejected === 'true') {
       hideBanner();
-      if (analyticsAllowed === 'true') {
-        // Attiva cookie analitici qui (es. Google Analytics)
-        console.log('Cookie analitici attivati');
-      }
+      applyCookies();
     }
 
     document.getElementById('accept-cookies').addEventListener('click', () => {
       localStorage.setItem('cookieAccepted', 'true');
       localStorage.setItem('cookieRejected', 'false');
       localStorage.setItem('analyticsAllowed', 'true');
+      localStorage.setItem('marketingAllowed', 'true');
       hideBanner();
-      // Qui attiva cookie analitici
+      applyCookies();
       console.log('Accettati tutti i cookie');
     });
 
     document.getElementById('reject-cookies').addEventListener('click', () => {
-      localStorage.setItem('cookieRejected', 'true');
       localStorage.setItem('cookieAccepted', 'false');
+      localStorage.setItem('cookieRejected', 'true');
       localStorage.setItem('analyticsAllowed', 'false');
+      localStorage.setItem('marketingAllowed', 'false');
       hideBanner();
-      // Non attivare cookie analitici
-      console.log('Rifiutati i cookie non tecnici');
+      console.log('Rifiutati tutti i cookie non tecnici');
     });
 
     document.getElementById('manage-preferences').addEventListener('click', () => {
       modal.style.display = 'flex';
-      // Imposta checkbox in base alle preferenze salvate
+      // Pre-compila i checkbox con le preferenze salvate
       form.analytics.checked = localStorage.getItem('analyticsAllowed') === 'true';
+      form.marketing.checked = localStorage.getItem('marketingAllowed') === 'true';
     });
 
     document.getElementById('cancel-preferences').addEventListener('click', () => {
@@ -416,26 +427,23 @@ footer {
 
     document.getElementById('save-preferences').addEventListener('click', () => {
       const analyticsChecked = form.analytics.checked;
-      if (!analyticsChecked) {
-        // Se non accetta analitici, salviamo rifiuto esplicito
-        localStorage.setItem('cookieRejected', 'true');
-      } else {
-        localStorage.setItem('cookieRejected', 'false');
-      }
-      localStorage.setItem('cookieAccepted', 'true'); // consideriamo accettazione tecnica + analitici se spuntati
+      const marketingChecked = form.marketing.checked;
+
+      localStorage.setItem('cookieAccepted', 'true');
+      localStorage.setItem('cookieRejected', (!analyticsChecked && !marketingChecked).toString());
       localStorage.setItem('analyticsAllowed', analyticsChecked ? 'true' : 'false');
+      localStorage.setItem('marketingAllowed', marketingChecked ? 'true' : 'false');
+
       hideBanner();
       modal.style.display = 'none';
+      applyCookies();
 
-      if (analyticsChecked) {
-        console.log('Cookie analitici attivati via preferenze');
-      } else {
-        console.log('Cookie analitici disattivati via preferenze');
-      }
+      console.log('Preferenze salvate');
     });
   });
-  </script>
-  <!-- Modal gestione preferenze cookie -->
+</script>
+
+<!-- Modal gestione preferenze cookie -->
 <div id="cookie-modal" style="
   display: none;
   position: fixed;
@@ -456,10 +464,17 @@ footer {
     gap: 15px;
   ">
     <h3>Gestisci preferenze cookie</h3>
+
     <label>
       <input type="checkbox" name="analytics" />
       Consenti cookie analitici
     </label>
+
+    <label>
+      <input type="checkbox" name="marketing" />
+      Consenti cookie di marketing
+    </label>
+
     <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
       <button type="button" id="cancel-preferences" style="padding: 8px 16px; background: #ccc; border:none; border-radius:4px; cursor:pointer;">Annulla</button>
       <button type="button" id="save-preferences" style="padding: 8px 16px; background: #F28C28; color: white; border:none; border-radius:4px; cursor:pointer;">Salva</button>
