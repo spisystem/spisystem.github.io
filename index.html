@@ -468,6 +468,12 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   document.getElementById('save-preferences-btn').addEventListener('click', () => {
+    // Controllo che almeno una checkbox sia selezionata
+    if (!form.analytics.checked && !form.marketing.checked) {
+      alert('Devi selezionare almeno una preferenza prima di salvare.');
+      return; // Esce senza chiudere il banner/modal
+    }
+
     localStorage.setItem('cookieAccepted', 'true');
     localStorage.setItem('cookieRejected', 'false');
     localStorage.setItem('analyticsAllowed', form.analytics.checked ? 'true' : 'false');
