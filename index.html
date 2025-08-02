@@ -233,50 +233,63 @@ footer {
 <!-- COOKIE BANNER -->
 <div id="cookie-banner" style="
     position: fixed;
-    bottom: 0; left: 0; right: 0;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
     background: #355070;
     color: white;
-    padding: 20px 30px;
+    padding: 15px 30px;
     font-family: 'Poppins', sans-serif;
-    font-size: 1.1em;
+    font-size: 1em;
     text-align: center;
     z-index: 9999;
-    box-shadow: 0 -3px 10px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    border-radius: 8px;
+    max-width: 480px;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     align-items: center;
     gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
 ">
+
   <span>Questo sito utilizza cookie tecnici per migliorare la tua esperienza.</span>
 
   <button id="accept-cookies" style="
-    background-color: #28a745;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    border-radius: 4px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      cursor: pointer;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.9em;
   ">Accetta</button>
 
   <button id="reject-cookies" style="
-    background-color: #dc3545;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    border-radius: 4px;
+      background-color: #dc3545;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      cursor: pointer;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.9em;
   ">Rifiuta</button>
 
   <button id="manage-preferences" style="
-    background-color: #ffc107;
-    color: black;
-    border: none;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    border-radius: 4px;
+      background-color: #ffc107;
+      color: black;
+      border: none;
+      padding: 8px 16px;
+      cursor: pointer;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.9em;
   ">Gestisci preferenze</button>
+
 </div>
+
 
 <!-- MODAL PREFERENZE COOKIE -->
 <div id="cookie-modal" style="
