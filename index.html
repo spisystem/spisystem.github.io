@@ -364,83 +364,81 @@ footer {
   });
 </script>
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const banner = document.getElementById('cookie-banner');
-    const modal = document.getElementById('cookie-modal');
-    const form = document.getElementById('cookie-preferences-form');
+document.addEventListener('DOMContentLoaded', () => {
+  const banner = document.getElementById('cookie-banner');
+  const modal = document.getElementById('cookie-modal');
+  const form = document.getElementById('cookie-preferences-form');
 
-    // Leggi preferenze salvate
-    const accepted = localStorage.getItem('cookieAccepted');
-    const rejected = localStorage.getItem('cookieRejected');
-    const analyticsAllowed = localStorage.getItem('analyticsAllowed');
-    const marketingAllowed = localStorage.getItem('marketingAllowed');
+  // Leggi preferenze salvate
+  const accepted = localStorage.getItem('cookieAccepted');
+  const rejected = localStorage.getItem('cookieRejected');
+  const analyticsAllowed = localStorage.getItem('analyticsAllowed');
+  const marketingAllowed = localStorage.getItem('marketingAllowed');
 
-    function hideBanner() {
-      banner.style.display = 'none';
+  function hideBanner() {
+    banner.style.display = 'none';
+  }
+
+  function hideModal() {
+    modal.style.display = 'none';
+  }
+
+  function applyCookies() {
+    if (localStorage.getItem('analyticsAllowed') === 'true') {
+      console.log('Cookie analitici attivati');
+      // Inserisci qui Google Analytics, ecc.
     }
-
-    function applyCookies() {
-      if (analyticsAllowed === 'true') {
-        console.log('Cookie analitici attivati');
-        // Inserisci qui Google Analytics, ecc.
-      }
-      if (marketingAllowed === 'true') {
-        console.log('Cookie di marketing attivati');
-        // Inserisci qui script pubblicitari, es. Meta Pixel, ecc.
-      }
+    if (localStorage.getItem('marketingAllowed') === 'true') {
+      console.log('Cookie di marketing attivati');
+      // Inserisci qui script pubblicitari, es. Meta Pixel, ecc.
     }
+  }
 
-    if (accepted === 'true' || rejected === 'true') {
-      hideBanner();
-      applyCookies();
-    }
+  if (accepted === 'true' || rejected === 'true') {
+    hideBanner();
+    applyCookies();
+  }
 
-    document.getElementById('accept-cookies').addEventListener('click', () => {
-      localStorage.setItem('cookieAccepted', 'true');
-      localStorage.setItem('cookieRejected', 'false');
-      localStorage.setItem('analyticsAllowed', 'true');
-      localStorage.setItem('marketingAllowed', 'true');
-      hideBanner();
-      applyCookies();
-      console.log('Accettati tutti i cookie');
-    });
-
-    document.getElementById('reject-cookies').addEventListener('click', () => {
-      localStorage.setItem('cookieAccepted', 'false');
-      localStorage.setItem('cookieRejected', 'true');
-      localStorage.setItem('analyticsAllowed', 'false');
-      localStorage.setItem('marketingAllowed', 'false');
-      hideBanner();
-      console.log('Rifiutati tutti i cookie non tecnici');
-    });
-
-    document.getElementById('manage-preferences').addEventListener('click', () => {
-      modal.style.display = 'flex';
-      // Pre-compila i checkbox con le preferenze salvate
-      form.analytics.checked = localStorage.getItem('analyticsAllowed') === 'true';
-      form.marketing.checked = localStorage.getItem('marketingAllowed') === 'true';
-    });
-
-    document.getElementById('cancel-preferences').addEventListener('click', () => {
-      modal.style.display = 'none';
-    });
-
-    document.getElementById('save-preferences').addEventListener('click', () => {
-      const analyticsChecked = form.analytics.checked;
-      const marketingChecked = form.marketing.checked;
-
-      localStorage.setItem('cookieAccepted', 'true');
-      localStorage.setItem('cookieRejected', (!analyticsChecked && !marketingChecked).toString());
-      localStorage.setItem('analyticsAllowed', analyticsChecked ? 'true' : 'false');
-      localStorage.setItem('marketingAllowed', marketingChecked ? 'true' : 'false');
-
-      hideBanner();
-      modal.style.display = 'none';
-      applyCookies();
-
-      console.log('Preferenze salvate');
-    });
+  document.getElementById('accept-cookies').addEventListener('click', () => {
+    localStorage.setItem('cookieAccepted', 'true');
+    localStorage.setItem('cookieRejected', 'false');
+    localStorage.setItem('analyticsAllowed', 'true');
+    localStorage.setItem('marketingAllowed', 'true');
+    hideBanner();
+    applyCookies();
+    console.log('Accettati tutti i cookie');
   });
+
+  document.getElementById('reject-cookies').addEventListener('click', () => {
+    localStorage.setItem('cookieAccepted', 'false');
+    localStorage.setItem('cookieRejected', 'true');
+    localStorage.setItem('analyticsAllowed', 'false');
+    localStorage.setItem('marketingAllowed', 'false');
+    hideBanner();
+    console.log('Rifiutati tutti i cookie non tecnici');
+  });
+
+  document.getElementById('manage-preferences').addEventListener('click', () => {
+    modal.style.display = 'flex';
+    form.analytics.checked = localStorage.getItem('analyticsAllowed') === 'true';
+    form.marketing.checked = localStorage.getItem('marketingAllowed') === 'true';
+  });
+
+  document.getElementById('cancel-preferences').addEventListener('click', () => {
+    hideModal();
+  });
+
+  document.getElementById('save-preferences').addEventListener('click', () => {
+    localStorage.setItem('cookieAccepted', 'true'); // Utente ha interagito, quindi accetta ciò che ha scelto
+    localStorage.setItem('cookieRejected', 'false');
+    localStorage.setItem('analyticsAllowed', form.analytics.checked);
+    localStorage.setItem('marketingAllowed', form.marketing.checked);
+    hideModal();
+    hideBanner();
+    applyCookies();
+    console.log('Preferenze salvate');
+  });
+});
 </script>
 
 <!-- Modal gestione preferenze cookie -->
@@ -471,9 +469,13 @@ footer {
     </label>
 
     <label>
-      <input type="checkbox" name="marketing" />
-      Consenti cookie di marketing
-    </label>
+  <input type="checkbox" name="analytics" />
+  Consenti cookie analitici
+</label>
+<label>
+  <input type="checkbox" name="marketing" />
+  Consenti cookie di marketing
+</label>
 
     <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
       <button type="button" id="cancel-preferences" style="padding: 8px 16px; background: #ccc; border:none; border-radius:4px; cursor:pointer;">Annulla</button>
