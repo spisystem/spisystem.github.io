@@ -330,6 +330,7 @@ footer {
   });
 </script>
  <script>
+document.addEventListener('DOMContentLoaded', () => {
   const banner = document.getElementById('cookie-banner');
   const modal = document.getElementById('cookie-modal');
   const form = document.getElementById('cookie-preferences-form');
@@ -395,6 +396,7 @@ footer {
       console.log('Cookie analitici disattivati via preferenze');
     }
   });
+});
 </script>
   <!-- Modal gestione preferenze cookie -->
 <div id="cookie-modal" style="
