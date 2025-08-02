@@ -247,15 +247,13 @@ footer {
     align-items: center;
     gap: 15px;
 ">
+ <div id="cookie-banner" style="...">
   <span>Questo sito utilizza cookie tecnici per migliorare la tua esperienza.</span>
-  <button onclick="document.getElementById('cookie-banner').style.display='none'" style="
-    background-color: #0056b3;  /* blu scuro */
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    border-radius: 4px;
-  ">Ok</button>
+  <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
+    <button id="accept-cookies" style="background-color: #28a745; color: white; border: none; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer;">Accetta</button>
+    <button id="reject-cookies" style="background-color: #dc3545; color: white; border: none; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer;">Rifiuta</button>
+    <button id="manage-preferences" style="background-color: #ffc107; color: black; border: none; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer;">Gestisci preferenze</button>
+  </div>
 </div>
 
   <!-- Il resto del tuo contenuto pagina (header, nav, sezioni etc.) rimane invariato -->
