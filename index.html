@@ -226,6 +226,10 @@ footer {
   user-drag: none;
   -webkit-user-drag: none;
 }
+  .no-tel-link {
+  pointer-events: none;
+  user-select: all;
+}
 }
 </style>
 </head>
@@ -391,9 +395,14 @@ footer {
   </section>
   <footer class="footer bg-dark text-white text-center py-3">
   <div class="container">
-    <p class="mb-0">&copy; 2025 Spizzico Tecnica. Tutti i diritti riservati.</p>
-    <p class="mb-0">P. IVA SPIZZICOTECNICA: 05857040728</p>
-    <p class="mb-0">P. IVA SPI SYSTEM: 08791580726</p>
+    <p class="mb-0">
+  P. IVA SPIZZICOTECNICA:
+  <span class="no-tel-link">05857040728</span>
+</p>
+<p class="mb-0">
+  P. IVA SPI SYSTEM:
+  <span class="no-tel-link">08791580726</span>
+</p>
   </div>
 </footer>
   <a id="whatsapp" href="https://wa.me/393382247948" target="_blank" title="Chatta con noi su WhatsApp">💬</a>
