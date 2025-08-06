@@ -24,24 +24,44 @@ header p {
   margin-top: 15px;
   font-weight: 400;
 }
-nav {
-  background-color: #4a6ca3;
-  text-align: center;
-  padding: 8px 0; /* riduci da 12px a 8px */
-}
-nav a {
-  color: #F28C28; /* Arancione acceso */
-  text-decoration: none;
-  margin: 0 18px;
-  font-weight: 600;
-  font-size: 1.05em;
-  padding: 8px 16px;
-  border-radius: 6px;
-  transition: background-color 0.3s, color 0.3s;
-}
-nav a:hover {
-  background-color: rgba(242, 140, 40, 0.15); /* leggero arancione trasparente */
+#hamburger {
+  font-size: 28px;
+  cursor: pointer;
   color: #F28C28;
+  padding: 12px 20px;
+  display: inline-block;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 10001;
+}
+
+#sidebar-menu {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 220px;
+  height: 100%;
+  background-color: #4a6ca3;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding-top: 60px;
+  transition: left 0.3s ease;
+  z-index: 10000;
+}
+
+#sidebar-menu a {
+  color: #F28C28;
+  text-decoration: none;
+  padding: 14px 20px;
+  font-size: 1.1em;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#sidebar-menu.show {
+  left: 0;
 }
 section {
   max-width: 1000px;
@@ -341,11 +361,14 @@ footer {
   <h1>Spizzicotecnica & SPI System</h1>
   <p>Soluzioni professionali multimarche per il punto vendita</p>
 </header>
-  <nav>
+<nav>
+  <div id="hamburger">&#9776;</div>
+  <div id="sidebar-menu">
     <a href="#chi-siamo">Chi Siamo</a>
     <a href="#prodotti">Prodotti</a>
     <a href="#contatti">Contatti</a>
-  </nav>
+  </div>
+</nav>
   <section id="chi-siamo">
     <h2>Chi Siamo</h2>
     <p>Siamo un’azienda multimarche specializzata nella fornitura e assistenza di soluzioni professionali per il punto vendita...</p>
@@ -506,6 +529,19 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 </script>
-  </form>
+  <script>
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('sidebar-menu').classList.toggle('show');
+  });
+
+  // Chiude il menu cliccando fuori
+  document.addEventListener('click', function (e) {
+    const sidebar = document.getElementById('sidebar-menu');
+    const hamburger = document.getElementById('hamburger');
+    if (!sidebar.contains(e.target) && !hamburger.contains(e.target)) {
+      sidebar.classList.remove('show');
+    }
+  });
+</script>
 </body>
 </html>
