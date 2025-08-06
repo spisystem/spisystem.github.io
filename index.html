@@ -232,6 +232,9 @@ footer {
   direction: ltr;       /* testo da sinistra a destra */
   unicode-bidi: normal; /* comportamento normale del testo */
 }
+  body.no-scroll {
+    overflow: hidden; /* blocca lo scroll */
+  }
 }
 </style>
 </head>
@@ -426,28 +429,33 @@ document.addEventListener('DOMContentLoaded', () => {
   const modal = document.getElementById('cookie-modal');
   const form = document.getElementById('cookie-preferences-form');
 
-  // Leggi preferenze salvate
   const accepted = localStorage.getItem('cookieAccepted');
   const rejected = localStorage.getItem('cookieRejected');
 
   function hideBanner() {
     banner.style.display = 'none';
+    document.body.classList.remove('no-scroll');
   }
+
   function hideModal() {
     modal.style.display = 'none';
   }
+
   function applyCookies() {
     if (localStorage.getItem('analyticsAllowed') === 'true') {
       console.log('Cookie analitici attivati');
-      // Inserisci qui Google Analytics, ecc.
+      // Inserisci qui Google Analytics
     }
     if (localStorage.getItem('marketingAllowed') === 'true') {
       console.log('Cookie di marketing attivati');
-      // Inserisci qui script pubblicitari, es. Meta Pixel, ecc.
+      // Inserisci qui Meta Pixel, ecc.
     }
   }
 
-  if (accepted === 'true' || rejected === 'true') {
+  // Se l'utente non ha ancora scelto, mostra banner e blocca scroll
+  if (accepted !== 'true' && rejected !== 'true') {
+    document.body.classList.add('no-scroll');
+  } else {
     hideBanner();
     applyCookies();
   }
@@ -482,10 +490,9 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   document.getElementById('save-preferences-btn').addEventListener('click', () => {
-    // Controllo che almeno una checkbox sia selezionata
     if (!form.analytics.checked && !form.marketing.checked) {
       alert('Devi selezionare almeno una preferenza prima di salvare.');
-      return; // Esce senza chiudere il banner/modal
+      return;
     }
 
     localStorage.setItem('cookieAccepted', 'true');
