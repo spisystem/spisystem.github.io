@@ -226,9 +226,11 @@ footer {
   user-drag: none;
   -webkit-user-drag: none;
 }
-  .no-link {
-  unicode-bidi: bidi-override;
-  direction: rtl;
+ .no-link {
+  pointer-events: none; /* impedisce il clic */
+  user-select: none;    /* impedisce la selezione */
+  direction: ltr;       /* testo da sinistra a destra */
+  unicode-bidi: normal; /* comportamento normale del testo */
 }
 }
 </style>
