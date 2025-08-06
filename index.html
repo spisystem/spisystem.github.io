@@ -530,17 +530,25 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
   <script>
-  document.getElementById('hamburger').addEventListener('click', () => {
-    document.getElementById('sidebar-menu').classList.toggle('show');
+  const hamburger = document.getElementById('hamburger');
+  const sidebar = document.getElementById('sidebar-menu');
+
+  hamburger.addEventListener('click', () => {
+    sidebar.classList.toggle('show');
   });
 
   // Chiude il menu cliccando fuori
   document.addEventListener('click', function (e) {
-    const sidebar = document.getElementById('sidebar-menu');
-    const hamburger = document.getElementById('hamburger');
     if (!sidebar.contains(e.target) && !hamburger.contains(e.target)) {
       sidebar.classList.remove('show');
     }
+  });
+
+  // Chiude il menu quando clicchi su un link interno
+  sidebar.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      sidebar.classList.remove('show');
+    });
   });
 </script>
 </body>
