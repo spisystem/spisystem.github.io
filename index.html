@@ -17,11 +17,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Poppins:wght@400;600&family=Roboto+Slab:wght@600&display=swap" rel="stylesheet">
 
-  <!-- Sposta il CSS in un file esterno se possibile -->
-  <link rel="stylesheet" href="styles.css"> <!-- Da creare, se vuoi -->
-  <style>
-  
-</style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <!-- COOKIE BANNER -->
@@ -127,7 +123,7 @@
   <p>Soluzioni professionali multimarche per il punto vendita</p>
 </header>
 <nav>
-  <div id="hamburger">&#9776;</div>
+  <div id="hamburger" role="button" aria-label="Apri menu di navigazione" aria-controls="sidebar-menu" aria-expanded="false">&#9776;</div>
  <div id="sidebar-menu">
   <a href="#chi-siamo">Chi Siamo</a>
   <a href="#prodotti">Prodotti</a>
@@ -150,7 +146,7 @@
   <section id="prodotti">
     <h2>Prodotti</h2>
     <div class="product-grid">
-      <a href="modelli.html?prodotto=registratori"><div class="product-box"><img src="registratori.jpeg"><div>REGISTRATORI DI CASSA</div></div></a>
+      <a href="modelli.html?prodotto=registratori"><div class="product-box"><img src="registratori.jpeg" alt="Registratori di cassa" loading="lazy"></div></a>
       <a href="modelli.html?prodotto=bilance"><div class="product-box"><img src="bilance.jpeg"><div>BILANCE ELETTRONICHE</div></div></a>
       <a href="modelli.html?prodotto=sistemi-touch"><div class="product-box"><img src="sistemapos.jpeg"><div>SISTEMI TOUCH SCREEN</div></div></a>
       <a href="modelli.html?prodotto=casse"><div class="product-box"><img src="casse.jpeg"><div>CASSE AUTOMATICHE RENDIRESTO</div></div></a>
@@ -171,12 +167,33 @@
   <section id="preventivo">
     <h2>Richiedi un Preventivo</h2>
    <form action="https://formsubmit.co/spisystem@libero.it" method="POST">
-  <input type="text" name="Nome" placeholder="Nome" required>
-  <input type="text" name="Cognome" placeholder="Cognome" required>
-  <input type="tel" name="Telefono" placeholder="Numero di telefono" required>
-  <input type="text" name="Indirizzo" placeholder="Indirizzo" required>
-  <input type="text" name="Tipologia attività" placeholder="Tipologia attività (es. Bar, Supermercato)" required>
-  <textarea name="Prodotti di interesse" placeholder="Prodotti di interesse" rows="5" required></textarea>
+  <label for="nome">Nome</label>
+  <input id="nome" type="text" name="Nome" placeholder="Nome" required>
+
+  <label for="cognome">Cognome</label>
+  <input id="cognome" type="text" name="Cognome" placeholder="Cognome" required>
+
+  <label for="telefono">Numero di telefono</label>
+  <input id="telefono" type="tel" name="Telefono" placeholder="Numero di telefono" required>
+
+  <label for="indirizzo">Indirizzo</label>
+  <input id="indirizzo" type="text" name="Indirizzo" placeholder="Indirizzo" required>
+
+  <label for="tipologia">Tipologia attività</label>
+  <input id="tipologia" type="text" name="Tipologia attività" placeholder="Tipologia attività (es. Bar, Supermercato)" required>
+
+  <label for="prodotti">Prodotti di interesse</label>
+  <textarea id="prodotti" name="Prodotti di interesse" placeholder="Prodotti di interesse" rows="5" required></textarea>
+
+  <label style="font-size: 0.9em; line-height: 1.4;">
+    <input type="checkbox" name="privacy" required>
+    Acconsento al trattamento dei miei dati personali ai sensi del Regolamento UE 2016/679 (GDPR).
+    <br><a href="privacy.html" target="_blank">Leggi l’informativa sulla privacy</a>.
+  </label>
+
+  <input type="hidden" name="_captcha" value="false">
+  <button type="submit">Invia richiesta</button>
+</form>
 
   <!-- ✅ CHECKBOX GDPR -->
   <label style="font-size: 0.9em; line-height: 1.4;">
@@ -295,25 +312,27 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 </script>
-  <script>
+  <script defer>
   const hamburger = document.getElementById('hamburger');
   const sidebar = document.getElementById('sidebar-menu');
 
   hamburger.addEventListener('click', () => {
+    const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
     sidebar.classList.toggle('show');
+    hamburger.setAttribute('aria-expanded', !isExpanded);
   });
 
-  // Chiude il menu cliccando fuori
   document.addEventListener('click', function (e) {
     if (!sidebar.contains(e.target) && !hamburger.contains(e.target)) {
       sidebar.classList.remove('show');
+      hamburger.setAttribute('aria-expanded', 'false');
     }
   });
 
-  // Chiude il menu quando clicchi su un link interno
   sidebar.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       sidebar.classList.remove('show');
+      hamburger.setAttribute('aria-expanded', 'false');
     });
   });
 </script>
