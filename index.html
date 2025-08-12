@@ -381,6 +381,18 @@ footer {
   background: #F28C28; /* arancione attivo */
   transform: scale(1.2);
 }
+  /* Frecce inizialmente invisibili */
+.nav {
+  opacity: 0;
+  pointer-events: none; /* Non cliccabili quando nascoste */
+  transition: opacity 0.3s ease;
+}
+
+/* Quando il mouse è sopra lo slider-container, le frecce appaiono */
+.slider-container:hover .nav {
+  opacity: 1;
+  pointer-events: auto; /* Tornano cliccabili */
+}
 }
 </style>
 </head>
@@ -803,6 +815,27 @@ document.addEventListener('DOMContentLoaded', () => {
       prevSlide();
       resetInterval();
     }
+    let hideArrowsTimeout;
+const sliderCont = document.querySelector('.slider-container');
+const navButtons = document.querySelectorAll('.nav');
+
+function showArrows() {
+  navButtons.forEach(btn => btn.style.opacity = '1');
+  navButtons.forEach(btn => btn.style.pointerEvents = 'auto');
+  clearTimeout(hideArrowsTimeout);
+  hideArrowsTimeout = setTimeout(hideArrows, 2000);
+}
+
+function hideArrows() {
+  navButtons.forEach(btn => btn.style.opacity = '0');
+  navButtons.forEach(btn => btn.style.pointerEvents = 'none');
+}
+
+sliderCont.addEventListener('mousemove', showArrows);
+sliderCont.addEventListener('mouseleave', hideArrows);
+
+// Nasconde frecce subito al caricamento
+hideArrows();
   });
 </script>
 </body>
