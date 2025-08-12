@@ -255,20 +255,25 @@ footer {
   body.no-scroll {
     overflow: hidden; /* blocca lo scroll */
   }
-  .scopri-btn {
+.scopri-btn {
   display: inline-block;
-  margin-top: 12px;
-  padding: 10px 20px;
-  background: linear-gradient(135deg, #1d4ed8, #2563eb); /* Blu particolare */
+  margin-top: 14px;
+  padding: 10px 28px;
+  background: linear-gradient(135deg, #1d4ed8, #f28c28);
   color: white;
   font-weight: 600;
-  border-radius: 50px; /* ovale */
+  border-radius: 50px; /* forma ovale */
   text-decoration: none;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-size: 0.95em;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
 }
+
 .scopri-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+  background: linear-gradient(135deg, #2563eb, #ff9e4d);
 }
 }
 </style>
