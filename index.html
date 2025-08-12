@@ -276,46 +276,52 @@ footer {
   background: linear-gradient(135deg, #005ce6 0%, #ff8000 100%);
   }
 }
+/* Contenitore principale dello slider */
 .slider-container {
   max-width: 1000px;
-  margin: 15px auto; /* più in alto rispetto a prima */
+  margin: 15px auto;
   position: relative;
   overflow: hidden;
   border-radius: 10px;
   box-shadow: 0 8px 15px rgba(0,0,0,0.2);
 }
 
+/* Area visiva dello slider */
 .slider {
   position: relative;
   width: 100%;
   height: 400px;
 }
 
+/* Contenitore di tutte le slide */
 .slides {
-display: flex;
-transition: transform 0.6s ease-in-out height: 100%;
-}
-
-.slide {
-  min-width: 100%;
-  height: 100%;
   position: relative;
-  opacity: 0;
-  transition: opacity 0.6s ease-in-out;
-  user-select: none;
+  width: 100%;
+  height: 100%;
 }
 
+/* Ogni singola slide */
+.slide {
+  display: none; /* Nasconde tutte le slide */
+  width: 100%;
+  height: 100%;
+}
+
+/* Solo la slide attiva è visibile */
 .slide.active {
-  opacity: 1;
+  display: block;
 }
 
+/* Immagini dentro le slide */
 .slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 10px;
+  display: block;
 }
 
+/* Didascalia */
 .caption {
   position: absolute;
   bottom: 25px;
@@ -323,18 +329,19 @@ transition: transform 0.6s ease-in-out height: 100%;
   background: rgba(0,0,0,0.6);
   color: #fff;
   padding: 12px 18px;
-  font-size: 1.3em;
+  font-size: 1.1em;
   border-radius: 6px;
   max-width: 80%;
-  border-left: 5px solid #F28C28; /* arancione */
+  border-left: 5px solid #F28C28;
 }
 
+/* Bottoni freccia */
 .nav {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   background: rgba(255,255,255,0.2);
-  border: 2px solid #355070; /* blu */
+  border: 2px solid #355070;
   color: #355070;
   font-size: 2em;
   padding: 8px 12px;
@@ -344,21 +351,10 @@ transition: transform 0.6s ease-in-out height: 100%;
   user-select: none;
 }
 
-.nav:hover {
-  background: #355070;
-  color: #fff;
-  border-color: #F28C28; /* arancione al passaggio */
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
-}
+.nav.prev { left: 15px; }
+.nav.next { right: 15px; }
 
-.nav.prev {
-  left: 15px;
-}
-
-.nav.next {
-  right: 15px;
-}
-
+/* Indicatori in basso */
 .indicators {
   position: absolute;
   bottom: 15px;
@@ -378,7 +374,7 @@ transition: transform 0.6s ease-in-out height: 100%;
 }
 
 .indicator.active {
-  background: #F28C28; /* arancione attivo */
+  background: #F28C28;
   transform: scale(1.2);
 }
   /* Frecce inizialmente invisibili */
