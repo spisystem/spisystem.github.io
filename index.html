@@ -316,18 +316,22 @@ footer {
 .slide img {
   width: 100%;
   height: auto;
-  max-height: 400px; /* o un valore che preferisci */
-  object-fit: cover; /* assicura che l'immagine riempia l'area senza distorsioni */
   display: block;
+  border-radius: 8px;
 }
-  .slide {
+
+.slide-text {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  transition: opacity 0.5s ease;
+  top: 15px;
+  left: 15px;
+  background: rgba(255, 140, 0, 0.8); /* arancione trasparente */
+  color: white;
+  font-weight: 600;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 1.4rem;
+  max-width: 80%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
 .slide.active {
