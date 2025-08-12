@@ -277,7 +277,7 @@ footer {
 }
 .slider-container {
   max-width: 1000px;
-  margin: 30px auto;
+  margin: 15px auto; /* più in alto rispetto a prima */
   position: relative;
   overflow: hidden;
   border-radius: 10px;
@@ -326,25 +326,29 @@ footer {
   font-size: 1.3em;
   border-radius: 6px;
   max-width: 80%;
+  border-left: 5px solid #F28C28; /* arancione */
 }
 
 .nav {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0,0,0,0.4);
-  border: none;
-  color: white;
-  font-size: 2.5em;
-  padding: 8px 15px;
+  background: rgba(255,255,255,0.2);
+  border: 2px solid #355070; /* blu */
+  color: #355070;
+  font-size: 2em;
+  padding: 8px 12px;
   cursor: pointer;
   border-radius: 50%;
-  transition: background 0.3s ease;
+  transition: all 0.3s ease;
   user-select: none;
 }
 
 .nav:hover {
-  background: rgba(0,0,0,0.7);
+  background: #355070;
+  color: #fff;
+  border-color: #F28C28; /* arancione al passaggio */
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
 .nav.prev {
@@ -370,11 +374,12 @@ footer {
   background: rgba(255,255,255,0.5);
   border-radius: 50%;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .indicator.active {
-  background: white;
+  background: #F28C28; /* arancione attivo */
+  transform: scale(1.2);
 }
 }
 </style>
