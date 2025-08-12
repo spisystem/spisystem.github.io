@@ -255,6 +255,21 @@ footer {
   body.no-scroll {
     overflow: hidden; /* blocca lo scroll */
   }
+  .scopri-btn {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #1d4ed8, #2563eb); /* Blu particolare */
+  color: white;
+  font-weight: 600;
+  border-radius: 50px; /* ovale */
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.scopri-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
 }
 </style>
 </head>
@@ -385,7 +400,11 @@ footer {
   <section id="prodotti">
     <h2>Prodotti</h2>
     <div class="product-grid">
-      <a href="modelli.html?prodotto=registratori"><div class="product-box"><img src="registratori.jpeg"><div>REGISTRATORI DI CASSA</div></div></a>
+      <div class="product-box">
+  <img src="registratori.jpeg" alt="Registratori di cassa">
+  <div>REGISTRATORI DI CASSA</div>
+  <a href="modelli.html?prodotto=registratori" class="scopri-btn">Scopri</a>
+</div>
       <a href="modelli.html?prodotto=bilance"><div class="product-box"><img src="bilance.jpeg"><div>BILANCE ELETTRONICHE</div></div></a>
       <a href="modelli.html?prodotto=sistemi-touch"><div class="product-box"><img src="sistemapos.jpeg"><div>SISTEMI TOUCH SCREEN</div></div></a>
       <a href="modelli.html?prodotto=casse"><div class="product-box"><img src="casse.jpeg"><div>CASSE AUTOMATICHE RENDIRESTO</div></div></a>
