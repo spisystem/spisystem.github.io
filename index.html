@@ -259,21 +259,22 @@ footer {
   display: inline-block;
   margin-top: 14px;
   padding: 10px 28px;
-  background: linear-gradient(135deg, #1d4ed8, #f28c28);
+  background: linear-gradient(135deg, #0072ff, #ff6a00); /* blu elettrico → arancione acceso */
   color: white;
-  font-weight: 600;
-  border-radius: 50px; /* forma ovale */
+  font-weight: 700;
+  border-radius: 50px;
   text-decoration: none;
   font-size: 0.95em;
   letter-spacing: 0.5px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transition: all 0.4s ease;
+  background-size: 200% 200%;
 }
 
 .scopri-btn:hover {
-  transform: translateY(-2px) scale(1.03);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
-  background: linear-gradient(135deg, #2563eb, #ff9e4d);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  background-position: right center; /* muove la sfumatura */
 }
 }
 </style>
