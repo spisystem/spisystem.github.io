@@ -778,7 +778,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const nextBtn = document.querySelector('.nav.next');
   const indicators = document.querySelectorAll('.indicator');
   let currentIndex = 0;
-  let slideInterval = setInterval(nextSlide, 5000);
+  let slideInterval = setInterval(nextSlide, 3000);
 
   function showSlide(index) {
     slides.forEach((slide, i) => {
@@ -818,7 +818,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function resetInterval() {
     clearInterval(slideInterval);
-    slideInterval = setInterval(nextSlide, 5000);
+    slideInterval = setInterval(nextSlide, 3000);
   }
 
   // Optional: swipe support for mobile devices
