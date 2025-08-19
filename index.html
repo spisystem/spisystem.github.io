@@ -255,6 +255,7 @@ footer {
   body.no-scroll {
     overflow: hidden; /* blocca lo scroll */
   }
+/* Stile valido per tutti i dispositivi */
 .scopri-btn {
   display: inline-block;
   margin-top: 14px;
@@ -266,7 +267,7 @@ footer {
   text-decoration: none;
   font-size: 0.95em;
   letter-spacing: 0.5px;
-  box-shadow: 0 0 10px 3px rgba(255, 122, 24, 0.7); /* ombra arancione “fuori” */
+  box-shadow: 0 0 10px 3px rgba(255, 122, 24, 0.7);
   transition: all 0.3s ease;
 }
 
@@ -274,6 +275,14 @@ footer {
   transform: translateY(-2px) scale(1.05);
   box-shadow: 0 0 15px 5px rgba(255, 122, 24, 0.9);
   background: linear-gradient(135deg, #ff6600 0%, #ffb84d 100%);
+}
+
+/* Se vuoi fare piccole modifiche solo su mobile */
+@media screen and (max-width: 600px) {
+  .scopri-btn {
+    font-size: 0.9em;
+    padding: 9px 24px;
+  }
 }
 }
 /* Contenitore principale dello slider */
