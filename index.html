@@ -286,22 +286,31 @@ footer {
   box-shadow: 0 8px 15px rgba(0,0,0,0.2);
 }
 
+/* Slider di base */
 .slider {
   position: relative;
   width: 100%;
-  height: 60vh; /* proporzionale allo schermo */
+  height: 60vh;
   min-height: 300px;
-  max-height: 600px;
+  max-height: 700px;
+  background: #000; /* sfondo dietro le immagini */
 }
 
-/* Immagini dentro le slide */
+/* Immagini slide */
 .slide img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* riempie senza deformarsi */
   border-radius: 8px;
+  background: #000;
+  object-fit: contain; /* default: su desktop le foto restano intere */
 }
 
+/* ✅ Su mobile (max 768px) le foto riempiono tutto */
+@media screen and (max-width: 768px) {
+  .slide img {
+    object-fit: cover; /* riempie lo schermo piccolo */
+  }
+}
 /* Contenitore di tutte le slide */
 .slides {
   position: relative;
