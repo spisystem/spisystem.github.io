@@ -286,11 +286,20 @@ footer {
   box-shadow: 0 8px 15px rgba(0,0,0,0.2);
 }
 
-/* Area visiva dello slider */
 .slider {
   position: relative;
   width: 100%;
-  height: 400px;
+  height: 60vh; /* proporzionale allo schermo */
+  min-height: 300px;
+  max-height: 600px;
+}
+
+/* Immagini dentro le slide */
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* riempie senza deformarsi */
+  border-radius: 8px;
 }
 
 /* Contenitore di tutte le slide */
@@ -310,14 +319,6 @@ footer {
 /* Solo la slide attiva è visibile */
 .slide.active {
   display: block;
-}
-
-/* Immagini dentro le slide */
-.slide img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 8px;
 }
 
 .slide-text {
