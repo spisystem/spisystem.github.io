@@ -325,22 +325,23 @@ footer {
     object-fit: cover;  /* riempie lo spazio */
   }
 }
-/* Contenitore delle slide */
 .slides {
-  display: flex;            /* le slide si affiancano */
-  transition: transform 0.5s ease; /* animazione scorrimento */
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
-/* Ogni slide */
 .slide {
-  flex: 0 0 100%;          /* larghezza 100% del container */
-  max-width: 100%;
-  display: block;
+  position: absolute; /* tutte le slide nello stesso punto */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;      /* nascondi tutte */
 }
 
-/* Solo la slide attiva (opzionale se fai fade) */
 .slide.active {
-  display: block;
+  display: block;     /* mostra solo quella attiva */
 }
 .slide-text {
   position: absolute;
