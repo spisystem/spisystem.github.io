@@ -519,23 +519,19 @@ footer {
    <div class="slides">
   <div class="slide active">
     <img src="img/IMG_0712.jpeg" alt="Registratori di Cassa telematici">
-    <div class="slide-text">Registratori di Cassa Telematici</div>
+    
   </div>
   <div class="slide">
-    <img src="img/IMG_0815.jpeg" alt="Bilance Elettroniche">
-    <div class="slide-text">Bilance Elettroniche</div>
+    <img src="img/IMG_0818.jpeg" alt="Bilance Elettroniche">
   </div>
   <div class="slide">
-    <img src="img/IMG_0713.jpeg" alt="Sistemi Gestionali">
-    <div class="slide-text">Sistemi Gestionali touch</div>
+    <img src="img/IMG_0817.jpeg" alt="Sistemi Gestionali">
   </div>
   <div class="slide">
     <img src="img/IMG_0811.webp" alt="Casse Automatiche">
-    <div class="slide-text">Casse Automatiche</div>
   </div>
        <div class="slide">
     <img src="img/IMG_0813.jpeg" alt="Smart kiosk">
-    <div class="slide-text">Smart kiosk</div>
   </div>
 </div>
 
@@ -662,8 +658,11 @@ footer {
 </p>
   </div>
 </footer>
-  <a id="whatsapp" href="https://wa.me/393382247948" target="_blank" title="Chatta con noi su WhatsApp">💬</a>
-  <div id="whatsapp-label">WhatsApp</div>
+  <a id="whatsapp" href="https://wa.me/393382247948" target="_blank" title="Chatta con noi su WhatsApp">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
+       alt="WhatsApp" 
+       style="width:28px; height:28px; display:block;">
+</a>
 <script>
   document.addEventListener('contextmenu', event => {
     if (event.target.tagName === 'IMG') {
@@ -782,7 +781,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const nextBtn = document.querySelector('.nav.next');
   const indicators = document.querySelectorAll('.indicator');
   let currentIndex = 0;
-  let slideInterval = setInterval(nextSlide, 5000);
+  let slideInterval = setInterval(nextSlide, 3000);
 
   function showSlide(index) {
     slides.forEach((slide, i) => {
@@ -822,7 +821,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function resetInterval() {
     clearInterval(slideInterval);
-    slideInterval = setInterval(nextSlide, 5000);
+    slideInterval = setInterval(nextSlide, 3000);
   }
 
   // Optional: swipe support for mobile devices
@@ -868,4 +867,3 @@ hideArrows();
 </script>
 </body>
 </html>
-
