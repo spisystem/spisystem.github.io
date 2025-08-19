@@ -255,7 +255,6 @@ footer {
   body.no-scroll {
     overflow: hidden; /* blocca lo scroll */
   }
-/* Pulsante scopri per tutti i device */
 .scopri-btn {
   display: inline-block;
   margin-top: 14px;
@@ -267,7 +266,7 @@ footer {
   text-decoration: none;
   font-size: 0.95em;
   letter-spacing: 0.5px;
-  box-shadow: 0 0 10px 3px rgba(255, 122, 24, 0.7);
+  box-shadow: 0 0 10px 3px rgba(255, 122, 24, 0.7); /* ombra arancione “fuori” */
   transition: all 0.3s ease;
 }
 
@@ -276,13 +275,6 @@ footer {
   box-shadow: 0 0 15px 5px rgba(255, 122, 24, 0.9);
   background: linear-gradient(135deg, #ff6600 0%, #ffb84d 100%);
 }
-
-/* Solo piccoli aggiustamenti su mobile */
-@media screen and (max-width: 600px) {
-  .scopri-btn {
-    font-size: 0.9em;
-    padding: 9px 24px;
-  }
 }
 /* Contenitore principale dello slider */
 .slider-container {
@@ -294,55 +286,40 @@ footer {
   box-shadow: 0 8px 15px rgba(0,0,0,0.2);
 }
 
-/* Slider base (desktop) */
+/* Area visiva dello slider */
 .slider {
   position: relative;
   width: 100%;
-  max-width: 1000px;   /* limita la larghezza su PC */
-  margin: 0 auto;      /* centra lo slider */
+  height: 400px;
 }
 
-/* Immagini su PC: intere e più contenute */
-.slide img {
-  width: 100%;
-  max-height: 500px;   /* riduce l’altezza massima */
-  height: auto;
-  border-radius: 8px;
-  display: block;
-  object-fit: contain;
-}
-
-/* ✅ Mobile */
-@media screen and (max-width: 768px) {
-  .slider {
-    height: 50vh;       /* un po’ meno alto rispetto a prima (era 60vh) */
-    min-height: 220px;
-    max-height: 450px;
-  }
-  .slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;  /* riempie lo spazio */
-  }
-}
+/* Contenitore di tutte le slide */
 .slides {
   position: relative;
   width: 100%;
   height: 100%;
 }
 
+/* Ogni singola slide */
 .slide {
-  position: absolute; /* tutte le slide nello stesso punto */
-  top: 0;
-  left: 0;
+  display: none; /* Nasconde tutte le slide */
   width: 100%;
   height: 100%;
-  display: none;      /* nascondi tutte */
 }
 
+/* Solo la slide attiva è visibile */
 .slide.active {
-  display: block;     /* mostra solo quella attiva */
+  display: block;
 }
+
+/* Immagini dentro le slide */
+.slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
 .slide-text {
   position: absolute;
   top: 15px;
@@ -542,19 +519,23 @@ footer {
    <div class="slides">
   <div class="slide active">
     <img src="img/IMG_0712.jpeg" alt="Registratori di Cassa telematici">
-    
+    <div class="slide-text">Registratori di Cassa Telematici</div>
   </div>
   <div class="slide">
-    <img src="img/IMG_0818.jpeg" alt="Bilance Elettroniche">
+    <img src="img/IMG_0815.jpeg" alt="Bilance Elettroniche">
+    <div class="slide-text">Bilance Elettroniche</div>
   </div>
   <div class="slide">
-    <img src="img/IMG_0817.jpeg" alt="Sistemi Gestionali">
+    <img src="img/IMG_0713.jpeg" alt="Sistemi Gestionali">
+    <div class="slide-text">Sistemi Gestionali touch</div>
   </div>
   <div class="slide">
     <img src="img/IMG_0811.webp" alt="Casse Automatiche">
+    <div class="slide-text">Casse Automatiche</div>
   </div>
        <div class="slide">
     <img src="img/IMG_0813.jpeg" alt="Smart kiosk">
+    <div class="slide-text">Smart kiosk</div>
   </div>
 </div>
 
@@ -681,11 +662,8 @@ footer {
 </p>
   </div>
 </footer>
-  <a id="whatsapp" href="https://wa.me/393382247948" target="_blank" title="Chatta con noi su WhatsApp">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
-       alt="WhatsApp" 
-       style="width:28px; height:28px; display:block;">
-</a>
+  <a id="whatsapp" href="https://wa.me/393382247948" target="_blank" title="Chatta con noi su WhatsApp">💬</a>
+  <div id="whatsapp-label">WhatsApp</div>
 <script>
   document.addEventListener('contextmenu', event => {
     if (event.target.tagName === 'IMG') {
@@ -804,7 +782,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const nextBtn = document.querySelector('.nav.next');
   const indicators = document.querySelectorAll('.indicator');
   let currentIndex = 0;
-  let slideInterval = setInterval(nextSlide, 3000);
+  let slideInterval = setInterval(nextSlide, 5000);
 
   function showSlide(index) {
     slides.forEach((slide, i) => {
@@ -844,7 +822,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function resetInterval() {
     clearInterval(slideInterval);
-    slideInterval = setInterval(nextSlide, 3000);
+    slideInterval = setInterval(nextSlide, 5000);
   }
 
   // Optional: swipe support for mobile devices
@@ -890,3 +868,4 @@ hideArrows();
 </script>
 </body>
 </html>
+
