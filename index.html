@@ -255,7 +255,7 @@ footer {
   body.no-scroll {
     overflow: hidden; /* blocca lo scroll */
   }
-/* ✅ Stile generale valido su PC e Mobile */
+/* Pulsante scopri per tutti i device */
 .scopri-btn {
   display: inline-block;
   margin-top: 14px;
@@ -277,7 +277,7 @@ footer {
   background: linear-gradient(135deg, #ff6600 0%, #ffb84d 100%);
 }
 
-/* 📱 Solo per mobile (piccoli aggiustamenti) */
+/* Solo piccoli aggiustamenti su mobile */
 @media screen and (max-width: 600px) {
   .scopri-btn {
     font-size: 0.9em;
@@ -325,25 +325,23 @@ footer {
     object-fit: cover;  /* riempie lo spazio */
   }
 }
-/* Contenitore di tutte le slide */
+/* Contenitore delle slide */
 .slides {
-  position: relative;
-  width: 100%;
-  height: 100%;
+  display: flex;            /* le slide si affiancano */
+  transition: transform 0.5s ease; /* animazione scorrimento */
 }
 
-/* Ogni singola slide */
+/* Ogni slide */
 .slide {
-  display: none; /* Nasconde tutte le slide */
-  width: 100%;
-  height: 100%;
-}
-
-/* Solo la slide attiva è visibile */
-.slide.active {
+  flex: 0 0 100%;          /* larghezza 100% del container */
+  max-width: 100%;
   display: block;
 }
 
+/* Solo la slide attiva (opzionale se fai fade) */
+.slide.active {
+  display: block;
+}
 .slide-text {
   position: absolute;
   top: 15px;
