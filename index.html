@@ -276,13 +276,24 @@ footer {
   background: linear-gradient(135deg, #ff6600 0%, #ffb84d 100%);
 }
 }
+/* Stile di base per mobile: nessuna cornice extra */
 .slider-container {
-  max-width: 90%; /* invece di 1000px fisso */
+  max-width: 90%;
   margin: 15px auto;
   position: relative;
   overflow: hidden;
   border-radius: 10px;
   box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+  background-color: #fff;
+  padding: 0; /* nessun padding su mobile */
+}
+
+/* Cornice blu solo su schermi grandi (PC) */
+@media (min-width: 768px) {
+  .slider-container {
+    border: 5px solid #007BFF; /* cornice blu */
+    padding: 5px; /* spazio tra bordo e slider */
+  }
 }
 
 .slider {
