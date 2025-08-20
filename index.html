@@ -509,6 +509,64 @@ footer a {
 footer a:hover {
   color: #ffdd57;
 }
+    /* 🌟 MIGLIORIE EXTRA */
+
+/* Hover con zoom sulle immagini */
+.product-box img, 
+.slide img {
+  transition: transform 0.4s ease;
+}
+.product-box:hover img, 
+.slide:hover img {
+  transform: scale(1.05);
+}
+
+/* Glow sugli headings */
+h2 {
+  text-shadow: 0 2px 8px rgba(242, 140, 40, 0.3);
+}
+
+/* Card animate per la sezione "Chi siamo" */
+.row-box {
+  background: #fff;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.row-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* Pulsante WhatsApp con effetto pulse */
+#whatsapp {
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+  70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+/* Header con effetto parallax */
+header {
+  background: linear-gradient(to right, rgba(53,80,112,0.9), rgba(74,108,163,0.9)), 
+              url('img/IMG_0817.jpeg') center/cover no-repeat;
+  background-attachment: fixed;
+}
+
+/* Indicatori slider con animazione */
+.indicator.active {
+  background: #F28C28;
+  transform: scale(1.4);
+  animation: bounce 0.4s ease;
+}
+@keyframes bounce {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.6); }
+  100% { transform: scale(1.4); }
+}
 }
 </style>
 </head>
