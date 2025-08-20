@@ -286,13 +286,17 @@ footer {
   box-shadow: 0 8px 15px rgba(0,0,0,0.2);
 }
 
-/* Area visiva dello slider */
+/* Contenitore principale dello slider */
 .slider {
-  position: relative;
   width: 100%;
-  height: 400px;
+  height: 60vh;        /* ✅ altezza proporzionata su PC */
+  max-height: 550px;   /* limite massimo */
+  min-height: 350px;   /* limite minimo */
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
 }
-
 /* Contenitore di tutte le slide */
 .slides {
   position: relative;
@@ -316,12 +320,10 @@ footer {
 .slide img {
   width: 100%;
   height: 100%;
-  max-height: 500px;   /* puoi aumentare/diminuire se vuoi più alto o più basso */
   display: block;
   border-radius: 8px;
-  object-fit: cover;   /* riempie lo spazio senza bande nere */
+  object-fit: cover;   /* riempie senza bande nere */
 }
-
 .slide-text {
   position: absolute;
   top: 15px;
