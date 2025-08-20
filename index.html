@@ -285,16 +285,27 @@ footer {
   border-radius: 10px;
   box-shadow: 0 8px 15px rgba(0,0,0,0.2);
 }
-
-/* Slider su PC */
+/* Slider di base (mobile e tablet piccoli) */
 .slider {
   width: 100%;
-  height: 80vh;     /* più alto (80% della finestra) */
-  max-height: 750px; /* limite massimo */
-  min-height: 500px; /* limite minimo */
-  margin: 0 auto;
-  position: relative;
+  height: 300px; /* altezza standard per mobile */
   overflow: hidden;
+  position: relative;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* mantiene le proporzioni riempiendo lo spazio */
+  border-radius: 8px;
+  display: block;
+}
+
+/* Slider su PC (schermi grandi) */
+@media (min-width: 1024px) {
+  .slider {
+    height: 600px; /* quasi il doppio rispetto a mobile */
+  }
 }
 
 /* Contenitore di tutte le slide */
@@ -316,13 +327,6 @@ footer {
   display: block;
 }
 
-.slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* riempie meglio */
-  border-radius: 8px;
-  display: block;
-}
 .slide-text {
   position: absolute;
   top: 15px;
