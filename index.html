@@ -966,16 +966,6 @@ sliderCont.addEventListener('mousemove', showArrows);
 sliderCont.addEventListener('mouseleave', hideArrows);
 // Nasconde frecce subito al caricamento
 hideArrows();
-  });
-</script>
-  <script>
-const sections = document.querySelectorAll("section");
-window.addEventListener("scroll", () => {
-  sections.forEach(sec => {
-    if(sec.getBoundingClientRect().top < window.innerHeight - 100) {
-      sec.classList.add("visible");
-    }
-  });
 });
 </script>
 </body>
