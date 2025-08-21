@@ -1099,19 +1099,5 @@ window.addEventListener("scroll", () => {
   <!-- Altri script già presenti -->
 <script src="altro-script.js"></script>
 
-<!-- Il nostro script per lo scroll -->
-<script>
-let lastScroll = window.scrollY;
-
-window.addEventListener('scroll', (e) => {
-    const currentScroll = window.scrollY;
-
-    if (Math.abs(currentScroll - lastScroll) < 2) {
-        return;
-    }
-
-    lastScroll = currentScroll;
-}, { passive: true });
-</script>
 </body>
 </html>
