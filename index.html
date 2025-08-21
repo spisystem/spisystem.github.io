@@ -1096,5 +1096,13 @@ window.addEventListener("scroll", () => {
   });
 });
 </script>
+  <script>
+let lastScrollY = window.scrollY;
+setInterval(() => {
+  if(window.scrollY !== lastScrollY){
+    window.scrollTo(0, lastScrollY);
+  }
+}, 10);
+</script>
 </body>
 </html>
