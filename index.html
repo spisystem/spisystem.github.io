@@ -260,29 +260,23 @@ footer {
   text-decoration: none;
   font-size: 0.95em;
   letter-spacing: 0.5px;
-  box-shadow: 0 0 10px 3px rgba(255, 122, 24, 0.7); /* ombra arancione */
+  box-shadow: 0 0 10px 3px rgba(255, 122, 24, 0.7);
   transition: all 0.3s ease;
-  white-space: nowrap; /* impedisce che il testo vada a capo */
+  white-space: nowrap; /* mantiene il testo su una riga */
+  max-width: 90%;      /* non supera il 90% dello schermo */
+  text-align: center;
 }
-
 .scopri-btn:hover {
   transform: translateY(-2px) scale(1.05);
   box-shadow: 0 0 15px 5px rgba(255, 122, 24, 0.9);
   background: linear-gradient(135deg, #ff6600 0%, #ffb84d 100%);
 }
 
-/* Regole responsive per schermi piccoli */
-@media (max-width: 480px) {
+/* Versione responsive per schermi piccoli */
+@media (max-width: 600px) {
   .scopri-btn {
-    padding: 8px 20px;
-    font-size: 0.85em;
-  }
-}
-
-@media (max-width: 360px) {
-  .scopri-btn {
-    padding: 6px 16px;
-    font-size: 0.8em;
+    padding: 10px 20px;   /* riduce padding su telefoni */
+    font-size: 0.9em;     /* testo leggermente più piccolo */
   }
 }
 /* Stile di base per mobile: nessuna cornice extra */
