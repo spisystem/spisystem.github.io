@@ -6,64 +6,6 @@
   <title>Spizzicotecnica & SPI System</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Poppins:wght@400;600&family=Roboto+Slab:wght@600&display=swap" rel="stylesheet">
   <style>
-    /* --- Stile Base Moderno e Leggero --- */
-body {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f9f9f9; /* sfondo leggero */
-    margin: 0;
-    padding: 0;
-}
-
-/* --- Link eleganti e leggibili --- */
-a {
-    color: #007BFF;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-a:hover {
-    color: #0056b3;
-    text-decoration: underline;
-}
-
-/* --- Pulsanti leggeri e interattivi --- */
-button {
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
-}
-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 4px 4px 10px rgba(0,0,0,0.3);
-}
-
-/* --- Input e textarea più gradevoli --- */
-input, textarea {
-    border-radius: 5px;
-    padding: 8px;
-    border: 1px solid #ccc;
-    transition: border-color 0.3s ease;
-}
-input:focus, textarea:focus {
-    border-color: #007BFF;
-    outline: none;
-}
-
-/* --- Immagini con effetto leggero al passaggio del mouse --- */
-img {
-    max-width: 100%;
-    height: auto;
-    transition: transform 0.3s ease;
-}
-img:hover {
-    transform: scale(1.05);
-}
   * { box-sizing: border-box; }
 body {
   margin: 0;
@@ -93,7 +35,6 @@ header p {
   left: 10px;
   z-index: 10001;
 }
-
 #sidebar-menu {
   position: fixed;
   top: 0;
@@ -108,7 +49,6 @@ header p {
   transition: left 0.3s ease;
   z-index: 10000;
 }
-
 #sidebar-menu a {
   color: #F28C28;
   text-decoration: none;
@@ -117,7 +57,6 @@ header p {
   font-weight: 600;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
-
 #sidebar-menu.show {
   left: 0;
 }
@@ -137,7 +76,6 @@ h2 {
   position: relative;
   display: inline-block;
 }
-
 h2::after {
   content: '';
   position: absolute;
@@ -150,7 +88,6 @@ h2::after {
   transform-origin: left;
   transition: transform 0.3s ease;
 }
-
 h2:hover::after {
   transform: scaleX(1);
 }
@@ -292,7 +229,6 @@ footer {
   border-radius: 8px;
   margin-top: 0;      /* niente margine sopra */
 }
-
 @media screen and (max-width: 600px) {
   .logo-pic {
     width: 60px;      /* ancora più piccolo su mobile */
@@ -327,7 +263,6 @@ footer {
   box-shadow: 0 0 10px 3px rgba(255, 122, 24, 0.7); /* ombra arancione “fuori” */
   transition: all 0.3s ease;
 }
-
 .scopri-btn:hover {
   transform: translateY(-2px) scale(1.05);
   box-shadow: 0 0 15px 5px rgba(255, 122, 24, 0.9);
@@ -345,7 +280,6 @@ footer {
   background-color: #fff;
   padding: 0; /* nessun padding su mobile */
 }
-
 /* Cornice blu coerente solo su schermi grandi (PC) */
 @media (min-width: 768px) {
   .slider-container {
@@ -364,19 +298,16 @@ footer {
   width: 100%;
   height: 100%;
 }
-
 /* Ogni singola slide */
 .slide {
   display: none; /* Nasconde tutte le slide */
   width: 100%;
   height: 100%;
 }
-
 /* Solo la slide attiva è visibile */
 .slide.active {
   display: block;
 }
-
 .slide img {
   width: 100%;
   height: auto; /* mantiene proporzioni */
@@ -399,12 +330,10 @@ footer {
   box-shadow: 0 2px 8px rgba(0,0,0,0.3);
   border: 1px solid rgba(255, 140, 0, 0.8); /* bordo arancione semi-trasparente */
 }
-
 .slide.active {
   opacity: 1;
   z-index: 1;
 }  
-
 /* Didascalia */
 .caption {
   position: absolute;
@@ -418,7 +347,6 @@ footer {
   max-width: 80%;
   border-left: 5px solid #F28C28;
 }
-
 /* Bottoni freccia */
 .nav {
   position: absolute;
@@ -434,10 +362,8 @@ footer {
   transition: all 0.3s ease;
   user-select: none;
 }
-
 .nav.prev { left: 15px; }
 .nav.next { right: 15px; }
-
 /* Indicatori in basso */
 .indicators {
   position: absolute;
@@ -445,7 +371,6 @@ footer {
   width: 100%;
   text-align: center;
 }
-
 .indicator {
   display: inline-block;
   width: 14px;
@@ -456,7 +381,6 @@ footer {
   cursor: pointer;
   transition: background 0.3s ease, transform 0.2s ease;
 }
-
 .indicator.active {
   background: #F28C28;
   transform: scale(1.2);
@@ -467,163 +391,10 @@ footer {
   pointer-events: none; /* Non cliccabili quando nascoste */
   transition: opacity 0.3s ease;
 }
-
 /* Quando il mouse è sopra lo slider-container, le frecce appaiono */
 .slider-container:hover .nav {
   opacity: 1;
   pointer-events: auto; /* Tornano cliccabili */
-}
-    /* 🌟 MIGLIORIE GRAFICHE */
-
-/* Tipografia più ariosa */
-body {
-  line-height: 1.7;
-  color: #2c3e50; /* blu-grigio più leggibile */
-}
-
-/* Titoli */
-h1, h2 {
-  letter-spacing: 1px;
-  font-weight: 700;
-}
-h2 {
-  color: #ff6f3c; /* arancione più acceso */
-}
-
-/* Product Box con effetto glass */
-.product-box {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.product-box:hover {
-  transform: translateY(-6px) scale(1.04);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
-}
-
-/* Pulsanti più moderni */
-button[type="submit"], 
-.scopri-btn {
-  background: linear-gradient(135deg, #ff6f3c 0%, #ffb347 100%);
-  color: white;
-  border: none;
-  border-radius: 50px;
-  padding: 12px 28px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  font-size: 1em;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(255, 122, 24, 0.4);
-}
-button[type="submit"]:hover, 
-.scopri-btn:hover {
-  transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 6px 18px rgba(255, 122, 24, 0.6);
-}
-
-/* Animazioni fade-in per sezioni */
-section {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s ease-out;
-}
-section.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Slider frecce più eleganti */
-.nav {
-  background: rgba(255, 255, 255, 0.7);
-  border: none;
-  color: #355070;
-  font-size: 1.6em;
-  padding: 10px;
-  border-radius: 50%;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  transition: all 0.3s ease;
-}
-.nav:hover {
-  background: rgba(255, 255, 255, 0.95);
-  transform: scale(1.1);
-}
-
-/* Footer più ricco */
-footer {
-  background: linear-gradient(to right, #355070, #4a6ca3);
-  color: white;
-  text-align: center;
-  padding: 30px 20px;
-  font-size: 0.95em;
-  border-top: 3px solid #ff6f3c;
-}
-footer a {
-  color: #ffc107;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-footer a:hover {
-  color: #ffdd57;
-}
-    /* 🌟 MIGLIORIE EXTRA */
-
-/* Hover con zoom sulle immagini */
-.product-box img, 
-.slide img {
-  transition: transform 0.4s ease;
-}
-.product-box:hover img, 
-.slide:hover img {
-  transform: scale(1.05);
-}
-
-/* Glow sugli headings */
-h2 {
-  text-shadow: 0 2px 8px rgba(242, 140, 40, 0.3);
-}
-
-/* Card animate per la sezione "Chi siamo" */
-.row-box {
-  background: #fff;
-  border-radius: 10px;
-  padding: 15px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.row-box:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
-
-/* Pulsante WhatsApp con effetto pulse */
-#whatsapp {
-  animation: pulse 2s infinite;
-}
-@keyframes pulse {
-  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-  70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-}
-
-/* Header con effetto parallax */
-header {
-  background: linear-gradient(to right, rgba(53,80,112,0.9), rgba(74,108,163,0.9)), 
-              url('img/IMG_0817.jpeg') center/cover no-repeat;
-  background-attachment: fixed;
-}
-
-/* Indicatori slider con animazione */
-.indicator.active {
-  background: #F28C28;
-  transform: scale(1.4);
-  animation: bounce 0.4s ease;
-}
-@keyframes bounce {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.6); }
-  100% { transform: scale(1.4); }
 }
 }
 </style>
@@ -651,7 +422,6 @@ header {
   Questo sito utilizza cookie tecnici per migliorare la tua esperienza. 
   <a href="cookie.html" style="color: #ffc107; text-decoration: underline;">Leggi la Cookie Policy</a>.
 </span>
-
   <button id="accept-cookies" style="
       background-color: #28a745;
       color: white;
@@ -662,7 +432,6 @@ header {
       font-weight: 600;
       font-size: 0.9em;
   ">Accetta</button>
-
   <button id="reject-cookies" style="
       background-color: #dc3545;
       color: white;
@@ -673,7 +442,6 @@ header {
       font-weight: 600;
       font-size: 0.9em;
   ">Rifiuta</button>
-
   <button id="manage-preferences" style="
       background-color: #ffc107;
       color: black;
@@ -684,10 +452,7 @@ header {
       font-weight: 600;
       font-size: 0.9em;
   ">Gestisci preferenze</button>
-
 </div>
-
-
 <!-- MODAL PREFERENZE COOKIE -->
 <div id="cookie-modal" style="
   display: none;
@@ -709,17 +474,14 @@ header {
     gap: 15px;
   ">
     <h3>Gestisci preferenze cookie</h3>
-
     <label>
       <input type="checkbox" name="analytics" />
       Consenti cookie analitici
     </label>
-
     <label>
       <input type="checkbox" name="marketing" />
       Consenti cookie di marketing
     </label>
-
     <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
       <button type="button" id="cancel-preferences-btn" style="padding: 8px 16px; background: #ccc; border:none; border-radius:4px; cursor:pointer;">Annulla</button>
       <button type="button" id="save-preferences-btn" style="padding: 8px 16px; background: #F28C28; color: white; border:none; border-radius:4px; cursor:pointer;">Salva</button>
@@ -754,7 +516,6 @@ header {
     <img src="img/IMG_0813.jpeg" alt="Smart kiosk">
   </div>
 </div>
-
 <div class="indicators">
     </div>
     <button class="nav prev">&#10094;</button>
@@ -834,7 +595,6 @@ header {
       
           <div class="product-box"><div style="display: flex; justify-content: center; gap: 10px;"><img src="prezzatrici.jpeg" style="width: 48%; max-width: 120px;"><img src="verificatori.jpeg" style="width: 48%; max-width: 120px;"></div><div>PREZZATRICI & VERIFICABANCONOTE</div></div>
       <div class="product-box"><img src="rotoli.jpeg"><div>ROTOLI TERMICI</div></div>
-
     </div>
   </section>
   <section id="contatti">
@@ -853,7 +613,6 @@ header {
   <input type="text" name="Indirizzo" placeholder="Indirizzo" required>
   <input type="text" name="Tipologia attività" placeholder="Tipologia attività (es. Bar, Supermercato)" required>
   <textarea name="Prodotti di interesse" placeholder="Prodotti di interesse" rows="5" required></textarea>
-
   <!-- ✅ CHECKBOX GDPR -->
   <label style="font-size: 0.9em; line-height: 1.4;">
     <input type="checkbox" name="privacy" required>
@@ -861,7 +620,6 @@ header {
     <br>
     <a href="privacy.html" target="_blank">Leggi l’informativa sulla privacy</a>.
   </label>
-
   <input type="hidden" name="_captcha" value="false">
   <button type="submit">Invia richiesta</button>
 </form>
@@ -896,19 +654,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const banner = document.getElementById('cookie-banner');
   const modal = document.getElementById('cookie-modal');
   const form = document.getElementById('cookie-preferences-form');
-
   const accepted = localStorage.getItem('cookieAccepted');
   const rejected = localStorage.getItem('cookieRejected');
-
   function hideBanner() {
     banner.style.display = 'none';
     document.body.classList.remove('no-scroll');
   }
-
   function hideModal() {
     modal.style.display = 'none';
   }
-
   function applyCookies() {
     if (localStorage.getItem('analyticsAllowed') === 'true') {
       console.log('Cookie analitici attivati');
@@ -919,7 +673,6 @@ document.addEventListener('DOMContentLoaded', () => {
       // Inserisci qui Meta Pixel, ecc.
     }
   }
-
   // Se l'utente non ha ancora scelto, mostra banner e blocca scroll
   if (accepted !== 'true' && rejected !== 'true') {
     document.body.classList.add('no-scroll');
@@ -927,7 +680,6 @@ document.addEventListener('DOMContentLoaded', () => {
     hideBanner();
     applyCookies();
   }
-
   document.getElementById('accept-cookies').addEventListener('click', () => {
     localStorage.setItem('cookieAccepted', 'true');
     localStorage.setItem('cookieRejected', 'false');
@@ -937,7 +689,6 @@ document.addEventListener('DOMContentLoaded', () => {
     applyCookies();
     console.log('Accettati tutti i cookie');
   });
-
   document.getElementById('reject-cookies').addEventListener('click', () => {
     localStorage.setItem('cookieAccepted', 'false');
     localStorage.setItem('cookieRejected', 'true');
@@ -946,23 +697,19 @@ document.addEventListener('DOMContentLoaded', () => {
     hideBanner();
     console.log('Rifiutati tutti i cookie non tecnici');
   });
-
   document.getElementById('manage-preferences').addEventListener('click', () => {
     modal.style.display = 'flex';
     form.analytics.checked = localStorage.getItem('analyticsAllowed') === 'true';
     form.marketing.checked = localStorage.getItem('marketingAllowed') === 'true';
   });
-
   document.getElementById('cancel-preferences-btn').addEventListener('click', () => {
     hideModal();
   });
-
   document.getElementById('save-preferences-btn').addEventListener('click', () => {
     if (!form.analytics.checked && !form.marketing.checked) {
       alert('Devi selezionare almeno una preferenza prima di salvare.');
       return;
     }
-
     localStorage.setItem('cookieAccepted', 'true');
     localStorage.setItem('cookieRejected', 'false');
     localStorage.setItem('analyticsAllowed', form.analytics.checked ? 'true' : 'false');
@@ -977,18 +724,15 @@ document.addEventListener('DOMContentLoaded', () => {
   <script>
   const hamburger = document.getElementById('hamburger');
   const sidebar = document.getElementById('sidebar-menu');
-
   hamburger.addEventListener('click', () => {
     sidebar.classList.toggle('show');
   });
-
   // Chiude il menu cliccando fuori
   document.addEventListener('click', function (e) {
     if (!sidebar.contains(e.target) && !hamburger.contains(e.target)) {
       sidebar.classList.remove('show');
     }
   });
-
   // Chiude il menu quando clicchi su un link interno
   sidebar.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
@@ -1003,7 +747,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const indicators = document.querySelectorAll('.indicator');
   let currentIndex = 0;
   let slideInterval = setInterval(nextSlide, 3000);
-
   function showSlide(index) {
     slides.forEach((slide, i) => {
       slide.classList.toggle('active', i === index);
@@ -1011,27 +754,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     currentIndex = index;
   }
-
   function nextSlide() {
     let nextIndex = (currentIndex + 1) % slides.length;
     showSlide(nextIndex);
   }
-
   function prevSlide() {
     let prevIndex = (currentIndex - 1 + slides.length) % slides.length;
     showSlide(prevIndex);
   }
-
   nextBtn.addEventListener('click', () => {
     nextSlide();
     resetInterval();
   });
-
   prevBtn.addEventListener('click', () => {
     prevSlide();
     resetInterval();
   });
-
   indicators.forEach(indicator => {
     indicator.addEventListener('click', () => {
       const index = parseInt(indicator.dataset.slide);
@@ -1039,21 +777,17 @@ document.addEventListener('DOMContentLoaded', () => {
       resetInterval();
     });
   });
-
   function resetInterval() {
     clearInterval(slideInterval);
     slideInterval = setInterval(nextSlide, 3000);
   }
-
   // Optional: swipe support for mobile devices
   let startX = 0;
   let endX = 0;
   const sliderContainer = document.querySelector('.slider-container');
-
   sliderContainer.addEventListener('touchstart', (e) => {
     startX = e.touches[0].clientX;
   });
-
   sliderContainer.addEventListener('touchend', (e) => {
     endX = e.changedTouches[0].clientX;
     if (startX - endX > 50) {
@@ -1066,38 +800,21 @@ document.addEventListener('DOMContentLoaded', () => {
     let hideArrowsTimeout;
 const sliderCont = document.querySelector('.slider-container');
 const navButtons = document.querySelectorAll('.nav');
-
 function showArrows() {
   navButtons.forEach(btn => btn.style.opacity = '1');
   navButtons.forEach(btn => btn.style.pointerEvents = 'auto');
   clearTimeout(hideArrowsTimeout);
   hideArrowsTimeout = setTimeout(hideArrows, 2000);
 }
-
 function hideArrows() {
   navButtons.forEach(btn => btn.style.opacity = '0');
   navButtons.forEach(btn => btn.style.pointerEvents = 'none');
 }
-
 sliderCont.addEventListener('mousemove', showArrows);
 sliderCont.addEventListener('mouseleave', hideArrows);
-
 // Nasconde frecce subito al caricamento
 hideArrows();
   });
 </script>
-  <script>
-const sections = document.querySelectorAll("section");
-window.addEventListener("scroll", () => {
-  sections.forEach(sec => {
-    if(sec.getBoundingClientRect().top < window.innerHeight - 100) {
-      sec.classList.add("visible");
-    }
-  });
-});
-</script>
-  <!-- Altri script già presenti -->
-<script src="altro-script.js"></script>
-
 </body>
 </html>
