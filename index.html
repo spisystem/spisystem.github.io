@@ -547,16 +547,22 @@ header {
   100% { transform: scale(1.4); }
 
 }
-    /* --- Modifica titolo solo su mobile --- */
+/* --- Titolo in 3 righe SOLO su mobile --- */
 @media screen and (max-width: 600px) {
   header h1 {
-    font-size: 2em;      /* leggermente più piccolo */
-    line-height: 1.3;    /* spaziatura più armoniosa */
-    text-align: center;  /* sempre centrato */
+    font-size: 2em;       /* dimensione adatta allo smartphone */
+    line-height: 1.3;
+    text-align: center;
+    margin: 0;            /* evita spazi extra verticali */
+  }
+  header h1 .word {
+    display: block;       /* ogni parola su una riga */
   }
   header h1 .amp {
-    font-size: 0.7em;    /* & più piccola */
-    display: inline-block;
+    display: block;       /* & su una riga tutta sua */
+    font-size: 0.7em;     /* & più piccola */
+    line-height: 1;
+    margin: 4px 0;        /* piccolo spazio sopra/sotto */
   }
 }
 </style>
@@ -653,10 +659,10 @@ header {
 <header>
   <img src="img/B0F190C1-ED18-45F3-B492-572A76ED7803.png" alt="Logo Spizzicotecnica" class="logo-pic">
   <h1>
-  Spizzicotecnica<br>
-  <span class="amp">&</span><br>
-  Spi System
-</h1>
+    <span class="word">Spizzicotecnica</span>
+    <span class="amp">&amp;</span>
+    <span class="word">Spi System</span>
+  </h1>
   <p>Soluzioni professionali multimarche per il punto vendita</p>
 </header>
     <div class="slider-container">
