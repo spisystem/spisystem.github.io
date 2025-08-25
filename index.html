@@ -547,6 +547,18 @@ header {
   100% { transform: scale(1.4); }
 
 }
+    /* --- Modifica titolo solo su mobile --- */
+@media screen and (max-width: 600px) {
+  header h1 {
+    font-size: 2em;      /* leggermente più piccolo */
+    line-height: 1.3;    /* spaziatura più armoniosa */
+    text-align: center;  /* sempre centrato */
+  }
+  header h1 .amp {
+    font-size: 0.7em;    /* & più piccola */
+    display: inline-block;
+  }
+}
 </style>
 </head>
 <body>
@@ -640,7 +652,11 @@ header {
 </div>
 <header>
   <img src="img/B0F190C1-ED18-45F3-B492-572A76ED7803.png" alt="Logo Spizzicotecnica" class="logo-pic">
-  <h1>Spizzicotecnica & SPI System</h1>
+  <h1>
+  Spizzicotecnica<br>
+  <span class="amp">&</span><br>
+  Spi System
+</h1>
   <p>Soluzioni professionali multimarche per il punto vendita</p>
 </header>
     <div class="slider-container">
