@@ -577,65 +577,6 @@ header {
     line-height: 1;
     margin: 4px 0;
   }
-  /* === HEADER RIDISEGNATO === */
-.hero-header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 15px 25px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  z-index: 1000;
-  background: transparent; /* nessun colore, sopra lo slider */
-}
-
-.header-content {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: rgba(0, 0, 0, 0.4); /* leggero sfondo trasparente per leggibilità */
-  padding: 8px 14px;
-  border-radius: 8px;
-}
-
-.logo-pic {
-  width: 55px;
-  height: auto;
-  border-radius: 6px;
-}
-
-.hero-header {
-  position: fixed; /* 👈 AGGIUNGI QUESTA SE VUOI IL LOGO SEMPRE VISIBILE */
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 15px 25px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  z-index: 1000;
-  background: transparent;
-}
-
-/* === SLIDER A TUTTO SCHERMO === */
-.slider-container {
-  width: 100%;
-  height: 100vh; /* tutto schermo */
-  margin: 0;
-  padding: 0;
-  border: none;
-  border-radius: 0;
-  position: relative;
-  overflow: hidden;
-}
-
-.slide img {
-  width: 100%;
-  height: 100vh; /* copre tutto lo schermo */
-  object-fit: cover; /* riempie senza deformarsi */
-}
 
 }
 </style>
@@ -729,11 +670,14 @@ header {
     </div>
   </form>
 </div>
-<header class="hero-header">
-  <div class="header-content">
-    <img src="img/B0F190C1-ED18-45F3-B492-572A76ED7803.png" alt="Logo Spizzicotecnica" class="logo-pic">
-    <h1>SPIZZICOTECNICA &amp; SPI SYSTEM</h1>
-  </div>
+<header>
+  <img src="img/B0F190C1-ED18-45F3-B492-572A76ED7803.png" alt="Logo Spizzicotecnica" class="logo-pic">
+  <h1>
+    <span class="word">SPIZZICOTECNICA</span>
+    <span class="amp">&amp;</span>
+    <span class="word">SPI SYSTEM</span>
+  </h1>
+  <p>Soluzioni professionali multimarche per il punto vendita</p>
 </header>
     <div class="slider-container">
   <div class="slider">
