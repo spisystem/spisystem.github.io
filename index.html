@@ -194,8 +194,6 @@ footer {
   font-size: 28px;
   text-decoration: none;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  animation: pulse 2s infinite;
-  z-index: 99999; /* ✅ sempre sopra tutto */
 }
 #whatsapp-label {
   position: fixed;
@@ -209,7 +207,6 @@ footer {
   font-size: 14px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   font-family: 'Poppins', sans-serif;
-  z-index: 99999; /* ✅ sempre sopra tutto */
 }
 .row-box {
   display: flex;
@@ -298,27 +295,6 @@ footer {
   background-color: #fff;
   padding: 0; /* nessun padding su mobile */
 }
-    /* Indicatori puntini sotto lo slider */
-.indicators {
-  text-align: center;   /* centra i puntini */
-  margin-top: 10px;     /* distanza dallo slider */
-}
-
-.indicator {
-  display: inline-block;
-  width: 14px;
-  height: 14px;
-  margin: 0 6px;
-  background: rgba(255,255,255,0.5);
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
-}
-
-.indicator.active {
-  background: #F28C28; /* colore arancione attivo */
-  transform: scale(1.4);
-}
 /* Cornice blu coerente solo su schermi grandi (PC) */
 @media (min-width: 768px) {
   .slider-container {
@@ -405,8 +381,10 @@ footer {
 .nav.next { right: 15px; }
 /* Indicatori in basso */
 .indicators {
+  position: absolute;
+  bottom: 15px;
+  width: 100%;
   text-align: center;
-  margin-top: 10px; /* distanza sotto lo slider */
 }
 .indicator {
   display: inline-block;
@@ -599,17 +577,6 @@ header {
     line-height: 1;
     margin: 4px 0;
   }
-  .slide {
-  position: relative; /* per posizionare il bottone sopra l'immagine */
-}
-
-.slide-discover-btn {
-  position: absolute;
-  bottom: 20px; /* distanza dal bordo inferiore dell’immagine */
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
-}
 
 }
 </style>
@@ -717,7 +684,6 @@ header {
    <div class="slides">
   <div class="slide active">
     <img src="img/Spizzicotecnica & Spi System.png.jpeg" alt="Helios touch">
-    <a href="modelli.html?prodotto=helios-touch" class="slide-discover-btn scopri-btn">Scopri</a>
   </div>
      <div class="slide">
        <img src="img/spi03.jpg" alt="Registratori di Cassa telematici">
@@ -735,6 +701,8 @@ header {
     <img src="img/spi06.jpg" alt="Smart kiosk">
   </div>
 </div>
+<div class="indicators">
+    </div>
     <button class="nav prev">&#10094;</button>
     <button class="nav next">&#10095;</button>
     <div class="indicators">
