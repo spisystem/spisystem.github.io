@@ -295,6 +295,27 @@ footer {
   background-color: #fff;
   padding: 0; /* nessun padding su mobile */
 }
+    /* Indicatori puntini sotto lo slider */
+.indicators {
+  text-align: center;   /* centra i puntini */
+  margin-top: 10px;     /* distanza dallo slider */
+}
+
+.indicator {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin: 0 6px;
+  background: rgba(255,255,255,0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.indicator.active {
+  background: #F28C28; /* colore arancione attivo */
+  transform: scale(1.4);
+}
 /* Cornice blu coerente solo su schermi grandi (PC) */
 @media (min-width: 768px) {
   .slider-container {
@@ -577,6 +598,17 @@ header {
     line-height: 1;
     margin: 4px 0;
   }
+  .slide {
+  position: relative; /* per posizionare il bottone sopra l'immagine */
+}
+
+.slide-discover-btn {
+  position: absolute;
+  bottom: 20px; /* distanza dal bordo inferiore dell’immagine */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
 
 }
 </style>
@@ -684,6 +716,7 @@ header {
    <div class="slides">
   <div class="slide active">
     <img src="img/Spizzicotecnica & Spi System.png.jpeg" alt="Helios touch">
+    <a href="modelli.html?prodotto=helios-touch" class="slide-discover-btn scopri-btn">Scopri</a>
   </div>
      <div class="slide">
        <img src="img/spi03.jpg" alt="Registratori di Cassa telematici">
