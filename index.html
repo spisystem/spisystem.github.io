@@ -194,6 +194,8 @@ footer {
   font-size: 28px;
   text-decoration: none;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  animation: pulse 2s infinite;
+  z-index: 99999; /* ✅ sempre sopra tutto */
 }
 #whatsapp-label {
   position: fixed;
@@ -207,6 +209,7 @@ footer {
   font-size: 14px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   font-family: 'Poppins', sans-serif;
+  z-index: 99999; /* ✅ sempre sopra tutto */
 }
 .row-box {
   display: flex;
