@@ -576,80 +576,57 @@ header {
   position: relative;
   height: 100vh;
   min-height: 650px;
+  color: white;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  color: white;
   overflow: hidden;
 }
 
-/* Layer immagini */
-.hero::before,
-.hero::after {
+/* Background immagini */
+.hero::before {
   content: "";
   position: absolute;
   inset: 0;
   background-size: cover;
   background-position: center;
-  transition: opacity 1.5s ease;
+  animation: heroSliderDesktop 16s infinite;
 }
 
-/* Prima immagine */
-.hero::before {
-  background-image: url("img/provasfondo.PNG");
-  animation: heroFadeDesktop 12s infinite;
-}
-
-/* Seconda layer per fade */
+/* Overlay scuro */
 .hero::after {
-  background-image: url("img/IMG_0817.jpeg");
-  animation: heroFadeDesktop2 12s infinite;
-}
-
-/* Overlay scuro elegante */
-.hero-overlay {
+  content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(0,0,0,0.2),
-    rgba(0,0,0,0.6)
-  );
-  z-index: 1;
+  background: rgba(0,0,0,0.45);
 }
 
+/* Contenuti sopra */
 .topbar,
 .hero-content {
   position: relative;
   z-index: 2;
 }
 
-/* Animazioni premium fade */
-@keyframes heroFadeDesktop {
-  0% { opacity:1; }
-  45% { opacity:1; }
-  55% { opacity:0; }
-  100% { opacity:1; }
-}
-
-@keyframes heroFadeDesktop2 {
-  0% { opacity:0; }
-  45% { opacity:0; }
-  55% { opacity:1; }
-  100% { opacity:0; }
-}
-
 /* Mobile */
-@media (max-width:767px){
-
+@media (max-width: 767px) {
 .hero::before {
-  background-image: url("img/sfondomobile.PNG");
+  animation: heroSliderMobile 16s infinite;
+}
 }
 
-.hero::after {
-  background-image: url("img/provasfondo.PNG");
+/* Animazioni desktop */
+@keyframes heroSliderDesktop {
+  0% { background-image: url("img/provasfondo.PNG"); }
+  50% { background-image: url("img/IMG_0817.jpeg"); }
+  100% { background-image: url("img/provasfondo.PNG"); }
 }
 
+/* Animazioni mobile */
+@keyframes heroSliderMobile {
+  0% { background-image: url("img/sfondomobile.PNG"); }
+  50% { background-image: url("img/provasfondo.PNG"); }
+  100% { background-image: url("img/sfondomobile.PNG"); }
 }
 
 .logo-area {
@@ -721,10 +698,6 @@ header {
   <!-- HERO FULL SCREEN -->
 <div class="hero">
 
-  <!-- Overlay scuro premium -->
-  <div class="hero-overlay"></div>
-
-  <!-- Barra superiore -->
   <div class="topbar">
     <div class="logo-area">
       <img src="img/B0F190C1-ED18-45F3-B492-572A76ED7803.png" class="logo-small">
@@ -733,18 +706,6 @@ header {
         <span class="sub-name">& SPI SYSTEM</span>
       </div>
     </div>
-
-    <div id="hamburger">&#9776;</div>
-  </div>
-
-  <!-- Contenuto centrale hero -->
-  <div class="hero-content">
-    <h1>Soluzioni professionali per il punto vendita</h1>
-    <p>Registratori telematici • Bilance • Sistemi touch • Assistenza multimarche</p>
-    <a href="#prodotti" class="hero-btn">Scopri i prodotti</a>
-  </div>
-
-</div>
 
     <div id="hamburger">&#9776;</div>
   </div>
