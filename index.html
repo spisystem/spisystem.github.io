@@ -501,6 +501,34 @@ header {
   font-size: 13px;
   font-weight: 500;
 }
+    .hero {
+  position: relative;
+  height: 100vh;
+  min-height: 650px;
+  overflow: hidden;
+}
+
+.hero-bg1,
+.hero-bg2 {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: opacity 1.5s ease;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 3;
+}
+
+.topbar,
+.hero-content {
+  position: relative;
+  z-index: 4;
+}
 
 .hero-content {
   text-align: center;
@@ -576,7 +604,10 @@ header {
 <body>
   <!-- HERO FULL SCREEN -->
 <div class="hero">
-
+  
+<div class="hero-bg1"></div>
+<div class="hero-bg2"></div>
+<div class="hero-overlay"></div>
   <div class="topbar">
 
   <div class="logo-area">
@@ -903,5 +934,51 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 </script>
   
+  <script>
+const desktopImages = [
+  "img/sfondod1.PNG",
+  "img/sfondod2.PNG"
+];
+
+const mobileImages = [
+  "img/sfondop1.PNG",
+  "img/sfondop2.PNG"
+];
+
+let index = 0;
+
+const bg1 = document.querySelector(".hero-bg1");
+const bg2 = document.querySelector(".hero-bg2");
+
+function isMobile(){
+  return window.innerWidth < 767;
+}
+
+function changeHero(){
+
+  const imgs = isMobile() ? mobileImages : desktopImages;
+  const next = imgs[index % imgs.length];
+
+  if(bg1.style.opacity === "1" || bg1.style.opacity === ""){
+    bg2.style.backgroundImage = `url(${next})`;
+    bg2.style.opacity = 1;
+    bg1.style.opacity = 0;
+  } else {
+    bg1.style.backgroundImage = `url(${next})`;
+    bg1.style.opacity = 1;
+    bg2.style.opacity = 0;
+  }
+
+  index++;
+}
+
+/* Prima immagine */
+bg1.style.backgroundImage = `url(${desktopImages[0]})`;
+bg1.style.opacity = 1;
+bg2.style.opacity = 0;
+
+/* Cambio immagini */
+setInterval(changeHero, 6000);
+</script>
 </body>
 </html>
