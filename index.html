@@ -54,19 +54,8 @@ header p {
   transition: left 0.3s ease;
   z-index: 10000;
 }
-#sidebar-menu {
-  position: fixed;
-  top: 0;
-  right: -250px; /* ← cambia lato */
-  width: 220px;
-  height: 100%;
-  background-color: #0b1d3a;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  padding-top: 70px;
-  transition: right 0.3s ease;
-  z-index: 10000;
+#sidebar-menu.show {
+  right: 0;
 }
 section {
   max-width: 1000px;
