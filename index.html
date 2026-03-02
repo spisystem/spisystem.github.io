@@ -489,7 +489,7 @@ header {
   position: absolute;
   inset: 0;
 
-  background-image: url("img/provasfondo.PNG");
+  background-image: url("img/provasfondo.PNG"); /* fallback desktop */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -498,9 +498,12 @@ header {
 }
 
 @media (max-width:767px){
-.hero::before {
-  animation: heroSliderMobile 16s infinite;
-}
+
+  .hero::before {
+    background-image: url("img/sfondop1.PNG"); /* fallback mobile */
+    animation: heroSliderMobile 16s infinite;
+  }
+
 }
 
 /* Overlay scuro */
@@ -522,7 +525,7 @@ header {
 /* Animazioni desktop */
 @keyframes heroSliderDesktop {
   0% { background-image: url("img/provasfondo.PNG"); }
-  50% { background-image: url("img/sfondomob2.PNG"); }
+  50% { background-image: url("img/provasfondo.PNG"); }
   100% { background-image: url("img/provasfondo.PNG"); }
 }
 
@@ -530,7 +533,7 @@ header {
 @keyframes heroSliderMobile {
   0% { background-image: url("img/sfondop1.PNG"); }
   50% { background-image: url("img/sfondop2.PNG"); }
-  100% { background-image: url("img/sfondop3.PNG"); }
+  100% { background-image: url("img/sfondop1.PNG"); }
 }
 
 .logo-area {
