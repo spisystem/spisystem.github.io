@@ -577,11 +577,113 @@ header {
     line-height: 1;
     margin: 4px 0;
   }
-
 }
+.hero {
+  position: relative;
+  height: 100vh;
+  background: url('img/IMG_0817.jpeg') center/cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: white;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+}
+
+.topbar,
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 25px;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-small {
+  width: 55px;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.main-name {
+  font-size: 0.95em;
+  font-weight: 700;
+}
+
+.sub-name {
+  font-size: 0.8em;
+  opacity: 0.9;
+}
+
+.hero-content {
+  text-align: center;
+  margin-bottom: 100px;
+  padding: 0 20px;
+}
+
+.hero-content h1 {
+  font-size: 2em;
+}
+
+.hero-content p {
+  font-size: 1.1em;
+  margin-bottom: 25px;
+}
+
+.hero-btn {
+  display: inline-block;
+  padding: 12px 30px;
+  background: linear-gradient(135deg,#ff6f3c,#ffb347);
+  color: white;
+  text-decoration: none;
+  border-radius: 40px;
+  font-weight: 600;
+}
+
 </style>
 </head>
 <body>
+  <!-- HERO FULL SCREEN -->
+<div class="hero">
+
+  <div class="topbar">
+    <div class="logo-area">
+      <img src="img/B0F190C1-ED18-45F3-B492-572A76ED7803.png" class="logo-small">
+      <div class="logo-text">
+        <span class="main-name">SPIZZICOTECNICA</span>
+        <span class="sub-name">& SPI SYSTEM</span>
+      </div>
+    </div>
+
+    <div id="hamburger">&#9776;</div>
+  </div>
+
+  <div class="hero-content">
+    <h1>Soluzioni professionali per il punto vendita</h1>
+    <p>Registratori telematici • Bilance • Sistemi touch • Assistenza multimarche</p>
+    <a href="#prodotti" class="hero-btn">Scopri i prodotti</a>
+  </div>
+
+</div>
 <!-- COOKIE BANNER -->
 <div id="cookie-banner" style="
     position: fixed;
@@ -670,15 +772,7 @@ header {
     </div>
   </form>
 </div>
-<header>
-  <img src="img/B0F190C1-ED18-45F3-B492-572A76ED7803.png" alt="Logo Spizzicotecnica" class="logo-pic">
-  <h1>
-    <span class="word">SPIZZICOTECNICA</span>
-    <span class="amp">&amp;</span>
-    <span class="word">SPI SYSTEM</span>
-  </h1>
-  <p>Soluzioni professionali multimarche per il punto vendita</p>
-</header>
+
     <div class="slider-container">
   <div class="slider">
    <div class="slides">
