@@ -473,68 +473,6 @@ header {
     margin: 4px 0;
   }
 }
-.hero {
-  position: relative;
-  height: 100vh;
-  min-height: 650px;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  overflow: hidden;
-}
-
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  background-image: url("img/provasfondo.PNG"); /* fallback desktop */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  animation: heroSliderDesktop 16s infinite;
-}
-
-@media (max-width:767px){
-
-  .hero::before {
-    background-image: url("img/sfondop1.PNG"); /* fallback mobile */
-    animation: heroSliderMobile 16s infinite;
-  }
-
-}
-
-/* Overlay scuro */
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.45);
-}
-
-/* Contenuti sopra */
-.topbar,
-.hero-content {
-  position: relative;
-  z-index: 2;
-}
-
-
-/* Animazioni desktop */
-@keyframes heroSliderDesktop {
-  0% { background-image: url("img/provasfondo.PNG"); }
-  50% { background-image: url("img/provasfondo.PNG"); }
-  100% { background-image: url("img/provasfondo.PNG"); }
-}
-
-/* Animazioni mobile */
-@keyframes heroSliderMobile {
-  0% { background-image: url("img/sfondop1.PNG"); }
-  50% { background-image: url("img/sfondop2.PNG"); }
-  100% { background-image: url("img/sfondop1.PNG"); }
-}
 
 .logo-area {
   display: flex;
