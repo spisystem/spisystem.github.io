@@ -7,6 +7,10 @@
 <link rel="preload" as="image" href="img/sfondomobile.PNG">
 <link rel="preload" as="image" href="img/sfondomob2.PNG">
   <title>Spizzicotecnica & SPI System</title>
+  <link rel="preload" as="image" href="img/sfondod1.PNG">
+<link rel="preload" as="image" href="img/sfondod2.PNG">
+<link rel="preload" as="image" href="img/sfondop1.PNG">
+<link rel="preload" as="image" href="img/sfondop2.PNG">
   <!-- 👇 FAVICON -->
 <link rel="icon" type="image/png" sizes="32x32" href="img/IMG_0908.png">
 <link rel="icon" type="image/png" sizes="48x48" href="img/IMG_0909.png">
@@ -501,41 +505,10 @@ header {
   font-size: 13px;
   font-weight: 500;
 }
-    .hero {
-  position: relative;
-  height: 100vh;
-  min-height: 650px;
-  overflow: hidden;
-}
-
-.hero-bg1,
-.hero-bg2 {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  transition: opacity 1.5s ease;
-}
-
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.45);
-  z-index: 3;
-}
-
-.topbar,
-.hero-content {
-  position: relative;
-  z-index: 4;
-}
-
-.hero-content {
-  text-align: center;
-  margin-bottom: 100px;
-  padding: 0 20px;
-}
-
+<link rel="preload" as="image" href="img/sfondod1.PNG">
+<link rel="preload" as="image" href="img/sfondod2.PNG">
+<link rel="preload" as="image" href="img/sfondop1.PNG">
+<link rel="preload" as="image" href="img/sfondop2.PNG">
 .hero-content h1 {
   font-size: 2em;
 }
@@ -932,53 +905,51 @@ document.addEventListener('DOMContentLoaded', () => {
       sidebar.classList.remove('show');
     });
   });
-</script>
-  
-  <script>
+<script>
 const desktopImages = [
-  "img/sfondod1.PNG",
-  "img/sfondod2.PNG"
+"img/sfondod1.PNG",
+"img/sfondod2.PNG"
 ];
 
 const mobileImages = [
-  "img/sfondop1.PNG",
-  "img/sfondop2.PNG"
+"img/sfondop1.PNG",
+"img/sfondop2.PNG"
 ];
-
-let index = 0;
 
 const bg1 = document.querySelector(".hero-bg1");
 const bg2 = document.querySelector(".hero-bg2");
 
+let index = 0;
+
 function isMobile(){
-  return window.innerWidth < 767;
+ return window.innerWidth < 767;
 }
 
-function changeHero(){
+function nextSlide(){
 
-  const imgs = isMobile() ? mobileImages : desktopImages;
-  const next = imgs[index % imgs.length];
+ const imgs = isMobile() ? mobileImages : desktopImages;
+ const next = imgs[index % imgs.length];
 
-  if(bg1.style.opacity === "1" || bg1.style.opacity === ""){
-    bg2.style.backgroundImage = `url(${next})`;
-    bg2.style.opacity = 1;
-    bg1.style.opacity = 0;
-  } else {
-    bg1.style.backgroundImage = `url(${next})`;
-    bg1.style.opacity = 1;
-    bg2.style.opacity = 0;
-  }
+ const active = (index % 2 === 0) ? bg1 : bg2;
+ const inactive = active === bg1 ? bg2 : bg1;
 
-  index++;
+ inactive.style.backgroundImage = `url(${next})`;
+ inactive.style.opacity = 1;
+ active.style.opacity = 0;
+
+ index++;
 }
 
-/* Prima immagine */
-bg1.style.backgroundImage = `url(${desktopImages[0]})`;
-bg1.style.opacity = 1;
-bg2.style.opacity = 0;
+window.addEventListener("load", () => {
 
-/* Cambio immagini */
-setInterval(changeHero, 6000);
+ const imgs = isMobile() ? mobileImages : desktopImages;
+
+ bg1.style.backgroundImage = `url(${imgs[0]})`;
+ bg1.style.opacity = 1;
+
+ setInterval(nextSlide, 6000);
+
+});
 </script>
 </body>
 </html>
