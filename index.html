@@ -279,16 +279,7 @@ footer {
 }
 }
 /* Stile di base per mobile: nessuna cornice extra */
-.slider-container {
-  max-width: 90%;
-  margin: 15px auto;
-  position: relative;
-  overflow: hidden;
-  border-radius: 10px;
-  box-shadow: 0 8px 15px rgba(0,0,0,0.2);
-  background-color: #fff;
-  padding: 0; /* nessun padding su mobile */
-}
+
 /* Cornice blu coerente solo su schermi grandi (PC) */
 @media (min-width: 768px) {
   .slider-container {
@@ -296,53 +287,9 @@ footer {
     padding: 5px; /* spazio tra bordo e slider */
   }
 }
-.slider {
-  position: relative;
-  width: 100%;
-  height: auto; /* altezza dinamica */
-}
-/* Contenitore di tutte le slide */
-.slides {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-/* Ogni singola slide */
-.slide {
-  display: none; /* Nasconde tutte le slide */
-  width: 100%;
-  height: 100%;
-}
-/* Solo la slide attiva è visibile */
-.slide.active {
-  display: block;
-}
-.slide img {
-  width: 100%;
-  height: auto; /* mantiene proporzioni */
-  max-height: 80vh; /* massimo 80% dell’altezza finestra */
-  object-fit: contain; /* l’immagine si adatta senza tagli */
-  display: block;
-  border-radius: 8px;
-}
-.slide-text {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  background: rgba(0, 0, 0, 0.6); /* nero trasparente */
-  color: #ff8c00; /* arancione per il testo */
-  font-weight: 600;
-  padding: 8px 12px;
-  border-radius: 5px;
-  font-size: 1rem; /* più piccolo */
-  max-width: 80%;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-  border: 1px solid rgba(255, 140, 0, 0.8); /* bordo arancione semi-trasparente */
-}
-.slide.active {
-  opacity: 1;
-  z-index: 1;
-}  
+
+
+
 /* Didascalia */
 .caption {
   position: absolute;
@@ -356,56 +303,7 @@ footer {
   max-width: 80%;
   border-left: 5px solid #F28C28;
 }
-/* Bottoni freccia */
-.nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255,255,255,0.2);
-  border: 2px solid #0b1d3a;
-  color: #0b1d3a;
-  font-size: 2em;
-  padding: 8px 12px;
-  cursor: pointer;
-  border-radius: 50%;
-  transition: all 0.3s ease;
-  user-select: none;
-}
-.nav.prev { left: 15px; }
-.nav.next { right: 15px; }
-/* Indicatori in basso */
-.indicators {
-  position: absolute;
-  bottom: 15px;
-  width: 100%;
-  text-align: center;
-}
-.indicator {
-  display: inline-block;
-  width: 14px;
-  height: 14px;
-  margin: 0 6px;
-  background: rgba(255,255,255,0.5);
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
-}
-.indicator.active {
-  background: #F28C28;
-  transform: scale(1.2);
-}
-  /* Frecce inizialmente invisibili */
-.nav {
-  opacity: 0;
-  pointer-events: none; /* Non cliccabili quando nascoste */
-  transition: opacity 0.3s ease;
-}
-/* Quando il mouse è sopra lo slider-container, le frecce appaiono */
-.slider-container:hover .nav {
-  opacity: 1;
-  pointer-events: auto; /* Tornano cliccabili */
-}
-    /* 🌟 MIGLIORIE GRAFICHE */
+
 
 /* Tipografia più ariosa */
 body {
