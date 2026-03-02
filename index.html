@@ -484,16 +484,23 @@ header {
   overflow: hidden;
 }
 
-/* Background immagini */
 .hero::before {
   content: "";
   position: absolute;
   inset: 0;
+
+  background-image: url("img/provasfondo.PNG");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  will-change: background-image;
-  transform: translateZ(0);
+
+  animation: heroSliderDesktop 16s infinite;
+}
+
+@media (max-width:767px){
+.hero::before {
+  animation: heroSliderMobile 16s infinite;
+}
 }
 
 /* Overlay scuro */
@@ -517,9 +524,6 @@ header {
  }
 }
 
-.hero::before {
-  animation: heroSliderDesktop 16s infinite;
-}
 
 /* Animazioni desktop */
 @keyframes heroSliderDesktop {
