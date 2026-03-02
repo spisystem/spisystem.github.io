@@ -591,24 +591,29 @@ header {
   background: rgba(242, 140, 40, 0.15);
   color: #ffb347;
 }
-   .hero-slogan {
-  position: absolute;
-  top: 90px;
-  left: 30px;
-  font-size: 28px;
-  font-weight: 600;
-  opacity: 0.35;
-  letter-spacing: 1px;
+ .topbar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 25px;
 }
 
-/* Mobile */
+.hero-slogan {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 70px;
+  font-size: 26px;
+  opacity: 0.35;
+  font-weight: 600;
+}
+
 @media (max-width:767px){
-  .hero-slogan {
-    font-size: 18px;
-    top: 80px;
-    left: 20px;
-    text-align: left;
-  }
+.hero-slogan {
+  font-size: 18px;
+  top: 80px;
+}
 } 
 </style>
 </head>
@@ -618,23 +623,21 @@ header {
 
   <div class="topbar">
 
-    <div class="logo-area">
-      <img src="img/tuologo.png" class="logo-small">
-      <div class="logo-text">
-        <span class="main-name">SPIZZICOTECNICA</span>
-        <span class="sub-name">& SPI SYSTEM</span>
-      </div>
+  <div class="logo-area">
+    <img src="img/tuologo.png" class="logo-small">
+    <div class="logo-text">
+      <span class="main-name">SPIZZICOTECNICA</span>
+      <span class="sub-name">& SPI SYSTEM</span>
     </div>
-
-    <div id="hamburger">&#9776;</div>
-
-    <!-- ⭐ SCRITTA SLOGAN QUI -->
-    <div class="hero-slogan">
-      Soluzioni professionali per il punto vendita
-    </div>
-
   </div>
 
+  <div class="hero-slogan">
+    Soluzioni professionali per il punto vendita
+  </div>
+
+  <div id="hamburger">&#9776;</div>
+
+</div>
   <div class="hero-content">
     <p>Registratori telematici • Bilance • Sistemi touch • Assistenza multimarche</p>
     <a href="#prodotti" class="hero-btn">Scopri i prodotti</a>
