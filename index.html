@@ -575,6 +575,7 @@ header {
 .hero {
   position: relative;
   height: 100vh;
+  min-height: 650px;
   color: white;
   display: flex;
   flex-direction: column;
@@ -582,8 +583,7 @@ header {
   overflow: hidden;
 }
 
-/* Desktop */
-@media (min-width: 768px) {
+/* Background immagini */
 .hero::before {
   content: "";
   position: absolute;
@@ -591,19 +591,6 @@ header {
   background-size: cover;
   background-position: center;
   animation: heroSliderDesktop 16s infinite;
-}
-}
-
-/* Mobile */
-@media (max-width: 767px) {
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  animation: heroSliderMobile 16s infinite;
-}
 }
 
 /* Overlay scuro */
@@ -614,10 +601,18 @@ header {
   background: rgba(0,0,0,0.45);
 }
 
+/* Contenuti sopra */
 .topbar,
 .hero-content {
   position: relative;
   z-index: 2;
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+.hero::before {
+  animation: heroSliderMobile 16s infinite;
+}
 }
 
 /* Animazioni desktop */
