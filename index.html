@@ -576,57 +576,80 @@ header {
   position: relative;
   height: 100vh;
   min-height: 650px;
-  color: white;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  color: white;
   overflow: hidden;
 }
 
-/* Background immagini */
-.hero::before {
+/* Layer immagini */
+.hero::before,
+.hero::after {
   content: "";
   position: absolute;
   inset: 0;
   background-size: cover;
   background-position: center;
-  animation: heroSliderDesktop 16s infinite;
+  transition: opacity 1.5s ease;
 }
 
-/* Overlay scuro */
+/* Prima immagine */
+.hero::before {
+  background-image: url("img/provasfondo.PNG");
+  animation: heroFadeDesktop 12s infinite;
+}
+
+/* Seconda layer per fade */
 .hero::after {
-  content: "";
+  background-image: url("img/IMG_0817.jpeg");
+  animation: heroFadeDesktop2 12s infinite;
+}
+
+/* Overlay scuro elegante */
+.hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.45);
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.2),
+    rgba(0,0,0,0.6)
+  );
+  z-index: 1;
 }
 
-/* Contenuti sopra */
 .topbar,
 .hero-content {
   position: relative;
   z-index: 2;
 }
 
+/* Animazioni premium fade */
+@keyframes heroFadeDesktop {
+  0% { opacity:1; }
+  45% { opacity:1; }
+  55% { opacity:0; }
+  100% { opacity:1; }
+}
+
+@keyframes heroFadeDesktop2 {
+  0% { opacity:0; }
+  45% { opacity:0; }
+  55% { opacity:1; }
+  100% { opacity:0; }
+}
+
 /* Mobile */
-@media (max-width: 767px) {
+@media (max-width:767px){
+
 .hero::before {
-  animation: heroSliderMobile 16s infinite;
-}
-}
-
-/* Animazioni desktop */
-@keyframes heroSliderDesktop {
-  0% { background-image: url("img/provasfondo.PNG"); }
-  50% { background-image: url("img/IMG_0817.jpeg"); }
-  100% { background-image: url("img/provasfondo.PNG"); }
+  background-image: url("img/sfondomobile.PNG");
 }
 
-/* Animazioni mobile */
-@keyframes heroSliderMobile {
-  0% { background-image: url("img/sfondomobile.PNG"); }
-  50% { background-image: url("img/provasfondo.PNG"); }
-  100% { background-image: url("img/sfondomobile.PNG"); }
+.hero::after {
+  background-image: url("img/provasfondo.PNG");
+}
+
 }
 
 .logo-area {
@@ -696,7 +719,7 @@ header {
 </head>
 <body>
   <!-- HERO FULL SCREEN -->
-<div class="hero">
+<div class="hero-overlay"></div>
 
   <div class="topbar">
     <div class="logo-area">
