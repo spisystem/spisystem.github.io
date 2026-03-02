@@ -575,18 +575,63 @@ header {
 .hero {
   position: relative;
   height: 100vh;
-  background: url('img/provasfondo.PNG') center/cover no-repeat;
+  color: white;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  color: white;
+  overflow: hidden;
 }
 
-/* 📱 Mobile */
-@media (max-width: 600px) {
-  .hero {
-    background: url('img/sfondomobile.PNG') center/cover no-repeat;
-  }
+/* Desktop */
+@media (min-width: 768px) {
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  animation: heroSliderDesktop 16s infinite;
+}
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  animation: heroSliderMobile 16s infinite;
+}
+}
+
+/* Overlay scuro */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+}
+
+.topbar,
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Animazioni desktop */
+@keyframes heroSliderDesktop {
+  0% { background-image: url("img/provasfondo.PNG"); }
+  50% { background-image: url("img/IMG_0817.jpeg"); }
+  100% { background-image: url("img/provasfondo.PNG"); }
+}
+
+/* Animazioni mobile */
+@keyframes heroSliderMobile {
+  0% { background-image: url("img/sfondomobile.PNG"); }
+  50% { background-image: url("img/provasfondo.PNG"); }
+  100% { background-image: url("img/sfondomobile.PNG"); }
 }
 
 .hero::after {
