@@ -29,19 +29,29 @@ header p {
   margin-top: 15px;
   font-weight: 400;
 }
-
+#hamburger {
+  font-size: 28px;
+  cursor: pointer;
+  color: #F28C28;
+  padding: 12px 20px;
+  display: inline-block;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 10001;
+}
 #sidebar-menu {
   position: fixed;
   top: 0;
-  right: -250px;   /* parte da destra fuori schermo */
+  left: -250px;
   width: 220px;
   height: 100%;
   background-color: #0b1d3a;
   color: white;
   display: flex;
   flex-direction: column;
-  padding-top: 80px;
-  transition: right 0.3s ease;  /* animazione su right */
+  padding-top: 60px;
+  transition: left 0.3s ease;
   z-index: 10000;
 }
 #sidebar-menu a {
@@ -53,7 +63,7 @@ header p {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 #sidebar-menu.show {
-  right: 0;
+  left: 0;
 }
 section {
   max-width: 1000px;
@@ -222,7 +232,18 @@ footer {
     font-size: 1em;
     padding-top: 5px;
   }
- 
+    header {
+  background: linear-gradient(to right, #0b1d3a, #102542);
+  color: white;
+  text-align: center;
+  padding: 30px 20px 20px 20px; /* era 60px, ora 20px */
+}
+.logo-pic {
+  width: 80px;        /* logo più piccolo su desktop */
+  height: auto;
+  border-radius: 8px;
+  margin-top: 0;      /* niente margine sopra */
+}
 @media screen and (max-width: 600px) {
   .logo-pic {
     width: 60px;      /* ancora più piccolo su mobile */
@@ -516,6 +537,17 @@ h2 {
   100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
 }
 
+/* Header con effetto parallax */
+header {
+  background: linear-gradient(
+  to right,
+  rgba(10,25,60,0.95),   /* blu notte scuro */
+  rgba(20,40,90,0.95),   /* blu elettrico intenso */
+  rgba(30,55,120,0.95)   /* blu più acceso sul bordo */
+),
+              url('img/IMG_0817.jpeg') center/cover no-repeat;
+  background-attachment: fixed;
+}
 
 /* Indicatori slider con animazione */
 .indicator.active {
@@ -545,92 +577,11 @@ h2 {
     line-height: 1;
     margin: 4px 0;
   }
-}
-.hero {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  background: url('img/sfondop1.PNG') center/cover no-repeat;
-  color: white;
-}
 
-/* Contenitore logo + testo */
-.hero-left {
-  position: absolute;
-  top: 15px;   /* ⭐ più in alto */
-  left: 20px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-/* Logo più piccolo */
-.hero-logo {
-  width: 55px;
-  height: auto;
-}
-
-.hero-text {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.1em;
-  line-height: 1.25;
-  text-align: center;
-}
-
-/* Ogni riga del logo */
-.hero-text .word {
-  display: block;
-  text-transform: uppercase;
-}
-
-/* & centrata */
-.hero-text .amp {
-  display: block;
-  font-size: 0.85em;
-  font-weight: 600;
-  color: #F28C28;
-  margin: 4px 0;
-}
-/* Subtitle */
-.hero-subtitle {
-  position: absolute;
-  bottom: 60px;
-  left: 40px;
-  font-size: 1.1em;
-  max-width: 400px;
-  line-height: 1.5;
-}
-
-#hamburger {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  font-size: 32px;
-  cursor: pointer;
-  color: #F28C28; /* arancione */
-  z-index: 10000;
 }
 </style>
 </head>
 <body>
-  <div class="hero">
-
-  <div class="hero-left">
-    <img src="img/B0F190C1-ED18-45F3-B492-572A76ED7803.png" class="hero-logo">
-
-    <div class="hero-text">
-      <span class="word">SPIZZICOTECNICA</span>
-      <span class="amp">&</span>
-      <span class="word">SPI SYSTEM</span>
-    </div>
-  </div>
-
-  <!-- ⭐ HAMBURGER DEVE STARE QUI -->
-  <div id="hamburger">&#9776;</div>
-
-</div>
-
-</div>
 <!-- COOKIE BANNER -->
 <div id="cookie-banner" style="
     position: fixed;
@@ -719,7 +670,15 @@ h2 {
     </div>
   </form>
 </div>
-
+<header>
+  <img src="img/B0F190C1-ED18-45F3-B492-572A76ED7803.png" alt="Logo Spizzicotecnica" class="logo-pic">
+  <h1>
+    <span class="word">SPIZZICOTECNICA</span>
+    <span class="amp">&amp;</span>
+    <span class="word">SPI SYSTEM</span>
+  </h1>
+  <p>Soluzioni professionali multimarche per il punto vendita</p>
+</header>
     <div class="slider-container">
   <div class="slider">
    <div class="slides">
@@ -757,7 +716,7 @@ h2 {
   </div>
 </div>
 <nav>
-  
+  <div id="hamburger">&#9776;</div>
  <div id="sidebar-menu">
   <a href="#chi-siamo">Chi Siamo</a>
   <a href="#prodotti">Prodotti</a>
