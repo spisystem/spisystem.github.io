@@ -541,25 +541,31 @@ h2 {
 #hamburger:hover {
   transform: scale(1.15);
 }
-    .hero-content {
+   .hero-content {
   position: absolute;
-  bottom: 90px;
+  top: 80px; /* subito sotto la top bar */
   left: 50%;
   transform: translateX(-50%);
+
   text-align: center;
   width: 90%;
 }
-
 .hero-slogan {
   position: absolute;
-  top: 80px; /* sotto la top bar */
+  top: 90px; /* sotto la top bar */
+  left: 50%;
+  transform: translateX(-50%);
+
   width: 100%;
   text-align: center;
+
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.4em;
   letter-spacing: 2px;
-  color: rgba(255,255,255,0.85);
-  text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+
+  color: rgba(255,255,255,0.9);
+  text-shadow: 0 3px 12px rgba(0,0,0,0.7);
+
   font-weight: 600;
   padding: 0 20px;
 }
