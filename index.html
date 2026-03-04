@@ -263,17 +263,7 @@ footer {
   background: linear-gradient(135deg, #ff6600 0%, #ffb84d 100%);
 }
 }
-/* Stile di base per mobile: nessuna cornice extra */
-.slider-container {
-  max-width: 90%;
-  margin: 15px auto;
-  position: relative;
-  overflow: hidden;
-  border-radius: 10px;
-  box-shadow: 0 8px 15px rgba(0,0,0,0.2);
-  background-color: #fff;
-  padding: 0; /* nessun padding su mobile */
-}
+
 /* Cornice blu coerente solo su schermi grandi (PC) */
 @media (min-width: 768px) {
   .slider-container {
@@ -281,53 +271,7 @@ footer {
     padding: 5px; /* spazio tra bordo e slider */
   }
 }
-.slider {
-  position: relative;
-  width: 100%;
-  height: auto; /* altezza dinamica */
-}
-/* Contenitore di tutte le slide */
-.slides {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-/* Ogni singola slide */
-.slide {
-  display: none; /* Nasconde tutte le slide */
-  width: 100%;
-  height: 100%;
-}
-/* Solo la slide attiva è visibile */
-.slide.active {
-  display: block;
-}
-.slide img {
-  width: 100%;
-  height: auto; /* mantiene proporzioni */
-  max-height: 80vh; /* massimo 80% dell’altezza finestra */
-  object-fit: contain; /* l’immagine si adatta senza tagli */
-  display: block;
-  border-radius: 8px;
-}
-.slide-text {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  background: rgba(0, 0, 0, 0.6); /* nero trasparente */
-  color: #ff8c00; /* arancione per il testo */
-  font-weight: 600;
-  padding: 8px 12px;
-  border-radius: 5px;
-  font-size: 1rem; /* più piccolo */
-  max-width: 80%;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-  border: 1px solid rgba(255, 140, 0, 0.8); /* bordo arancione semi-trasparente */
-}
-.slide.active {
-  opacity: 1;
-  z-index: 1;
-}  
+
 /* Didascalia */
 .caption {
   position: absolute;
@@ -341,56 +285,6 @@ footer {
   max-width: 80%;
   border-left: 5px solid #F28C28;
 }
-/* Bottoni freccia */
-.nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255,255,255,0.2);
-  border: 2px solid #0b1d3a;
-  color: #0b1d3a;
-  font-size: 2em;
-  padding: 8px 12px;
-  cursor: pointer;
-  border-radius: 50%;
-  transition: all 0.3s ease;
-  user-select: none;
-}
-.nav.prev { left: 15px; }
-.nav.next { right: 15px; }
-/* Indicatori in basso */
-.indicators {
-  position: absolute;
-  bottom: 15px;
-  width: 100%;
-  text-align: center;
-}
-.indicator {
-  display: inline-block;
-  width: 14px;
-  height: 14px;
-  margin: 0 6px;
-  background: rgba(255,255,255,0.5);
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
-}
-.indicator.active {
-  background: #F28C28;
-  transform: scale(1.2);
-}
-  /* Frecce inizialmente invisibili */
-.nav {
-  opacity: 0;
-  pointer-events: none; /* Non cliccabili quando nascoste */
-  transition: opacity 0.3s ease;
-}
-/* Quando il mouse è sopra lo slider-container, le frecce appaiono */
-.slider-container:hover .nav {
-  opacity: 1;
-  pointer-events: auto; /* Tornano cliccabili */
-}
-    /* 🌟 MIGLIORIE GRAFICHE */
 
 /* Tipografia più ariosa */
 body {
@@ -944,81 +838,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 </script>
-  <script>
-  const slides = document.querySelectorAll('.slide');
-  const prevBtn = document.querySelector('.nav.prev');
-  const nextBtn = document.querySelector('.nav.next');
-  const indicators = document.querySelectorAll('.indicator');
-  let currentIndex = 0;
-  let slideInterval = setInterval(nextSlide, 3000);
-  function showSlide(index) {
-    slides.forEach((slide, i) => {
-      slide.classList.toggle('active', i === index);
-      indicators[i].classList.toggle('active', i === index);
-    });
-    currentIndex = index;
-  }
-  function nextSlide() {
-    let nextIndex = (currentIndex + 1) % slides.length;
-    showSlide(nextIndex);
-  }
-  function prevSlide() {
-    let prevIndex = (currentIndex - 1 + slides.length) % slides.length;
-    showSlide(prevIndex);
-  }
-  nextBtn.addEventListener('click', () => {
-    nextSlide();
-    resetInterval();
-  });
-  prevBtn.addEventListener('click', () => {
-    prevSlide();
-    resetInterval();
-  });
-  indicators.forEach(indicator => {
-    indicator.addEventListener('click', () => {
-      const index = parseInt(indicator.dataset.slide);
-      showSlide(index);
-      resetInterval();
-    });
-  });
-  function resetInterval() {
-    clearInterval(slideInterval);
-    slideInterval = setInterval(nextSlide, 3000);
-  }
-  // Optional: swipe support for mobile devices
-  let startX = 0;
-  let endX = 0;
-  const sliderContainer = document.querySelector('.slider-container');
-  sliderContainer.addEventListener('touchstart', (e) => {
-    startX = e.touches[0].clientX;
-  });
-  sliderContainer.addEventListener('touchend', (e) => {
-    endX = e.changedTouches[0].clientX;
-    if (startX - endX > 50) {
-      nextSlide();
-      resetInterval();
-    } else if (endX - startX > 50) {
-      prevSlide();
-      resetInterval();
-    }
-    let hideArrowsTimeout;
-const sliderCont = document.querySelector('.slider-container');
-const navButtons = document.querySelectorAll('.nav');
-function showArrows() {
-  navButtons.forEach(btn => btn.style.opacity = '1');
-  navButtons.forEach(btn => btn.style.pointerEvents = 'auto');
-  clearTimeout(hideArrowsTimeout);
-  hideArrowsTimeout = setTimeout(hideArrows, 2000);
-}
-function hideArrows() {
-  navButtons.forEach(btn => btn.style.opacity = '0');
-  navButtons.forEach(btn => btn.style.pointerEvents = 'none');
-}
-sliderCont.addEventListener('mousemove', showArrows);
-sliderCont.addEventListener('mouseleave', hideArrows);
-// Nasconde frecce subito al caricamento
-hideArrows();
-});
-</script>
+
 </body>
 </html>
