@@ -551,18 +551,30 @@ h2 {
   justify-content: space-between;
   align-items: center;
 
-  padding-top: 80px;   /* 👈 abbassa questo numero per spostarlo ancora più su */
+  padding-top: 60px;   /* 👈 abbassa questo numero per spostarlo ancora più su */
   padding-bottom: 90px;
 
   text-align: center;
 }
 .hero-slogan {
+  position: absolute;
+  top: 70px;
+
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 100%;
+  text-align: center;
+
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.4em;
   letter-spacing: 2px;
 
-  color: rgba(255,255,255,0.9);
-  text-shadow: 0 3px 12px rgba(0,0,0,0.7);
+  color: rgba(255,255,255,0.95);
+
+  text-shadow:
+    0 2px 8px rgba(0,0,0,0.6),
+    0 0 20px rgba(0,0,0,0.3);
 
   font-weight: 600;
   padding: 0 20px;
