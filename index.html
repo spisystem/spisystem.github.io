@@ -541,25 +541,18 @@ h2 {
 #hamburger:hover {
   transform: scale(1.15);
 }
-.hero-content {
-  position: relative;
-
-  height: 100vh;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-
-  padding-top: 60px;   /* 👈 abbassa questo numero per spostarlo ancora più su */
-  padding-bottom: 90px;
+   .hero-content {
+  position: absolute;
+  top: 80px; /* subito sotto la top bar */
+  left: 50%;
+  transform: translateX(-50%);
 
   text-align: center;
+  width: 90%;
 }
 .hero-slogan {
   position: absolute;
-  top: 70px;
-
+  top: 90px; /* sotto la top bar */
   left: 50%;
   transform: translateX(-50%);
 
@@ -570,30 +563,26 @@ h2 {
   font-size: 1.4em;
   letter-spacing: 2px;
 
-  color: rgba(255,255,255,0.95);
-
-  text-shadow:
-    0 2px 8px rgba(0,0,0,0.6),
-    0 0 20px rgba(0,0,0,0.3);
+  color: rgba(255,255,255,0.9);
+  text-shadow: 0 3px 12px rgba(0,0,0,0.7);
 
   font-weight: 600;
   padding: 0 20px;
 }
 
+/* Pulsante */
 .hero-btn {
+  display: inline-block;
   padding: 14px 32px;
-
-  background: linear-gradient(135deg,#ff7a18,#ffb347);
+  background: linear-gradient(135deg, #ff7a18, #ffb347);
   color: white;
-
   text-decoration: none;
   border-radius: 50px;
-
   font-weight: 700;
-
   box-shadow: 0 6px 20px rgba(0,0,0,0.25);
   transition: all 0.3s ease;
 }
+
 .hero-btn:hover {
   transform: translateY(-3px) scale(1.05);
   box-shadow: 0 10px 25px rgba(255,122,24,0.5);
