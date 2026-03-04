@@ -556,74 +556,83 @@ h2 {
     margin: 4px 0;
   }
 }
-   .hero {
+ .hero {
   position: relative;
   width: 100%;
   height: 100vh;
   background: url('img/sfondop1.PNG') center/cover no-repeat;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  align-items: center;
   padding: 40px;
   color: white;
 }
 
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    rgba(10,25,60,0.75),
-    rgba(10,25,60,0.85)
-  );
-}
-
-.hero * {
-  position: relative;
-}
-
-.hero-logo {
-  width: 90px;
+.hero-left {
   position: absolute;
   top: 25px;
   left: 25px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
-.hero-title {
-  font-size: 3em;
-  margin: 0;
+.hero-logo {
+  width: 70px; /* ⭐ LOGO PIÙ PICCOLO */
+  height: auto;
+}
+
+.hero-text {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8em;
+}
+
+.hero-text .amp {
+  font-size: 2.2em;
+  color: #F28C28;
 }
 
 .hero-subtitle {
-  font-size: 1.3em;
+  position: absolute;
+  bottom: 60px;
+  left: 40px;
+  font-size: 1.2em;
 }
 
-/* Hamburger in alto a destra */
+/* ⭐ HAMBURGER */
 #hamburger {
   position: absolute;
   top: 25px;
-  right: 25px;
+  right: 30px;
   font-size: 32px;
   cursor: pointer;
   color: white;
-  z-index: 10002;
-} 
-
+  z-index: 1000;
+}
 </style>
 </head>
 <body>
   <div class="hero">
-  <img src="img/B0F190C1-ED18-45F3-B492-572A76ED7803.png" class="hero-logo">
 
+  <div class="hero-left">
+    <img src="img/B0F190C1-ED18-45F3-B492-572A76ED7803.png" class="hero-logo">
+
+    <div class="hero-text">
+      <span class="word">SPIZZICOTECNICA</span>
+      <span class="amp">&</span>
+      <span class="word">SPI SYSTEM</span>
+    </div>
+  </div>
+
+  <!-- ⭐ HAMBURGER QUI -->
   <div id="hamburger">&#9776;</div>
-
-  <h1 class="hero-title">
-    SPIZZICOTECNICA &amp; SPI SYSTEM
-  </h1>
 
   <p class="hero-subtitle">
     Soluzioni professionali multimarche per il punto vendita
   </p>
+
 </div>
 <!-- COOKIE BANNER -->
 <div id="cookie-banner" style="
