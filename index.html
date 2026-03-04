@@ -539,6 +539,41 @@ h2 {
 #hamburger:hover {
   transform: scale(1.15);
 }
+    .hero-content {
+  position: absolute;
+  bottom: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 90%;
+}
+
+.hero-slogan {
+  color: white;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2em;
+  font-weight: 700;
+  text-shadow: 0 3px 15px rgba(0,0,0,0.5);
+  margin-bottom: 25px;
+}
+
+/* Pulsante */
+.hero-btn {
+  display: inline-block;
+  padding: 14px 32px;
+  background: linear-gradient(135deg, #ff7a18, #ffb347);
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 700;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  transition: all 0.3s ease;
+}
+
+.hero-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(255,122,24,0.5);
+}
 </style>
 </head>
 <body>
@@ -558,6 +593,15 @@ h2 {
 
   <div id="hamburger">&#9776;</div>
 
+</div>
+   <div class="hero-content">
+  <h2 class="hero-slogan">
+    Tecnologia e soluzioni intelligenti per il tuo punto vendita
+  </h2>
+
+  <a href="#prodotti" class="hero-btn">
+    Scopri prodotti
+  </a>
 </div>
    </div>
    
