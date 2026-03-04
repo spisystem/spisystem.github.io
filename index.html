@@ -940,6 +940,18 @@ setInterval(() => {
   hero.style.backgroundImage = `url(${backgrounds[bgIndex]})`;
 }, 5000);
 </script>
+  
+<script>
+const preloadImages = [
+  'img/sfondopr1.JPG',
+  'img/sfondopr2.JPG',
+  'img/sfondopr3.JPG'
+];
 
+preloadImages.forEach(src => {
+  const img = new Image();
+  img.src = src;
+});
+</script>
 </body>
 </html>
