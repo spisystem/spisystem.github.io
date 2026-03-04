@@ -33,15 +33,15 @@ header p {
 #sidebar-menu {
   position: fixed;
   top: 0;
-  left: -250px;
+  right: -250px;   /* parte da destra fuori schermo */
   width: 220px;
   height: 100%;
   background-color: #0b1d3a;
   color: white;
   display: flex;
   flex-direction: column;
-  padding-top: 60px;
-  transition: left 0.3s ease;
+  padding-top: 80px;
+  transition: right 0.3s ease;  /* animazione su right */
   z-index: 10000;
 }
 #sidebar-menu a {
@@ -53,7 +53,7 @@ header p {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 #sidebar-menu.show {
-  left: 0;
+  right: 0;
 }
 section {
   max-width: 1000px;
