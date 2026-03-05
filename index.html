@@ -33,15 +33,22 @@ header p {
 #sidebar-menu {
   position: fixed;
   top: 0;
-  right: -250px;   /* parte da destra fuori schermo */
+  right: -250px;
   width: 220px;
   height: 100%;
-  background-color: #0b1d3a;
+
+  background: linear-gradient(
+    to bottom,
+    #000000,
+    #0d0d0d,
+    #141414
+  );
+
   color: white;
   display: flex;
   flex-direction: column;
   padding-top: 80px;
-  transition: right 0.3s ease;  /* animazione su right */
+  transition: right 0.3s ease;
   z-index: 10000;
 }
 #sidebar-menu a {
