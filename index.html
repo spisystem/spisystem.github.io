@@ -919,7 +919,9 @@ const hero = document.querySelector('.hero');
 const backgrounds = [
   'img/sfondopr1.JPG',
   'img/sfondopr2.JPG',
-  'img/sfondopr3.JPG'
+  'img/sfondopr3.JPG',
+  'img/sfondopr4.JPG',   // nuova foto
+  'img/sfondopr5.JPG'    // nuova foto
 ];
 
 let bgIndex = 0;
@@ -931,7 +933,7 @@ hero.style.backgroundImage = `url(${backgrounds[0]})`;
 setInterval(() => {
   bgIndex = (bgIndex + 1) % backgrounds.length;
   hero.style.backgroundImage = `url(${backgrounds[bgIndex]})`;
-}, 5000);
+}, 4000);
 </script>
   
 <script>
