@@ -582,6 +582,31 @@ h2 {
   transform: translateY(-3px) scale(1.05);
   box-shadow: 0 10px 25px rgba(255,122,24,0.5);
 }
+    .close-sidebar {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+
+  font-size: 26px;
+  color: #F28C28; /* arancione tuo brand */
+
+  cursor: pointer;
+
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.close-sidebar:hover {
+  background: rgba(242,140,40,0.2);
+  transform: rotate(90deg) scale(1.1);
+}
 </style>
 </head>
 <body>
@@ -706,6 +731,8 @@ h2 {
 <nav>
   
  <div id="sidebar-menu">
+  <div class="close-sidebar" id="close-sidebar">✕</div>
+
   <a href="#chi-siamo">Chi Siamo</a>
   <a href="#prodotti">Prodotti</a>
   <a href="#contatti">Contatti</a>
@@ -892,6 +919,11 @@ document.addEventListener('DOMContentLoaded', () => {
     applyCookies();
     console.log('Preferenze salvate');
   });
+});
+  const closeSidebar = document.getElementById('close-sidebar');
+
+closeSidebar.addEventListener('click', () => {
+  sidebar.classList.remove('show');
 });
 </script>
   <script>
