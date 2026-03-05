@@ -488,9 +488,9 @@ h2 {
 }
 
 
-  .hero {
-  padding-top: 80px;
-}
+   .hero {
+  padding-top: 10px;
+} 
 .top-header {
   position: fixed;
   top: 0;
@@ -503,8 +503,13 @@ h2 {
   align-items: center;
   padding: 0 25px;
 
-  background: rgba(10,10,10,0.95); /* nero lucido ma quasi pieno */
   backdrop-filter: blur(20px);
+
+  background: rgba(0, 0, 0, 0.4);
+
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+
+  box-shadow: 0 2px 15px rgba(0,0,0,0.35);
 
   z-index: 9999;
 }
@@ -940,7 +945,10 @@ const preloadImages = [
   'img/sfondopr5.JPG'
 ];
 
-
+preloadImages.forEach(src => {
+  const img = new Image();
+  img.src = src;
+});
 preloadImages.forEach(src => {
   const img = new Image();
   img.src = src;
