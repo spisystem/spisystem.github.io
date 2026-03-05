@@ -451,25 +451,6 @@ h2 {
   transition: background-image 1s ease-in-out;
 }
 
-/* Animazione cambio sfondo */
-@keyframes heroSlideshow {
-
-  0% {
-    background-image: url('img/sfondopr1.JPG');
-  }
-
-  33% {
-    background-image: url('img/sfondopr2.JPG');
-  }
-
-  66% {
-    background-image: url('img/sfondopr3.JPG');
-  }
-
-  100% {
-    background-image: url('img/sfondopr1.JPG');
-  }
-}
 
 .hero-logo {
   width: 50px;
@@ -480,7 +461,7 @@ h2 {
   font-size: 1.05em;
   line-height: 1.05;
   text-align: center;
-  color: black;
+  color: white;
 }
 
 /* Ogni riga del logo */
@@ -510,7 +491,7 @@ h2 {
    .hero {
   padding-top: 10px;
 } 
-    .top-header {
+   .top-header {
   position: fixed;
   top: 0;
   left: 0;
@@ -520,8 +501,10 @@ h2 {
   justify-content: space-between;
   align-items: center;
   padding: 0 25px;
-  backdrop-filter: blur(15px);
-  background: rgba(255,255,255,0.25);
+
+  backdrop-filter: blur(12px);
+  background: rgba(10, 15, 25, 0.75); /* nero elegante trasparente */
+
   z-index: 9999;
 }
 
