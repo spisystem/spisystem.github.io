@@ -352,28 +352,30 @@ button[type="submit"]:hover,
   transform: scale(1.1);
 }
 
-/* Footer più ricco */
-footer {background: linear-gradient(
-  to right,
-  rgba(10,25,60,0.95),   /* blu notte scuro */
-  rgba(20,40,90,0.95),   /* blu elettrico intenso */
-  rgba(30,55,120,0.95)   /* blu più acceso sul bordo */
-);
+footer {
+  background: rgba(15, 15, 15, 0.85);
+  backdrop-filter: blur(18px);
+
   color: white;
   text-align: center;
   padding: 30px 20px;
+
   font-size: 0.95em;
+
   border-top: 3px solid #ff6f3c;
+
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.5);
 }
+
 footer a {
   color: #ffc107;
   text-decoration: none;
   transition: color 0.3s ease;
 }
+
 footer a:hover {
   color: #ffdd57;
 }
-    /* 🌟 MIGLIORIE EXTRA */
 
 /* Hover con zoom sulle immagini */
 .product-box img, 
