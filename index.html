@@ -993,6 +993,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('cookie-preferences-form');
   const accepted = localStorage.getItem('cookieAccepted');
   const rejected = localStorage.getItem('cookieRejected');
+  // Se l'utente ha già scelto prima → nascondi banner
+if (localStorage.getItem('cookieAccepted') === 'true' ||
+    localStorage.getItem('cookieRejected') === 'true') {
+    banner.style.display = 'none';
+    document.body.classList.remove('no-scroll');
+}
   function hideBanner() {
     banner.style.display = 'none';
     document.body.classList.remove('no-scroll');
