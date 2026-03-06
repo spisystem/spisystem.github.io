@@ -23,23 +23,62 @@
 /* TOP BAR */
 .top-bar {
   position: fixed;
-  top: 0;
-  left: 0;
+  top:0;
+  left:0;
 
-  width: 100%;
-  height: 65px;
+  width:100%;
+  height:65px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  padding:0 25px;
 
   background: rgba(20,20,20,0.75); /* 👈 stesso di index */
   backdrop-filter: blur(18px);
 
-  display: flex;
-  align-items: center;
-  padding: 0 25px;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+  box-shadow:0 2px 18px rgba(0,0,0,0.4);
 
-  z-index: 9999;
+  z-index:9999;
+}
 
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  box-shadow: 0 2px 18px rgba(0,0,0,0.4);
+.top-bar-left {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  text-decoration:none;
+  color:white;
+}
+
+.top-bar-logo {
+  height:50px; /* ⭐ IMPORTANTISSIMO → stessa grandezza index */
+  transition:transform .3s ease;
+}
+
+.top-bar-logo:hover {
+  transform:scale(1.05);
+}
+
+.top-bar-text {
+  font-family:'Cormorant Garamond', serif;
+  text-align:center;
+  line-height:1.05;
+  font-weight:700;
+  letter-spacing:1px;
+  color:white;
+}
+
+.top-bar-text .word {
+  display:block;
+  text-transform:uppercase;
+}
+
+.top-bar-text .amp {
+  display:block;
+  font-size:0.75em;
+  color:#F28C28;
 }
 
 .top-bar img {
@@ -191,27 +230,19 @@ header h1 {
   </style>
 </head>
 <body>
-  <div class="top-bar">
-  <div style="display:flex; align-items:center; gap:12px; cursor:pointer"
-       onclick="window.location.href='index.html'">
+<div class="top-bar">
+  <a href="index.html" class="top-bar-left">
 
     <img src="img/B0F190C1-ED18-45F3-B492-572A76ED7803.png"
-         style="height:42px;">
+         class="top-bar-logo">
 
-    <div style="
-        color:white;
-        font-family:'Cormorant Garamond', serif;
-        text-align:center;
-        line-height:1.05;
-        font-weight:700;
-        letter-spacing:1px;
-    ">
-      <div>SPIZZICOTECNICA</div>
-      <div style="color:#F28C28; font-size:0.75em;">&</div>
-      <div>SPI SYSTEM</div>
+    <div class="top-bar-text">
+      <span class="word">SPIZZICOTECNICA</span>
+      <span class="amp">&</span>
+      <span class="word">SPI SYSTEM</span>
     </div>
 
-  </div>
+  </a>
 </div>
 
 <div class="page-wrapper">
