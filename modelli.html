@@ -7,16 +7,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&display=swap" rel="stylesheet">
   <style>
     body {
-  font-family: 'Poppins', sans-serif;
-
+  font-family:'Poppins', sans-serif;
   background: linear-gradient(to right,#fefefe,#f0f4f8);
-
-  color: #2c3e50;
-
-  line-height: 1.7;
-
-  margin: 0;
-  padding: 0;
+  color:#2c3e50;
+  margin:0;
+  line-height:1.7;
 }
 
 /* TOP BAR */
@@ -34,7 +29,7 @@
 
   padding:0 25px;
 
-  background: rgba(20,20,20,0.75); /* 👈 stesso di index */
+  background: rgba(20,20,20,0.75);
   backdrop-filter: blur(18px);
 
   border-bottom:1px solid rgba(255,255,255,0.08);
@@ -52,20 +47,22 @@
 }
 
 .top-bar-logo {
-  height:52px; /* ⭐ ora identico a index */
+  height:50px;
+  transition: transform .3s ease;
 }
 
 .top-bar-logo:hover {
-  transform:scale(1.05);
+  transform: scale(1.05);
 }
 
 .top-bar-text {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.95em; /* ⭐ identico a index */
+  font-family:'Cormorant Garamond', serif;
+  font-size:1.05em;
   text-align:center;
   line-height:1.05;
   font-weight:700;
   letter-spacing:1px;
+  color:white;
 }
 .top-bar-text .word {
   display:block;
