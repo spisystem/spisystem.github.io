@@ -56,20 +56,26 @@
   padding-top: 100px;
 }
     .models-grid {
-  display: flex;
-  flex-direction: column;
-  align-items: center;   /* 👈 centra le card */
   width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-/* Card modelli più armoniosa quando è centrata */
 .model {
-  width: 100%;
-  max-width: 800px; /* 👈 non troppo largo su desktop */
+  text-align: center;
+}
+
+.model h2 {
+  text-align: center;
+}
+
+header {
+  text-align: center;
 }
 
 /* HEADER */
 header h1 {
+  text-align: center;
   font-size: 2.6em;
 
   text-transform: uppercase;
@@ -135,7 +141,8 @@ header h1 {
   flex-direction: column;
   align-items: center;
 }
-    .model p {
+  .model p {
+  text-align: center;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
