@@ -617,25 +617,24 @@ h2 {
   left: 0;
   right: 0;
 
-  background: rgba(11, 29, 58, 0.97);
-  backdrop-filter: blur(18px);
+  background: rgba(15,15,15,0.9);
+  backdrop-filter: blur(20px);
 
   color: white;
 
-  padding: 18px 40px;
+  padding: 20px 40px;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
 
-  gap: 18px;
+  gap: 20px;
 
   z-index: 9999;
 
-  box-shadow: 0 -5px 25px rgba(0,0,0,0.4);
+  box-shadow: 0 -6px 30px rgba(0,0,0,0.5);
 
-  transform: translateY(0);
   animation: cookieSlideUp .6s ease;
 }
 
@@ -647,39 +646,41 @@ h2 {
 
 .cookie-banner button {
   border: none;
-  padding: 10px 18px;
+  padding: 10px 22px;
   border-radius: 30px;
 
   font-weight: 600;
   cursor: pointer;
 
-  transition: all .3s ease;
-
   font-size: 0.95em;
+
+  transition: all .3s ease;
 }
 
+/* Arancione brand (coerente con il tuo sito) */
 #accept-cookies {
-  background: linear-gradient(135deg,#28a745,#5dd879);
+  background: linear-gradient(135deg,#ff7a18,#ffb347);
   color: white;
 }
 
 #reject-cookies {
-  background: linear-gradient(135deg,#dc3545,#ff6b6b);
+  background: linear-gradient(135deg,#444,#666);
   color: white;
 }
 
 #manage-preferences {
-  background: linear-gradient(135deg,#ffc107,#ffe066);
-  color: #222;
+  background: rgba(255,255,255,0.15);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.3);
 }
 
 .cookie-banner button:hover {
   transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
 }
 
 .cookie-banner a {
-  color: #ffc107;
+  color: #ffb347;
   text-decoration: underline;
 }
 
@@ -695,7 +696,7 @@ h2 {
 }
 
 /* Mobile */
-@media (max-width: 600px) {
+@media (max-width:600px) {
   .cookie-banner {
     padding: 18px 20px;
     text-align: center;
@@ -705,7 +706,7 @@ h2 {
   .cookie-buttons {
     justify-content: center;
   }
-} 
+}
 </style>
 </head>
 <body>
@@ -743,7 +744,7 @@ h2 {
 <div id="cookie-banner" class="cookie-banner">
 
   <span>
-    🍪 Questo sito utilizza cookie tecnici per migliorare la tua esperienza.
+    Questo sito utilizza cookie tecnici per migliorare la tua esperienza.
     <a href="cookie.html">Leggi la Cookie Policy</a>.
   </span>
 
