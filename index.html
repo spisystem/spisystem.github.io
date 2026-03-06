@@ -609,6 +609,103 @@ h2 {
   background: rgba(242,140,40,0.2);
   transform: rotate(90deg) scale(1.1);
 }
+   /* ===== COOKIE BANNER PREMIUM ===== */
+
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  background: rgba(11, 29, 58, 0.97);
+  backdrop-filter: blur(18px);
+
+  color: white;
+
+  padding: 18px 40px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 18px;
+
+  z-index: 9999;
+
+  box-shadow: 0 -5px 25px rgba(0,0,0,0.4);
+
+  transform: translateY(0);
+  animation: cookieSlideUp .6s ease;
+}
+
+.cookie-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.cookie-banner button {
+  border: none;
+  padding: 10px 18px;
+  border-radius: 30px;
+
+  font-weight: 600;
+  cursor: pointer;
+
+  transition: all .3s ease;
+
+  font-size: 0.95em;
+}
+
+#accept-cookies {
+  background: linear-gradient(135deg,#28a745,#5dd879);
+  color: white;
+}
+
+#reject-cookies {
+  background: linear-gradient(135deg,#dc3545,#ff6b6b);
+  color: white;
+}
+
+#manage-preferences {
+  background: linear-gradient(135deg,#ffc107,#ffe066);
+  color: #222;
+}
+
+.cookie-banner button:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+}
+
+.cookie-banner a {
+  color: #ffc107;
+  text-decoration: underline;
+}
+
+@keyframes cookieSlideUp {
+  from {
+    transform: translateY(120px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .cookie-banner {
+    padding: 18px 20px;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .cookie-buttons {
+    justify-content: center;
+  }
+} 
 </style>
 </head>
 <body>
@@ -765,9 +862,11 @@ transform:scale(1);
 opacity:1;
 }
 }
-<nav>
   
- <div id="sidebar-menu">
+</style>
+
+<nav>
+  <div id="sidebar-menu">
   <div class="close-sidebar" id="close-sidebar">✕</div>
 
   <a href="#chi-siamo">Chi Siamo</a>
