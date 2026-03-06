@@ -43,7 +43,7 @@
 }
 
 .top-bar img {
-  height: 40px;
+  height: 42px;
   cursor: pointer;
   transition: transform .3s ease;
 }
@@ -54,6 +54,18 @@
 
 .page-wrapper {
   padding-top: 100px;
+}
+    .models-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* 👈 centra le card */
+  width: 100%;
+}
+
+/* Card modelli più armoniosa quando è centrata */
+.model {
+  width: 100%;
+  max-width: 800px; /* 👈 non troppo largo su desktop */
 }
 
 /* HEADER */
@@ -117,6 +129,17 @@ header h1 {
 .model:hover img {
   transform: scale(1.05);
 }
+    .model-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+    .model p {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 .pdf-link {
   display: inline-block;
@@ -147,8 +170,23 @@ header h1 {
 </head>
 <body>
   <div class="top-bar">
-  <img src="img/B0F190C1-ED18-45F3-B492-572A76ED7803.png"
-       onclick="window.location.href='index.html'">
+  <div style="display:flex; align-items:center; gap:12px;">
+    <img src="img/B0F190C1-ED18-45F3-B492-572A76ED7803.png"
+         onclick="window.location.href='index.html'">
+
+    <div style="
+        color:white;
+        font-family:'Cormorant Garamond', serif;
+        text-align:center;
+        line-height:1.1;
+        font-weight:700;
+        letter-spacing:1px;
+    ">
+      <div>SPIZZICOTECNICA</div>
+      <div style="color:#F28C28; font-size:0.75em;">&</div>
+      <div>SPI SYSTEM</div>
+    </div>
+  </div>
 </div>
 
 <div class="page-wrapper">
