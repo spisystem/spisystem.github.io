@@ -1092,52 +1092,61 @@ closeSidebar.addEventListener('click', () => {
     });
   });
 </script>
-  <script>
+<script>
 const hero = document.querySelector('.hero');
 
-const backgrounds = [
+// Lista immagini
+const backgroundsMobile = [
   'img/sfondopr1.JPG',
   'img/sfondopr2.JPG',
   'img/sfondopr3.JPG',
   'img/sfondopr4.JPG',
   'img/sfondopr5.JPG'
+];
+
+const backgroundsDesktop = [
+  'img/sfondod1.JPG',
+  'img/sfondod2.JPG',
+  'img/sfondod3.JPG',
+  'img/sfondod4.JPG',
+  'img/sfondod5.JPG'
 ];
 
 let bgIndex = 0;
+let slideshowInterval;
 
-// Preload + start slideshow dopo caricamento
-const loaded = backgrounds.map(src => {
-  return new Promise(resolve => {
-    const img = new Image();
-    img.onload = resolve;
-    img.src = src;
-  });
+// Funzione per scegliere la lista giusta
+function getBackgrounds() {
+  return window.innerWidth >= 768 ? backgroundsDesktop : backgroundsMobile;
+}
+
+// Preload immagini
+[...backgroundsMobile, ...backgroundsDesktop].forEach(src => {
+  const img = new Image();
+  img.src = src;
 });
 
-Promise.all(loaded).then(() => {
-
+// Imposta sfondo iniziale e slideshow
+function startSlideshow() {
+  const backgrounds = getBackgrounds();
   hero.style.backgroundImage = `url(${backgrounds[0]})`;
+  bgIndex = 0;
 
-  setInterval(() => {
+  // Se esiste un intervallo precedente, lo cancella
+  if (slideshowInterval) clearInterval(slideshowInterval);
+
+  slideshowInterval = setInterval(() => {
     bgIndex = (bgIndex + 1) % backgrounds.length;
     hero.style.backgroundImage = `url(${backgrounds[bgIndex]})`;
   }, 2500);
+}
 
-});
-</script>
-  
-<script>
-const preloadImages = [
-  'img/sfondopr1.JPG',
-  'img/sfondopr2.JPG',
-  'img/sfondopr3.JPG',
-  'img/sfondopr4.JPG',
-  'img/sfondopr5.JPG'
-];
+// Avvia slideshow
+startSlideshow();
 
-preloadImages.forEach(src => {
-  const img = new Image();
-  img.src = src;
+// Aggiorna sfondo se ridimensioni la finestra
+window.addEventListener('resize', () => {
+  startSlideshow();
 });
 </script>
 </body>
