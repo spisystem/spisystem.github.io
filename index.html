@@ -439,12 +439,24 @@ h2 {
     margin: 4px 0;
   }
 }
-@media (min-width: 768px) {
-  .hero-btn {
-    margin-top: 40px;
-  }
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  color: white;
+  background-size: cover; /* default mobile */
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-image 1s ease-in-out;
 }
 
+/* Desktop */
+@media (min-width: 768px) {
+  .hero {
+    background-size: contain; /* non taglia l'immagine */
+    background-position: center top; /* centra e allinea in alto */
+  }
+}
 .hero-logo {
   width: 50px;
 }
@@ -481,10 +493,9 @@ h2 {
 }
 
 
- .hero {
+   .hero {
   padding-top: 10px;
-  background-color: #141414; /* copre eventuali bordi bianchi */
-}
+} 
 .top-header {
   position: fixed;
   top: 0;
@@ -579,7 +590,6 @@ h2 {
   transform: translateY(-3px) scale(1.05);
   box-shadow: 0 10px 25px rgba(255,122,24,0.5);
 }
-
     .close-sidebar {
   position: absolute;
   top: 18px;
@@ -1088,7 +1098,42 @@ closeSidebar.addEventListener('click', () => {
     });
   });
 </script>
-<script>
+  <script>
+const hero = document.querySelector('.hero');
+
+const backgrounds = [
+  'img/sfondopr1.JPG',
+  'img/sfondopr2.JPG',
+  'img/sfondopr3.JPG',
+  'img/sfondopr4.JPG',
+  'img/sfondopr5.JPG'
+];
+
+let bgIndex = 0;
+
+// Preload + start slideshow dopo caricamento
+const loaded = backgrounds.map(src => {
+  return new Promise(resolve => {
+    const img = new Image();
+    img.onload = resolve;
+    img.src = src;
+  });
+});
+
+Promise.all(loaded).then(() => {
+
+  hero.style.backgroundImage = `url(${backgrounds[0]})`;
+
+  setInterval(() => {
+    bgIndex = (bgIndex + 1) % backgrounds.length;
+    hero.style.backgroundImage = `url(${backgrounds[bgIndex]})`;
+  }, 2500);
+
+});
+</script>
+  
+
+quindi solo questo? <script>
 const hero = document.querySelector('.hero');
 
 // Lista immagini
@@ -1145,5 +1190,6 @@ window.addEventListener('resize', () => {
   startSlideshow();
 });
 </script>
+
 </body>
 </html>
