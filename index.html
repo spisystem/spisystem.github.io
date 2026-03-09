@@ -1098,41 +1098,6 @@ closeSidebar.addEventListener('click', () => {
     });
   });
 </script>
-  <script>
-const hero = document.querySelector('.hero');
-
-const backgrounds = [
-  'img/sfondopr1.JPG',
-  'img/sfondopr2.JPG',
-  'img/sfondopr3.JPG',
-  'img/sfondopr4.JPG',
-  'img/sfondopr5.JPG'
-];
-
-let bgIndex = 0;
-
-// Preload + start slideshow dopo caricamento
-const loaded = backgrounds.map(src => {
-  return new Promise(resolve => {
-    const img = new Image();
-    img.onload = resolve;
-    img.src = src;
-  });
-});
-
-Promise.all(loaded).then(() => {
-
-  hero.style.backgroundImage = `url(${backgrounds[0]})`;
-
-  setInterval(() => {
-    bgIndex = (bgIndex + 1) % backgrounds.length;
-    hero.style.backgroundImage = `url(${backgrounds[bgIndex]})`;
-  }, 2500);
-
-});
-</script>
-  
-
 <script>
 const hero = document.querySelector('.hero');
 
