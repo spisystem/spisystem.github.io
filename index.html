@@ -757,35 +757,39 @@ h2 {
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
-#contatti .contact-grid {
-  display: flex;
-  justify-content: center;
+/* Griglia centrata per tutti gli elementi */
+.contact-grid-centered {
+  display: flex !important;
+  justify-content: center !important; /* centra tutto */
   align-items: flex-start;
   flex-wrap: wrap;
   gap: 40px;
   text-align: center;
 }
 
-#contatti .contact-item {
+/* Contenitore singolo */
+.contact-item {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center !important; /* forza centratura */
   max-width: 200px;
 }
 
-#contatti .contact-item svg {
+/* Icone sopra il testo */
+.contact-item svg {
   margin-bottom: 12px;
 }
 
-#contatti .contact-type {
+/* Titolo e info */
+.contact-type {
   font-weight: 600;
   margin-bottom: 6px;
   font-size: 1em;
   color: #000000;
 }
 
-#contatti .contact-info a,
-#contatti .contact-info {
+.contact-info a,
+.contact-info {
   color: #0b1d3a;
   text-decoration: none;
   font-weight: 500;
@@ -793,18 +797,30 @@ h2 {
   display: block;
 }
 
-#contatti .contact-info a:hover {
-  text-decoration: underline;
+.contact-info a:hover {
   color: #ff6f3c;
+  text-decoration: underline;
 }
 
-/* Divider verticale elegante */
-#contatti .divider {
+/* Divider verticale elegante tra le colonne */
+.contact-grid-centered .divider {
   width: 1px;
   background-color: #000000;
   opacity: 0.2;
   margin: 0 20px;
 }
+
+/* Responsive: su mobile linee orizzontali */
+@media (max-width: 768px) {
+  .contact-grid-centered {
+    flex-direction: column;
+    align-items: center;
+  }
+  .contact-grid-centered .divider {
+    width: 60%;
+    height: 1px;
+    margin: 20px 0;
+  }
 }
 </style>
 </head>
@@ -1056,7 +1072,7 @@ opacity:1;
 </section>
 <section id="contatti">
   <h2>Contattaci</h2>
-  <div class="contact-grid">
+  <div class="contact-grid contact-grid-centered">
     <!-- Telefono -->
     <div class="contact-item">
       <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="#000000" viewBox="0 0 24 24">
@@ -1066,7 +1082,6 @@ opacity:1;
       <div class="contact-info"><a href="tel:+393382247948">338 224 7948</a></div>
     </div>
 
-    <!-- Divider -->
     <div class="divider"></div>
 
     <!-- Email -->
@@ -1081,7 +1096,6 @@ opacity:1;
       </div>
     </div>
 
-    <!-- Divider -->
     <div class="divider"></div>
 
     <!-- Posizione -->
@@ -1097,7 +1111,6 @@ opacity:1;
       </div>
     </div>
 
-    <!-- Divider -->
     <div class="divider"></div>
 
     <!-- Orari di apertura -->
@@ -1113,6 +1126,7 @@ opacity:1;
     </div>
   </div>
 </section>
+
   <section id="preventivo">
     <h2>Richiedi un Preventivo</h2>
 <form action="https://formsubmit.co/spisystem20@gmail.com" method="POST">
