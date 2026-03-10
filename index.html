@@ -757,6 +757,63 @@ h2 {
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
+ .contact-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  margin-top: 25px;
+  justify-content: center;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #f5f5f5;
+  padding: 10px 18px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.contact-item .icon {
+  width: 45px;
+  height: 45px;
+  background: #0b0b0b; /* cerchio nero */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.contact-item .icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.contact-item a {
+  font-weight: 600;
+  color: #0b0b0b; /* testo nero */
+  text-decoration: none;
+  font-size: 1.05em;
+  transition: color 0.3s ease;
+}
+
+.contact-item a:hover {
+  color: #F28C28; /* arancio brand */
+}
+
+@media (max-width: 600px) {
+  .contact-grid {
+    flex-direction: column;
+    align-items: center;
+  } 
 }
 </style>
 </head>
@@ -1004,14 +1061,47 @@ opacity:1;
           <div class="product-box"><div style="display: flex; justify-content: center; gap: 10px;"><img src="prezzatrici.jpeg" style="width: 48%; max-width: 120px;"><img src="verificatori.jpeg" style="width: 48%; max-width: 120px;"></div><div>PREZZATRICI & VERIFICABANCONOTE</div></div>
       <div class="product-box"><img src="rotoli.jpeg"><div>ROTOLI TERMICI</div></div>
     </div>
-  </section>
-  <section id="contatti">
-    <h2>Contattaci</h2>
-    <p>📧 <a href="mailto:spisystem@libero.it">spisystem@libero.it</a></p>
-    <p>📧 <a href="mailto:spizzicotecnica@gmail.com">spizzicotecnica@gmail.com</a></p>
-    <p>📞 <a href="tel:+393382247948">338 224 7948</a></p>
-    <p>📍 <a href="https://www.google.com/maps?q=Via+Monterosa+22,+Palo+del+Colle+(BA)" target="_blank">Via Monterosa 22, Palo del Colle (BA)</a></p>
-  </section>
+ <section id="contatti">
+  <h2>Contattaci</h2>
+  <div class="contact-grid">
+    <!-- Mail 1 -->
+    <div class="contact-item">
+      <div class="icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" viewBox="0 0 24 24">
+          <path d="M12 13.065L0 6V18a2 2 0 002 2h20a2 2 0 002-2V6l-12 7.065zM12 11L0 4V2a2 2 0 012-2h20a2 2 0 012 2v2l-12 7z"/>
+        </svg>
+      </div>
+      <a href="mailto:spisystem@libero.it">spisystem@libero.it</a>
+    </div>
+    <!-- Mail 2 -->
+    <div class="contact-item">
+      <div class="icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" viewBox="0 0 24 24">
+          <path d="M12 13.065L0 6V18a2 2 0 002 2h20a2 2 0 002-2V6l-12 7.065zM12 11L0 4V2a2 2 0 012-2h20a2 2 0 012 2v2l-12 7z"/>
+        </svg>
+      </div>
+      <a href="mailto:spizzicotecnica@gmail.com">spizzicotecnica@gmail.com</a>
+    </div>
+    <!-- Telefono -->
+    <div class="contact-item">
+      <div class="icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" viewBox="0 0 24 24">
+          <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21c1.2.48 2.52.74 3.88.74a1 1 0 011 1v3.5a1 1 0 01-1 1C10.07 21.5 2.5 13.93 2.5 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.36.26 2.68.74 3.88a1 1 0 01-.21 1.11l-2.2 2.2z"/>
+        </svg>
+      </div>
+      <a href="tel:+393382247948">338 224 7948</a>
+    </div>
+    <!-- Indirizzo -->
+    <div class="contact-item">
+      <div class="icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" viewBox="0 0 24 24">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/>
+        </svg>
+      </div>
+      <a href="https://www.google.com/maps?q=Via+Monterosa+22,+Palo+del+Colle+(BA)" target="_blank">Via Monterosa 22, Palo del Colle (BA)</a>
+    </div>
+  </div>
+ </section>
   <section id="preventivo">
     <h2>Richiedi un Preventivo</h2>
 <form action="https://formsubmit.co/spisystem20@gmail.com" method="POST">
