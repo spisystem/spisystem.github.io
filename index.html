@@ -757,24 +757,24 @@ h2 {
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
-  /* Contatti centrati */
 #contatti .contact-grid {
-  display: flex !important;       /* forza flex */
-  justify-content: center !important; /* centra orizzontalmente */
-  flex-wrap: wrap !important;     /* permette più righe su mobile */
-  gap: 60px !important;           /* spazio tra gli elementi */
-  text-align: center !important;  /* centra testo dentro ogni item */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
+  text-align: center;
 }
 
 #contatti .contact-item {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important; /* centra icona + testo verticalmente */
-  max-width: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 200px;
 }
 
 #contatti .contact-item svg {
-  margin-bottom: 12px !important;
+  margin-bottom: 12px;
 }
 
 #contatti .contact-type {
@@ -784,7 +784,7 @@ h2 {
   color: #000000;
 }
 
-#contatti .contact-info a, 
+#contatti .contact-info a,
 #contatti .contact-info {
   color: #0b1d3a;
   text-decoration: none;
@@ -798,6 +798,13 @@ h2 {
   color: #ff6f3c;
 }
 
+/* Divider verticale elegante */
+#contatti .divider {
+  width: 1px;
+  background-color: #000000;
+  opacity: 0.2;
+  margin: 0 20px;
+}
 }
 </style>
 </head>
@@ -1059,6 +1066,9 @@ opacity:1;
       <div class="contact-info"><a href="tel:+393382247948">338 224 7948</a></div>
     </div>
 
+    <!-- Divider -->
+    <div class="divider"></div>
+
     <!-- Email -->
     <div class="contact-item">
       <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="#000000" viewBox="0 0 24 24">
@@ -1070,6 +1080,9 @@ opacity:1;
         <a href="mailto:spizzicotecnica@gmail.com">spizzicotecnica@gmail.com</a>
       </div>
     </div>
+
+    <!-- Divider -->
+    <div class="divider"></div>
 
     <!-- Posizione -->
     <div class="contact-item">
@@ -1084,14 +1097,17 @@ opacity:1;
       </div>
     </div>
 
+    <!-- Divider -->
+    <div class="divider"></div>
+
     <!-- Orari di apertura -->
-    <div class="contact-item"><!-- Orologio -->
-<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="#000000" viewBox="0 0 24 24">
-  <path d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11 11-4.925 11-11S18.075 1 12 1zm0 20c-4.962 0-9-4.038-9-9s4.038-9 9-9 9 4.038 9 9-4.038 9-9 9zm.5-9.25V6h-1v6.25l5.25 3.15.5-.85-4.75-2.85z"/>
-</svg>
+    <div class="contact-item">
+      <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="#000000" viewBox="0 0 24 24">
+        <path d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11 11-4.925 11-11S18.075 1 12 1zm0 20c-4.962 0-9-4.038-9-9s4.038-9 9-9 9 4.038 9 9-4.038 9-9 9zm.5-9.25V6h-1v6.25l5.25 3.15.5-.85-4.75-2.85z"/>
+      </svg>
       <div class="contact-type">Orari di apertura:</div>
       <div class="contact-info">
-        Lun-Ven: 08:00 - 13:00, 16:00 - 19:30<br>
+        Lun-Ven: 09:00 - 19:30<br>
         Sab: 09:00 - 12:00
       </div>
     </div>
