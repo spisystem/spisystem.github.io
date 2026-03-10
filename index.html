@@ -757,6 +757,46 @@ h2 {
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
+  /* Contatti centrati */
+#contatti .contact-grid {
+  display: flex !important;       /* forza flex */
+  justify-content: center !important; /* centra orizzontalmente */
+  flex-wrap: wrap !important;     /* permette più righe su mobile */
+  gap: 60px !important;           /* spazio tra gli elementi */
+  text-align: center !important;  /* centra testo dentro ogni item */
+}
+
+#contatti .contact-item {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important; /* centra icona + testo verticalmente */
+  max-width: 220px;
+}
+
+#contatti .contact-item svg {
+  margin-bottom: 12px !important;
+}
+
+#contatti .contact-type {
+  font-weight: 600;
+  margin-bottom: 6px;
+  font-size: 1em;
+  color: #000000;
+}
+
+#contatti .contact-info a, 
+#contatti .contact-info {
+  color: #0b1d3a;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95em;
+  display: block;
+}
+
+#contatti .contact-info a:hover {
+  text-decoration: underline;
+  color: #ff6f3c;
+}
 
 }
 </style>
@@ -915,45 +955,7 @@ to{
 transform:scale(1);
 opacity:1;
 }
-.contact-grid {
-  display: flex;
-  justify-content: center; /* centra tutta la griglia */
-  gap: 60px;
-  flex-wrap: wrap;
-  margin-top: 30px;
-}
 
-.contact-item {
-  text-align: center; /* centra testo e icone */
-  max-width: 220px;
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* centra verticalmente icona e testo */
-}
-
-.contact-item svg {
-  margin-bottom: 12px;
-}
-
-.contact-type {
-  font-weight: 600;
-  margin-bottom: 6px;
-  font-size: 1em;
-  color: #000000; /* ora testo arancione rimane nero per coerenza */
-}
-
-.contact-info a, .contact-info {
-  color: #0b1d3a;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 0.95em;
-  display: block;
-}
-
-.contact-info a:hover {
-  text-decoration: underline;
-  color: #ff6f3c;
-}
 }
   
 </style>
