@@ -10,6 +10,18 @@
 <link rel="icon" type="image/x-icon" href="img/IMG_0910.ico"> <!-- fallback per vecchi browser -->
 <link rel="apple-touch-icon" sizes="180x180" href="img/IMG_0908.png"> <!-- per dispositivi Apple -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- AOS CSS -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+<!-- AOS JS (alla fine del body, prima di </body>) -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1000, // durata animazioni in ms
+    easing: 'ease-out-cubic',
+    once: true // anima solo la prima volta che entra in viewport
+  });
+</script>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Poppins:wght@400;600&family=Roboto+Slab:wght@600&display=swap" rel="stylesheet">
   <style>
   * { box-sizing: border-box; }
@@ -981,17 +993,17 @@ opacity:1;
   <a href="#preventivo">Preventivo</a>
 </div>
 </nav>
-<section id="chi-siamo">
+<section id="chi-siamo" data-aos="fade-up">
   <h2>Chi Siamo</h2>
   <p>
     Siamo un’azienda multimarche con una lunga esperienza nel settore, specializzata nella fornitura e assistenza di soluzioni professionali per il punto vendita. Offriamo servizi completi e personalizzati, garantendo qualità, innovazione e affidabilità.
   </p>
 
-  <div class="row-box">
+   <div class="row-box" data-aos="fade-up" data-aos-delay="200">
     <img src="IMG_0711.jpeg" alt="Verifiche registratori">
     <p>Verifiche periodiche registratori di cassa</p>
   </div>
-  <div class="row-box">
+   <div class="row-box" data-aos="fade-up" data-aos-delay="200">
     <img src="verifiche-bilance.jpeg" alt="Verifiche bilance">
     <p>Verifiche periodiche bilance</p>
   </div>
