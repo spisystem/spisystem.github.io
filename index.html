@@ -712,46 +712,48 @@ h2 {
   .cookie-buttons {
     justify-content: center;
   }
-.highlights-numbers {
+.highlights {
   display: flex;
+  gap: 40px;
   justify-content: center;
-  gap: 60px;
-  margin-top: 40px;
+  margin-top: 30px;
   flex-wrap: wrap;
 }
-
 .highlight-number {
   text-align: center;
 }
-
 .highlight-number .circle {
   width: 120px;
   height: 120px;
-  background: linear-gradient(135deg, #ff7a18 0%, #ffb347 100%);
   border-radius: 50%;
+  background: linear-gradient(135deg, #ff7a18, #ffb347);
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   margin: 0 auto 12px auto;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  position: relative;
+  overflow: hidden;
+  transform: scale(0.8);
+  animation: popIn 0.6s forwards;
 }
-
-.highlight-number .circle:hover {
-  transform: scale(1.05);
-  box-shadow: 0 12px 28px rgba(0,0,0,0.25);
-}
-
 .highlight-number .number {
-  font-size: 2.5em;
-  font-weight: 800;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2em;
+  font-weight: 700;
   color: white;
 }
-
 .highlight-number .label {
   font-size: 1.1em;
   font-weight: 600;
   color: #0b1d3a;
+}
+
+/* Animazione ingresso */
+@keyframes popIn {
+  0% { transform: scale(0); opacity: 0; }
+  60% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); }
 }
 }
 </style>
@@ -926,32 +928,32 @@ opacity:1;
 </nav>
 <section id="chi-siamo">
   <h2>Chi Siamo</h2>
-  <p>Siamo un’azienda multimarche specializzata nella fornitura e assistenza di soluzioni professionali per il punto vendita. Garantiamo qualità, affidabilità e innovazione per ogni cliente.</p>
+  <p>
+    Siamo un’azienda multimarche con una lunga esperienza nel settore, specializzata nella fornitura e assistenza di soluzioni professionali per il punto vendita. Offriamo servizi completi e personalizzati, garantendo qualità, innovazione e affidabilità.
+  </p>
 
-  <div class="row-boxes">
-    <div class="row-box">
-      <img src="IMG_0711.jpeg" alt="Verifiche registratori">
-      <p>Verifiche periodiche registratori di cassa</p>
-    </div>
-    <div class="row-box">
-      <img src="verifiche-bilance.jpeg" alt="Verifiche bilance">
-      <p>Verifiche periodiche bilance</p>
-    </div>
+  <div class="row-box">
+    <img src="IMG_0711.jpeg" alt="Verifiche registratori">
+    <p>Verifiche periodiche registratori di cassa</p>
+  </div>
+  <div class="row-box">
+    <img src="verifiche-bilance.jpeg" alt="Verifiche bilance">
+    <p>Verifiche periodiche bilance</p>
   </div>
 
-  <!-- Numeri chiave sotto -->
-  <div class="highlights-numbers">
+  <!-- NUOVA SEZIONE STATISTICHE -->
+  <div class="highlights">
     <div class="highlight-number">
       <div class="circle">
-        <div class="number">35</div>
+        <div class="number" data-target="35">0</div>
       </div>
       <div class="label">Anni di esperienza</div>
     </div>
     <div class="highlight-number">
       <div class="circle">
-        <div class="number">500+</div>
+        <div class="number" data-target="500">0</div>
       </div>
-      <div class="label">Macchine installate</div>
+      <div class="label">Soluzioni installate</div>
     </div>
   </div>
 </section>
