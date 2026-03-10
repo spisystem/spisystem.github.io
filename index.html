@@ -727,25 +727,33 @@ h2 {
 .highlight-number .circle {
   width: 100px;
   height: 100px;
-  border-radius: 50%; /* arrotondato */
-  background: linear-gradient(145deg, #1a1a1a, #0b0b0b); /* effetto moderno soft */
+  border-radius: 50%; /* cerchio perfettamente arrotondato */
+  background: linear-gradient(145deg, #1a1a1a, #0b0b0b); /* base scura */
+  box-shadow: 
+    inset -4px -4px 10px rgba(255,255,255,0.1), /* luci interne */
+    inset 4px 4px 10px rgba(0,0,0,0.7), /* ombre interne */
+    0 8px 20px rgba(0,0,0,0.35); /* ombra esterna elegante */
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0 auto 15px auto;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.35); /* elegante e leggero */
+  transition: transform 0.3s ease; /* leggero effetto hover */
+}
+
+.highlight-number .circle:hover {
+  transform: scale(1.05); /* effetto di interattività moderno */
 }
 
 .highlight-number .number {
   font-size: 2.2em;
   font-weight: 700;
-  color: #F28C28; /* colore brand per risalto */
+  color: #ffffff; /* numero bianco dentro il cerchio */
 }
 
 .highlight-number .label {
   font-size: 1em;
   font-weight: 600;
-  color: #ffffff; /* leggibile sul nero */
+  color: #0b0b0b; /* testo nero sotto il cerchio */
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
