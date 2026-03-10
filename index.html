@@ -915,6 +915,43 @@ to{
 transform:scale(1);
 opacity:1;
 }
+ .contact-grid {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-top: 20px;
+}
+
+.contact-item {
+  text-align: center;
+  max-width: 220px;
+}
+
+.contact-item img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 12px;
+}
+
+.contact-type {
+  font-weight: 600;
+  margin-bottom: 6px;
+  font-size: 1em;
+  color: #F28C28; /* colore arancione brand */
+}
+
+.contact-info a {
+  color: #0b1d3a;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95em;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+  color: #ff6f3c;
+} 
 }
   
 </style>
@@ -1006,13 +1043,35 @@ opacity:1;
       <div class="product-box"><img src="rotoli.jpeg"><div>ROTOLI TERMICI</div></div>
     </div>
 </section>
-  <section id="contatti">
-    <h2>Contattaci</h2>
-    <p>📧 <a href="mailto:spisystem@libero.it">spisystem@libero.it</a></p>
-    <p>📧 <a href="mailto:spizzicotecnica@gmail.com">spizzicotecnica@gmail.com</a></p>
-    <p>📞 <a href="tel:+393382247948">338 224 7948</a></p>
-    <p>📍 <a href="https://www.google.com/maps?q=Via+Monterosa+22,+Palo+del+Colle+(BA)" target="_blank">Via Monterosa 22, Palo del Colle (BA)</a></p>
-  </section>
+<section id="contatti">
+  <h2>Contattaci</h2>
+  <div class="contact-grid">
+    <div class="contact-item">
+      <img src="img/phone-icon.png" alt="Telefono">
+      <div class="contact-type">Telefono:</div>
+      <div class="contact-info"><a href="tel:+393382247948">338 224 7948</a></div>
+    </div>
+
+    <div class="contact-item">
+      <img src="img/email-icon.png" alt="Email">
+      <div class="contact-type">Email:</div>
+      <div class="contact-info">
+        <a href="mailto:spisystem@libero.it">spisystem@libero.it</a><br>
+        <a href="mailto:spizzicotecnica@gmail.com">spizzicotecnica@gmail.com</a>
+      </div>
+    </div>
+
+    <div class="contact-item">
+      <img src="img/location-icon.png" alt="Posizione">
+      <div class="contact-type">Dove ci trovi:</div>
+      <div class="contact-info">
+        <a href="https://www.google.com/maps?q=Via+Monterosa+22,+Palo+del+Colle+(BA)" target="_blank">
+          Via Monterosa 22, Palo del Colle (BA)
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
   <section id="preventivo">
     <h2>Richiedi un Preventivo</h2>
 <form action="https://formsubmit.co/spisystem20@gmail.com" method="POST">
