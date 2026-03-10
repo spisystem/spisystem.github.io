@@ -715,8 +715,8 @@ h2 {
 .highlights {
   display: flex;
   justify-content: center;
-  gap: 50px;
-  margin-top: 30px;
+  gap: 60px;
+  margin-top: 40px;
   flex-wrap: wrap;
 }
 
@@ -725,35 +725,36 @@ h2 {
 }
 
 .highlight-number .circle {
-  width: 130px;
-  height: 130px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
-  background-color: #0b0b0b; /* nero elegante */
+  background-color: #0b0b0b; /* cerchio nero */
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 auto 15px auto;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.highlight-number .circle:hover {
-  transform: translateY(-5px) scale(1.05);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+  margin: 0 auto 20px auto;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  animation: spin 6s linear infinite; /* rotazione continua */
 }
 
 .highlight-number .number {
-  font-size: 2.5em;
-  font-weight: 700;
+  font-size: 3em;
+  font-weight: 800;
   color: #ffffff;
 }
 
 .highlight-number .label {
-  font-size: 1em;
+  font-size: 1.05em;
   font-weight: 600;
-  color: #ffffff; /* bianco su nero per uniformità */
+  color: #F28C28; /* arancio del brand */
   text-transform: uppercase;
   letter-spacing: 0.5px;
+}
+
+/* Animazione rotazione */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 }
 </style>
@@ -954,7 +955,7 @@ opacity:1;
     <div class="circle">
       <div class="number">500+</div>
     </div>
-    <div class="label">Soluzioni installate</div>
+    <div class="label">Soluzioni professionali installate</div>
   </div>
 </div>
 </section>
