@@ -715,8 +715,8 @@ h2 {
 .highlights-numbers {
   display: flex;
   justify-content: center;
-  gap: 50px;
-  margin: 30px 0;
+  gap: 60px;
+  margin-top: 40px;
   flex-wrap: wrap;
 }
 
@@ -724,17 +724,34 @@ h2 {
   text-align: center;
 }
 
+.highlight-number .circle {
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(135deg, #ff7a18 0%, #ffb347 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px auto;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.highlight-number .circle:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.25);
+}
+
 .highlight-number .number {
-  font-size: 3em;
+  font-size: 2.5em;
   font-weight: 800;
-  color: #F28C28; /* colore brand */
-  margin-bottom: 8px;
+  color: white;
 }
 
 .highlight-number .label {
   font-size: 1.1em;
-  color: #0b1d3a;
   font-weight: 600;
+  color: #0b1d3a;
 }
 }
 </style>
@@ -907,20 +924,9 @@ opacity:1;
   <a href="#preventivo">Preventivo</a>
 </div>
 </nav>
- <section id="chi-siamo">
+<section id="chi-siamo">
   <h2>Chi Siamo</h2>
   <p>Siamo un’azienda multimarche specializzata nella fornitura e assistenza di soluzioni professionali per il punto vendita. Garantiamo qualità, affidabilità e innovazione per ogni cliente.</p>
-
-  <div class="highlights-numbers">
-    <div class="highlight-number">
-      <div class="number">35</div>
-      <div class="label">Anni di esperienza</div>
-    </div>
-    <div class="highlight-number">
-      <div class="number">500+</div>
-      <div class="label">Macchine installate</div>
-    </div>
-  </div>
 
   <div class="row-boxes">
     <div class="row-box">
@@ -930,6 +936,22 @@ opacity:1;
     <div class="row-box">
       <img src="verifiche-bilance.jpeg" alt="Verifiche bilance">
       <p>Verifiche periodiche bilance</p>
+    </div>
+  </div>
+
+  <!-- Numeri chiave sotto -->
+  <div class="highlights-numbers">
+    <div class="highlight-number">
+      <div class="circle">
+        <div class="number">35</div>
+      </div>
+      <div class="label">Anni di esperienza</div>
+    </div>
+    <div class="highlight-number">
+      <div class="circle">
+        <div class="number">500+</div>
+      </div>
+      <div class="label">Macchine installate</div>
     </div>
   </div>
 </section>
