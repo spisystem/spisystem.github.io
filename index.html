@@ -712,6 +712,39 @@ h2 {
   .cookie-buttons {
     justify-content: center;
   }
+  .highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 25px;
+  justify-content: center;
+}
+
+.highlight {
+  flex: 1 1 200px;
+  background: rgba(242, 140, 40, 0.1);
+  backdrop-filter: blur(6px);
+  border-radius: 12px;
+  text-align: center;
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.highlight i {
+  font-size: 2em;
+  color: #F28C28;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+
+.highlight:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.highlight:hover i {
+  transform: scale(1.2);
+}
 }
 </style>
 </head>
@@ -884,16 +917,34 @@ opacity:1;
 </div>
 </nav>
   <section id="chi-siamo">
-    <h2>Chi Siamo</h2>
-    <p>Siamo un’azienda multimarche specializzata nella fornitura e assistenza di soluzioni professionali per il punto vendita...</p>
- <div class="row-box">
-  <img src="IMG_0711.jpeg" alt="Verifiche registratori">
-  <p>Verifiche periodiche registratori di cassa</p>
-</div>
-<div class="row-box">
-  <img src="verifiche-bilance.jpeg" alt="Verifiche bilance">
-  <p>Verifiche periodiche bilance</p>
-</div>
+  <h2>Chi Siamo</h2>
+  <p>Siamo un’azienda multimarche specializzata nella fornitura e assistenza di soluzioni professionali per il punto vendita, con oltre <strong>35 anni di esperienza</strong> nel settore. Abbiamo installato più di <strong>500 macchine</strong> in tutta Italia, garantendo qualità, affidabilità e innovazione per ogni cliente.</p>
+
+  <div class="row-boxes">
+    <div class="row-box">
+      <img src="IMG_0711.jpeg" alt="Verifiche registratori">
+      <p>Verifiche periodiche registratori di cassa</p>
+    </div>
+    <div class="row-box">
+      <img src="verifiche-bilance.jpeg" alt="Verifiche bilance">
+      <p>Verifiche periodiche bilance</p>
+    </div>
+  </div>
+
+  <div class="highlights">
+    <div class="highlight">
+      <i class="fas fa-cogs"></i>
+      <p>Soluzioni personalizzate per ogni punto vendita</p>
+    </div>
+    <div class="highlight">
+      <i class="fas fa-award"></i>
+      <p>Assistenza professionale e certificata</p>
+    </div>
+    <div class="highlight">
+      <i class="fas fa-rocket"></i>
+      <p>Tecnologie all’avanguardia sempre aggiornate</p>
+    </div>
+  </div>
 </section>
   <section id="prodotti">
     <h2>Prodotti</h2>
