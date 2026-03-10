@@ -757,40 +757,55 @@ h2 {
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
-/* Griglia centrata per tutti gli elementi */
-.contact-grid-centered {
-  display: flex !important;
-  justify-content: center !important; /* centra tutto */
-  align-items: flex-start;
+}
+</style>
+ <style>
+/* ... tutto il tuo CSS precedente ... */
+
+/* ===== CONTATTI CENTRATI E LINEA DIVISORIA ===== */
+#contatti .contact-grid {
+  display: flex;
+  justify-content: center;
   flex-wrap: wrap;
-  gap: 40px;
+  gap: 60px;
   text-align: center;
+  border-top: 1px solid #000; /* linea orizzontale sopra */
+  padding-top: 30px;
 }
 
-/* Contenitore singolo */
-.contact-item {
+#contatti .contact-item {
   display: flex;
   flex-direction: column;
-  align-items: center !important; /* forza centratura */
-  max-width: 200px;
+  align-items: center;
+  max-width: 220px;
+  position: relative;
+  padding: 20px 0;
 }
 
-/* Icone arancioni */
-.contact-item svg {
+#contatti .contact-item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: -30px;
+  top: 10%;
+  height: 80%;
+  width: 2px;
+  background-color: #000; /* linea verticale elegante */
+}
+
+#contatti .contact-item svg {
   margin-bottom: 12px;
-  fill: #F28C28; /* arancione brand */
+  fill: #F28C28; /* icone arancioni */
 }
 
-/* Titolo e info */
-.contact-type {
+#contatti .contact-type {
   font-weight: 600;
   margin-bottom: 6px;
   font-size: 1em;
   color: #000000;
 }
 
-.contact-info a,
-.contact-info {
+#contatti .contact-info a,
+#contatti .contact-info {
   color: #0b1d3a;
   text-decoration: none;
   font-weight: 500;
@@ -798,32 +813,11 @@ h2 {
   display: block;
 }
 
-.contact-info a:hover {
-  color: #ff6f3c;
+#contatti .contact-info a:hover {
   text-decoration: underline;
+  color: #ff6f3c;
 }
-
-/* Divider verticale elegante tra le colonne */
-.contact-grid-centered .divider {
-  width: 1px;
-  background-color: #000000;
-  opacity: 0.2;
-  margin: 0 20px;
-}
-
-/* Responsive: su mobile linee orizzontali */
-@media (max-width: 768px) {
-  .contact-grid-centered {
-    flex-direction: column;
-    align-items: center;
-  }
-  .contact-grid-centered .divider {
-    width: 60%;
-    height: 1px;
-    margin: 20px 0;
-  }
-}
-</style>
+</style> 
 </head>
 <body>
 <div id="top"></div>
