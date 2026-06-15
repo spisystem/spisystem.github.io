@@ -15,21 +15,7 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Poppins:wght@400;600&family=Roboto+Slab:wght@600&display=swap" rel="stylesheet">
   <style>
-    * { box-sizing: border-box; }
-    
-
-:root {
-
-  --primary: #F28C28;
-
-  --dark: #0f0f0f;
-
-  --light: #f5f7fa;
-
-  --text: #111;
-
-}
-
+* { box-sizing: border-box; }
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
@@ -83,19 +69,34 @@ section {
   border-left: 6px solid rgba(15,15,15,0.85);
   box-shadow: 0 4px 18px rgba(0,0,0,0.08);
 }
-
+h2 {
+  color: #F28C28;
+  font-size: 2em;
+  margin-bottom: 20px;
+  position: relative;
+  display: inline-block;
+}
+h2::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background-color: #F28C28;
+  bottom: -6px;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+h2:hover::after {
+  transform: scaleX(1);
+}
 p, li {
   font-size: 1em;
   line-height: 1.6;
 }
 ul {
   padding-left: 20px;
-}
-   h2 {
-  color: #F28C28;
-  font-size: 2em;
-  font-weight: 700;
-  margin-bottom: 20px;
 }
 .product-grid {
   display: grid;
@@ -245,7 +246,7 @@ button[type="submit"]:hover {
     display: inline-block;
     margin-top: 14px;
     padding: 10px 28px;
-    background: linear-gradient(135deg, #   #F28C28 0%,  #F28C28 100%);
+    background: linear-gradient(135deg, #ff7a18 0%, #ffb347 100%);
     color: white;
     font-weight: 700;
     border-radius: 50px;
@@ -282,6 +283,12 @@ button[type="submit"]:hover {
   border-left: 5px solid #F28C28;
 }
 
+/* Tipografia più ariosa */
+body {
+  line-height: 1.7;
+  color: #2c3e50; /* blu-grigio più leggibile */
+}
+
 /* Titoli */
 h1, h2 {
   letter-spacing: 1px;
@@ -291,27 +298,23 @@ h2 {
   color: #ff6f3c; /* arancione più acceso */
 }
 
+/* Product Box con effetto glass */
 .product-box {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  height: 100%;
-  background: #fff;
-  border-radius: 14px;
-  padding: 22px;
-  text-align: center;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .product-box:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+  transform: translateY(-6px) scale(1.04);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
 }
 
 /* Pulsanti più moderni */
 button[type="submit"], 
 .scopri-btn {
-  background: linear-gradient(135deg,    #F28C28 0%, #F28C28 100%);
+  background: linear-gradient(135deg, #ff6f3c 0%, #ffb347 100%);
   color: white;
   border: none;
   border-radius: 50px;
@@ -378,6 +381,11 @@ footer a:hover {
   transform: scale(1.05);
 }
 
+/* Glow sugli headings */
+h2 {
+  text-shadow: 0 2px 8px rgba(242, 140, 40, 0.3);
+}
+
 /* Card animate per la sezione "Chi siamo" */
 .row-box {
   background: #fff;
@@ -435,16 +443,12 @@ footer a:hover {
   width: 100%;
   height: 100vh;
   color: white;
-  background-size: cover;
+  background-size: cover; /* default mobile */
   background-position: center;
   background-repeat: no-repeat;
+  transition: background-image 1s ease-in-out;
 }
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.45);
-}
+
 /* Desktop */
 @media (min-width: 768px) {
   .hero {
@@ -549,28 +553,40 @@ footer a:hover {
   text-align: center;
 }
 .hero-slogan {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.5em;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4em;
+  letter-spacing: 2px;
+
+  color: #2c2c2c;
+
+  text-shadow:
+    0 2px 6px rgba(255,255,255,0.6),
+    0 4px 12px rgba(0,0,0,0.5);
+
   font-weight: 600;
-  color: white;
-  text-align: center;
-  max-width: 700px;
+  padding: 0 20px;
+
+  backdrop-filter: blur(2px);
+
+  /* 👇 Sposta verso l’alto senza rompere il layout */
+  transform: translateY(-65px);
 }
 /* Pulsante */
 .hero-btn {
   display: inline-block;
-  padding: 14px 30px;
-  background: #F28C28;
+  padding: 14px 32px;
+  background: linear-gradient(135deg, #ff7a18, #ffb347);
   color: white;
   text-decoration: none;
-  border-radius: 30px;
-  font-weight: 600;
-  transition: 0.25s ease;
+  border-radius: 50px;
+  font-weight: 700;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  transition: all 0.3s ease;
 }
 
 .hero-btn:hover {
-  transform: translateY(-2px);
-  opacity: 0.9;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(255,122,24,0.5);
 }
     .close-sidebar {
   position: absolute;
@@ -668,7 +684,7 @@ footer a:hover {
 }
 
 .cookie-banner a {
-  color:   #F28C28;
+  color: #ffb347;
   text-decoration: underline;
 }
 
@@ -741,58 +757,6 @@ footer a:hover {
   letter-spacing: 0.5px;
 }
 }
-</style>
- <style>
-#contatti {
-  text-align: center;
-  padding: 60px 20px;
-}
-
-#contatti h2 {
-  margin-bottom: 40px;
-}
-
-.contact-container {
-  max-width: 700px;
-  margin: auto;
-}
-
-.contact-item {
-  padding: 25px 0;
-  position: relative;
-}
-
-.contact-item i {
-  font-size: 32px;
-  color: #F28C28; /* arancione brand */
-  margin-bottom: 10px;
-}
-
-.contact-item p {
-  margin: 5px 0;
-  font-size: 1.1em;
-}
-
-.contact-item a {
-  color: #000;
-  text-decoration: none;
-}
-
-.contact-item a:hover {
-  text-decoration: underline;
-}
-
-/* linea elegante divisoria */
-.contact-item:not(:last-child)::after {
-  content: "";
-  display: block;
-  width: 60%;
-  height: 1px;
-  background: linear-gradient(to right, transparent, #000, transparent);
-  margin: 25px auto 0 auto;
-}
-
-</style> 
 </style>
  <style>
 #contatti {
@@ -934,7 +898,7 @@ footer a:hover {
 
 <h3 style="
   margin:0;
-  color:#F28C28;
+  color:#ff6f3c;
   text-align:center;
 ">Gestisci preferenze cookie</h3>
 
