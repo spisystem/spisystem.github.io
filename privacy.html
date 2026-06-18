@@ -3,81 +3,415 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Privacy Policy - Spizzicotecnica & SPI System</title>
+  <title>Privacy Policy – Spizzicotecnica & SPI System</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange:    #F07020;
+      --orange-lt: #FF9448;
+      --orange-glow: rgba(240,112,32,0.25);
+      --dark:      #0D0D0D;
+      --dark-mid:  #1A1A1A;
+      --light:     #F5F3EF;
+      --light-2:   #EDEAE4;
+      --text:      #1C1C1C;
+      --text-muted:#5A5A5A;
+      --white:     #FFFFFF;
+      --radius-md: 14px;
+      --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    html { scroll-behavior: smooth; }
+
     body {
-      font-family: 'Poppins', sans-serif;
-      max-width: 900px;
-      margin: 30px auto;
-      padding: 20px;
-      background: #fafcff;
-      color: #355070;
+      font-family: 'Inter', sans-serif;
+      background: var(--light);
+      color: var(--text);
+      line-height: 1.75;
     }
-    h1, h2 {
-      color: #F28C28;
+
+    img { pointer-events: none; user-select: none; -webkit-user-drag: none; }
+
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--dark); }
+    ::-webkit-scrollbar-thumb { background: var(--orange); border-radius: 10px; }
+
+    /* ===== TOP BAR ===== */
+    .top-bar {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 68px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 28px;
+      background: rgba(13,13,13,0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(240,112,32,0.15);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.4);
+      z-index: 9999;
     }
-    a {
-      color: #4a6ca3;
-      text-decoration: none;
+
+    .top-bar-left {
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none; color: white;
     }
-    a:hover {
-      text-decoration: underline;
+
+    .top-bar-logo { height: 44px; width: auto; }
+
+    .top-bar-text {
+      font-family: 'Cormorant Garamond', serif;
+      display: flex; flex-direction: column;
+      align-items: center; text-align: center;
+      line-height: 1.05; color: white; letter-spacing: 1.5px;
+    }
+    .top-bar-text .word { display: block; font-size: 1.0em; font-weight: 700; text-transform: uppercase; letter-spacing: 2.5px; }
+    .top-bar-text .amp  { display: block; font-size: 0.85em; color: var(--orange); font-weight: 600; line-height: 1.2; }
+
+    .back-home {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: rgba(255,255,255,0.7); text-decoration: none;
+      font-size: 0.85em; font-weight: 600; letter-spacing: 0.5px;
+      transition: color var(--transition); white-space: nowrap;
+    }
+    .back-home:hover { color: var(--orange); }
+
+    /* ===== PAGE HERO ===== */
+    .page-hero {
+      padding-top: 68px;
+      background: var(--dark);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 110%, rgba(240,112,32,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .page-hero-inner {
+      position: relative; z-index: 1;
+      padding: 48px 24px 44px;
+    }
+    .page-hero-eyebrow {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.7em; font-weight: 700;
+      letter-spacing: 4px; text-transform: uppercase;
+      color: var(--orange);
+      background: rgba(240,112,32,0.1);
+      border: 1px solid rgba(240,112,32,0.25);
+      border-radius: 40px; padding: 6px 18px;
+      display: inline-block; margin-bottom: 16px;
+    }
+    .page-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2em, 5vw, 3.2em);
+      font-weight: 700; color: var(--white); line-height: 1.15;
+    }
+    .page-hero h1 em { font-style: normal; color: var(--orange-lt); }
+    .page-hero-stripe {
+      width: 52px; height: 3px;
+      background: linear-gradient(90deg, var(--orange), var(--orange-lt));
+      border-radius: 2px; margin: 18px auto 0;
+    }
+
+    /* ===== CONTENT WRAPPER ===== */
+    .content-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 56px 24px 80px;
+    }
+
+    /* ===== SECTIONS ===== */
+    .policy-section {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 32px 36px;
+      margin-bottom: 20px;
+      border: 1px solid var(--light-2);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      transition: box-shadow var(--transition);
+    }
+    .policy-section:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
+
+    .policy-section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4em; font-weight: 700;
+      color: var(--text);
+      margin-bottom: 14px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .policy-section h2 .sec-icon {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--orange), var(--orange-lt));
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 3px 10px var(--orange-glow);
+    }
+    .policy-section h2 .sec-icon i { font-size: 14px; color: white; }
+
+    .policy-section p {
+      font-size: 0.96em; color: var(--text-muted); line-height: 1.8;
+      margin-bottom: 12px;
+    }
+    .policy-section p:last-child { margin-bottom: 0; }
+
+    .policy-section ul {
+      list-style: none; padding: 0; margin-top: 8px;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .policy-section ul li {
+      display: flex; gap: 12px;
+      font-size: 0.95em; color: var(--text-muted); line-height: 1.7;
+    }
+    .policy-section ul li::before {
+      content: '';
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--orange);
+      flex-shrink: 0;
+      margin-top: 10px;
+    }
+
+    .policy-section a { color: var(--orange); text-decoration: none; transition: color var(--transition); }
+    .policy-section a:hover { color: var(--orange-lt); text-decoration: underline; }
+
+    /* ===== TITOLARI CARDS ===== */
+    .titolari-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 16px;
+    }
+    @media (max-width: 560px) { .titolari-grid { grid-template-columns: 1fr; } }
+
+    .titolare-card {
+      background: var(--light);
+      border: 1px solid var(--light-2);
+      border-radius: 10px;
+      padding: 20px 22px;
+      border-left: 4px solid var(--orange);
+    }
+    .titolare-card strong {
+      display: block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.95em;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .titolare-card p {
+      font-size: 0.9em;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin: 0;
+    }
+    .titolare-card a { color: var(--orange); }
+
+    /* ===== DIRITTI GRID ===== */
+    .diritti-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .diritto-item {
+      display: flex; align-items: flex-start; gap: 10px;
+      background: var(--light);
+      border: 1px solid var(--light-2);
+      border-radius: 10px;
+      padding: 14px 16px;
+      font-size: 0.9em;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .diritto-item i { color: var(--orange); margin-top: 2px; flex-shrink: 0; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--dark-mid, #1A1A1A);
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 0.87em;
+      border-top: 1px solid rgba(240,112,32,0.18);
+    }
+    footer a { color: rgba(255,255,255,0.65); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: var(--orange); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 600px) {
+      .top-bar { padding: 0 16px; }
+      .top-bar-text .word { font-size: 0.72em; letter-spacing: 1px; }
+      .top-bar-text .amp  { font-size: 0.65em; }
+      .back-home span { display: none; }
+      .policy-section { padding: 24px 20px; }
+      .content-wrap { padding: 40px 16px 60px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: 0.01ms !important; }
     }
   </style>
 </head>
 <body>
-  <h1>Informativa Privacy</h1>
-  <p>Spizzicotecnica e SPI System, in qualità di titolari del trattamento, sono impegnati a proteggere la tua privacy e a trattare i tuoi dati personali nel rispetto del Regolamento UE 2016/679 (GDPR).</p>
-  
-  <h2>Titolari del trattamento</h2>
-  <ul>
-    <li><strong>Spizzicotecnica</strong><br />
-        Titolare: Antonio Spizzico<br />
-        Partita IVA: 05857040728<br />
-        Email: <a href="mailto:spizzicotecnica@libero.it">spizzicotecnica@libero.it</a>
-    </li>
-    <li><strong>SPI System</strong><br />
-        Titolare: Giuseppe Spizzico<br />
-        Partita IVA: 08791580726<br />
-        Email: <a href="mailto:spisystem@libero.it">spisystem@libero.it</a>
-    </li>
-  </ul>
 
-  <h2>Finalità e base giuridica del trattamento</h2>
-  <p>I dati personali forniti tramite il modulo di richiesta preventivo vengono trattati esclusivamente per rispondere alla tua richiesta e fornirti informazioni sui nostri prodotti e servizi. Il trattamento avviene sulla base del consenso esplicito da te fornito spuntando l’apposita casella (art. 6, comma 1, lett. a GDPR).</p>
+<!-- TOP BAR -->
+<div class="top-bar">
+  <a href="index.html" class="top-bar-left">
+    <img src="img/B0F190C1-ED18-45F3-B492-572A76ED7803.png" class="top-bar-logo" alt="Logo">
+    <div class="top-bar-text">
+      <span class="word">Spizzicotecnica</span>
+      <span class="amp">&</span>
+      <span class="word">SPI System</span>
+    </div>
+  </a>
+  <a href="index.html" class="back-home">
+    <i class="fas fa-arrow-left"></i> <span>Torna al sito</span>
+  </a>
+</div>
 
-  <h2>Tipologie di dati raccolti</h2>
-  <p>Raccogliamo i seguenti dati personali:</p>
-  <ul>
-    <li>Nome e cognome</li>
-    <li>Telefono</li>
-    <li>Indirizzo</li>
-    <li>Tipologia di attività</li>
-    <li>Prodotti di interesse</li>
-  </ul>
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-hero-eyebrow">Informativa legale</div>
+    <h1>Informativa <em>Privacy</em></h1>
+    <div class="page-hero-stripe"></div>
+  </div>
+</div>
 
-  <h2>Modalità di trattamento e sicurezza</h2>
-  <p>I dati sono trattati con strumenti informatici e cartacei in modo lecito, corretto e trasparente, adottando misure tecniche e organizzative adeguate per garantire la sicurezza e la riservatezza dei dati.</p>
+<!-- CONTENT -->
+<div class="content-wrap">
 
-  <h2>Durata della conservazione</h2>
-  <p>I dati personali saranno conservati per il tempo necessario a rispondere alla tua richiesta e, comunque, non oltre 24 mesi dalla raccolta, salvo obblighi di legge contrari.</p>
+  <div class="policy-section">
+    <h2>
+      <span class="sec-icon"><i class="fas fa-shield-alt"></i></span>
+      Il nostro impegno
+    </h2>
+    <p>Spizzicotecnica e SPI System, in qualità di titolari del trattamento, sono impegnati a proteggere la tua privacy e a trattare i tuoi dati personali nel pieno rispetto del Regolamento UE 2016/679 (GDPR).</p>
+  </div>
 
-  <h2>Diritti dell’interessato</h2>
-  <p>Hai il diritto di richiedere in qualsiasi momento l’accesso, la rettifica, la cancellazione, la limitazione, la portabilità dei dati, nonché di opporti al loro trattamento o revocare il consenso, senza pregiudicare la liceità del trattamento basata sul consenso precedente.</p>
-  <p>Per esercitare tali diritti puoi contattare i titolari ai recapiti indicati sopra.</p>
+  <div class="policy-section">
+    <h2>
+      <span class="sec-icon"><i class="fas fa-user-tie"></i></span>
+      Titolari del trattamento
+    </h2>
+    <div class="titolari-grid">
+      <div class="titolare-card">
+        <strong>Spizzicotecnica</strong>
+        <p>
+          Titolare: Antonio Spizzico<br>
+          P. IVA: 05857040728<br>
+          <a href="mailto:spizzicotecnica@libero.it">spizzicotecnica@libero.it</a>
+        </p>
+      </div>
+      <div class="titolare-card">
+        <strong>SPI System</strong>
+        <p>
+          Titolare: Giuseppe Spizzico<br>
+          P. IVA: 08791580726<br>
+          <a href="mailto:spisystem@libero.it">spisystem@libero.it</a>
+        </p>
+      </div>
+    </div>
+  </div>
 
-  <h2>Reclami</h2>
-  <p>Se ritieni che il trattamento dei tuoi dati personali violi la normativa, puoi presentare un reclamo all’Autorità Garante per la Protezione dei Dati Personali (<a href="https://www.garanteprivacy.it" target="_blank" rel="noopener noreferrer">www.garanteprivacy.it</a>).</p>
+  <div class="policy-section">
+    <h2>
+      <span class="sec-icon"><i class="fas fa-bullseye"></i></span>
+      Finalità e base giuridica
+    </h2>
+    <p>I dati personali forniti tramite il modulo di richiesta preventivo vengono trattati esclusivamente per rispondere alla tua richiesta e fornirti informazioni sui nostri prodotti e servizi.</p>
+    <p>Il trattamento avviene sulla base del consenso esplicito da te fornito spuntando l'apposita casella (art. 6, comma 1, lett. a GDPR).</p>
+  </div>
 
-  <h2>Cookie e strumenti di tracciamento</h2>
-  <p>Il sito utilizza esclusivamente cookie tecnici necessari al funzionamento, senza profilazione o finalità commerciali. Per maggiori dettagli consulta la <a href="cookie.html">Cookie Policy</a>.</p>
+  <div class="policy-section">
+    <h2>
+      <span class="sec-icon"><i class="fas fa-database"></i></span>
+      Dati raccolti
+    </h2>
+    <p>Raccogliamo i seguenti dati personali attraverso il modulo di contatto:</p>
+    <ul>
+      <li>Nome e cognome</li>
+      <li>Numero di telefono</li>
+      <li>Indirizzo</li>
+      <li>Tipologia di attività</li>
+      <li>Prodotti di interesse</li>
+    </ul>
+  </div>
 
-  <h2>Modifiche alla presente informativa</h2>
-  <p>Questa informativa potrà essere aggiornata in caso di modifiche normative o organizzative. Ti invitiamo a consultarla regolarmente.</p>
+  <div class="policy-section">
+    <h2>
+      <span class="sec-icon"><i class="fas fa-lock"></i></span>
+      Modalità di trattamento e sicurezza
+    </h2>
+    <p>I dati sono trattati con strumenti informatici e cartacei in modo lecito, corretto e trasparente, adottando misure tecniche e organizzative adeguate per garantire la sicurezza e la riservatezza delle informazioni.</p>
+  </div>
 
-  <footer>
-    <p>&copy; 2025 Spizzicotecnica & SPI System</p>
-  </footer>
+  <div class="policy-section">
+    <h2>
+      <span class="sec-icon"><i class="fas fa-clock"></i></span>
+      Durata della conservazione
+    </h2>
+    <p>I dati personali saranno conservati per il tempo necessario a rispondere alla tua richiesta e, comunque, non oltre <strong>24 mesi</strong> dalla raccolta, salvo obblighi di legge contrari.</p>
+  </div>
+
+  <div class="policy-section">
+    <h2>
+      <span class="sec-icon"><i class="fas fa-hand-paper"></i></span>
+      I tuoi diritti
+    </h2>
+    <p>Hai il diritto di esercitare in qualsiasi momento i seguenti diritti, contattando i titolari ai recapiti indicati sopra:</p>
+    <div class="diritti-grid">
+      <div class="diritto-item"><i class="fas fa-eye"></i> Accesso ai dati</div>
+      <div class="diritto-item"><i class="fas fa-edit"></i> Rettifica</div>
+      <div class="diritto-item"><i class="fas fa-trash-alt"></i> Cancellazione</div>
+      <div class="diritto-item"><i class="fas fa-pause-circle"></i> Limitazione</div>
+      <div class="diritto-item"><i class="fas fa-download"></i> Portabilità</div>
+      <div class="diritto-item"><i class="fas fa-ban"></i> Opposizione</div>
+      <div class="diritto-item"><i class="fas fa-undo"></i> Revoca del consenso</div>
+    </div>
+  </div>
+
+  <div class="policy-section">
+    <h2>
+      <span class="sec-icon"><i class="fas fa-gavel"></i></span>
+      Reclami
+    </h2>
+    <p>Se ritieni che il trattamento dei tuoi dati personali violi la normativa vigente, puoi presentare un reclamo all'Autorità Garante per la Protezione dei Dati Personali: <a href="https://www.garanteprivacy.it" target="_blank" rel="noopener noreferrer">www.garanteprivacy.it</a></p>
+  </div>
+
+  <div class="policy-section">
+    <h2>
+      <span class="sec-icon"><i class="fas fa-cookie-bite"></i></span>
+      Cookie e strumenti di tracciamento
+    </h2>
+    <p>Il sito utilizza esclusivamente cookie tecnici necessari al funzionamento, senza profilazione o finalità commerciali. Per maggiori dettagli consulta la nostra <a href="cookie.html">Cookie Policy</a>.</p>
+  </div>
+
+  <div class="policy-section">
+    <h2>
+      <span class="sec-icon"><i class="fas fa-sync-alt"></i></span>
+      Aggiornamenti
+    </h2>
+    <p>Questa informativa potrà essere aggiornata in caso di modifiche normative o organizzative. Ti invitiamo a consultarla regolarmente.</p>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2026 Spizzicotecnica & SPI System – Tutti i diritti riservati</p>
+  <p style="margin-top:8px;">
+    <a href="privacy.html">Privacy Policy</a> &nbsp;|&nbsp;
+    <a href="cookie.html">Cookie Policy</a> &nbsp;|&nbsp;
+    <a href="index.html">Home</a>
+  </p>
+</footer>
+
 </body>
 </html>
-
