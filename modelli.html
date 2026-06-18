@@ -3,501 +3,456 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Modelli</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&display=swap" rel="stylesheet">
+  <title>Modelli – Spizzicotecnica & SPI System</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
   <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange:    #F07020;
+      --orange-lt: #FF9448;
+      --orange-glow: rgba(240,112,32,0.3);
+      --dark:      #0D0D0D;
+      --light:     #F5F3EF;
+      --light-2:   #EDEAE4;
+      --text:      #1C1C1C;
+      --text-muted:#6B6B6B;
+      --white:     #FFFFFF;
+      --radius-md: 16px;
+      --radius-lg: 28px;
+      --transition: 0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    html { scroll-behavior: smooth; }
+
     body {
-  font-family:'Poppins', sans-serif;
-  background: linear-gradient(to right,#fefefe,#f0f4f8);
-  color:#2c3e50;
-  margin:0;
-  line-height:1.7;
-}
+      font-family: 'Inter', sans-serif;
+      background: var(--light);
+      color: var(--text);
+      line-height: 1.7;
+    }
 
-/* TOP BAR */
-.top-bar {
-  position: fixed;
-  top:0;
-  left:0;
+    img { pointer-events: none; user-select: none; -webkit-user-drag: none; }
 
-  width:100%;
-  height:65px;
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--dark); }
+    ::-webkit-scrollbar-thumb { background: var(--orange); border-radius: 10px; }
 
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+    /* ===== TOP BAR ===== */
+    .top-bar {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 68px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 32px;
+      background: rgba(13,13,13,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.35);
+      z-index: 9999;
+      transition: border-bottom-color 0.3s;
+    }
+    .top-bar:hover { border-bottom-color: rgba(240,112,32,0.2); }
 
-  padding:0 25px;
+    .top-bar-left {
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none; color: white;
+    }
+    .top-bar-logo { height: 44px; width: auto; transition: transform 0.3s ease; }
+    .top-bar-logo:hover { transform: scale(1.06); }
 
-  background: rgba(20,20,20,0.75);
-  backdrop-filter: blur(18px);
+    .top-bar-text {
+      font-family: 'Space Grotesk', sans-serif;
+      line-height: 1.1; color: white; letter-spacing: 0.5px;
+    }
+    .top-bar-text .word { display: block; font-size: 0.78em; font-weight: 700; text-transform: uppercase; }
+    .top-bar-text .amp  { display: block; font-size: 0.62em; color: var(--orange); font-weight: 500; }
 
-  border-bottom:1px solid rgba(255,255,255,0.08);
-  box-shadow:0 2px 18px rgba(0,0,0,0.4);
+    .back-home {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: rgba(255,255,255,0.7); text-decoration: none;
+      font-size: 0.85em; font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600; letter-spacing: 0.5px;
+      transition: color var(--transition);
+    }
+    .back-home:hover { color: var(--orange); }
 
-  z-index:9999;
-}
+    /* ===== PAGE HERO ===== */
+    .page-hero {
+      padding-top: 68px;
+      background: var(--dark);
+      text-align: center;
+      padding-bottom: 60px;
+      position: relative;
+      overflow: hidden;
+    }
 
-.top-bar-left {
-  display:flex;
-  align-items:center;
-  gap:12px;
-  text-decoration:none;
-  color:white;
-}
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 110%, rgba(240,112,32,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
 
-.top-bar-logo {
-  height: 50px;
-}
+    .page-hero-inner {
+      position: relative;
+      z-index: 1;
+      padding: 60px 24px 0;
+    }
 
-.top-bar-logo:hover {
-  transform: scale(1.06);
-}
-.top-bar-text {
-  font-family:'Cormorant Garamond', serif;
-  font-size:1.05em;
-  text-align:center;
-  line-height:1.05;
-  font-weight:700;
-  letter-spacing:1px;
-  color:white;
-}
-.top-bar-text .word {
-  display:block;
-  text-transform:uppercase;
-}
+    .page-hero-eyebrow {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.7em; font-weight: 700;
+      letter-spacing: 4px; text-transform: uppercase;
+      color: var(--orange);
+      background: rgba(240,112,32,0.1);
+      border: 1px solid rgba(240,112,32,0.25);
+      border-radius: 40px; padding: 6px 18px;
+      display: inline-block; margin-bottom: 20px;
+    }
 
-.top-bar-text .amp {
-  display:block;
-  font-size:0.75em;
-  color:#F28C28;
-}
+    .page-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2em, 5vw, 3.8em);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.15;
+    }
 
-.top-bar img {
-  height: 50px;
-  cursor: pointer;
-  transition: transform .3s ease;
-}
-.top-bar img:hover {
-  transform: scale(1.08);
-}
+    .page-hero h1 em {
+      font-style: normal;
+      color: var(--orange-lt);
+    }
 
-.page-wrapper {
-  padding-top: 120px;
-}
-.models-grid,
-.page-wrapper {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+    .page-hero-stripe {
+      width: 56px; height: 3px;
+      background: linear-gradient(90deg, var(--orange), var(--orange-lt));
+      border-radius: 2px;
+      margin: 22px auto 0;
+    }
 
-.models-grid {
-  max-width: 900px;
-  padding: 0 20px;
-}
+    /* ===== MODELS GRID ===== */
+    .page-wrapper {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 60px 24px 80px;
+    }
 
-.model h2 {
-  text-align: center;
-}
+    .models-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
 
-header {
-  text-align: center;
-}
+    .model {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.07);
+      border: 1px solid var(--light-2);
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+      position: relative;
+    }
 
-/* HEADER */
-header h1 {
-  text-align: center;
-  font-size: 2.6em;
+    .model::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 4px;
+      background: linear-gradient(180deg, var(--orange), var(--orange-lt));
+      border-radius: 4px 0 0 4px;
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: transform var(--transition);
+    }
 
-  text-transform: uppercase;
+    .model:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 56px rgba(0,0,0,0.11);
+      border-color: rgba(240,112,32,0.15);
+    }
+    .model:hover::before { transform: scaleY(1); }
 
-  letter-spacing: 2px;
+    .model-img-col {
+      background: var(--light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 28px;
+      border-right: 1px solid var(--light-2);
+    }
 
-  color: #ff6f3c;
+    .model-img-col img {
+      max-width: 160px;
+      max-height: 160px;
+      width: 100%;
+      object-fit: contain;
+      border-radius: 10px;
+      transition: transform 0.4s ease;
+    }
+    .model:hover .model-img-col img { transform: scale(1.06); }
 
-  margin-bottom: 40px;
-}
-
-/* CARD MODELLI */
-.model {
-  width: 100%;
-  max-width: 800px;
-
-  text-align: center;
-
-  background: rgba(255,255,255,0.9);
-
-  border-radius: 18px;
-
-  padding: 30px;
-  margin-bottom: 30px;
-
-  box-shadow: 0 15px 40px rgba(0,0,0,0.06);
-
-  border-left: 6px solid #ff6f3c;
-
-  transition: all .35s ease;
-}
-
-.model:hover {
-  transform: translateY(-8px);
-
-  box-shadow:
-    0 25px 60px rgba(0,0,0,0.12);
-}
-
-.model h2 {
-  font-size: 1.6em;
-
-  color: #ff6f3c;
-
-  text-transform: uppercase;
-
-  letter-spacing: 1px;
-}
-
-.model img {
-  max-width: 190px;
-
-  border-radius: 14px;
-
-  box-shadow: 0 8px 25px rgba(0,0,0,0.12);
-
-  transition: transform .4s ease;
-}
-
-.model:hover img {
-  transform: scale(1.05);
-}
     .model-content {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-  .model p {
-  text-align: center;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-}
+      padding: 32px 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
 
-.pdf-link {
-  display: inline-block;
+    .model-content h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.15em;
+      font-weight: 700;
+      color: var(--text);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      line-height: 1.3;
+    }
 
-  margin-top: 15px;
+    .model-content p {
+      font-size: 0.95em;
+      color: var(--text-muted);
+      line-height: 1.7;
+      flex: 1;
+    }
 
-  padding: 12px 28px;
+    .pdf-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+      padding: 11px 26px;
+      border-radius: 40px;
+      background: linear-gradient(135deg, var(--orange) 0%, var(--orange-lt) 100%);
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.85em;
+      letter-spacing: 0.5px;
+      box-shadow: 0 6px 20px var(--orange-glow);
+      transition: all var(--transition);
+      align-self: flex-start;
+    }
+    .pdf-link:hover {
+      transform: translateY(-2px) scale(1.04);
+      box-shadow: 0 10px 30px var(--orange-glow);
+    }
 
-  border-radius: 40px;
+    /* ===== MODELS TITLE ===== */
+    .models-section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.7em, 3vw, 2.4em);
+      font-weight: 700;
+      color: var(--text);
+      text-align: center;
+      margin-bottom: 40px;
+      position: relative;
+    }
+    .models-section-title::after {
+      content: '';
+      display: block;
+      width: 48px; height: 3px;
+      background: var(--orange);
+      border-radius: 2px;
+      margin: 14px auto 0;
+    }
 
-  background: linear-gradient(135deg,#ff7a18,#ffb347);
+    /* ===== BACK TO TOP ===== */
+    #back-to-top {
+      position: fixed; bottom: 22px; right: 22px;
+      width: 50px; height: 50px;
+      background: linear-gradient(135deg, var(--orange), var(--orange-lt));
+      color: white; border: none; border-radius: 50%;
+      cursor: pointer;
+      display: flex; justify-content: center; align-items: center;
+      font-size: 18px;
+      box-shadow: 0 6px 20px var(--orange-glow);
+      z-index: 8000;
+      opacity: 0; transform: translateY(20px) scale(0.8);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+      pointer-events: none;
+    }
+    #back-to-top.visible { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+    #back-to-top:hover { transform: translateY(-3px) scale(1.08); }
 
-  color: white;
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 680px) {
+      .model {
+        grid-template-columns: 1fr;
+      }
+      .model-img-col {
+        border-right: none;
+        border-bottom: 1px solid var(--light-2);
+        padding: 24px;
+      }
+      .model-content { padding: 24px; }
+      .top-bar { padding: 0 18px; }
+    }
 
-  text-decoration: none;
-
-  font-weight: 700;
-
-  box-shadow: 0 6px 20px rgba(255,122,24,0.4);
-
-  transition: all .3s ease;
-}
-
-.pdf-link:hover {
-  transform: translateY(-3px) scale(1.05);
-}
-    .models-title {
-  width: 100%;
-  text-align: center;
-  font-size: 2.4em;
-  color: #ff6f3c;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 40px;
-}
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
   </style>
 </head>
 <body>
+
+<!-- ===== TOP BAR ===== -->
 <div class="top-bar">
   <a href="index.html" class="top-bar-left">
-
-    <img src="img/B0F190C1-ED18-45F3-B492-572A76ED7803.png"
-         class="top-bar-logo">
-
+    <img src="img/B0F190C1-ED18-45F3-B492-572A76ED7803.png" class="top-bar-logo" alt="Logo">
     <div class="top-bar-text">
-      <span class="word">SPIZZICOTECNICA</span>
+      <span class="word">Spizzicotecnica</span>
       <span class="amp">&</span>
-      <span class="word">SPI SYSTEM</span>
+      <span class="word">SPI System</span>
     </div>
-
+  </a>
+  <a href="index.html" class="back-home">
+    <i class="fas fa-arrow-left"></i> Torna al sito
   </a>
 </div>
 
+<!-- ===== PAGE HERO ===== -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-hero-eyebrow">Catalogo prodotti</div>
+    <h1 id="pageTitle">Modelli <em>disponibili</em></h1>
+    <div class="page-hero-stripe"></div>
+  </div>
+</div>
+
+<!-- ===== MODELS ===== -->
 <div class="page-wrapper">
+  <div class="models-grid" id="modelsGrid"></div>
+</div>
 
-  <header>
-    <h1>Modelli</h1>
-  </header>
+<!-- ===== BACK TO TOP ===== -->
+<button id="back-to-top" aria-label="Torna in cima">
+  <i class="fas fa-chevron-up"></i>
+</button>
 
-  <div class="models-grid"></div>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 900, easing: 'ease-out-cubic', once: true });
 
-  <script>
-    const ordineCategorie = [
-      "registratori",
-      "bilance",
-      "sistemi-touch",
-      "casse",
-      "kiosk",
-      "palmari-stampanti",
-      "affettatrici"
-    ];
+  /* Back to top */
+  const btt = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => btt.classList.toggle('visible', window.scrollY > 300));
+  btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-    const prodotti = {
-      "sistemi-touch": {
-        titolo: "Sistemi Touch",
-        modelli: [
-          {
-            nome: "WYCASH 2600",
-            immagine: "img/IMG_0418.jpeg",
-            descrizione: "Wycash 2600 è il sistema di cassa potente e versatile che ti consente di gestire il tuo negozio in maniera semplice ed efficiente. Con l’ampio display touch 15,6” full HD super brillante, ti basta un’occhiata per avere il pieno controllo della tua attività.",
-            pdf: "pdf/wycash-2600.pdf"
-          },
-          {
-            nome: "WYCASH 1300",
-            immagine: "img/IMG_0417.jpeg",
-            descrizione: "Per i negozi, le attività di ristorazione e le tabaccherie Wycash 1300 è il sistema di cassa compatto e flessibile che garantisce la gestione integrata del punto vendita. Attraverso l’interfaccia touch screen, facile e intuitiva, puoi organizzare nel modo migliore il lavoro di tutti i giorni.",
-            pdf: "pdf/wycash-1300.pdf"
-          },
-          {
-            nome: "WYCASH 800",
-            immagine: "img/wycash800.jpeg",
-            descrizione: "Wycash 800 è la soluzione di cassa intelligente che ti aiuta a tenere sotto controllo tutta la tua attività. Dal comodo display touch screen 10” puoi controllare ogni cosa in pochi tocchi, grazie all’applicazione di cassa Wycash integrata. L’elegante customer display 4” a colori personalizzabile consente la visualizzazione delle informazioni durante il pagamento.",
-            pdf: "pdf/wycash800.pdf"
-          },
-          {
-            nome: "WYCASH 600",
-            immagine: "img/wycash-600.jpeg",
-            descrizione: "Con Wycash 600 hai tutti i vantaggi di una soluzione di cassa touch screen compatta e flessibile per la gestione integrata del tuo punto vendita. Gestisci e invia in tutta sicurezza lo scontrino digitale, organizza al meglio il lavoro di tutti i giorni, fai felici i tuoi clienti e invogliali a tornare.",
-            pdf: "pdf/wycash-600.pdf"
-          },
-             {
-            nome: "WYCASH 300",
-            immagine: "img/wycash300.PNG",
-            descrizione: "Dimensioni contenute, peso ridotto e batteria a lunga durata. Wycash 300 è il sistema POS RT che consente la massima flessibilità.",
-            pdf: "pdf/wycash300.pdf"
-          },
-            {
-            nome: "SOFTWARE GESTIONALE LAVANDERIA",
-            immagine: "img/3logis.PNG",
-            descrizione: "3logiS è uno strumento di lavoro semplice, economico e modulare, una piattaforma software gestionale progettata specificatamente per il settore Lavanderie (negozi e laboratori) ed estesa in seguito a Sartorie, Calzolerie, Stirerie, Centri-Servizi",
-            pdf: "pdf/3logis.pdf"
-          }
-        ]
-      },
-      "registratori": {
-        titolo: "Registratori di Cassa",
-        modelli: [
-          {
-            nome: "SERIE HELIOS PLUS RT",
-            immagine: "img/helios.jpeg",
-            descrizione: "Le alte prestazioni di affidabilità della tastiera, il doppio display LCD, grande e luminoso, e il cambio carta facilitato con il dispositivo Easy loading super-fast rendono questo prodotto ideale per tutte le attività di vendita.",
-            pdf: "pdf/helios.pdf"
-          },
-           {
-            nome: "SERIE AURA RT",
-            immagine: "img/aura.jpeg",
-            descrizione: "AURA RT è il nuovo registratore di cassa telematico progettato per rispondere alle esigenze del commercio ambulante. É il prodotto più leggero e compatto della famiglia Axon Micrelec e offre una ricca dotazione di accessori: batteria al Litio di lunga durata, cavo di alimentazione da auto, cover impermeabile e borsa.",
-            pdf: "pdf/aura.pdf"
-          },
-          {
-            nome: "SERIE EDO PLUS II RT",
-            immagine: "img/edoplus.jpeg",
-            descrizione: "Il registratore telematico nativo serie Edo II Plus Axon Micrelec è un prodotto bello ed elegante, dal design ergonomico, che offre elevate performance di velocità e affidabilità. Il doppio display LCD grande e luminoso facilita la lettura dei dati sia per l’operatore che per il cliente. La tastiera illuminata ad intensità variabile facilita l’utilizzo anche in ambienti con poca luce. ",
-            pdf: "pdf/edoplus.pdf"
-          },
-           {
-            nome: "SERIE MILO RT",
-            immagine: "img/milo.jpeg",
-            descrizione: "Registratore Telematico serie Milo di Axon Micrelec integra in un design elegante e compatto tutte le funzionalità essenziali per il punto vendita. L’ergonomia della tastiera e il doppio display LCD integrato, grande e luminoso, facilitano la scrittura e lettura dei dati per l’operatore. ",
-            pdf: "pdf/milo.pdf"
-          },
-           {
-            nome: "SERIE HELIOS TOUCH RT",
-            immagine: "img/heliost.jpeg",
-            descrizione: "Come Helios, la divinità della mitologia greca che illuminava la terra con il suo carro solare, Helios Touch Axon Micrelec è il Registratore Telematico touch screen che dà una nuova luce alla tua attività. La sua elegante struttura in alluminio integra un’innovativa tastiera touch da 7” che presenta un'elevata luminosità, regolabile dall'utente in base all'ambiente circostante. Degli 80 tasti, 40 sono completamente personalizzabili per funzione e colore. L’inserimento di dati complessi, come codice fiscale e partita iva, è facilitato dalla tastiera QWERTY virtuale automatica.",
-            pdf: "pdf/heliostouch.pdf"
-          }
-        ]
-      },
-      "bilance": {
-        titolo: "Bilance Elettroniche",
-        modelli: [
-        {
-            nome: "Linea",
-            immagine: "img/IMG_0436.jpeg",
-            descrizione: "Con LINEA, Eurobil ridefinisce il concetto di bilancia da banco, offrendo un prodotto esclusivo che unisce innovazione, efficienza e semplicità d'uso.",
-            pdf: "pdf/linea.pdf"
-          },
-          {
-            nome: "Alex Color",
-            immagine: "img/alexcolor.jpeg",
-            descrizione: "La bilancia Alex Color è in grado di gestire le immagini a colori dei vostri prodotti, inoltre dispone della funzione pubblicità che consiste nella possibilità di selezionare delle immagini pubblicitarie e visualizzarle in sequenza sul display lato cliente",
-            pdf: "pdf/alexcolor.pdf"
-          },
-            {
-            nome: "Alex",
-            immagine: "img/alex.jpg",
-            descrizione: "La bilancia Alex inox è la soluzione ideale per tutte le esigenze di pesatura commerciale del piccolo, medio, grande negozio e del mercato ambulante.",
-            pdf: "pdf/alex.pdf"
-          },
-            {
-            nome: "Alex mare",
-            immagine: "img/alexmare.jpeg",
-            descrizione: "La bilancia Alex Mare è la soluzione più adatta per una semplice gestione commerciale del piccolo negozio e del mercato ambulante.",
-            pdf: "pdf/alexmare.pdf"
-          },
-          {
-            nome: "Sun eco color",
-            immagine: "img/sunecol.jpg",
-            descrizione: "La bilancia Sun Eco Color in acciaio inox è in grado di gestire le immagini a colori dei vostri prodotti ed inoltre dispone della funzione pubblicità lato cliente.",
-            pdf: "pdf/sunecol.pdf"
-          },
-           {
-            nome: "Sun eco",
-            immagine: "img/suneco.jpg",
-            descrizione: "La bilancia Sun Eco in acciaio inox è la soluzione ideale per tutte le esigenze di pesatura commerciale del piccolo, medio, grande negozio e del mercato ambulante.",
-            pdf: "pdf/suneco.pdf"
-          },
-           {
-            nome: "Sun eco color volo",
-            immagine: "img/sunecolvol.jpg",
-            descrizione: "La bilancia Sun Eco Color in acciaio inox è in grado di gestire le immagini a colori dei vostri prodotti ed inoltre dispone della funzione pubblicità lato cliente.",
-            pdf: "pdf/sunecolvol.pdf"
-          },
-           {
-            nome: "Sun eco volo",
-            immagine: "img/sunecovolo.jpg",
-            descrizione: "La bilancia Sun Eco in acciaio inox è la soluzione ideale per tutte le esigenze di pesatura commerciale del piccolo, medio, grande negozio e del mercato ambulante.",
-            pdf: "pdf/sunecovolo.pdf"
-          },
-          {
-            nome: "BILANCE SERIE NINJA LCD",
-            immagine: "img/ninja.PNG",
-            descrizione: "Versioni: Bassa – Torre – Pensile Inox – Alta Light Portate Disponibili 12kg div. 2 g – 30kg div.5g – 6/15kg div.2/5g multirange",
-            pdf: "pdf/ninja.pdf"
-          }
-          
-        ]
-      },
-      affettatrici: {
-        titolo: "Affettatrici Professionali",
-        modelli: [
-          {
-            nome: "sirman LEONARDO 350 EVO BS2",
-            immagine: "img/affettatrici.jpg",
-            descrizione: "La serie di affettatrici professionali verticali Sirman Leonardo è appositamente pensata per l'utilizzo intensivo e per la grande produzione. Trova la sua collocazione ideale in macellerie, salumerie e GDO. La struttura realizzata in alluminio anodizzato è priva di spigoli e viti in vista per agevolare l'igiene e la pulizia della macchina. Le minuterie, così come il parafetta e il paragrasso sono realizzate in acciaio inox.",
-            pdf: "pdf/affettatrici.pdf"
-          },
-            {
-            nome: "FIMAR AFFETTATRICE VERTICALE K370",
-            immagine: "img/fimar370.PNG",
-            descrizione: "Macchina per affettare salumi, carne, formaggi ecc. Struttura in lega leggera di alluminio anodizzato – carrello fisso – disponibili con piatto carne – anello fisso protezione lama – spessore taglio 0÷15 mm – paralama estraibile – pomello regolazione vela con scala graduata – affilatoio fisso con coppia di smerigli per l’affilatura della lama.",
-            pdf: "pdf/fimar370.pdf"
-          }
-        ]
-      },
-      casse: {
-        titolo: "Casse Automatiche Rendiresto",
-        modelli: [
-          {
-            nome: "Cashmatic Self pay 460",
-            immagine: "img/cashmatic460.PNG",
-            descrizione: "La cassa automatica Cashmatic SelfPay 460 si distingue sul mercato per il suo formato compatto e un design innovativo, ideale per ogni tipologia di retailer.",
-            pdf: "pdf/cashmatic460.pdf"
-          }, 
-          {
-            nome: "PagAmico 3s",
-            immagine: "img/pagamico3s.PNG",
-            descrizione: "Nasce pagAmico 3S, dove la S sta per “smart”, l’ultimo modello arrivato nel roster delle casse rendiresto di ultima generazione ideate e prodotte da PayPrint per il settore retail.",
-            pdf: "pdf/pagamico3s.pdf"
-          },
-           {
-            nome: "vne virtuo 4",
-            immagine: "img/vnevirtuo4.PNG",
-            descrizione: "Virtuo 4 accetta tutte le banconote con inserimento uno ad uno e dà resto con 4 tipi di banconote erogandone una alla volta. Accetta tutte le monete introducibili simultaneamente anche di tagli misti e dà resto con tutte le monete simultaneamente in tagli misti.",
-            pdf: "pdf/vne.pdf"
-          } 
-        ]
-      },
-      kiosk: {
-        titolo: "Kiosk Interattivi",
-        modelli: [
-          {
-            nome: "wykiosk 1100",
-            immagine: "img/wykiosk1100.PNG",
-            descrizione: "Per le paninoteche, i fast food, le gelaterie e i bar, Wykiosk 1100 è la soluzione ideale per velocizzare il servizio e aumentare le vendite, consentendo ai clienti di ordinare e pagare in totale autonomia. Un piccolo cambiamento, semplicemente rivoluzionario.",
-            pdf: "pdf/wykiosk.pdf"
-          }, 
-           {
-            nome: "Serie Smart Kiosk 21,5”",
-            immagine: "img/kiosk21.PNG",
-            descrizione: "Il totem multimediale Smart Kiosk 21,5” di Axon Micrelec è il modo più versatile per portare nel punto vendita soluzioni self-service che vanno dalla gestione delle code alla possibilità di offrire ai consumatori soluzioni di acquisto fai-da-te.",
-            pdf: "pdf/21kiosk.pdf"
-          }
-        ]
-      },
-      "palmari-stampanti": {
-        titolo: "Palmari & Stampanti Cucina",
-        modelli: [
-          {
-            nome: "Serie DT50X",
-            immagine: "img/palmareax.jpg",
-            descrizione: "Il palmare DT50X Hospitality Edition di Axon Micrelec presenta prestazioni al top per il mondo della ristorazione. Il display touch ultra sensibile da 5,7” ad alta definizione offre la massima visibilità anche in ambienti con una forte luce solare e può essere utilizzato con i guanti o le dita bagnate.",
-            pdf: "pdf/palmareax.pdf"
-          },
-          {
-            nome: "Serie POS 80K",
-            immagine: "img/com.jpg",
-            descrizione: "La nuova stampante POS 80K è la più versatile della famiglia di stampanti di comande e ricevute termiche. La forma compatta consente di installarla in piccoli ambienti, anche posizionandola a parete.",
-            pdf: "pdf/com.pdf"
-          }
-        ]
-      }
-    };
-
-    const prodottoSelezionato = new URLSearchParams(window.location.search).get("prodotto");
-    const dati = prodotti[prodottoSelezionato];
-    const container = document.querySelector(".models-grid");
-
-    if (!dati) {
-      container.innerHTML = `<p>Prodotto non trovato o non selezionato.</p>`;
-    } else {
-      const header = document.createElement("h2");
-      header.textContent = dati.titolo;
-      header.classList.add("models-title");
-
-      dati.modelli.forEach(modello => {
-        const div = document.createElement("div");
-        div.className = "model";
-
-        div.innerHTML = `
-          <h2>${modello.nome}</h2>
-          <div class="model-content">
-            <img src="${modello.immagine}" alt="${modello.nome}" />
-            <p>${modello.descrizione}</p>
-            ${modello.pdf ? `<a href="${modello.pdf}" class="pdf-link" target="_blank" rel="noopener noreferrer">Scarica la brochure</a>` : ""}
-          </div>
-        `;
-
-        container.appendChild(div);
-      });
+  /* ===== PRODUCTS DATA ===== */
+  const prodotti = {
+    "sistemi-touch": {
+      titolo: "Sistemi Touch",
+      modelli: [
+        { nome:"WYCASH 2600", immagine:"img/IMG_0418.jpeg", descrizione:"Wycash 2600 è il sistema di cassa potente e versatile che ti consente di gestire il tuo negozio in maniera semplice ed efficiente. Con l'ampio display touch 15,6" full HD super brillante, ti basta un'occhiata per avere il pieno controllo della tua attività.", pdf:"pdf/wycash-2600.pdf" },
+        { nome:"WYCASH 1300", immagine:"img/IMG_0417.jpeg", descrizione:"Per i negozi, le attività di ristorazione e le tabaccherie Wycash 1300 è il sistema di cassa compatto e flessibile che garantisce la gestione integrata del punto vendita.", pdf:"pdf/wycash-1300.pdf" },
+        { nome:"WYCASH 800",  immagine:"img/wycash800.jpeg", descrizione:"Wycash 800 è la soluzione di cassa intelligente che ti aiuta a tenere sotto controllo tutta la tua attività. Dal comodo display touch screen 10" puoi controllare ogni cosa in pochi tocchi.", pdf:"pdf/wycash800.pdf" },
+        { nome:"WYCASH 600",  immagine:"img/wycash-600.jpeg", descrizione:"Con Wycash 600 hai tutti i vantaggi di una soluzione di cassa touch screen compatta e flessibile per la gestione integrata del tuo punto vendita.", pdf:"pdf/wycash-600.pdf" },
+        { nome:"WYCASH 300",  immagine:"img/wycash300.PNG", descrizione:"Dimensioni contenute, peso ridotto e batteria a lunga durata. Wycash 300 è il sistema POS RT che consente la massima flessibilità.", pdf:"pdf/wycash300.pdf" },
+        { nome:"SOFTWARE GESTIONALE LAVANDERIA", immagine:"img/3logis.PNG", descrizione:"3logiS è uno strumento di lavoro semplice, economico e modulare, una piattaforma software gestionale progettata specificatamente per il settore Lavanderie ed estesa a Sartorie, Calzolerie, Stirerie, Centri-Servizi.", pdf:"pdf/3logis.pdf" }
+      ]
+    },
+    "registratori": {
+      titolo: "Registratori di Cassa",
+      modelli: [
+        { nome:"SERIE HELIOS PLUS RT",   immagine:"img/helios.jpeg",   descrizione:"Le alte prestazioni di affidabilità della tastiera, il doppio display LCD, grande e luminoso, e il cambio carta facilitato con il dispositivo Easy loading super-fast rendono questo prodotto ideale per tutte le attività di vendita.", pdf:"pdf/helios.pdf" },
+        { nome:"SERIE AURA RT",          immagine:"img/aura.jpeg",     descrizione:"AURA RT è il nuovo registratore di cassa telematico progettato per rispondere alle esigenze del commercio ambulante. È il prodotto più leggero e compatto della famiglia Axon Micrelec.", pdf:"pdf/aura.pdf" },
+        { nome:"SERIE EDO PLUS II RT",   immagine:"img/edoplus.jpeg",  descrizione:"Il registratore telematico nativo serie Edo II Plus Axon Micrelec è un prodotto bello ed elegante, dal design ergonomico, che offre elevate performance di velocità e affidabilità.", pdf:"pdf/edoplus.pdf" },
+        { nome:"SERIE MILO RT",          immagine:"img/milo.jpeg",     descrizione:"Registratore Telematico serie Milo di Axon Micrelec integra in un design elegante e compatto tutte le funzionalità essenziali per il punto vendita.", pdf:"pdf/milo.pdf" },
+        { nome:"SERIE HELIOS TOUCH RT",  immagine:"img/heliost.jpeg",  descrizione:"Helios Touch Axon Micrelec è il Registratore Telematico touch screen che dà una nuova luce alla tua attività. La sua elegante struttura in alluminio integra un'innovativa tastiera touch da 7".", pdf:"pdf/heliostouch.pdf" }
+      ]
+    },
+    "bilance": {
+      titolo: "Bilance Elettroniche",
+      modelli: [
+        { nome:"Linea",              immagine:"img/IMG_0436.jpeg",   descrizione:"Con LINEA, Eurobil ridefinisce il concetto di bilancia da banco, offrendo un prodotto esclusivo che unisce innovazione, efficienza e semplicità d'uso.", pdf:"pdf/linea.pdf" },
+        { nome:"Alex Color",         immagine:"img/alexcolor.jpeg",  descrizione:"La bilancia Alex Color è in grado di gestire le immagini a colori dei vostri prodotti e dispone della funzione pubblicità per visualizzare immagini sul display lato cliente.", pdf:"pdf/alexcolor.pdf" },
+        { nome:"Alex",               immagine:"img/alex.jpg",        descrizione:"La bilancia Alex inox è la soluzione ideale per tutte le esigenze di pesatura commerciale del piccolo, medio, grande negozio e del mercato ambulante.", pdf:"pdf/alex.pdf" },
+        { nome:"Alex Mare",          immagine:"img/alexmare.jpeg",   descrizione:"La bilancia Alex Mare è la soluzione più adatta per una semplice gestione commerciale del piccolo negozio e del mercato ambulante.", pdf:"pdf/alexmare.pdf" },
+        { nome:"Sun Eco Color",      immagine:"img/sunecol.jpg",     descrizione:"La bilancia Sun Eco Color in acciaio inox è in grado di gestire le immagini a colori dei vostri prodotti e dispone della funzione pubblicità lato cliente.", pdf:"pdf/sunecol.pdf" },
+        { nome:"Sun Eco",            immagine:"img/suneco.jpg",      descrizione:"La bilancia Sun Eco in acciaio inox è la soluzione ideale per tutte le esigenze di pesatura commerciale del piccolo, medio, grande negozio e del mercato ambulante.", pdf:"pdf/suneco.pdf" },
+        { nome:"Sun Eco Color Volo", immagine:"img/sunecolvol.jpg",  descrizione:"La bilancia Sun Eco Color in acciaio inox è in grado di gestire le immagini a colori dei vostri prodotti ed inoltre dispone della funzione pubblicità lato cliente.", pdf:"pdf/sunecolvol.pdf" },
+        { nome:"Sun Eco Volo",       immagine:"img/sunecovolo.jpg",  descrizione:"La bilancia Sun Eco in acciaio inox è la soluzione ideale per tutte le esigenze di pesatura commerciale del piccolo, medio, grande negozio e del mercato ambulante.", pdf:"pdf/sunecovolo.pdf" },
+        { nome:"BILANCE SERIE NINJA LCD", immagine:"img/ninja.PNG",  descrizione:"Versioni: Bassa – Torre – Pensile Inox – Alta Light. Portate disponibili: 12kg div.2g – 30kg div.5g – 6/15kg div.2/5g multirange.", pdf:"pdf/ninja.pdf" }
+      ]
+    },
+    "affettatrici": {
+      titolo: "Affettatrici Professionali",
+      modelli: [
+        { nome:"Sirman Leonardo 350 EVO BS2",  immagine:"img/affettatrici.jpg", descrizione:"La serie di affettatrici professionali verticali Sirman Leonardo è appositamente pensata per l'utilizzo intensivo e per la grande produzione. Ideale per macellerie, salumerie e GDO.", pdf:"pdf/affettatrici.pdf" },
+        { nome:"FIMAR Affettatrice Verticale K370", immagine:"img/fimar370.PNG", descrizione:"Macchina per affettare salumi, carne, formaggi. Struttura in lega leggera di alluminio anodizzato – carrello fisso – spessore taglio 0÷15 mm – paralama estraibile.", pdf:"pdf/fimar370.pdf" }
+      ]
+    },
+    "casse": {
+      titolo: "Casse Automatiche Rendiresto",
+      modelli: [
+        { nome:"Cashmatic Self Pay 460", immagine:"img/cashmatic460.PNG", descrizione:"La cassa automatica Cashmatic SelfPay 460 si distingue sul mercato per il suo formato compatto e un design innovativo, ideale per ogni tipologia di retailer.", pdf:"pdf/cashmatic460.pdf" },
+        { nome:"PagAmico 3S",           immagine:"img/pagamico3s.PNG",   descrizione:"Nasce pagAmico 3S, dove la S sta per "smart", l'ultimo modello arrivato nel roster delle casse rendiresto di ultima generazione ideate e prodotte da PayPrint per il settore retail.", pdf:"pdf/pagamico3s.pdf" },
+        { nome:"VNE Virtuo 4",          immagine:"img/vnevirtuo4.PNG",   descrizione:"Virtuo 4 accetta tutte le banconote con inserimento uno ad uno e dà resto con 4 tipi di banconote. Accetta tutte le monete simultaneamente anche di tagli misti.", pdf:"pdf/vne.pdf" }
+      ]
+    },
+    "kiosk": {
+      titolo: "Kiosk Interattivi",
+      modelli: [
+        { nome:"Wykiosk 1100",              immagine:"img/wykiosk1100.PNG", descrizione:"Per paninoteche, fast food, gelaterie e bar, Wykiosk 1100 è la soluzione ideale per velocizzare il servizio e aumentare le vendite, consentendo ai clienti di ordinare e pagare in autonomia.", pdf:"pdf/wykiosk.pdf" },
+        { nome:"Serie Smart Kiosk 21,5\"",  immagine:"img/kiosk21.PNG",     descrizione:"Il totem multimediale Smart Kiosk 21,5\" di Axon Micrelec è il modo più versatile per portare nel punto vendita soluzioni self-service per la gestione delle code o acquisti fai-da-te.", pdf:"pdf/21kiosk.pdf" }
+      ]
+    },
+    "palmari-stampanti": {
+      titolo: "Palmari & Stampanti Cucina",
+      modelli: [
+        { nome:"Serie DT50X",   immagine:"img/palmareax.jpg", descrizione:"Il palmare DT50X Hospitality Edition di Axon Micrelec presenta prestazioni al top per il mondo della ristorazione. Il display touch ultra sensibile da 5,7\" ad alta definizione offre la massima visibilità anche con forte luce solare.", pdf:"pdf/palmareax.pdf" },
+        { nome:"Serie POS 80K", immagine:"img/com.jpg",       descrizione:"La nuova stampante POS 80K è la più versatile della famiglia di stampanti di comande e ricevute termiche. La forma compatta consente di installarla anche in piccoli ambienti o a parete.", pdf:"pdf/com.pdf" }
+      ]
     }
-  </script>
- </div> 
+  };
+
+  /* ===== RENDER ===== */
+  const prodottoSelezionato = new URLSearchParams(window.location.search).get("prodotto");
+  const dati = prodotti[prodottoSelezionato];
+  const container = document.getElementById('modelsGrid');
+  const pageTitle = document.getElementById('pageTitle');
+
+  if (!dati) {
+    container.innerHTML = `<p style="text-align:center;color:var(--text-muted);">Prodotto non trovato o non selezionato.</p>`;
+  } else {
+    pageTitle.innerHTML = `${dati.titolo.split(' ')[0]} <em>${dati.titolo.split(' ').slice(1).join(' ')}</em>`;
+    document.title = `${dati.titolo} – Spizzicotecnica & SPI System`;
+
+    dati.modelli.forEach((m, i) => {
+      const div = document.createElement('div');
+      div.className = 'model';
+      div.setAttribute('data-aos', 'fade-up');
+      div.setAttribute('data-aos-delay', String(i * 80));
+
+      div.innerHTML = `
+        <div class="model-img-col">
+          <img src="${m.immagine}" alt="${m.nome}">
+        </div>
+        <div class="model-content">
+          <h2>${m.nome}</h2>
+          <p>${m.descrizione}</p>
+          ${m.pdf ? `<a href="${m.pdf}" class="pdf-link" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-file-pdf"></i> Scarica brochure
+          </a>` : ''}
+        </div>
+      `;
+
+      container.appendChild(div);
+    });
+
+    // reinit AOS after dynamic content
+    setTimeout(() => AOS.refresh(), 100);
+  }
+</script>
+
 </body>
 </html>
-
-
