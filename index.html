@@ -102,6 +102,12 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
   background:linear-gradient(90deg,var(--or),var(--or2),transparent)}
 
 /* ── HERO CONTENT — pinned to bottom ── */
+.hero-top{
+  position:absolute;top:0;left:0;right:0;z-index:3;
+  padding:96px 7vw 0;
+  display:flex;justify-content:center;align-items:flex-start;
+  pointer-events:none;
+}
 .hero-body{
   position:absolute;bottom:0;left:0;right:0;z-index:3;
   padding:0 7vw 52px;
@@ -115,8 +121,9 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
 .h-head{
   font-family:'Cormorant Garamond',serif;
   font-size:clamp(2.2em,5vw,4.2em);font-weight:700;
-  color:var(--wh);line-height:1.1;max-width:650px;
+  color:var(--wh);line-height:1.1;
   text-shadow:0 3px 20px rgba(0,0,0,.6);
+  text-align:center;
 }
 .h-head em{font-style:normal;color:var(--or2)}
 .h-sub{font-size:1em;color:rgba(255,255,255,.72);max-width:420px;line-height:1.65}
@@ -182,7 +189,7 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
 .a-txt span{font-size:.82em;color:var(--txm)}
 
 /* stats */
-.stats{display:flex;gap:44px;flex-wrap:wrap;margin-top:10px}
+.stats{display:flex;gap:44px;flex-wrap:wrap;margin-top:10px;justify-content:center;align-items:center}
 .stat-wrap{text-align:center}
 .stat-ring{
   position:relative;width:128px;height:128px;border-radius:50%;
@@ -369,8 +376,9 @@ footer a:hover{color:var(--or)}
 
 /* ── MOBILE ── */
 @media(max-width:768px){
+  .hero-top{padding:84px 5vw 0}
   .hero-body{padding:0 5vw 44px}
-  .h-head{font-size:clamp(1.9em,7.5vw,2.8em)}
+  .h-head{font-size:clamp(1.85em,7vw,2.8em)}
   .h-sub{font-size:.94em}
   .sec{padding:64px 18px}
   #prodotti{padding:64px 4vw}
@@ -420,9 +428,13 @@ footer a:hover{color:var(--or)}
   <div class="hero-ov"></div>
   <div class="hero-stripe"></div>
 
-  <div class="hero-body">
-    <span class="h-pill">Soluzioni per il punto vendita</span>
+  <!-- Headline top-center -->
+  <div class="hero-top">
     <h1 class="h-head">Tecnologia <em>intelligente</em><br>per la tua attività</h1>
+  </div>
+
+  <!-- Sub + CTA bottom-left -->
+  <div class="hero-body">
     <p class="h-sub">Da oltre 35 anni al fianco di negozi, ristoranti e supermercati con sistemi professionali di cassa, pesatura e gestione.</p>
     <a href="#prodotti" class="h-btn">Scopri i prodotti <i class="fas fa-arrow-right"></i></a>
   </div>
