@@ -196,11 +196,10 @@
       height: 100%;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-end;
       align-items: flex-start;
-      /* pushed down more so button clears the fold */
-      padding: 120px 8vw 160px;
-      gap: 28px;
+      padding: 120px 8vw 110px;
+      gap: 22px;
     }
 
     .hero-eyebrow {
@@ -250,8 +249,6 @@
       letter-spacing: 0.5px;
       box-shadow: 0 8px 28px var(--orange-glow);
       transition: all var(--transition);
-      /* keep it in the visible viewport area */
-      margin-bottom: 20px;
     }
     .hero-btn:hover { transform: translateY(-3px) scale(1.04); box-shadow: 0 14px 38px var(--orange-glow); }
     .hero-btn i { font-size: 0.9em; transition: transform var(--transition); }
@@ -579,7 +576,7 @@
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
-      .hero-content { padding: 110px 6vw 140px; }
+      .hero-content { padding: 100px 6vw 90px; }
       .hero-headline { font-size: clamp(2em, 8vw, 3em); }
       section { padding: 60px 20px; }
       #contatti { padding: 60px 6vw; }
@@ -980,8 +977,8 @@
   heroEl.addEventListener('touchend', function(e) {
     var dx = e.changedTouches[0].clientX - touchStartX;
     var dy = e.changedTouches[0].clientY - touchStartY;
-    /* only trigger if mostly horizontal swipe and moved > 40px */
-    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+    /* only trigger if mostly horizontal swipe and moved > 25px */
+    if (Math.abs(dx) > 25 && Math.abs(dx) > Math.abs(dy) * 1.5) {
       if (dx < 0) { goTo(current + 1); } else { goTo(current - 1); }
       resetTimer();
     }
