@@ -99,15 +99,20 @@
     }
 
     .brand-text {
-      font-family: 'Space Grotesk', sans-serif;
-      line-height: 1.1;
+      font-family: 'Cormorant Garamond', serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      line-height: 1.05;
       color: var(--white);
-      letter-spacing: 0.5px;
+      letter-spacing: 1.5px;
+      gap: 0;
     }
 
-    .brand-text .line1 { font-size: 0.78em; font-weight: 700; text-transform: uppercase; }
-    .brand-text .amp   { font-size: 0.6em;  color: var(--orange); display: block; font-weight: 500; }
-    .brand-text .line2 { font-size: 0.78em; font-weight: 700; text-transform: uppercase; }
+    .brand-text .line1 { font-size: 0.82em; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
+    .brand-text .amp   { font-size: 0.72em; color: var(--orange); font-weight: 600; line-height: 1.1; }
+    .brand-text .line2 { font-size: 0.82em; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
 
     #hamburger {
       font-size: 28px;
@@ -369,7 +374,7 @@
       gap: 20px;
       background: var(--white);
       border-radius: var(--radius-md);
-      padding: 22px;
+      padding: 26px 24px;
       box-shadow: 0 4px 24px rgba(0,0,0,0.06);
       border: 1px solid var(--light-2);
       transition: transform var(--transition), box-shadow var(--transition);
@@ -378,28 +383,34 @@
       transform: translateY(-6px);
       box-shadow: 0 16px 40px rgba(0,0,0,0.10);
     }
-    .about-card img {
-      width: 80px;
-      height: 80px;
-      object-fit: cover;
-      border-radius: var(--radius-sm);
+    .about-card-icon {
+      width: 60px; height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--orange), var(--orange-lt));
+      display: flex; justify-content: center; align-items: center;
       flex-shrink: 0;
+      box-shadow: 0 4px 16px var(--orange-glow);
+    }
+    .about-card-icon i {
+      font-size: 24px;
+      color: white;
     }
     .about-card-text p {
-      font-size: 0.95em;
+      font-size: 1em;
       font-weight: 600;
       color: var(--text);
     }
     .about-card-text span {
-      font-size: 0.82em;
+      font-size: 0.84em;
       color: var(--text-muted);
     }
 
     /* stats */
     .stats-row {
       display: flex;
-      gap: 40px;
+      gap: 48px;
       flex-wrap: wrap;
+      margin-top: 16px;
     }
 
     .stat-item {
@@ -407,47 +418,88 @@
     }
 
     .stat-circle {
-      width: 110px;
-      height: 110px;
+      position: relative;
+      width: 130px; height: 130px;
       border-radius: 50%;
       background: var(--dark);
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      margin: 0 auto 14px;
+      margin: 0 auto 16px;
+      /* outer glow ring */
       box-shadow:
-        inset 0 0 0 2px rgba(240,112,32,0.3),
-        0 0 30px rgba(240,112,32,0.15),
-        0 8px 24px rgba(0,0,0,0.3);
+        0 0 0 2px rgba(240,112,32,0.25),
+        0 0 0 8px rgba(240,112,32,0.06),
+        0 12px 36px rgba(0,0,0,0.4),
+        inset 0 1px 1px rgba(255,255,255,0.08);
       transition: transform var(--transition), box-shadow var(--transition);
+      overflow: hidden;
     }
+
+    /* animated sweep gradient border */
+    .stat-circle::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 50%;
+      background: conic-gradient(var(--orange) 0deg, var(--orange-lt) 120deg, transparent 200deg);
+      z-index: 0;
+      animation: spinBorder 4s linear infinite;
+    }
+    .stat-circle::after {
+      content: '';
+      position: absolute;
+      inset: 4px;
+      border-radius: 50%;
+      background: var(--dark);
+      z-index: 1;
+    }
+
+    @keyframes spinBorder {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
     .stat-circle:hover {
-      transform: scale(1.06);
+      transform: scale(1.07);
       box-shadow:
-        inset 0 0 0 2px var(--orange),
-        0 0 40px var(--orange-glow),
-        0 12px 32px rgba(0,0,0,0.35);
+        0 0 0 2px var(--orange),
+        0 0 0 12px rgba(240,112,32,0.1),
+        0 16px 44px rgba(0,0,0,0.45),
+        inset 0 1px 1px rgba(255,255,255,0.1);
     }
+
+    .stat-inner {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
     .stat-number {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.8em;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4em;
       font-weight: 700;
       color: var(--white);
       line-height: 1;
     }
     .stat-unit {
-      font-size: 0.65em;
+      font-size: 0.7em;
       color: var(--orange);
       font-weight: 600;
-      margin-top: 2px;
+      margin-top: 1px;
+      font-family: 'Inter', sans-serif;
     }
     .stat-label {
-      font-size: 0.82em;
+      font-size: 0.78em;
       font-weight: 600;
       color: var(--text-muted);
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 1px;
+      font-family: 'Inter', sans-serif;
     }
 
     /* ===== PRODOTTI ===== */
@@ -862,7 +914,7 @@
 
     @media (max-width: 480px) {
       .top-header { padding: 0 18px; }
-      .brand-text .line1, .brand-text .line2 { font-size: 0.68em; }
+      .brand-text .line1, .brand-text .line2 { font-size: 0.68em; letter-spacing: 1.5px; }
     }
 
     /* reduced motion */
@@ -929,14 +981,14 @@
 
   <div class="about-cards">
     <div class="about-card" data-aos="fade-up" data-aos-delay="100">
-      <img src="IMG_0711.jpeg" alt="Verifiche registratori">
+      <div class="about-card-icon"><i class="fas fa-cash-register"></i></div>
       <div class="about-card-text">
         <p>Verifiche periodiche</p>
         <span>Registratori di cassa</span>
       </div>
     </div>
     <div class="about-card" data-aos="fade-up" data-aos-delay="200">
-      <img src="verifiche-bilance.jpeg" alt="Verifiche bilance">
+      <div class="about-card-icon"><i class="fas fa-weight-hanging"></i></div>
       <div class="about-card-text">
         <p>Verifiche periodiche</p>
         <span>Bilance elettroniche</span>
@@ -947,15 +999,19 @@
   <div class="stats-row" data-aos="fade-up" data-aos-delay="300">
     <div class="stat-item">
       <div class="stat-circle">
-        <span class="stat-number">+35</span>
-        <span class="stat-unit">anni</span>
+        <div class="stat-inner">
+          <span class="stat-number">+35</span>
+          <span class="stat-unit">anni</span>
+        </div>
       </div>
       <div class="stat-label">Esperienza</div>
     </div>
     <div class="stat-item">
       <div class="stat-circle">
-        <span class="stat-number">500</span>
-        <span class="stat-unit">+</span>
+        <div class="stat-inner">
+          <span class="stat-number">500</span>
+          <span class="stat-unit">+</span>
+        </div>
       </div>
       <div class="stat-label">Soluzioni installate</div>
     </div>
