@@ -347,8 +347,8 @@ footer a:hover{color:var(--or)}
 .ck-bar{
   position:fixed;bottom:0;left:0;right:0;z-index:9999;
   background:rgba(10,10,10,.97);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);
-  color:#fff;padding:20px 32px;
-  display:flex;align-items:center;gap:18px;flex-wrap:wrap;
+  color:#fff;padding:18px 20px;
+  display:flex;flex-direction:column;gap:14px;
   border-top:1px solid rgba(240,112,32,.25);
   box-shadow:0 -10px 40px rgba(0,0,0,.5);
   animation:ckup .55s ease;
@@ -357,19 +357,21 @@ footer a:hover{color:var(--or)}
   content:'';position:absolute;top:0;left:0;width:100%;height:3px;
   background:linear-gradient(90deg,var(--or),var(--or2),transparent);
 }
+.ck-head{display:flex;align-items:flex-start;gap:14px}
 .ck-icon{
-  width:50px;height:50px;border-radius:50%;flex-shrink:0;
+  width:42px;height:42px;border-radius:50%;flex-shrink:0;
   background:linear-gradient(135deg,var(--or),var(--or2));
   display:flex;align-items:center;justify-content:center;
-  box-shadow:0 4px 16px var(--glow);font-size:19px;color:#fff;
+  box-shadow:0 4px 16px var(--glow);font-size:16px;color:#fff;
 }
-.ck-text{flex:1 1 360px;min-width:230px;display:flex;flex-direction:column;gap:5px}
-.ck-text strong{font-family:'Cormorant Garamond',serif;font-size:1.18em;font-weight:700;color:#fff;letter-spacing:.2px}
-.ck-text span{font-size:.86em;color:rgba(255,255,255,.66);line-height:1.65}
+.ck-text{display:flex;flex-direction:column;gap:5px}
+.ck-text strong{font-family:'Cormorant Garamond',serif;font-size:1.08em;font-weight:700;color:#fff;letter-spacing:.2px}
+.ck-text span{font-size:.84em;color:rgba(255,255,255,.66);line-height:1.6}
 .ck-text a{color:var(--or);text-decoration:none;font-weight:600}
 .ck-text a:hover{text-decoration:underline}
-.ck-btns{display:flex;gap:10px;flex-wrap:wrap;margin-left:auto}
-.ck-bar button{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:none;padding:12px 24px;border-radius:30px;font-weight:700;cursor:pointer;font-size:.85em;letter-spacing:.2px;transition:all .28s;min-height:44px;white-space:nowrap}
+.ck-btns{display:flex;gap:8px;flex-wrap:wrap}
+.ck-btns button{flex:1 1 auto}
+.ck-bar button{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:none;padding:12px 18px;border-radius:30px;font-weight:700;cursor:pointer;font-size:.85em;letter-spacing:.2px;transition:all .28s;min-height:44px;white-space:nowrap}
 #ck-acc{background:linear-gradient(135deg,var(--or),var(--or2));color:#fff;box-shadow:0 5px 18px var(--glow)}
 #ck-rej{background:rgba(255,255,255,.06);color:#fff;border:1px solid rgba(255,255,255,.18)}
 #ck-pref{background:rgba(255,255,255,.04);color:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.13)}
@@ -377,6 +379,14 @@ footer a:hover{color:var(--or)}
 #ck-acc:hover{box-shadow:0 9px 26px var(--glow)}
 #ck-rej:hover,#ck-pref:hover{background:rgba(255,255,255,.1)}
 @keyframes ckup{from{transform:translateY(110px);opacity:0}to{transform:translateY(0);opacity:1}}
+@media(min-width:900px){
+  .ck-bar{flex-direction:row;align-items:center;padding:22px 34px;gap:20px}
+  .ck-head{flex:1 1 auto;align-items:center}
+  .ck-text strong{font-size:1.15em}
+  .ck-text span{font-size:.86em}
+  .ck-btns{flex-shrink:0}
+  .ck-btns button{flex:0 0 auto;padding:12px 22px}
+}
 
 #ck-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.68);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);justify-content:center;align-items:center;z-index:10000;padding:20px}
 .ck-mod{background:#111;color:#fff;padding:34px;border-radius:var(--r16);max-width:440px;width:100%;display:flex;flex-direction:column;gap:14px;box-shadow:0 22px 64px rgba(0,0,0,.68);border:1px solid rgba(240,112,32,.13);animation:modpop .28s ease;max-height:88vh;overflow-y:auto}
@@ -416,13 +426,6 @@ footer a:hover{color:var(--or)}
   .brand-name b{font-size:.75em;letter-spacing:1.5px}
   .brand-name s{font-size:.65em}
   .brand-logo{height:40px}
-  .ck-bar{padding:16px 18px;flex-direction:column;align-items:stretch;gap:10px}
-  .ck-icon{width:36px;height:36px;font-size:14px}
-  .ck-text{gap:3px}
-  .ck-text strong{font-size:1.02em}
-  .ck-text span{font-size:.81em;line-height:1.5}
-  .ck-btns{width:100%;margin-left:0;gap:8px}
-  .ck-btns button{flex:1 1 auto;padding:10px 14px;min-height:40px;font-size:.8em}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
   </style>
@@ -639,10 +642,12 @@ footer a:hover{color:var(--or)}
 
 <!-- COOKIE BANNER -->
 <div id="ck-bar" class="ck-bar">
-  <div class="ck-icon"><i class="fas fa-cookie-bite"></i></div>
-  <div class="ck-text">
-    <strong>La tua privacy è importante per noi</strong>
-    <span>Utilizziamo cookie tecnici necessari al funzionamento del sito e, solo con il tuo consenso, cookie analitici per capire come viene usato il sito e migliorarne i contenuti. Puoi accettare tutti i cookie, rifiutare quelli non necessari oppure scegliere le tue preferenze in qualsiasi momento. Per saperne di più consulta la nostra <a href="cookie.html">Cookie Policy</a> e la <a href="privacy.html">Privacy Policy</a>.</span>
+  <div class="ck-head">
+    <div class="ck-icon"><i class="fas fa-cookie-bite"></i></div>
+    <div class="ck-text">
+      <strong>La tua privacy è importante per noi</strong>
+      <span>Utilizziamo cookie tecnici necessari al funzionamento del sito e, solo con il tuo consenso, cookie analitici per capire come viene usato il sito e migliorarne i contenuti. Puoi accettare tutti i cookie, rifiutare quelli non necessari oppure scegliere le tue preferenze in qualsiasi momento. Per saperne di più consulta la nostra <a href="cookie.html">Cookie Policy</a> e la <a href="privacy.html">Privacy Policy</a>.</span>
+    </div>
   </div>
   <div class="ck-btns">
     <button id="ck-pref"><i class="fas fa-sliders-h"></i> Preferenze</button>
