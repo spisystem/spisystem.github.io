@@ -35,6 +35,7 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
   border-bottom:1px solid rgba(240,112,32,.12);
   box-shadow:0 2px 20px rgba(0,0,0,.45);
   z-index:9000;
+  transition:height .4s ease;
 }
 .bar-brand{display:flex;align-items:center;gap:13px;text-decoration:none}
 .bar-logo{height:44px;width:auto;transition:filter .3s}
@@ -50,6 +51,7 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
   display:inline-flex;align-items:center;gap:8px;
   color:rgba(255,255,255,.55);text-decoration:none;
   font-size:.78em;font-weight:600;letter-spacing:1px;text-transform:uppercase;
+  padding:10px 4px;min-height:44px;white-space:nowrap;
   border:1px solid rgba(255,255,255,.08);border-radius:50px;
   padding:9px 18px;
   background:rgba(255,255,255,.04);
@@ -57,15 +59,6 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
 }
 .back:hover{color:var(--or);border-color:rgba(240,112,32,.3);background:rgba(240,112,32,.07)}
 .back i{font-size:12px}
-
-/* Lang button */
-.lang-btn{
-  background:none;border:1px solid rgba(255,255,255,.12);border-radius:50px;
-  color:rgba(255,255,255,.7);font-size:.72em;font-weight:600;letter-spacing:1px;
-  padding:7px 13px;cursor:pointer;display:flex;align-items:center;gap:6px;
-  transition:all .3s ease;white-space:nowrap;font-family:'Inter',sans-serif;
-}
-.lang-btn:hover{border-color:rgba(240,112,32,.4);color:rgba(255,255,255,.95);background:rgba(240,112,32,.06)}
 
 /* ── PAGE HERO ── */
 .pg-hero{
@@ -101,7 +94,9 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
 
 /* ── CARDS ── */
 .grid{display:flex;flex-direction:column;gap:22px}
+
 @keyframes cardIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+
 .card{
   background:var(--wh);border-radius:var(--r20);overflow:hidden;
   display:grid;grid-template-columns:190px 1fr;
@@ -118,6 +113,7 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
 }
 .card:hover{transform:translateY(-5px) scale(1.005);box-shadow:0 22px 52px rgba(0,0,0,.10);border-color:rgba(240,112,32,.15)}
 .card:hover::before{transform:scaleY(1)}
+
 .card-img{
   background:var(--lt);display:flex;align-items:center;justify-content:center;
   padding:24px 18px;border-right:1px solid var(--lt2);min-height:175px;
@@ -130,6 +126,7 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
   transition:transform .44s ease;
 }
 .card:hover .card-img img{transform:scale(1.08)}
+
 .card-body{padding:28px 26px;display:flex;flex-direction:column;gap:8px}
 .card-body h2{
   font-family:'Cormorant Garamond',serif;
@@ -196,6 +193,7 @@ footer a:hover{color:var(--or)}
 }
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  #intro{display:none}
 }
   </style>
 </head>
@@ -212,7 +210,12 @@ footer a:hover{color:var(--or)}
     </div>
   </a>
   <div style="display:flex;align-items:center;gap:10px">
-    <button class="lang-btn" id="langBtn" aria-label="Change language"></button>
+    <button id="langBtn" aria-label="Change language" style="
+      background:none;border:1px solid rgba(255,255,255,.12);border-radius:50px;
+      color:rgba(255,255,255,.7);font-size:.72em;font-weight:600;letter-spacing:1px;
+      padding:7px 13px;cursor:pointer;display:flex;align-items:center;gap:6px;
+      transition:all .3s ease;white-space:nowrap;
+    ">🇮🇹 <span id="langLabel">EN</span></button>
     <a href="javascript:history.back()" class="back">
       <i class="fas fa-arrow-left"></i> <span class="back-txt">Torna indietro</span>
     </a>
@@ -222,7 +225,7 @@ footer a:hover{color:var(--or)}
 <!-- ── PAGE HERO ── -->
 <div class="pg-hero">
   <div class="pg-hero-in">
-    <div class="pg-pill" id="pgPill">Catalogo prodotti</div>
+    <div class="pg-pill">Catalogo prodotti</div>
     <h1 id="pgTitle">Modelli <em>disponibili</em></h1>
     <div class="pg-line"></div>
   </div>
@@ -246,57 +249,27 @@ footer a:hover{color:var(--or)}
 <button id="btt" aria-label="Torna in cima"><i class="fas fa-chevron-up"></i></button>
 
 <script>
-/* ══════════════════════════════════════
-   LANGUAGE SYSTEM — mostra DESTINAZIONE
-   sei in IT → bottone mostra 🇬🇧 EN
-   sei in EN → bottone mostra 🇮🇹 IT
-══════════════════════════════════════ */
+/* ── LANGUAGE ── */
+var langBtn=document.getElementById('langBtn');
 var currentLang=localStorage.getItem('lang')||'it';
-
 var modT={
-  it:{
-    pill:'Catalogo prodotti',
-    back:'Torna indietro',
-    pdf:'Scarica brochure',
-    footer:'© 2026 SpizzicoTecnica & SPI System — Tutti i diritti riservati.'
-  },
-  en:{
-    pill:'Product catalogue',
-    back:'Go back',
-    pdf:'Download brochure',
-    footer:'© 2026 SpizzicoTecnica & SPI System — All rights reserved.'
-  }
+  it:{pill:'Catalogo prodotti',back:'Torna indietro',pdf:'Scarica brochure'},
+  en:{pill:'Product catalogue',back:'Go back',pdf:'Download brochure'}
 };
-
-function updateLangBtn(lang){
-  var btn=document.getElementById('langBtn');
-  if(!btn)return;
-  if(lang==='it')btn.innerHTML='🇬🇧 EN';
-  else btn.innerHTML='🇮🇹 IT';
-}
-
 function applyModLang(lang){
-  currentLang=lang;
-  localStorage.setItem('lang',lang);
-  document.documentElement.lang=lang;
+  currentLang=lang;localStorage.setItem('lang',lang);
   var t=modT[lang];
-  var pill=document.getElementById('pgPill');if(pill)pill.textContent=t.pill;
+  var pill=document.querySelector('.pg-pill');if(pill)pill.textContent=t.pill;
   var bk=document.querySelector('.back-txt');if(bk)bk.textContent=t.back;
-  document.querySelectorAll('.pdf-btn').forEach(function(b){
-    b.innerHTML='<i class="fas fa-file-pdf"></i> '+t.pdf;
-  });
-  var fcopy=document.querySelector('footer p:first-child');
-  if(fcopy)fcopy.textContent=t.footer;
-  updateLangBtn(lang);
+  document.querySelectorAll('.pdf-btn').forEach(function(b){b.innerHTML='<i class="fas fa-file-pdf"></i> '+t.pdf;});
+  var lb=document.getElementById('langBtn');
+  if(lang==='it')lb.innerHTML='🇮🇹 <span id="langLabel">EN</span>';
+  else lb.innerHTML='🇬🇧 <span id="langLabel">IT</span>';
 }
-
-/* Init */
-updateLangBtn(currentLang);
 if(currentLang!=='it')applyModLang(currentLang);
-
-document.getElementById('langBtn').addEventListener('click',function(){
-  applyModLang(currentLang==='it'?'en':'it');
-});
+langBtn.addEventListener('click',function(){applyModLang(currentLang==='it'?'en':'it');});
+langBtn.addEventListener('mouseenter',function(){this.style.borderColor='rgba(240,112,32,.4)';this.style.color='rgba(255,255,255,.95)';this.style.background='rgba(240,112,32,.06)';});
+langBtn.addEventListener('mouseleave',function(){this.style.borderColor='rgba(255,255,255,.12)';this.style.color='rgba(255,255,255,.7)';this.style.background='none';});
 
 /* ── BACK TO TOP ── */
 var btt=document.getElementById('btt');
@@ -390,12 +363,6 @@ if(!cat){
     el.innerHTML='<div class="card-img"><img src="'+m.i+'" alt="'+m.n+'" loading="lazy"></div><div class="card-body"><h2>'+m.n+'</h2><p>'+m.d+'</p>'+pdf+'</div>';
     grid.appendChild(el);
   });
-  /* apply lang to freshly created pdf-btns */
-  if(currentLang!=='it'){
-    document.querySelectorAll('.pdf-btn').forEach(function(b){
-      b.innerHTML='<i class="fas fa-file-pdf"></i> '+modT['en'].pdf;
-    });
-  }
 }
 </script>
 </body>
