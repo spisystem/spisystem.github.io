@@ -323,13 +323,6 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
    PRODOTTI
 ══════════════════════════════════════ */
 #prodotti{background:var(--wh);max-width:100%;padding:100px 6vw;position:relative;overflow:hidden}
-#prodotti::before{
-  content:'PRODOTTI';
-  position:absolute;right:-20px;top:50%;transform:translateY(-50%) rotate(90deg);
-  font-family:'Cormorant Garamond',serif;font-size:9em;font-weight:700;
-  color:rgba(0,0,0,.025);line-height:1;pointer-events:none;user-select:none;
-  white-space:nowrap;letter-spacing:-.02em;
-}
 .prod-inner{max-width:1080px;margin:0 auto;position:relative;z-index:1}
 .prod-grid{
   display:grid;
@@ -505,8 +498,6 @@ footer p{margin-bottom:8px;line-height:1.65}
 footer a{color:rgba(255,255,255,.5);text-decoration:none;transition:color .25s}
 footer a:hover{color:var(--or)}
 .nosel{pointer-events:none;user-select:none}
-.f-logo-row{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:20px;opacity:.4}
-.f-logo-row img{height:32px;width:auto;filter:grayscale(1) brightness(2)}
 
 /* ══════════════════════════════════════
    WHATSAPP
@@ -658,14 +649,90 @@ footer a:hover{color:var(--or)}
   .brand-logo{height:42px}
   .hero-counter{display:none}
 }
+/* ══════════════════════════════════════
+   INTRO SCREEN
+══════════════════════════════════════ */
+#intro{
+  position:fixed;inset:0;z-index:99999;
+  background:var(--dk);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:28px;
+  pointer-events:none;
+}
+#intro.done{
+  animation:introOut .7s .1s cubic-bezier(.76,0,.24,1) forwards;
+}
+@keyframes introOut{
+  0%{opacity:1;transform:none}
+  100%{opacity:0;transform:scale(1.04)}
+}
+
+.intro-logo{
+  width:88px;height:88px;
+  animation:introLogoIn .6s cubic-bezier(.34,1.56,.64,1) both;
+}
+@keyframes introLogoIn{
+  0%{opacity:0;transform:scale(.5) rotate(-12deg)}
+  100%{opacity:1;transform:scale(1) rotate(0)}
+}
+
+.intro-brand{
+  font-family:'Cormorant Garamond',serif;
+  color:var(--wh);text-align:center;line-height:1.1;
+  animation:introTextIn .7s .18s ease both;
+}
+@keyframes introTextIn{
+  0%{opacity:0;transform:translateY(16px)}
+  100%{opacity:1;transform:translateY(0)}
+}
+.intro-brand b{
+  display:block;font-size:1.5em;font-weight:700;
+  text-transform:uppercase;letter-spacing:4px;
+}
+.intro-brand s{
+  display:block;font-size:1em;font-weight:300;
+  color:var(--or);text-decoration:none;letter-spacing:2px;margin:4px 0;
+}
+
+/* progress bar */
+.intro-bar-wrap{
+  width:160px;height:2px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden;
+  animation:introTextIn .5s .28s ease both;
+}
+.intro-bar{
+  height:100%;width:0%;border-radius:2px;
+  background:linear-gradient(90deg,var(--or),var(--or2));
+  animation:introBar 1.1s .32s cubic-bezier(.4,0,.2,1) forwards;
+}
+@keyframes introBar{
+  0%{width:0%}
+  60%{width:75%}
+  100%{width:100%}
+}
+
+/* body hidden during intro */
+body.intro-active{overflow:hidden}
+
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
   [data-reveal]{opacity:1;transform:none}
+  #intro{display:none}
 }
   </style>
 </head>
 <body>
 <div id="top"></div>
+
+<!-- ── INTRO SCREEN ── -->
+<div id="intro">
+  <img class="intro-logo" src="img/B0F190C1-ED18-45F3-B492-572A76ED7803.png" alt="Logo" width="88" height="88" onerror="this.style.display='none'">
+  <div class="intro-brand">
+    <b>Spizzicotecnica</b>
+    <s>&</s>
+    <b>SPI System</b>
+  </div>
+  <div class="intro-bar-wrap"><div class="intro-bar"></div></div>
+</div>
 
 <!-- ── HEADER ── -->
 <header class="hdr" id="hdr">
@@ -747,7 +814,7 @@ footer a:hover{color:var(--or)}
     <div class="stat-wrap">
       <div class="stat-ring">
         <svg class="ring-spin" viewBox="0 0 132 132" aria-hidden="true">
-          <circle cx="66" cy="66" r="60" fill="none" stroke="url(#rg1)" stroke-width="3" stroke-linecap="round" stroke-dasharray="210 168"/>
+          <circle cx="66" cy="66" r="60" fill="none" stroke="url(#rg1)" stroke-width="3" stroke-linecap="round" stroke-dasharray="160 218"/>
           <defs><linearGradient id="rg1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#F07020"/><stop offset="100%" stop-color="#FF9448"/></linearGradient></defs>
         </svg>
         <div class="stat-in"><span class="stat-n">+35</span><span class="stat-u">anni</span></div>
@@ -757,7 +824,7 @@ footer a:hover{color:var(--or)}
     <div class="stat-wrap">
       <div class="stat-ring">
         <svg class="ring-spin" viewBox="0 0 132 132" aria-hidden="true" style="animation-direction:reverse;animation-duration:8s">
-          <circle cx="66" cy="66" r="60" fill="none" stroke="url(#rg2)" stroke-width="3" stroke-linecap="round" stroke-dasharray="100 278"/>
+          <circle cx="66" cy="66" r="60" fill="none" stroke="url(#rg2)" stroke-width="3" stroke-linecap="round" stroke-dasharray="160 218"/>
           <defs><linearGradient id="rg2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FF9448"/><stop offset="100%" stop-color="#F07020"/></linearGradient></defs>
         </svg>
         <div class="stat-in"><span class="stat-n">500</span><span class="stat-u">+</span></div>
@@ -827,7 +894,7 @@ footer a:hover{color:var(--or)}
 <div id="contatti">
   <div style="max-width:1080px;margin:0 auto">
     <div data-reveal>
-      <div class="eyebrow" style="color:rgba(255,255,255,.45)">Dove siamo</div>
+      <div class="eyebrow" style="color:rgba(255,255,255,.45)">Siamo qui per te</div>
       <h2 class="sec-title">Contatti</h2>
       <div class="sec-divider"></div>
     </div>
@@ -884,13 +951,10 @@ footer a:hover{color:var(--or)}
 
 <!-- ── FOOTER ── -->
 <footer>
-  <div class="f-logo-row">
-    <img src="img/B0F190C1-ED18-45F3-B492-572A76ED7803.png" alt="Logo" width="32" height="32" loading="lazy" onerror="this.parentElement.style.display='none'">
-    <span style="font-family:'Cormorant Garamond',serif;font-size:1.15em;letter-spacing:2px;color:rgba(255,255,255,.3)">SPIZZICOTECNICA & SPI SYSTEM</span>
-  </div>
   <p>&copy; 2026 SpizzicoTecnica & SPI System — Tutti i diritti riservati.</p>
   <p>P. IVA Spizzicotecnica di Spizzico Antonio: <span class="nosel">05857040728</span> &nbsp;|&nbsp; P. IVA SPI System di Spizzico Giuseppe: <span class="nosel">08791580726</span></p>
   <p style="margin-top:10px"><a href="privacy.html">Privacy Policy</a> &nbsp;|&nbsp; <a href="cookie.html">Cookie Policy</a></p>
+  <p style="margin-top:18px;font-size:.78em;color:rgba(255,255,255,.18);letter-spacing:.5px">Sito realizzato da <span style="color:rgba(240,112,32,.5);font-weight:600">SPI System</span></p>
 </footer>
 
 <!-- ── WHATSAPP ── -->
@@ -942,6 +1006,15 @@ footer a:hover{color:var(--or)}
 </div>
 
 <script>
+/* ── INTRO ── */
+document.body.classList.add('intro-active');
+var introEl=document.getElementById('intro');
+setTimeout(function(){
+  introEl.classList.add('done');
+  document.body.classList.remove('intro-active');
+  setTimeout(function(){introEl.style.display='none'},820);
+},1550);
+
 /* ── HEADER scroll ── */
 var hdr=document.getElementById('hdr');
 window.addEventListener('scroll',function(){hdr.classList.toggle('solid',window.scrollY>60)},{passive:true});
