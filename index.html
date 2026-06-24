@@ -654,36 +654,56 @@ footer a:hover{color:var(--or)}
 ══════════════════════════════════════ */
 #intro{
   position:fixed;inset:0;z-index:99999;
-  background:#0A0A0A;
+  background:#13100D;
   display:flex;align-items:center;justify-content:center;
   pointer-events:none;
 }
 #intro.done{
-  animation:introOut .9s cubic-bezier(.76,0,.24,1) forwards;
+  animation:introOut 1s cubic-bezier(.76,0,.24,1) forwards;
 }
 @keyframes introOut{
-  0%{opacity:1}
-  100%{opacity:0}
+  0%{opacity:1;transform:none}
+  100%{opacity:0;transform:scale(1.025)}
 }
 .intro-inner{
-  display:flex;flex-direction:column;align-items:center;gap:22px;
+  display:flex;flex-direction:column;align-items:center;gap:0;
 }
 .intro-logo-wrap{
-  animation:introScale .7s cubic-bezier(.34,1.4,.64,1) both;
+  animation:introScale .65s cubic-bezier(.34,1.4,.64,1) both;
+  margin-bottom:18px;
 }
 @keyframes introScale{
-  0%{opacity:0;transform:scale(.82)}
+  0%{opacity:0;transform:scale(.75)}
   100%{opacity:1;transform:scale(1)}
 }
-.intro-logo{width:52px;height:52px}
-.intro-line{
-  width:0;height:1px;
-  background:linear-gradient(90deg,transparent,var(--or),transparent);
-  animation:introLine .8s .3s ease forwards;
+.intro-logo{
+  width:56px;height:56px;
+  filter:drop-shadow(0 0 20px rgba(240,112,32,.28));
 }
-@keyframes introLine{
-  0%{width:0;opacity:0}
-  100%{width:80px;opacity:1}
+.intro-name{
+  font-family:'Cormorant Garamond',serif;
+  display:flex;flex-direction:column;align-items:center;
+  line-height:1.05;color:rgba(255,255,255,.92);
+  animation:introFade .6s .2s ease both;
+  margin-bottom:28px;
+}
+.intro-name b{font-size:.85em;font-weight:700;text-transform:uppercase;letter-spacing:3.5px;display:block}
+.intro-name s{font-size:.7em;font-weight:400;color:var(--or);display:block;text-decoration:none;line-height:1.4;letter-spacing:1px}
+@keyframes introFade{
+  0%{opacity:0;transform:translateY(8px)}
+  100%{opacity:1;transform:translateY(0)}
+}
+.intro-divider{
+  width:32px;height:1px;
+  background:rgba(240,112,32,.4);
+  margin-bottom:20px;
+  animation:introFade .5s .35s ease both;
+}
+.intro-phrase{
+  font-size:.6em;font-weight:400;letter-spacing:4px;text-transform:uppercase;
+  color:rgba(255,255,255,.28);
+  animation:introFade .5s .42s ease both;
+  font-family:'Inter',sans-serif;
 }
 body.intro-active{overflow:hidden}
 
@@ -701,9 +721,14 @@ body.intro-active{overflow:hidden}
 <div id="intro">
   <div class="intro-inner">
     <div class="intro-logo-wrap">
-      <img class="intro-logo" src="img/B0F190C1-ED18-45F3-B492-572A76ED7803.png" alt="Logo" width="52" height="52" onerror="this.style.display='none'">
+      <img class="intro-logo" src="img/B0F190C1-ED18-45F3-B492-572A76ED7803.png" alt="Logo" width="56" height="56" onerror="this.style.display='none'">
     </div>
-    <div class="intro-line"></div>
+    <div class="intro-name">
+      <b>Spizzicotecnica</b>
+      <s>&amp; SPI System</s>
+    </div>
+    <div class="intro-divider"></div>
+    <div class="intro-phrase">Soluzioni per il tuo business</div>
   </div>
 </div>
 
@@ -979,6 +1004,22 @@ body.intro-active{overflow:hidden}
 </div>
 
 <script>
+/* ── SCROLL POSITION SAVE ── */
+/* Save scroll when leaving to modelli */
+document.querySelectorAll('a[href*="modelli.html"]').forEach(function(a){
+  a.addEventListener('click',function(){
+    sessionStorage.setItem('scrollY',window.scrollY);
+  });
+});
+/* Restore scroll on load if coming back */
+window.addEventListener('load',function(){
+  var saved=sessionStorage.getItem('scrollY');
+  if(saved){
+    sessionStorage.removeItem('scrollY');
+    window.scrollTo({top:parseInt(saved),behavior:'instant'});
+  }
+});
+
 /* ── INTRO ── */
 var introEl=document.getElementById('intro');
 if(sessionStorage.getItem('visited')){
