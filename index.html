@@ -1004,32 +1004,32 @@ body.intro-active{overflow:hidden}
   <div class="ck-head">
     <div class="ck-icon"><i class="fas fa-cookie-bite"></i></div>
     <div class="ck-text">
-      <strong>La tua privacy è importante per noi</strong>
-      <span>Utilizziamo cookie tecnici e, con il tuo consenso, cookie analitici per migliorare il sito. Consulta la nostra <a href="cookie.html">Cookie Policy</a> e la <a href="privacy.html">Privacy Policy</a>.</span>
+      <strong id="ckBarTitle">La tua privacy è importante per noi</strong>
+      <span id="ckBarDesc">Utilizziamo cookie tecnici e, con il tuo consenso, cookie analitici per migliorare il sito. Consulta la nostra <a href="cookie.html">Cookie Policy</a> e la <a href="privacy.html">Privacy Policy</a>.</span>
     </div>
   </div>
   <div class="ck-btns">
-    <button id="ck-pref"><i class="fas fa-sliders-h"></i> Preferenze</button>
-    <button id="ck-rej">Rifiuta</button>
-    <button id="ck-acc"><i class="fas fa-check"></i> Accetta tutti</button>
+    <button id="ck-pref"><i class="fas fa-sliders-h"></i> <span id="ckPrefLabel">Preferenze</span></button>
+    <button id="ck-rej"><span id="ckRejLabel">Rifiuta</span></button>
+    <button id="ck-acc"><i class="fas fa-check"></i> <span id="ckAccLabel">Accetta tutti</span></button>
   </div>
 </div>
 
 <!-- ── COOKIE MODAL ── -->
 <div id="ck-modal">
   <form id="ck-form" class="ck-mod">
-    <h3>Preferenze cookie</h3>
-    <p class="ck-mod-desc">Scegli quali categorie autorizzare. Potrai modificare la scelta in qualsiasi momento.</p>
+    <h3 id="ckModTitle">Preferenze cookie</h3>
+    <p class="ck-mod-desc" id="ckModDesc">Scegli quali categorie autorizzare. Potrai modificare la scelta in qualsiasi momento.</p>
     <label class="ck-mod-row">
-      <div class="ck-mod-row-text"><strong>Cookie tecnici</strong><span>Sempre attivi — indispensabili per il funzionamento del sito</span></div>
+      <div class="ck-mod-row-text"><strong id="ckRow1Title">Cookie tecnici</strong><span id="ckRow1Desc">Sempre attivi — indispensabili per il funzionamento del sito</span></div>
       <input type="checkbox" checked disabled>
     </label>
     <label class="ck-mod-row">
-      <div class="ck-mod-row-text"><strong>Cookie analitici</strong><span>Dati aggregati e anonimi per migliorare i contenuti</span></div>
+      <div class="ck-mod-row-text"><strong id="ckRow2Title">Cookie analitici</strong><span id="ckRow2Desc">Dati aggregati e anonimi per migliorare i contenuti</span></div>
       <input type="checkbox" name="analytics">
     </label>
     <label class="ck-mod-row">
-      <div class="ck-mod-row-text"><strong>Cookie di marketing</strong><span>Non utilizzati su questo sito</span></div>
+      <div class="ck-mod-row-text"><strong id="ckRow3Title">Cookie di marketing</strong><span id="ckRow3Desc">Non utilizzati su questo sito</span></div>
       <input type="checkbox" name="marketing">
     </label>
     <div class="ck-mod-act">
@@ -1102,6 +1102,18 @@ var translations={
     'footer-copy':'© 2026 SpizzicoTecnica & SPI System — Tutti i diritti riservati.',
     'footer-credit':'Sito realizzato da',
     'orari-label':'Orari','tel-label':'Telefono','email-label':'Email','addr-label':'Indirizzo',
+    'ck-title':'La tua privacy è importante per noi',
+    'ck-desc-pre':'Utilizziamo cookie tecnici e, con il tuo consenso, cookie analitici per migliorare il sito. Consulta la nostra ',
+    'ck-desc-mid':' e la ',
+    'ck-desc-end':'.',
+    'ck-cookie-link':'Cookie Policy','ck-privacy-link':'Privacy Policy',
+    'ck-pref-btn':'Preferenze','ck-rej-btn':'Rifiuta','ck-acc-btn':'Accetta tutti',
+    'ck-mod-title':'Preferenze cookie',
+    'ck-mod-desc':'Scegli quali categorie autorizzare. Potrai modificare la scelta in qualsiasi momento.',
+    'ck-row1-title':'Cookie tecnici','ck-row1-desc':'Sempre attivi — indispensabili per il funzionamento del sito',
+    'ck-row2-title':'Cookie analitici','ck-row2-desc':'Dati aggregati e anonimi per migliorare i contenuti',
+    'ck-row3-title':'Cookie di marketing','ck-row3-desc':'Non utilizzati su questo sito',
+    'ck-cancel-btn':'Annulla','ck-save-btn':'Salva preferenze',
   },
   en:{
     'nav-chi':'About Us','nav-prod':'Products','nav-cont':'Contacts','nav-prev':'Quote',
@@ -1131,6 +1143,18 @@ var translations={
     'footer-copy':'© 2026 SpizzicoTecnica & SPI System — All rights reserved.',
     'footer-credit':'Website by',
     'orari-label':'Hours','tel-label':'Phone','email-label':'Email','addr-label':'Address',
+    'ck-title':'Your privacy matters to us',
+    'ck-desc-pre':'We use technical cookies and, with your consent, analytics cookies to improve the site. See our ',
+    'ck-desc-mid':' and ',
+    'ck-desc-end':'.',
+    'ck-cookie-link':'Cookie Policy','ck-privacy-link':'Privacy Policy',
+    'ck-pref-btn':'Preferences','ck-rej-btn':'Reject','ck-acc-btn':'Accept all',
+    'ck-mod-title':'Cookie preferences',
+    'ck-mod-desc':'Choose which categories to allow. You can change your choice at any time.',
+    'ck-row1-title':'Technical cookies','ck-row1-desc':'Always active — essential for the site to function',
+    'ck-row2-title':'Analytics cookies','ck-row2-desc':'Aggregated, anonymous data to improve content',
+    'ck-row3-title':'Marketing cookies','ck-row3-desc':'Not used on this site',
+    'ck-cancel-btn':'Cancel','ck-save-btn':'Save preferences',
   }
 };
 
@@ -1212,6 +1236,37 @@ function applyLang(lang){
   /* footer */
   var fcopy=document.querySelector('footer p:first-child');if(fcopy)fcopy.textContent=t['footer-copy'];
   var fcredit=document.querySelector('.footer-credit-label');if(fcredit)fcredit.textContent=t['footer-credit'];
+
+  /* cookie banner */
+  var ckTitle=document.getElementById('ckBarTitle');if(ckTitle)ckTitle.textContent=t['ck-title'];
+  var ckDesc=document.getElementById('ckBarDesc');
+  if(ckDesc){
+    var cookieLink=ckDesc.querySelector('a[href="cookie.html"]');
+    var privacyLink=ckDesc.querySelector('a[href="privacy.html"]');
+    if(cookieLink)cookieLink.textContent=t['ck-cookie-link'];
+    if(privacyLink)privacyLink.textContent=t['ck-privacy-link'];
+    ckDesc.innerHTML='';
+    ckDesc.appendChild(document.createTextNode(t['ck-desc-pre']));
+    if(cookieLink)ckDesc.appendChild(cookieLink);
+    ckDesc.appendChild(document.createTextNode(t['ck-desc-mid']));
+    if(privacyLink)ckDesc.appendChild(privacyLink);
+    ckDesc.appendChild(document.createTextNode(t['ck-desc-end']));
+  }
+  var ckPrefLabel=document.getElementById('ckPrefLabel');if(ckPrefLabel)ckPrefLabel.textContent=t['ck-pref-btn'];
+  var ckRejLabel=document.getElementById('ckRejLabel');if(ckRejLabel)ckRejLabel.textContent=t['ck-rej-btn'];
+  var ckAccLabel=document.getElementById('ckAccLabel');if(ckAccLabel)ckAccLabel.textContent=t['ck-acc-btn'];
+
+  /* cookie modal */
+  var ckModTitle=document.getElementById('ckModTitle');if(ckModTitle)ckModTitle.textContent=t['ck-mod-title'];
+  var ckModDesc=document.getElementById('ckModDesc');if(ckModDesc)ckModDesc.textContent=t['ck-mod-desc'];
+  var ckRow1T=document.getElementById('ckRow1Title');if(ckRow1T)ckRow1T.textContent=t['ck-row1-title'];
+  var ckRow1D=document.getElementById('ckRow1Desc');if(ckRow1D)ckRow1D.textContent=t['ck-row1-desc'];
+  var ckRow2T=document.getElementById('ckRow2Title');if(ckRow2T)ckRow2T.textContent=t['ck-row2-title'];
+  var ckRow2D=document.getElementById('ckRow2Desc');if(ckRow2D)ckRow2D.textContent=t['ck-row2-desc'];
+  var ckRow3T=document.getElementById('ckRow3Title');if(ckRow3T)ckRow3T.textContent=t['ck-row3-title'];
+  var ckRow3D=document.getElementById('ckRow3Desc');if(ckRow3D)ckRow3D.textContent=t['ck-row3-desc'];
+  var ckCancelBtn=document.getElementById('ck-cancel');if(ckCancelBtn)ckCancelBtn.textContent=t['ck-cancel-btn'];
+  var ckSaveBtn=document.getElementById('ck-save');if(ckSaveBtn)ckSaveBtn.textContent=t['ck-save-btn'];
 
   updateLangBtn(lang);
 }
