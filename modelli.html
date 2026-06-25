@@ -401,9 +401,8 @@ function renderGrid(){
   });
 }
 
-/* Init */
-updateLangBtn(currentLang);
-renderGrid();
+/* Init: applica subito la lingua salvata (default italiano se non c'è nulla in memoria) a TUTTA la pagina */
+applyModLang(currentLang);
 
 document.getElementById('langBtn').addEventListener('click',function(){
   applyModLang(currentLang==='it'?'en':'it');
