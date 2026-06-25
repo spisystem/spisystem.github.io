@@ -4,65 +4,40 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cookie Policy – Spizzicotecnica & SPI System</title>
-
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --orange:    #F07020;
-      --orange-lt: #FF9448;
+      --orange: #F07020; --orange-lt: #FF9448;
       --orange-glow: rgba(240,112,32,0.25);
-      --dark:      #0D0D0D;
-      --dark-mid:  #1A1A1A;
-      --light:     #F5F3EF;
-      --light-2:   #EDEAE4;
-      --text:      #1C1C1C;
-      --text-muted:#5A5A5A;
-      --white:     #FFFFFF;
-      --radius-md: 14px;
+      --dark: #0D0D0D; --dark-mid: #1A1A1A;
+      --light: #F5F3EF; --light-2: #EDEAE4;
+      --text: #1C1C1C; --text-muted: #5A5A5A;
+      --white: #FFFFFF; --radius-md: 14px;
       --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
     }
-
     html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--light);
-      color: var(--text);
-      line-height: 1.75;
-    }
-
+    body { font-family: 'Inter', sans-serif; background: var(--light); color: var(--text); line-height: 1.75; }
     img { pointer-events: none; user-select: none; -webkit-user-drag: none; }
-
     ::-webkit-scrollbar { width: 5px; }
     ::-webkit-scrollbar-track { background: var(--dark); }
     ::-webkit-scrollbar-thumb { background: var(--orange); border-radius: 10px; }
 
-    /* ===== TOP BAR ===== */
+    /* TOP BAR */
     .top-bar {
-      position: fixed;
-      top: 0; left: 0;
+      position: fixed; top: 0; left: 0;
       width: 100%; height: 68px;
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 28px;
       background: rgba(13,13,13,0.92);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid rgba(240,112,32,0.15);
       box-shadow: 0 2px 20px rgba(0,0,0,0.4);
       z-index: 9999;
     }
-
-    .top-bar-left {
-      display: flex; align-items: center; gap: 12px;
-      text-decoration: none; color: white;
-    }
-
+    .top-bar-left { display: flex; align-items: center; gap: 12px; text-decoration: none; color: white; }
     .top-bar-logo { height: 44px; width: auto; }
-
     .top-bar-text {
       font-family: 'Cormorant Garamond', serif;
       display: flex; flex-direction: column;
@@ -70,8 +45,8 @@
       line-height: 1.05; color: white; letter-spacing: 1.5px;
     }
     .top-bar-text .word { display: block; font-size: 1.0em; font-weight: 700; text-transform: uppercase; letter-spacing: 2.5px; }
-    .top-bar-text .amp  { display: block; font-size: 0.85em; color: var(--orange); font-weight: 600; line-height: 1.2; }
-
+    .top-bar-text .amp { display: block; font-size: 0.85em; color: var(--orange); font-weight: 600; line-height: 1.2; }
+    .top-bar-right { display: flex; align-items: center; gap: 10px; }
     .back-home {
       display: inline-flex; align-items: center; gap: 8px;
       color: rgba(255,255,255,0.7); text-decoration: none;
@@ -80,359 +55,306 @@
     }
     .back-home:hover { color: var(--orange); }
 
-    /* ===== PAGE HERO ===== */
-    .page-hero {
-      padding-top: 68px;
-      background: var(--dark);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
+    /* Lang button */
+    .lang-btn {
+      background: none; border: 1px solid rgba(255,255,255,.12); border-radius: 50px;
+      color: rgba(255,255,255,.7); font-size: .72em; font-weight: 600; letter-spacing: 1px;
+      padding: 7px 13px; cursor: pointer; display: flex; align-items: center; gap: 6px;
+      transition: all .3s ease; white-space: nowrap; font-family: 'Inter', sans-serif;
     }
+    .lang-btn:hover { border-color: rgba(240,112,32,.4); color: rgba(255,255,255,.95); background: rgba(240,112,32,.06); }
+
+    /* PAGE HERO */
+    .page-hero { padding-top: 68px; background: var(--dark); text-align: center; position: relative; overflow: hidden; }
     .page-hero::before {
-      content: '';
-      position: absolute; inset: 0;
+      content: ''; position: absolute; inset: 0;
       background: radial-gradient(ellipse 70% 60% at 50% 110%, rgba(240,112,32,0.18) 0%, transparent 70%);
       pointer-events: none;
     }
-    .page-hero-inner {
-      position: relative; z-index: 1;
-      padding: 48px 24px 44px;
-    }
+    .page-hero-inner { position: relative; z-index: 1; padding: 48px 24px 44px; }
     .page-hero-eyebrow {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.7em; font-weight: 700;
-      letter-spacing: 4px; text-transform: uppercase;
-      color: var(--orange);
-      background: rgba(240,112,32,0.1);
-      border: 1px solid rgba(240,112,32,0.25);
-      border-radius: 40px; padding: 6px 18px;
-      display: inline-block; margin-bottom: 16px;
+      font-size: 0.7em; font-weight: 700; letter-spacing: 4px; text-transform: uppercase;
+      color: var(--orange); background: rgba(240,112,32,0.1); border: 1px solid rgba(240,112,32,0.25);
+      border-radius: 40px; padding: 6px 18px; display: inline-block; margin-bottom: 16px;
     }
-    .page-hero h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2em, 5vw, 3.2em);
-      font-weight: 700; color: var(--white); line-height: 1.15;
-    }
+    .page-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2em, 5vw, 3.2em); font-weight: 700; color: var(--white); line-height: 1.15; }
     .page-hero h1 em { font-style: normal; color: var(--orange-lt); }
-    .page-hero-stripe {
-      width: 52px; height: 3px;
-      background: linear-gradient(90deg, var(--orange), var(--orange-lt));
-      border-radius: 2px; margin: 18px auto 0;
-    }
+    .page-hero-stripe { width: 52px; height: 3px; background: linear-gradient(90deg, var(--orange), var(--orange-lt)); border-radius: 2px; margin: 18px auto 0; }
 
-    /* ===== CONTENT WRAPPER ===== */
-    .content-wrap {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 56px 24px 80px;
-    }
-
-    /* ===== SECTIONS ===== */
+    /* CONTENT */
+    .content-wrap { max-width: 860px; margin: 0 auto; padding: 56px 24px 80px; }
     .policy-section {
-      background: var(--white);
-      border-radius: var(--radius-md);
-      padding: 32px 36px;
-      margin-bottom: 20px;
-      border: 1px solid var(--light-2);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-      transition: box-shadow var(--transition);
+      background: var(--white); border-radius: var(--radius-md); padding: 32px 36px;
+      margin-bottom: 20px; border: 1px solid var(--light-2);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05); transition: box-shadow var(--transition);
     }
     .policy-section:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
-
     .policy-section h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.4em; font-weight: 700;
-      color: var(--text);
-      margin-bottom: 14px;
-      display: flex; align-items: center; gap: 12px;
+      font-family: 'Cormorant Garamond', serif; font-size: 1.4em; font-weight: 700;
+      color: var(--text); margin-bottom: 14px; display: flex; align-items: center; gap: 12px;
     }
     .policy-section h2 .sec-icon {
       width: 36px; height: 36px; border-radius: 50%;
       background: linear-gradient(135deg, var(--orange), var(--orange-lt));
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
       box-shadow: 0 3px 10px var(--orange-glow);
     }
     .policy-section h2 .sec-icon i { font-size: 14px; color: white; }
-
-    .policy-section p {
-      font-size: 0.96em; color: var(--text-muted); line-height: 1.8;
-      margin-bottom: 12px;
-    }
+    .policy-section p { font-size: 0.96em; color: var(--text-muted); line-height: 1.8; margin-bottom: 12px; }
     .policy-section p:last-child { margin-bottom: 0; }
-
-    .policy-section ul {
-      list-style: none; padding: 0; margin-top: 8px;
-      display: flex; flex-direction: column; gap: 10px;
-    }
-    .policy-section ul li {
-      display: flex; gap: 12px;
-      font-size: 0.95em; color: var(--text-muted); line-height: 1.7;
-    }
-    .policy-section ul li::before {
-      content: '';
-      width: 6px; height: 6px; border-radius: 50%;
-      background: var(--orange);
-      flex-shrink: 0;
-      margin-top: 10px;
-    }
-
+    .policy-section ul { list-style: none; padding: 0; margin-top: 8px; display: flex; flex-direction: column; gap: 10px; }
+    .policy-section ul li { display: flex; gap: 12px; font-size: 0.95em; color: var(--text-muted); line-height: 1.7; }
+    .policy-section ul li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--orange); flex-shrink: 0; margin-top: 10px; }
     .policy-section a { color: var(--orange); text-decoration: none; transition: color var(--transition); }
     .policy-section a:hover { color: var(--orange-lt); text-decoration: underline; }
 
-    /* ===== COOKIE TABLE ===== */
-    .cookie-table-wrap {
-      overflow-x: auto;
-      margin-top: 16px;
-      border-radius: 10px;
-      border: 1px solid var(--light-2);
-    }
-    table {
-      width: 100%; border-collapse: collapse;
-      font-size: 0.9em;
-    }
-    thead tr {
-      background: linear-gradient(135deg, var(--orange), var(--orange-lt));
-    }
-    thead th {
-      color: white;
-      padding: 12px 16px;
-      text-align: left;
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      font-size: 0.8em;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
+    /* TABLE */
+    .cookie-table-wrap { overflow-x: auto; margin-top: 16px; border-radius: 10px; border: 1px solid var(--light-2); }
+    table { width: 100%; border-collapse: collapse; font-size: 0.9em; }
+    thead tr { background: linear-gradient(135deg, var(--orange), var(--orange-lt)); }
+    thead th { color: white; padding: 12px 16px; text-align: left; font-family: 'Space Grotesk', sans-serif; font-weight: 700; letter-spacing: 0.5px; font-size: 0.8em; text-transform: uppercase; white-space: nowrap; }
     tbody tr { border-bottom: 1px solid var(--light-2); }
     tbody tr:last-child { border-bottom: none; }
     tbody tr:hover { background: var(--light); }
-    tbody td {
-      padding: 12px 16px;
-      color: var(--text-muted);
-      line-height: 1.5;
-      vertical-align: top;
-    }
-    tbody td:first-child {
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 600;
-      color: var(--text);
-      font-size: 0.9em;
-    }
-
-    /* tag badges */
-    .badge {
-      display: inline-block;
-      padding: 2px 10px;
-      border-radius: 20px;
-      font-size: 0.8em;
-      font-weight: 700;
-      font-family: 'Space Grotesk', sans-serif;
-    }
-    .badge-tecnico  { background: rgba(59,130,246,0.1);  color: #2563eb; }
+    tbody td { padding: 12px 16px; color: var(--text-muted); line-height: 1.5; vertical-align: top; }
+    tbody td:first-child { font-family: 'Space Grotesk', sans-serif; font-weight: 600; color: var(--text); font-size: 0.9em; }
+    .badge { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 0.8em; font-weight: 700; font-family: 'Space Grotesk', sans-serif; }
+    .badge-tecnico { background: rgba(59,130,246,0.1); color: #2563eb; }
     .badge-analitico { background: rgba(240,112,32,0.1); color: var(--orange); }
 
-    /* ===== BROWSER LINKS ===== */
-    .browser-links {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 12px;
-      margin-top: 16px;
-    }
+    /* BROWSER LINKS */
+    .browser-links { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; margin-top: 16px; }
     .browser-link {
-      display: flex; align-items: center; gap: 10px;
-      padding: 12px 16px;
-      background: var(--light);
-      border: 1px solid var(--light-2);
-      border-radius: 10px;
-      text-decoration: none;
-      color: var(--text);
-      font-size: 0.9em;
-      font-weight: 600;
+      display: flex; align-items: center; gap: 10px; padding: 12px 16px;
+      background: var(--light); border: 1px solid var(--light-2); border-radius: 10px;
+      text-decoration: none; color: var(--text); font-size: 0.9em; font-weight: 600;
       transition: all var(--transition);
     }
-    .browser-link:hover {
-      border-color: var(--orange);
-      background: rgba(240,112,32,0.05);
-      color: var(--orange);
-      transform: translateY(-2px);
-    }
+    .browser-link:hover { border-color: var(--orange); background: rgba(240,112,32,0.05); color: var(--orange); transform: translateY(-2px); }
     .browser-link i { color: var(--orange); font-size: 1.1em; }
 
-    /* ===== FOOTER ===== */
-    footer {
-      background: var(--dark-mid, #1A1A1A);
-      color: rgba(255,255,255,0.5);
-      text-align: center;
-      padding: 32px 24px;
-      font-size: 0.87em;
-      border-top: 1px solid rgba(240,112,32,0.18);
-    }
+    /* FOOTER */
+    footer { background: var(--dark-mid, #1A1A1A); color: rgba(255,255,255,0.5); text-align: center; padding: 32px 24px; font-size: 0.87em; border-top: 1px solid rgba(240,112,32,0.18); }
     footer a { color: rgba(255,255,255,0.65); text-decoration: none; transition: color 0.2s; }
     footer a:hover { color: var(--orange); }
 
-    /* ===== RESPONSIVE ===== */
     @media (max-width: 600px) {
       .top-bar { padding: 0 16px; }
       .top-bar-text .word { font-size: 0.72em; letter-spacing: 1px; }
-      .top-bar-text .amp  { font-size: 0.65em; }
+      .top-bar-text .amp { font-size: 0.65em; }
       .back-home span { display: none; }
       .policy-section { padding: 24px 20px; }
       .content-wrap { padding: 40px 16px 60px; }
     }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { transition-duration: 0.01ms !important; }
-    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: 0.01ms !important; } }
   </style>
 </head>
 <body>
 
-<!-- TOP BAR -->
 <div class="top-bar">
   <a href="index.html" class="top-bar-left">
-    <img src="img/B0F190C1-ED18-45F3-B492-572A76ED7803.png" class="top-bar-logo" alt="Logo" width="44" height="44" loading="eager" decoding="async" fetchpriority="high" onerror="this.style.display='none'">
+    <img src="img/B0F190C1-ED18-45F3-B492-572A76ED7803.png" class="top-bar-logo" alt="Logo" width="44" height="44" loading="eager" onerror="this.style.display='none'">
     <div class="top-bar-text">
       <span class="word">Spizzicotecnica</span>
       <span class="amp">&</span>
       <span class="word">SPI System</span>
     </div>
   </a>
-  <a href="index.html" class="back-home">
-    <i class="fas fa-arrow-left"></i> <span>Torna al sito</span>
-  </a>
+  <div class="top-bar-right">
+    <button class="lang-btn" id="langBtn" aria-label="Cambia lingua"></button>
+    <a href="index.html" class="back-home">
+      <i class="fas fa-arrow-left"></i> <span id="backTxt">Torna al sito</span>
+    </a>
+  </div>
 </div>
 
-<!-- PAGE HERO -->
 <div class="page-hero">
   <div class="page-hero-inner">
-    <div class="page-hero-eyebrow">Informativa legale</div>
-    <h1>Cookie <em>Policy</em></h1>
+    <div class="page-hero-eyebrow" id="heroEyebrow">Informativa legale</div>
+    <h1 id="heroTitle">Cookie <em>Policy</em></h1>
     <div class="page-hero-stripe"></div>
   </div>
 </div>
 
-<!-- CONTENT -->
 <div class="content-wrap">
-
   <div class="policy-section">
-    <h2>
-      <span class="sec-icon"><i class="fas fa-cookie-bite"></i></span>
-      Cosa sono i cookie?
-    </h2>
-    <p>I cookie sono piccoli file di testo memorizzati sul tuo dispositivo quando visiti un sito web. Servono a migliorare la tua esperienza di navigazione, ricordare le tue preferenze e fornire servizi personalizzati.</p>
-    <p>Questa pagina descrive l'uso dei cookie su <strong>Spizzicotecnica & SPI System</strong> e spiega come gestirli.</p>
+    <h2><span class="sec-icon"><i class="fas fa-cookie-bite"></i></span><span id="t-h1">Cosa sono i cookie?</span></h2>
+    <p id="t-p1">I cookie sono piccoli file di testo memorizzati sul tuo dispositivo quando visiti un sito web. Servono a migliorare la tua esperienza di navigazione, ricordare le tue preferenze e fornire servizi personalizzati.</p>
+    <p id="t-p2">Questa pagina descrive l'uso dei cookie su <strong>Spizzicotecnica & SPI System</strong> e spiega come gestirli.</p>
   </div>
-
   <div class="policy-section">
-    <h2>
-      <span class="sec-icon"><i class="fas fa-layer-group"></i></span>
-      Tipologie di cookie utilizzati
-    </h2>
+    <h2><span class="sec-icon"><i class="fas fa-layer-group"></i></span><span id="t-h2">Tipologie di cookie utilizzati</span></h2>
     <ul>
-      <li><strong>Cookie tecnici (necessari):</strong> indispensabili per il corretto funzionamento del sito, come la navigazione, la sicurezza e la gestione delle preferenze. Non richiedono consenso.</li>
-      <li><strong>Cookie analitici:</strong> raccolgono dati aggregati e anonimi sull'utilizzo del sito per migliorare contenuti e performance (es. Google Analytics). Installati solo con il tuo consenso.</li>
-      <li><strong>Cookie di marketing:</strong> servono a tracciare la navigazione per pubblicità personalizzata. <strong>Questo sito non utilizza cookie di marketing.</strong></li>
-      <li><strong>Cookie di terze parti:</strong> possono essere impostati da servizi esterni come WhatsApp. Consulta le loro rispettive policy per i dettagli.</li>
+      <li id="t-li1"><strong>Cookie tecnici (necessari):</strong> indispensabili per il corretto funzionamento del sito, come la navigazione, la sicurezza e la gestione delle preferenze. Non richiedono consenso.</li>
+      <li id="t-li2"><strong>Cookie analitici:</strong> raccolgono dati aggregati e anonimi sull'utilizzo del sito per migliorare contenuti e performance (es. Google Analytics). Installati solo con il tuo consenso.</li>
+      <li id="t-li3"><strong>Cookie di marketing:</strong> servono a tracciare la navigazione per pubblicità personalizzata. <strong>Questo sito non utilizza cookie di marketing.</strong></li>
+      <li id="t-li4"><strong>Cookie di terze parti:</strong> possono essere impostati da servizi esterni come WhatsApp. Consulta le loro rispettive policy per i dettagli.</li>
     </ul>
   </div>
-
   <div class="policy-section">
-    <h2>
-      <span class="sec-icon"><i class="fas fa-list-ul"></i></span>
-      Elenco dei cookie utilizzati
-    </h2>
-    <p>Di seguito l'elenco indicativo dei cookie attivi sul sito:</p>
+    <h2><span class="sec-icon"><i class="fas fa-list-ul"></i></span><span id="t-h3">Elenco dei cookie utilizzati</span></h2>
+    <p id="t-p3">Di seguito l'elenco indicativo dei cookie attivi sul sito:</p>
     <div class="cookie-table-wrap">
       <table>
-        <thead>
-          <tr>
-            <th>Nome</th>
-            <th>Finalità</th>
-            <th>Durata</th>
-            <th>Tipologia</th>
-            <th>Fornitore</th>
-          </tr>
-        </thead>
+        <thead><tr><th id="t-th1">Nome</th><th id="t-th2">Finalità</th><th id="t-th3">Durata</th><th id="t-th4">Tipologia</th><th id="t-th5">Fornitore</th></tr></thead>
         <tbody>
-          <tr>
-            <td>cookieConsent</td>
-            <td>Salva le preferenze dell'utente sui cookie</td>
-            <td>6 mesi</td>
-            <td><span class="badge badge-tecnico">Tecnico</span></td>
-            <td>Questo sito</td>
-          </tr>
-          <tr>
-            <td>_ga, _ga_*</td>
-            <td>Statistiche anonime su traffico e comportamento</td>
-            <td>2 anni</td>
-            <td><span class="badge badge-analitico">Analitico</span></td>
-            <td>Google</td>
-          </tr>
+          <tr><td>cookieConsent</td><td id="t-td1">Salva le preferenze dell'utente sui cookie</td><td>6 <span id="t-mesi1">mesi</span></td><td><span class="badge badge-tecnico" id="t-badge1">Tecnico</span></td><td id="t-prov1">Questo sito</td></tr>
+          <tr><td>_ga, _ga_*</td><td id="t-td2">Statistiche anonime su traffico e comportamento</td><td>2 <span id="t-anni1">anni</span></td><td><span class="badge badge-analitico" id="t-badge2">Analitico</span></td><td>Google</td></tr>
         </tbody>
       </table>
     </div>
   </div>
-
   <div class="policy-section">
-    <h2>
-      <span class="sec-icon"><i class="fas fa-sliders-h"></i></span>
-      Gestione delle preferenze
-    </h2>
-    <p>Al primo accesso al sito viene mostrato un banner che ti permette di accettare, rifiutare o personalizzare i cookie non tecnici. Le preferenze possono essere modificate in qualsiasi momento tramite il pulsante <strong>"Gestisci preferenze"</strong> presente nel banner.</p>
+    <h2><span class="sec-icon"><i class="fas fa-sliders-h"></i></span><span id="t-h4">Gestione delle preferenze</span></h2>
+    <p id="t-p4">Al primo accesso al sito viene mostrato un banner che ti permette di accettare, rifiutare o personalizzare i cookie non tecnici. Le preferenze possono essere modificate in qualsiasi momento tramite il pulsante <strong id="t-managebtn">"Gestisci preferenze"</strong> presente nel banner.</p>
   </div>
-
   <div class="policy-section">
-    <h2>
-      <span class="sec-icon"><i class="fas fa-globe"></i></span>
-      Gestione tramite browser
-    </h2>
-    <p>Puoi gestire o disattivare i cookie anche direttamente dalle impostazioni del tuo browser:</p>
+    <h2><span class="sec-icon"><i class="fas fa-globe"></i></span><span id="t-h5">Gestione tramite browser</span></h2>
+    <p id="t-p5">Puoi gestire o disattivare i cookie anche direttamente dalle impostazioni del tuo browser:</p>
     <div class="browser-links">
-      <a class="browser-link" href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener">
-        <i class="fab fa-chrome"></i> Google Chrome
-      </a>
-      <a class="browser-link" href="https://support.mozilla.org/it/kb/Gestione%20dei%20cookie" target="_blank" rel="noopener">
-        <i class="fab fa-firefox"></i> Firefox
-      </a>
-      <a class="browser-link" href="https://support.apple.com/it-it/HT201265" target="_blank" rel="noopener">
-        <i class="fab fa-safari"></i> Safari
-      </a>
-      <a class="browser-link" href="https://support.microsoft.com/it-it/help/17442" target="_blank" rel="noopener">
-        <i class="fab fa-edge"></i> Microsoft Edge
-      </a>
+      <a class="browser-link" href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener"><i class="fab fa-chrome"></i> Google Chrome</a>
+      <a class="browser-link" href="https://support.mozilla.org/it/kb/Gestione%20dei%20cookie" target="_blank" rel="noopener"><i class="fab fa-firefox"></i> Firefox</a>
+      <a class="browser-link" href="https://support.apple.com/it-it/HT201265" target="_blank" rel="noopener"><i class="fab fa-safari"></i> Safari</a>
+      <a class="browser-link" href="https://support.microsoft.com/it-it/help/17442" target="_blank" rel="noopener"><i class="fab fa-edge"></i> Microsoft Edge</a>
     </div>
   </div>
-
   <div class="policy-section">
-    <h2>
-      <span class="sec-icon"><i class="fas fa-sync-alt"></i></span>
-      Modifiche alla Cookie Policy
-    </h2>
-    <p>La presente Cookie Policy può essere aggiornata in qualsiasi momento in base a modifiche normative o tecniche. Ti invitiamo a consultarla periodicamente.</p>
+    <h2><span class="sec-icon"><i class="fas fa-sync-alt"></i></span><span id="t-h6">Modifiche alla Cookie Policy</span></h2>
+    <p id="t-p6">La presente Cookie Policy può essere aggiornata in qualsiasi momento in base a modifiche normative o tecniche. Ti invitiamo a consultarla periodicamente.</p>
   </div>
-
   <div class="policy-section">
-    <h2>
-      <span class="sec-icon"><i class="fas fa-envelope"></i></span>
-      Contatti
-    </h2>
-    <p>Per qualsiasi informazione riguardante i cookie puoi scrivere a: <a href="mailto:spisystem@libero.it">spisystem@libero.it</a></p>
-    <p>Consulta anche la nostra <a href="privacy.html">Privacy Policy</a>.</p>
+    <h2><span class="sec-icon"><i class="fas fa-envelope"></i></span><span id="t-h7">Contatti</span></h2>
+    <p id="t-p7">Per qualsiasi informazione riguardante i cookie puoi scrivere a: <a href="mailto:spisystem@libero.it">spisystem@libero.it</a></p>
+    <p id="t-p8">Consulta anche la nostra <a href="privacy.html" id="t-privacylink">Privacy Policy</a>.</p>
   </div>
-
 </div>
 
-<!-- FOOTER -->
 <footer>
-  <p>&copy; 2026 Spizzicotecnica & SPI System – Tutti i diritti riservati</p>
-  <p style="margin-top:8px;">
-    <a href="privacy.html">Privacy Policy</a> &nbsp;|&nbsp;
-    <a href="cookie.html">Cookie Policy</a> &nbsp;|&nbsp;
-    <a href="index.html">Home</a>
-  </p>
+  <p id="footerCopy">&copy; 2026 Spizzicotecnica & SPI System – Tutti i diritti riservati</p>
+  <p style="margin-top:8px;"><a href="privacy.html">Privacy Policy</a> &nbsp;|&nbsp; <a href="cookie.html">Cookie Policy</a> &nbsp;|&nbsp; <a href="index.html" id="footerHome">Home</a></p>
 </footer>
 
+<script>
+var currentLang = localStorage.getItem('lang') || 'it';
+
+var ckT = {
+  it: {
+    eyebrow:'Informativa legale', back:'Torna al sito', heroTitle:'Cookie <em>Policy</em>',
+    'h1':'Cosa sono i cookie?',
+    'p1':'I cookie sono piccoli file di testo memorizzati sul tuo dispositivo quando visiti un sito web. Servono a migliorare la tua esperienza di navigazione, ricordare le tue preferenze e fornire servizi personalizzati.',
+    'p2-pre':'Questa pagina descrive l\u2019uso dei cookie su ',
+    'p2-suf':' e spiega come gestirli.',
+    'h2':'Tipologie di cookie utilizzati',
+    'li1':'<strong>Cookie tecnici (necessari):</strong> indispensabili per il corretto funzionamento del sito, come la navigazione, la sicurezza e la gestione delle preferenze. Non richiedono consenso.',
+    'li2':'<strong>Cookie analitici:</strong> raccolgono dati aggregati e anonimi sull\u2019utilizzo del sito per migliorare contenuti e performance (es. Google Analytics). Installati solo con il tuo consenso.',
+    'li3':'<strong>Cookie di marketing:</strong> servono a tracciare la navigazione per pubblicità personalizzata. <strong>Questo sito non utilizza cookie di marketing.</strong>',
+    'li4':'<strong>Cookie di terze parti:</strong> possono essere impostati da servizi esterni come WhatsApp. Consulta le loro rispettive policy per i dettagli.',
+    'h3':'Elenco dei cookie utilizzati',
+    'p3':'Di seguito l\u2019elenco indicativo dei cookie attivi sul sito:',
+    'th1':'Nome','th2':'Finalità','th3':'Durata','th4':'Tipologia','th5':'Fornitore',
+    'mesi1':'mesi','anni1':'anni','badge1':'Tecnico','badge2':'Analitico','prov1':'Questo sito',
+    'h4':'Gestione delle preferenze',
+    'p4':'Al primo accesso al sito viene mostrato un banner che ti permette di accettare, rifiutare o personalizzare i cookie non tecnici. Le preferenze possono essere modificate in qualsiasi momento tramite il pulsante "Gestisci preferenze" presente nel banner.',
+    'managebtn':'"Gestisci preferenze"',
+    'h5':'Gestione tramite browser',
+    'p5':'Puoi gestire o disattivare i cookie anche direttamente dalle impostazioni del tuo browser:',
+    'h6':'Modifiche alla Cookie Policy',
+    'p6':'La presente Cookie Policy può essere aggiornata in qualsiasi momento in base a modifiche normative o tecniche. Ti invitiamo a consultarla periodicamente.',
+    'h7':'Contatti',
+    'p7':'Per qualsiasi informazione riguardante i cookie puoi scrivere a:',
+    'p8':'Consulta anche la nostra ',
+    'privacylink':'Privacy Policy',
+    'td1':'Salva le preferenze dell\u2019utente sui cookie',
+    'td2':'Statistiche anonime su traffico e comportamento',
+    footer:'© 2026 Spizzicotecnica & SPI System – Tutti i diritti riservati',
+    home:'Home'
+  },
+  en: {
+    eyebrow:'Legal notice', back:'Back to site', heroTitle:'Cookie <em>Policy</em>',
+    'h1':'What are cookies?',
+    'p1':'Cookies are small text files stored on your device when you visit a website. They help improve your browsing experience, remember your preferences, and provide personalised services.',
+    'p2-pre':'This page describes the use of cookies on ',
+    'p2-suf':' and explains how to manage them.',
+    'h2':'Types of cookies used',
+    'li1':'<strong>Technical (necessary) cookies:</strong> essential for the site to function correctly, such as navigation, security and preference management. They do not require consent.',
+    'li2':'<strong>Analytics cookies:</strong> collect aggregated, anonymous data on site usage to improve content and performance (e.g. Google Analytics). Installed only with your consent.',
+    'li3':'<strong>Marketing cookies:</strong> used to track browsing for personalised advertising. <strong>This site does not use marketing cookies.</strong>',
+    'li4':'<strong>Third-party cookies:</strong> may be set by external services such as WhatsApp. See their respective policies for details.',
+    'h3':'List of cookies in use',
+    'p3':'Below is an indicative list of cookies active on the site:',
+    'th1':'Name','th2':'Purpose','th3':'Duration','th4':'Type','th5':'Provider',
+    'mesi1':'months','anni1':'years','badge1':'Technical','badge2':'Analytics','prov1':'This site',
+    'h4':'Managing your preferences',
+    'p4':'On your first visit a banner lets you accept, reject, or customise non-technical cookies. Preferences can be changed at any time via the "Manage preferences" button in the banner.',
+    'managebtn':'"Manage preferences"',
+    'h5':'Browser-level management',
+    'p5':'You can also manage or disable cookies directly through your browser settings:',
+    'h6':'Changes to the Cookie Policy',
+    'p6':'This Cookie Policy may be updated at any time due to regulatory or technical changes. We invite you to check it periodically.',
+    'h7':'Contact',
+    'p7':'For any information about cookies you can write to:',
+    'p8':'Also read our ',
+    'privacylink':'Privacy Policy',
+    'td1':'Saves the user\u2019s cookie preferences',
+    'td2':'Anonymous aggregate traffic and behaviour statistics',
+    footer:'© 2026 Spizzicotecnica & SPI System – All rights reserved',
+    home:'Home'
+  }
+};
+
+function updateLangBtn(lang) {
+  var btn = document.getElementById('langBtn');
+  if (!btn) return;
+  btn.innerHTML = lang === 'it' ? '🇬🇧 EN' : '🇮🇹 IT';
+}
+
+function applyCkLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('lang', lang);
+  document.documentElement.lang = lang;
+  var t = ckT[lang];
+  updateLangBtn(lang);
+  var ey = document.getElementById('heroEyebrow'); if(ey) ey.textContent = t.eyebrow;
+  var bk = document.getElementById('backTxt'); if(bk) bk.textContent = t.back;
+  var ht = document.getElementById('heroTitle'); if(ht) ht.innerHTML = t.heroTitle;
+  ['h1','h2','h3','h4','h5','h6','h7'].forEach(function(k){
+    var el=document.getElementById('t-'+k); if(el) el.textContent=t[k];
+  });
+  ['li1','li2','li3','li4'].forEach(function(k){
+    var el=document.getElementById('t-'+k); if(el) el.innerHTML=t[k];
+  });
+  ['th1','th2','th3','th4','th5'].forEach(function(k){
+    var el=document.getElementById('t-'+k); if(el) el.textContent=t[k];
+  });
+  var mesi=document.getElementById('t-mesi1'); if(mesi) mesi.textContent=t.mesi1;
+  var anni=document.getElementById('t-anni1'); if(anni) anni.textContent=t.anni1;
+  var badge1=document.getElementById('t-badge1'); if(badge1) badge1.textContent=t.badge1;
+  var badge2=document.getElementById('t-badge2'); if(badge2) badge2.textContent=t.badge2;
+  var prov1=document.getElementById('t-prov1'); if(prov1) prov1.textContent=t.prov1;
+  var managebtn=document.getElementById('t-managebtn'); if(managebtn) managebtn.textContent=t.managebtn;
+
+  var p1=document.getElementById('t-p1'); if(p1) p1.textContent=t['p1'];
+  var p2=document.getElementById('t-p2'); if(p2) p2.innerHTML=t['p2-pre']+'<strong>Spizzicotecnica & SPI System</strong>'+t['p2-suf'];
+  var p3=document.getElementById('t-p3'); if(p3) p3.textContent=t['p3'];
+  var p4=document.getElementById('t-p4'); if(p4) p4.innerHTML=t['p4'];
+  var p5=document.getElementById('t-p5'); if(p5) p5.textContent=t['p5'];
+  var p6=document.getElementById('t-p6'); if(p6) p6.textContent=t['p6'];
+  var p7=document.getElementById('t-p7'); if(p7) p7.innerHTML=t['p7']+' <a href="mailto:spisystem@libero.it">spisystem@libero.it</a>';
+  var privacylink=document.getElementById('t-privacylink'); if(privacylink) privacylink.textContent=t.privacylink;
+  var p8=document.getElementById('t-p8'); if(p8){var pl=p8.querySelector('a');p8.innerHTML='';p8.appendChild(document.createTextNode(t['p8']));if(pl)p8.appendChild(pl);p8.appendChild(document.createTextNode('.'));}
+  var td1=document.getElementById('t-td1'); if(td1) td1.textContent=t['td1'];
+  var td2=document.getElementById('t-td2'); if(td2) td2.textContent=t['td2'];
+  var fc=document.getElementById('footerCopy'); if(fc) fc.textContent=t.footer;
+  var fh=document.getElementById('footerHome'); if(fh) fh.textContent=t.home;
+}
+
+updateLangBtn(currentLang);
+if (currentLang !== 'it') applyCkLang(currentLang);
+
+document.getElementById('langBtn').addEventListener('click', function(){
+  applyCkLang(currentLang === 'it' ? 'en' : 'it');
+});
+</script>
 </body>
 </html>
