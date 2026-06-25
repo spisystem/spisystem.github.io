@@ -72,6 +72,8 @@
     .top-bar-text .word { display: block; font-size: 1.0em; font-weight: 700; text-transform: uppercase; letter-spacing: 2.5px; }
     .top-bar-text .amp  { display: block; font-size: 0.85em; color: var(--orange); font-weight: 600; line-height: 1.2; }
 
+    .top-bar-right { display: flex; align-items: center; gap: 10px; }
+
     .back-home {
       display: inline-flex; align-items: center; gap: 8px;
       color: rgba(255,255,255,0.7); text-decoration: none;
@@ -79,6 +81,15 @@
       transition: color var(--transition); white-space: nowrap;
     }
     .back-home:hover { color: var(--orange); }
+
+    /* Lang button */
+    .lang-btn {
+      background: none; border: 1px solid rgba(255,255,255,.12); border-radius: 50px;
+      color: rgba(255,255,255,.7); font-size: .72em; font-weight: 600; letter-spacing: 1px;
+      padding: 7px 13px; cursor: pointer; display: flex; align-items: center; gap: 6px;
+      transition: all .3s ease; white-space: nowrap; font-family: 'Inter', sans-serif;
+    }
+    .lang-btn:hover { border-color: rgba(240,112,32,.4); color: rgba(255,255,255,.95); background: rgba(240,112,32,.06); }
 
     /* ===== PAGE HERO ===== */
     .page-hero {
@@ -270,16 +281,19 @@
       <span class="word">SPI System</span>
     </div>
   </a>
-  <a href="index.html" class="back-home">
-    <i class="fas fa-arrow-left"></i> <span>Torna al sito</span>
-  </a>
+  <div class="top-bar-right">
+    <button class="lang-btn" id="langBtn" aria-label="Cambia lingua"></button>
+    <a href="index.html" class="back-home">
+      <i class="fas fa-arrow-left"></i> <span id="backTxt">Torna al sito</span>
+    </a>
+  </div>
 </div>
 
 <!-- PAGE HERO -->
 <div class="page-hero">
   <div class="page-hero-inner">
-    <div class="page-hero-eyebrow">Informativa legale</div>
-    <h1>Informativa <em>Privacy</em></h1>
+    <div class="page-hero-eyebrow" id="heroEyebrow">Informativa legale</div>
+    <h1 id="heroTitle">Informativa <em>Privacy</em></h1>
     <div class="page-hero-stripe"></div>
   </div>
 </div>
@@ -290,21 +304,21 @@
   <div class="policy-section">
     <h2>
       <span class="sec-icon"><i class="fas fa-shield-alt"></i></span>
-      Il nostro impegno
+      <span id="t-h1">Il nostro impegno</span>
     </h2>
-    <p>Spizzicotecnica e SPI System, in qualità di titolari del trattamento, sono impegnati a proteggere la tua privacy e a trattare i tuoi dati personali nel pieno rispetto del Regolamento UE 2016/679 (GDPR).</p>
+    <p id="t-p1">Spizzicotecnica e SPI System, in qualità di titolari del trattamento, sono impegnati a proteggere la tua privacy e a trattare i tuoi dati personali nel pieno rispetto del Regolamento UE 2016/679 (GDPR).</p>
   </div>
 
   <div class="policy-section">
     <h2>
       <span class="sec-icon"><i class="fas fa-user-tie"></i></span>
-      Titolari del trattamento
+      <span id="t-h2">Titolari del trattamento</span>
     </h2>
     <div class="titolari-grid">
       <div class="titolare-card">
         <strong>Spizzicotecnica</strong>
         <p>
-          Titolare: Antonio Spizzico<br>
+          <span id="t-tit1">Titolare</span>: Antonio Spizzico<br>
           P. IVA: 05857040728<br>
           <a href="mailto:spizzicotecnica@libero.it">spizzicotecnica@libero.it</a>
         </p>
@@ -312,7 +326,7 @@
       <div class="titolare-card">
         <strong>SPI System</strong>
         <p>
-          Titolare: Giuseppe Spizzico<br>
+          <span id="t-tit2">Titolare</span>: Giuseppe Spizzico<br>
           P. IVA: 08791580726<br>
           <a href="mailto:spisystem@libero.it">spisystem@libero.it</a>
         </p>
@@ -323,95 +337,226 @@
   <div class="policy-section">
     <h2>
       <span class="sec-icon"><i class="fas fa-bullseye"></i></span>
-      Finalità e base giuridica
+      <span id="t-h3">Finalità e base giuridica</span>
     </h2>
-    <p>I dati personali forniti tramite il modulo di richiesta preventivo vengono trattati esclusivamente per rispondere alla tua richiesta e fornirti informazioni sui nostri prodotti e servizi.</p>
-    <p>Il trattamento avviene sulla base del consenso esplicito da te fornito spuntando l'apposita casella (art. 6, comma 1, lett. a GDPR).</p>
+    <p id="t-p2">I dati personali forniti tramite il modulo di richiesta preventivo vengono trattati esclusivamente per rispondere alla tua richiesta e fornirti informazioni sui nostri prodotti e servizi.</p>
+    <p id="t-p3">Il trattamento avviene sulla base del consenso esplicito da te fornito spuntando l'apposita casella (art. 6, comma 1, lett. a GDPR).</p>
   </div>
 
   <div class="policy-section">
     <h2>
       <span class="sec-icon"><i class="fas fa-database"></i></span>
-      Dati raccolti
+      <span id="t-h4">Dati raccolti</span>
     </h2>
-    <p>Raccogliamo i seguenti dati personali attraverso il modulo di contatto:</p>
+    <p id="t-p4">Raccogliamo i seguenti dati personali attraverso il modulo di contatto:</p>
     <ul>
-      <li>Nome e cognome</li>
-      <li>Numero di telefono</li>
-      <li>Indirizzo</li>
-      <li>Tipologia di attività</li>
-      <li>Prodotti di interesse</li>
+      <li id="t-li1">Nome e cognome</li>
+      <li id="t-li2">Numero di telefono</li>
+      <li id="t-li3">Indirizzo</li>
+      <li id="t-li4">Tipologia di attività</li>
+      <li id="t-li5">Prodotti di interesse</li>
     </ul>
   </div>
 
   <div class="policy-section">
     <h2>
       <span class="sec-icon"><i class="fas fa-lock"></i></span>
-      Modalità di trattamento e sicurezza
+      <span id="t-h5">Modalità di trattamento e sicurezza</span>
     </h2>
-    <p>I dati sono trattati con strumenti informatici e cartacei in modo lecito, corretto e trasparente, adottando misure tecniche e organizzative adeguate per garantire la sicurezza e la riservatezza delle informazioni.</p>
+    <p id="t-p5">I dati sono trattati con strumenti informatici e cartacei in modo lecito, corretto e trasparente, adottando misure tecniche e organizzative adeguate per garantire la sicurezza e la riservatezza delle informazioni.</p>
   </div>
 
   <div class="policy-section">
     <h2>
       <span class="sec-icon"><i class="fas fa-clock"></i></span>
-      Durata della conservazione
+      <span id="t-h6">Durata della conservazione</span>
     </h2>
-    <p>I dati personali saranno conservati per il tempo necessario a rispondere alla tua richiesta e, comunque, non oltre <strong>24 mesi</strong> dalla raccolta, salvo obblighi di legge contrari.</p>
+    <p id="t-p6">I dati personali saranno conservati per il tempo necessario a rispondere alla tua richiesta e, comunque, non oltre <strong>24 mesi</strong> dalla raccolta, salvo obblighi di legge contrari.</p>
   </div>
 
   <div class="policy-section">
     <h2>
       <span class="sec-icon"><i class="fas fa-hand-paper"></i></span>
-      I tuoi diritti
+      <span id="t-h7">I tuoi diritti</span>
     </h2>
-    <p>Hai il diritto di esercitare in qualsiasi momento i seguenti diritti, contattando i titolari ai recapiti indicati sopra:</p>
+    <p id="t-p7">Hai il diritto di esercitare in qualsiasi momento i seguenti diritti, contattando i titolari ai recapiti indicati sopra:</p>
     <div class="diritti-grid">
-      <div class="diritto-item"><i class="fas fa-eye"></i> Accesso ai dati</div>
-      <div class="diritto-item"><i class="fas fa-edit"></i> Rettifica</div>
-      <div class="diritto-item"><i class="fas fa-trash-alt"></i> Cancellazione</div>
-      <div class="diritto-item"><i class="fas fa-pause-circle"></i> Limitazione</div>
-      <div class="diritto-item"><i class="fas fa-download"></i> Portabilità</div>
-      <div class="diritto-item"><i class="fas fa-ban"></i> Opposizione</div>
-      <div class="diritto-item"><i class="fas fa-undo"></i> Revoca del consenso</div>
+      <div class="diritto-item"><i class="fas fa-eye"></i> <span id="t-d1">Accesso ai dati</span></div>
+      <div class="diritto-item"><i class="fas fa-edit"></i> <span id="t-d2">Rettifica</span></div>
+      <div class="diritto-item"><i class="fas fa-trash-alt"></i> <span id="t-d3">Cancellazione</span></div>
+      <div class="diritto-item"><i class="fas fa-pause-circle"></i> <span id="t-d4">Limitazione</span></div>
+      <div class="diritto-item"><i class="fas fa-download"></i> <span id="t-d5">Portabilità</span></div>
+      <div class="diritto-item"><i class="fas fa-ban"></i> <span id="t-d6">Opposizione</span></div>
+      <div class="diritto-item"><i class="fas fa-undo"></i> <span id="t-d7">Revoca del consenso</span></div>
     </div>
   </div>
 
   <div class="policy-section">
     <h2>
       <span class="sec-icon"><i class="fas fa-gavel"></i></span>
-      Reclami
+      <span id="t-h8">Reclami</span>
     </h2>
-    <p>Se ritieni che il trattamento dei tuoi dati personali violi la normativa vigente, puoi presentare un reclamo all'Autorità Garante per la Protezione dei Dati Personali: <a href="https://www.garanteprivacy.it" target="_blank" rel="noopener noreferrer">www.garanteprivacy.it</a></p>
+    <p id="t-p8">Se ritieni che il trattamento dei tuoi dati personali violi la normativa vigente, puoi presentare un reclamo all'Autorità Garante per la Protezione dei Dati Personali: <a href="https://www.garanteprivacy.it" target="_blank" rel="noopener noreferrer">www.garanteprivacy.it</a></p>
   </div>
 
   <div class="policy-section">
     <h2>
       <span class="sec-icon"><i class="fas fa-cookie-bite"></i></span>
-      Cookie e strumenti di tracciamento
+      <span id="t-h9">Cookie e strumenti di tracciamento</span>
     </h2>
-    <p>Il sito utilizza esclusivamente cookie tecnici necessari al funzionamento, senza profilazione o finalità commerciali. Per maggiori dettagli consulta la nostra <a href="cookie.html">Cookie Policy</a>.</p>
+    <p id="t-p9">Il sito utilizza esclusivamente cookie tecnici necessari al funzionamento, senza profilazione o finalità commerciali. Per maggiori dettagli consulta la nostra <a href="cookie.html" id="t-cookielink">Cookie Policy</a>.</p>
   </div>
 
   <div class="policy-section">
     <h2>
       <span class="sec-icon"><i class="fas fa-sync-alt"></i></span>
-      Aggiornamenti
+      <span id="t-h10">Aggiornamenti</span>
     </h2>
-    <p>Questa informativa potrà essere aggiornata in caso di modifiche normative o organizzative. Ti invitiamo a consultarla regolarmente.</p>
+    <p id="t-p10">Questa informativa potrà essere aggiornata in caso di modifiche normative o organizzative. Ti invitiamo a consultarla regolarmente.</p>
   </div>
 
 </div>
 
 <!-- FOOTER -->
 <footer>
-  <p>&copy; 2026 Spizzicotecnica & SPI System – Tutti i diritti riservati</p>
+  <p id="footerCopy">&copy; 2026 Spizzicotecnica & SPI System – Tutti i diritti riservati</p>
   <p style="margin-top:8px;">
     <a href="privacy.html">Privacy Policy</a> &nbsp;|&nbsp;
     <a href="cookie.html">Cookie Policy</a> &nbsp;|&nbsp;
-    <a href="index.html">Home</a>
+    <a href="index.html" id="footerHome">Home</a>
   </p>
 </footer>
+
+<script>
+var currentLang = localStorage.getItem('lang') || 'it';
+
+var pvT = {
+  it: {
+    eyebrow:'Informativa legale', back:'Torna al sito', heroTitle:'Informativa <em>Privacy</em>',
+    h1:'Il nostro impegno',
+    p1:'Spizzicotecnica e SPI System, in qualità di titolari del trattamento, sono impegnati a proteggere la tua privacy e a trattare i tuoi dati personali nel pieno rispetto del Regolamento UE 2016/679 (GDPR).',
+    h2:'Titolari del trattamento', tit:'Titolare',
+    h3:'Finalità e base giuridica',
+    p2:'I dati personali forniti tramite il modulo di richiesta preventivo vengono trattati esclusivamente per rispondere alla tua richiesta e fornirti informazioni sui nostri prodotti e servizi.',
+    p3:'Il trattamento avviene sulla base del consenso esplicito da te fornito spuntando l\u2019apposita casella (art. 6, comma 1, lett. a GDPR).',
+    h4:'Dati raccolti',
+    p4:'Raccogliamo i seguenti dati personali attraverso il modulo di contatto:',
+    li1:'Nome e cognome', li2:'Numero di telefono', li3:'Indirizzo', li4:'Tipologia di attività', li5:'Prodotti di interesse',
+    h5:'Modalità di trattamento e sicurezza',
+    p5:'I dati sono trattati con strumenti informatici e cartacei in modo lecito, corretto e trasparente, adottando misure tecniche e organizzative adeguate per garantire la sicurezza e la riservatezza delle informazioni.',
+    h6:'Durata della conservazione',
+    p6:'I dati personali saranno conservati per il tempo necessario a rispondere alla tua richiesta e, comunque, non oltre <strong>24 mesi</strong> dalla raccolta, salvo obblighi di legge contrari.',
+    h7:'I tuoi diritti',
+    p7:'Hai il diritto di esercitare in qualsiasi momento i seguenti diritti, contattando i titolari ai recapiti indicati sopra:',
+    d1:'Accesso ai dati', d2:'Rettifica', d3:'Cancellazione', d4:'Limitazione', d5:'Portabilità', d6:'Opposizione', d7:'Revoca del consenso',
+    h8:'Reclami',
+    p8pre:'Se ritieni che il trattamento dei tuoi dati personali violi la normativa vigente, puoi presentare un reclamo all\u2019Autorità Garante per la Protezione dei Dati Personali: ',
+    h9:'Cookie e strumenti di tracciamento',
+    p9pre:'Il sito utilizza esclusivamente cookie tecnici necessari al funzionamento, senza profilazione o finalità commerciali. Per maggiori dettagli consulta la nostra ',
+    p9link:'Cookie Policy',
+    h10:'Aggiornamenti',
+    p10:'Questa informativa potrà essere aggiornata in caso di modifiche normative o organizzative. Ti invitiamo a consultarla regolarmente.',
+    footer:'© 2026 Spizzicotecnica & SPI System – Tutti i diritti riservati',
+    home:'Home'
+  },
+  en: {
+    eyebrow:'Legal notice', back:'Back to site', heroTitle:'Privacy <em>Policy</em>',
+    h1:'Our commitment',
+    p1:'Spizzicotecnica and SPI System, as data controllers, are committed to protecting your privacy and processing your personal data in full compliance with EU Regulation 2016/679 (GDPR).',
+    h2:'Data controllers', tit:'Controller',
+    h3:'Purpose and legal basis',
+    p2:'The personal data provided through the quote request form is processed solely to respond to your request and provide information about our products and services.',
+    p3:'Processing is based on the explicit consent you provide by ticking the relevant box (Art. 6(1)(a) GDPR).',
+    h4:'Data collected',
+    p4:'We collect the following personal data through the contact form:',
+    li1:'First and last name', li2:'Phone number', li3:'Address', li4:'Type of business', li5:'Products of interest',
+    h5:'Processing methods and security',
+    p5:'Data is processed using IT and paper tools in a lawful, fair and transparent manner, adopting adequate technical and organisational measures to ensure the security and confidentiality of the information.',
+    h6:'Retention period',
+    p6:'Personal data will be kept for as long as necessary to respond to your request and, in any case, no longer than <strong>24 months</strong> from collection, unless otherwise required by law.',
+    h7:'Your rights',
+    p7:'You have the right to exercise the following rights at any time by contacting the controllers at the details above:',
+    d1:'Access to data', d2:'Rectification', d3:'Erasure', d4:'Restriction', d5:'Portability', d6:'Objection', d7:'Withdrawal of consent',
+    h8:'Complaints',
+    p8pre:'If you believe that the processing of your personal data violates current regulations, you can file a complaint with the Italian Data Protection Authority: ',
+    h9:'Cookies and tracking tools',
+    p9pre:'The site exclusively uses technical cookies necessary for its operation, with no profiling or commercial purposes. For more details see our ',
+    p9link:'Cookie Policy',
+    h10:'Updates',
+    p10:'This notice may be updated in the event of regulatory or organisational changes. We invite you to check it periodically.',
+    footer:'© 2026 Spizzicotecnica & SPI System – All rights reserved',
+    home:'Home'
+  }
+};
+
+function updateLangBtn(lang){
+  var btn=document.getElementById('langBtn');
+  if(!btn)return;
+  btn.innerHTML = lang==='it' ? '🇬🇧 EN' : '🇮🇹 IT';
+}
+
+function applyPvLang(lang){
+  currentLang=lang;
+  localStorage.setItem('lang',lang);
+  document.documentElement.lang=lang;
+  var t=pvT[lang];
+  updateLangBtn(lang);
+
+  var ey=document.getElementById('heroEyebrow'); if(ey) ey.textContent=t.eyebrow;
+  var bk=document.getElementById('backTxt'); if(bk) bk.textContent=t.back;
+  var ht=document.getElementById('heroTitle'); if(ht) ht.innerHTML=t.heroTitle;
+
+  for(var i=1;i<=10;i++){
+    var h=document.getElementById('t-h'+i); if(h) h.textContent=t['h'+i];
+  }
+  var p1=document.getElementById('t-p1'); if(p1) p1.textContent=t.p1;
+  var p2=document.getElementById('t-p2'); if(p2) p2.textContent=t.p2;
+  var p3=document.getElementById('t-p3'); if(p3) p3.textContent=t.p3;
+  var p4=document.getElementById('t-p4'); if(p4) p4.textContent=t.p4;
+  var p5=document.getElementById('t-p5'); if(p5) p5.textContent=t.p5;
+  var p6=document.getElementById('t-p6'); if(p6) p6.innerHTML=t.p6;
+  var p7=document.getElementById('t-p7'); if(p7) p7.textContent=t.p7;
+  var p10=document.getElementById('t-p10'); if(p10) p10.textContent=t.p10;
+
+  var tit1=document.getElementById('t-tit1'); if(tit1) tit1.textContent=t.tit;
+  var tit2=document.getElementById('t-tit2'); if(tit2) tit2.textContent=t.tit;
+
+  for(var j=1;j<=5;j++){
+    var li=document.getElementById('t-li'+j); if(li) li.textContent=t['li'+j];
+  }
+  for(var k=1;k<=7;k++){
+    var d=document.getElementById('t-d'+k); if(d) d.textContent=t['d'+k];
+  }
+
+  var p8=document.getElementById('t-p8');
+  if(p8){
+    var garanteLink=p8.querySelector('a');
+    p8.innerHTML='';
+    p8.appendChild(document.createTextNode(t.p8pre));
+    if(garanteLink) p8.appendChild(garanteLink);
+  }
+
+  var p9=document.getElementById('t-p9');
+  if(p9){
+    var ckLink=document.getElementById('t-cookielink');
+    if(ckLink) ckLink.textContent=t.p9link;
+    p9.innerHTML='';
+    p9.appendChild(document.createTextNode(t.p9pre));
+    if(ckLink) p9.appendChild(ckLink);
+    p9.appendChild(document.createTextNode('.'));
+  }
+
+  var fc=document.getElementById('footerCopy'); if(fc) fc.textContent=t.footer;
+  var fh=document.getElementById('footerHome'); if(fh) fh.textContent=t.home;
+}
+
+updateLangBtn(currentLang);
+if(currentLang!=='it') applyPvLang(currentLang);
+
+document.getElementById('langBtn').addEventListener('click', function(){
+  applyPvLang(currentLang==='it' ? 'en' : 'it');
+});
+</script>
 
 </body>
 </html>
