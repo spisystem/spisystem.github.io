@@ -35,7 +35,6 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
   border-bottom:1px solid rgba(240,112,32,.12);
   box-shadow:0 2px 20px rgba(0,0,0,.45);
   z-index:9000;
-  transition:height .4s ease;
 }
 .bar-brand{display:flex;align-items:center;gap:13px;text-decoration:none}
 .bar-logo{height:44px;width:auto;transition:filter .3s}
@@ -51,7 +50,6 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
   display:inline-flex;align-items:center;gap:8px;
   color:rgba(255,255,255,.55);text-decoration:none;
   font-size:.78em;font-weight:600;letter-spacing:1px;text-transform:uppercase;
-  padding:10px 4px;min-height:44px;white-space:nowrap;
   border:1px solid rgba(255,255,255,.08);border-radius:50px;
   padding:9px 18px;
   background:rgba(255,255,255,.04);
@@ -59,6 +57,15 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
 }
 .back:hover{color:var(--or);border-color:rgba(240,112,32,.3);background:rgba(240,112,32,.07)}
 .back i{font-size:12px}
+
+/* Lang button */
+.lang-btn{
+  background:none;border:1px solid rgba(255,255,255,.12);border-radius:50px;
+  color:rgba(255,255,255,.7);font-size:.72em;font-weight:600;letter-spacing:1px;
+  padding:7px 13px;cursor:pointer;display:flex;align-items:center;gap:6px;
+  transition:all .3s ease;white-space:nowrap;font-family:'Inter',sans-serif;
+}
+.lang-btn:hover{border-color:rgba(240,112,32,.4);color:rgba(255,255,255,.95);background:rgba(240,112,32,.06)}
 
 /* ── PAGE HERO ── */
 .pg-hero{
@@ -94,9 +101,7 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
 
 /* ── CARDS ── */
 .grid{display:flex;flex-direction:column;gap:22px}
-
 @keyframes cardIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
-
 .card{
   background:var(--wh);border-radius:var(--r20);overflow:hidden;
   display:grid;grid-template-columns:190px 1fr;
@@ -113,7 +118,6 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
 }
 .card:hover{transform:translateY(-5px) scale(1.005);box-shadow:0 22px 52px rgba(0,0,0,.10);border-color:rgba(240,112,32,.15)}
 .card:hover::before{transform:scaleY(1)}
-
 .card-img{
   background:var(--lt);display:flex;align-items:center;justify-content:center;
   padding:24px 18px;border-right:1px solid var(--lt2);min-height:175px;
@@ -126,7 +130,6 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
   transition:transform .44s ease;
 }
 .card:hover .card-img img{transform:scale(1.08)}
-
 .card-body{padding:28px 26px;display:flex;flex-direction:column;gap:8px}
 .card-body h2{
   font-family:'Cormorant Garamond',serif;
@@ -193,7 +196,6 @@ footer a:hover{color:var(--or)}
 }
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
-  #intro{display:none}
 }
   </style>
 </head>
@@ -210,12 +212,7 @@ footer a:hover{color:var(--or)}
     </div>
   </a>
   <div style="display:flex;align-items:center;gap:10px">
-    <button id="langBtn" aria-label="Change language" style="
-      background:none;border:1px solid rgba(255,255,255,.12);border-radius:50px;
-      color:rgba(255,255,255,.7);font-size:.72em;font-weight:600;letter-spacing:1px;
-      padding:7px 13px;cursor:pointer;display:flex;align-items:center;gap:6px;
-      transition:all .3s ease;white-space:nowrap;
-    ">🇮🇹 <span id="langLabel">EN</span></button>
+    <button class="lang-btn" id="langBtn" aria-label="Change language"></button>
     <a href="javascript:history.back()" class="back">
       <i class="fas fa-arrow-left"></i> <span class="back-txt">Torna indietro</span>
     </a>
@@ -225,7 +222,7 @@ footer a:hover{color:var(--or)}
 <!-- ── PAGE HERO ── -->
 <div class="pg-hero">
   <div class="pg-hero-in">
-    <div class="pg-pill">Catalogo prodotti</div>
+    <div class="pg-pill" id="pgPill">Catalogo prodotti</div>
     <h1 id="pgTitle">Modelli <em>disponibili</em></h1>
     <div class="pg-line"></div>
   </div>
@@ -249,27 +246,58 @@ footer a:hover{color:var(--or)}
 <button id="btt" aria-label="Torna in cima"><i class="fas fa-chevron-up"></i></button>
 
 <script>
-/* ── LANGUAGE ── */
-var langBtn=document.getElementById('langBtn');
+/* ══════════════════════════════════════
+   LANGUAGE SYSTEM — mostra DESTINAZIONE
+   sei in IT → bottone mostra 🇬🇧 EN
+   sei in EN → bottone mostra 🇮🇹 IT
+══════════════════════════════════════ */
 var currentLang=localStorage.getItem('lang')||'it';
+
 var modT={
-  it:{pill:'Catalogo prodotti',back:'Torna indietro',pdf:'Scarica brochure'},
-  en:{pill:'Product catalogue',back:'Go back',pdf:'Download brochure'}
+  it:{
+    pill:'Catalogo prodotti',
+    back:'Torna indietro',
+    pdf:'Scarica brochure',
+    loading:'Caricamento…',
+    notfound:'Prodotto non trovato.',
+    notfoundlink:'Torna al sito',
+    titlesuffix:' disponibili',
+    footer:'© 2026 SpizzicoTecnica & SPI System — Tutti i diritti riservati.'
+  },
+  en:{
+    pill:'Product catalogue',
+    back:'Go back',
+    pdf:'Download brochure',
+    loading:'Loading…',
+    notfound:'Product not found.',
+    notfoundlink:'Back to site',
+    titlesuffix:' available',
+    footer:'© 2026 SpizzicoTecnica & SPI System — All rights reserved.'
+  }
 };
-function applyModLang(lang){
-  currentLang=lang;localStorage.setItem('lang',lang);
-  var t=modT[lang];
-  var pill=document.querySelector('.pg-pill');if(pill)pill.textContent=t.pill;
-  var bk=document.querySelector('.back-txt');if(bk)bk.textContent=t.back;
-  document.querySelectorAll('.pdf-btn').forEach(function(b){b.innerHTML='<i class="fas fa-file-pdf"></i> '+t.pdf;});
-  var lb=document.getElementById('langBtn');
-  if(lang==='it')lb.innerHTML='🇮🇹 <span id="langLabel">EN</span>';
-  else lb.innerHTML='🇬🇧 <span id="langLabel">IT</span>';
+
+function updateLangBtn(lang){
+  var btn=document.getElementById('langBtn');
+  if(!btn)return;
+  if(lang==='it')btn.innerHTML='🇬🇧 EN';
+  else btn.innerHTML='🇮🇹 IT';
 }
-if(currentLang!=='it')applyModLang(currentLang);
-langBtn.addEventListener('click',function(){applyModLang(currentLang==='it'?'en':'it');});
-langBtn.addEventListener('mouseenter',function(){this.style.borderColor='rgba(240,112,32,.4)';this.style.color='rgba(255,255,255,.95)';this.style.background='rgba(240,112,32,.06)';});
-langBtn.addEventListener('mouseleave',function(){this.style.borderColor='rgba(255,255,255,.12)';this.style.color='rgba(255,255,255,.7)';this.style.background='none';});
+
+function applyModLang(lang){
+  currentLang=lang;
+  localStorage.setItem('lang',lang);
+  document.documentElement.lang=lang;
+  var t=modT[lang];
+  var pill=document.getElementById('pgPill');if(pill)pill.textContent=t.pill;
+  var bk=document.querySelector('.back-txt');if(bk)bk.textContent=t.back;
+  document.querySelectorAll('.pdf-btn').forEach(function(b){
+    b.innerHTML='<i class="fas fa-file-pdf"></i> '+t.pdf;
+  });
+  var fcopy=document.querySelector('footer p:first-child');
+  if(fcopy)fcopy.textContent=t.footer;
+  updateLangBtn(lang);
+  renderGrid();
+}
 
 /* ── BACK TO TOP ── */
 var btt=document.getElementById('btt');
@@ -279,67 +307,67 @@ btt.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'
 /* ── DATA ── */
 var db={
   'sistemi-touch':{
-    t:'Sistemi Gestionali',
+    t:{it:'Sistemi Gestionali',en:'Management Systems'},
     m:[
-      {n:'WYCASH 2600',i:'img/IMG_0418.jpeg',d:'Wycash 2600 è il sistema di cassa potente e versatile per gestire il tuo negozio in maniera semplice ed efficiente. Display touch 15,6 pollici full HD super brillante.',p:'pdf/wycash-2600.pdf'},
-      {n:'WYCASH 1300',i:'img/IMG_0417.jpeg',d:'Per negozi, ristorazione e tabaccherie. Sistema di cassa compatto e flessibile per la gestione integrata del punto vendita. Interfaccia touch screen facile e intuitiva.',p:'pdf/wycash-1300.pdf'},
-      {n:'WYCASH 800',i:'img/wycash800.jpeg',d:'Soluzione di cassa intelligente con display touch screen 10 pollici. Controlla ogni aspetto della tua attività in pochi tocchi grazie all\'applicazione Wycash integrata.',p:'pdf/wycash800.pdf'},
-      {n:'WYCASH 600',i:'img/wycash-600.jpeg',d:'Soluzione touch screen compatta e flessibile per la gestione integrata del punto vendita. Gestisci e invia lo scontrino digitale in totale sicurezza.',p:'pdf/wycash-600.pdf'},
-      {n:'WYCASH 300',i:'img/wycash300.PNG',d:'Dimensioni contenute, peso ridotto e batteria a lunga durata. Il sistema POS RT che consente la massima flessibilità operativa.',p:'pdf/wycash300.pdf'},
-      {n:'SOFTWARE GESTIONALE LAVANDERIA',i:'img/3logis.PNG',d:'3logiS: piattaforma gestionale semplice, economica e modulare progettata per Lavanderie, Sartorie, Calzolerie, Stirerie e Centri-Servizi.',p:'pdf/3logis.pdf'}
+      {n:{it:'WYCASH 2600',en:'WYCASH 2600'},i:'img/IMG_0418.jpeg',d:{it:'Wycash 2600 è il sistema di cassa potente e versatile per gestire il tuo negozio in maniera semplice ed efficiente. Display touch 15,6 pollici full HD super brillante.',en:'Wycash 2600 is the powerful, versatile cash system for managing your shop simply and efficiently. Ultra-bright 15.6" full HD touch display.'},p:'pdf/wycash-2600.pdf'},
+      {n:{it:'WYCASH 1300',en:'WYCASH 1300'},i:'img/IMG_0417.jpeg',d:{it:'Per negozi, ristorazione e tabaccherie. Sistema di cassa compatto e flessibile per la gestione integrata del punto vendita. Interfaccia touch screen facile e intuitiva.',en:'For shops, catering and tobacconists. A compact, flexible cash system for integrated point-of-sale management. Easy, intuitive touch-screen interface.'},p:'pdf/wycash-1300.pdf'},
+      {n:{it:'WYCASH 800',en:'WYCASH 800'},i:'img/wycash800.jpeg',d:{it:'Soluzione di cassa intelligente con display touch screen 10 pollici. Controlla ogni aspetto della tua attività in pochi tocchi grazie all\u2019applicazione Wycash integrata.',en:'A smart cash solution with a 10" touch-screen display. Control every aspect of your business in a few taps thanks to the built-in Wycash app.'},p:'pdf/wycash800.pdf'},
+      {n:{it:'WYCASH 600',en:'WYCASH 600'},i:'img/wycash-600.jpeg',d:{it:'Soluzione touch screen compatta e flessibile per la gestione integrata del punto vendita. Gestisci e invia lo scontrino digitale in totale sicurezza.',en:'A compact, flexible touch-screen solution for integrated point-of-sale management. Manage and send the digital receipt with total security.'},p:'pdf/wycash-600.pdf'},
+      {n:{it:'WYCASH 300',en:'WYCASH 300'},i:'img/wycash300.PNG',d:{it:'Dimensioni contenute, peso ridotto e batteria a lunga durata. Il sistema POS RT che consente la massima flessibilità operativa.',en:'Compact size, light weight and long-lasting battery. The telematic POS system that allows maximum operational flexibility.'},p:'pdf/wycash300.pdf'},
+      {n:{it:'SOFTWARE GESTIONALE LAVANDERIA',en:'LAUNDRY MANAGEMENT SOFTWARE'},i:'img/3logis.PNG',d:{it:'3logiS: piattaforma gestionale semplice, economica e modulare progettata per Lavanderie, Sartorie, Calzolerie, Stirerie e Centri-Servizi.',en:'3logiS: a simple, affordable and modular management platform designed for laundries, tailors, shoe repairers, ironing services and service centres.'},p:'pdf/3logis.pdf'}
     ]
   },
   'registratori':{
-    t:'Registratori di Cassa',
+    t:{it:'Registratori di Cassa',en:'Cash Registers'},
     m:[
-      {n:'SERIE HELIOS PLUS RT',i:'img/helios.jpeg',d:'Alte prestazioni di affidabilità, doppio display LCD grande e luminoso, cambio carta facilitato con dispositivo Easy loading super-fast. Ideale per tutte le attività di vendita.',p:'pdf/helios.pdf'},
-      {n:'SERIE AURA RT',i:'img/aura.jpeg',d:'Registratore telematico per il commercio ambulante. Il più leggero e compatto della famiglia Axon Micrelec: batteria Litio lunga durata, cavo auto, cover impermeabile e borsa inclusi.',p:'pdf/aura.pdf'},
-      {n:'SERIE EDO PLUS II RT',i:'img/edoplus.jpeg',d:'Design ergonomico, elevate performance di velocità e affidabilità. Doppio display LCD luminoso facilita la lettura per operatore e cliente. Tastiera illuminata a intensità variabile.',p:'pdf/edoplus.pdf'},
-      {n:'SERIE MILO RT',i:'img/milo.jpeg',d:'Design elegante e compatto con tutte le funzionalità essenziali per il punto vendita. Tastiera ergonomica e doppio display LCD integrato per operatività semplice e veloce.',p:'pdf/milo.pdf'},
-      {n:'SERIE HELIOS TOUCH RT',i:'img/heliost.jpeg',d:'Registratore Telematico touch screen in elegante struttura alluminio. Tastiera touch 7 pollici ad alta luminosità regolabile. 40 tasti su 80 completamente personalizzabili per funzione e colore.',p:'pdf/heliostouch.pdf'}
+      {n:{it:'SERIE HELIOS PLUS RT',en:'HELIOS PLUS RT SERIES'},i:'img/helios.jpeg',d:{it:'Alte prestazioni di affidabilità, doppio display LCD grande e luminoso, cambio carta facilitato con dispositivo Easy loading super-fast. Ideale per tutte le attività di vendita.',en:'High reliability performance, large bright dual LCD display, easy paper change with super-fast Easy Loading device. Ideal for any retail business.'},p:'pdf/helios.pdf'},
+      {n:{it:'SERIE AURA RT',en:'AURA RT SERIES'},i:'img/aura.jpeg',d:{it:'Registratore telematico per il commercio ambulante. Il più leggero e compatto della famiglia Axon Micrelec: batteria Litio lunga durata, cavo auto, cover impermeabile e borsa inclusi.',en:'Telematic register for street vending. The lightest and most compact of the Axon Micrelec family: long-life lithium battery, car cable, waterproof cover and bag included.'},p:'pdf/aura.pdf'},
+      {n:{it:'SERIE EDO PLUS II RT',en:'EDO PLUS II RT SERIES'},i:'img/edoplus.jpeg',d:{it:'Design ergonomico, elevate performance di velocità e affidabilità. Doppio display LCD luminoso facilita la lettura per operatore e cliente. Tastiera illuminata a intensità variabile.',en:'Ergonomic design, high speed and reliability performance. Bright dual LCD display makes reading easier for both operator and customer. Backlit keyboard with variable intensity.'},p:'pdf/edoplus.pdf'},
+      {n:{it:'SERIE MILO RT',en:'MILO RT SERIES'},i:'img/milo.jpeg',d:{it:'Design elegante e compatto con tutte le funzionalità essenziali per il punto vendita. Tastiera ergonomica e doppio display LCD integrato per operatività semplice e veloce.',en:'Elegant, compact design with all the essential point-of-sale features. Ergonomic keyboard and built-in dual LCD display for simple, fast operation.'},p:'pdf/milo.pdf'},
+      {n:{it:'SERIE HELIOS TOUCH RT',en:'HELIOS TOUCH RT SERIES'},i:'img/heliost.jpeg',d:{it:'Registratore Telematico touch screen in elegante struttura alluminio. Tastiera touch 7 pollici ad alta luminosità regolabile. 40 tasti su 80 completamente personalizzabili per funzione e colore.',en:'Touch-screen telematic register in an elegant aluminium body. 7" touch keyboard with adjustable high brightness. 40 of 80 keys fully customisable by function and colour.'},p:'pdf/heliostouch.pdf'}
     ]
   },
   'bilance':{
-    t:'Bilance Elettroniche',
+    t:{it:'Bilance Elettroniche',en:'Electronic Scales'},
     m:[
-      {n:'Linea',i:'img/IMG_0436.jpeg',d:'Eurobil ridefinisce il concetto di bilancia da banco: prodotto esclusivo che unisce innovazione, efficienza e semplicità d\'uso.',p:'pdf/linea.pdf'},
-      {n:'Alex Color',i:'img/alexcolor.jpeg',d:'Gestione immagini a colori dei prodotti e funzione pubblicità sul display lato cliente. Ideale per valorizzare il punto vendita.',p:'pdf/alexcolor.pdf'},
-      {n:'Alex',i:'img/alex.jpg',d:'Bilancia Alex inox: soluzione ideale per pesatura commerciale in piccoli, medi e grandi negozi e per il mercato ambulante.',p:'pdf/alex.pdf'},
-      {n:'Alex Mare',i:'img/alexmare.jpeg',d:'Soluzione semplice e affidabile per la gestione commerciale del piccolo negozio e del mercato ambulante. Robusta e pratica.',p:'pdf/alexmare.pdf'},
-      {n:'Sun Eco Color',i:'img/sunecol.jpg',d:'Acciaio inox con gestione immagini a colori dei prodotti e funzione pubblicità lato cliente per un display sempre aggiornato.',p:'pdf/sunecol.pdf'},
-      {n:'Sun Eco',i:'img/suneco.jpg',d:'Bilancia in acciaio inox ideale per ogni esigenza di pesatura commerciale. Affidabile, robusta, adatta a negozio e mercato ambulante.',p:'pdf/suneco.pdf'},
-      {n:'Sun Eco Color Volo',i:'img/sunecolvol.jpg',d:'Versione Volo con piatto ribaltabile. Acciaio inox, gestione immagini a colori e funzione pubblicità lato cliente.',p:'pdf/sunecolvol.pdf'},
-      {n:'Sun Eco Volo',i:'img/sunecovolo.jpg',d:'Versione Volo con piatto ribaltabile in acciaio inox. Pratica e versatile per negozio e mercato ambulante.',p:'pdf/sunecovolo.pdf'},
-      {n:'SERIE NINJA LCD',i:'img/ninja.PNG',d:'Versioni: Bassa, Torre, Pensile Inox, Alta Light. Portate: 12 kg div.2g – 30 kg div.5g – 6/15 kg div.2/5g multirange.',p:'pdf/ninja.pdf'}
+      {n:{it:'Linea',en:'Linea'},i:'img/IMG_0436.jpeg',d:{it:'Eurobil ridefinisce il concetto di bilancia da banco: prodotto esclusivo che unisce innovazione, efficienza e semplicità d\u2019uso.',en:'Eurobil redefines the concept of a counter scale: an exclusive product combining innovation, efficiency and ease of use.'},p:'pdf/linea.pdf'},
+      {n:{it:'Alex Color',en:'Alex Color'},i:'img/alexcolor.jpeg',d:{it:'Gestione immagini a colori dei prodotti e funzione pubblicità sul display lato cliente. Ideale per valorizzare il punto vendita.',en:'Colour product image management and advertising function on the customer-side display. Ideal for enhancing the point of sale.'},p:'pdf/alexcolor.pdf'},
+      {n:{it:'Alex',en:'Alex'},i:'img/alex.jpg',d:{it:'Bilancia Alex inox: soluzione ideale per pesatura commerciale in piccoli, medi e grandi negozi e per il mercato ambulante.',en:'Alex stainless-steel scale: the ideal solution for commercial weighing in small, medium and large shops and for street markets.'},p:'pdf/alex.pdf'},
+      {n:{it:'Alex Mare',en:'Alex Mare'},i:'img/alexmare.jpeg',d:{it:'Soluzione semplice e affidabile per la gestione commerciale del piccolo negozio e del mercato ambulante. Robusta e pratica.',en:'A simple, reliable solution for the commercial management of small shops and street markets. Robust and practical.'},p:'pdf/alexmare.pdf'},
+      {n:{it:'Sun Eco Color',en:'Sun Eco Color'},i:'img/sunecol.jpg',d:{it:'Acciaio inox con gestione immagini a colori dei prodotti e funzione pubblicità lato cliente per un display sempre aggiornato.',en:'Stainless steel with colour product image management and customer-side advertising function for an always up-to-date display.'},p:'pdf/sunecol.pdf'},
+      {n:{it:'Sun Eco',en:'Sun Eco'},i:'img/suneco.jpg',d:{it:'Bilancia in acciaio inox ideale per ogni esigenza di pesatura commerciale. Affidabile, robusta, adatta a negozio e mercato ambulante.',en:'Stainless-steel scale ideal for any commercial weighing need. Reliable, robust, suited to shops and street markets.'},p:'pdf/suneco.pdf'},
+      {n:{it:'Sun Eco Color Volo',en:'Sun Eco Color Volo'},i:'img/sunecolvol.jpg',d:{it:'Versione Volo con piatto ribaltabile. Acciaio inox, gestione immagini a colori e funzione pubblicità lato cliente.',en:'Volo version with tilting plate. Stainless steel, colour image management and customer-side advertising function.'},p:'pdf/sunecolvol.pdf'},
+      {n:{it:'Sun Eco Volo',en:'Sun Eco Volo'},i:'img/sunecovolo.jpg',d:{it:'Versione Volo con piatto ribaltabile in acciaio inox. Pratica e versatile per negozio e mercato ambulante.',en:'Volo version with stainless-steel tilting plate. Practical and versatile for shops and street markets.'},p:'pdf/sunecovolo.pdf'},
+      {n:{it:'SERIE NINJA LCD',en:'NINJA LCD SERIES'},i:'img/ninja.PNG',d:{it:'Versioni: Bassa, Torre, Pensile Inox, Alta Light. Portate: 12 kg div.2g – 30 kg div.5g – 6/15 kg div.2/5g multirange.',en:'Versions: Low, Tower, Wall-mounted Stainless, High Light. Capacities: 12 kg div.2g – 30 kg div.5g – 6/15 kg div.2/5g multirange.'},p:'pdf/ninja.pdf'}
     ]
   },
   'affettatrici':{
-    t:'Affettatrici Professionali',
+    t:{it:'Affettatrici Professionali',en:'Professional Slicers'},
     m:[
-      {n:'Sirman Leonardo 350 EVO BS2',i:'img/affettatrici.jpg',d:'Affettatrice professionale verticale per utilizzo intensivo e grande produzione. Struttura alluminio anodizzato priva di spigoli, minuterie e parafetta in acciaio inox. Ideale per macellerie, salumerie, GDO.',p:'pdf/affettatrici.pdf'},
-      {n:'FIMAR K370',i:'img/fimar370.PNG',d:'Affettatrice verticale per salumi, carne e formaggi. Struttura alluminio anodizzato, carrello fisso, spessore taglio 0-15 mm, paralama estraibile, affilatoio fisso a doppio smeriglio.',p:'pdf/fimar370.pdf'}
+      {n:{it:'Sirman Leonardo 350 EVO BS2',en:'Sirman Leonardo 350 EVO BS2'},i:'img/affettatrici.jpg',d:{it:'Affettatrice professionale verticale per utilizzo intensivo e grande produzione. Struttura alluminio anodizzato priva di spigoli, minuterie e parafetta in acciaio inox. Ideale per macellerie, salumerie, GDO.',en:'Professional vertical slicer for heavy-duty use and high output. Anodised aluminium body with no sharp edges, stainless-steel fittings and slice deflector. Ideal for butchers, delicatessens and large retail.'},p:'pdf/affettatrici.pdf'},
+      {n:{it:'FIMAR K370',en:'FIMAR K370'},i:'img/fimar370.PNG',d:{it:'Affettatrice verticale per salumi, carne e formaggi. Struttura alluminio anodizzato, carrello fisso, spessore taglio 0-15 mm, paralama estraibile, affilatoio fisso a doppio smeriglio.',en:'Vertical slicer for cured meats, meat and cheese. Anodised aluminium body, fixed carriage, slice thickness 0–15 mm, removable blade guard, fixed double-grindstone sharpener.'},p:'pdf/fimar370.pdf'}
     ]
   },
   'casse':{
-    t:'Casse Automatiche Rendiresto',
+    t:{it:'Casse Automatiche Rendiresto',en:'Automatic Change Machines'},
     m:[
-      {n:'Cashmatic SelfPay 460',i:'img/cashmatic460.PNG',d:'Formato compatto e design innovativo. La cassa automatica rendiresto ideale per ogni tipologia di retailer che vuole ottimizzare i tempi e ridurre gli errori di cassa.',p:'pdf/cashmatic460.pdf'},
-      {n:'PagAmico 3S',i:'img/pagamico3s.PNG',d:'PagAmico 3S (Smart): ultima generazione di casse rendiresto prodotte da PayPrint per il settore retail. Compatta, veloce, affidabile.',p:'pdf/pagamico3s.pdf'},
-      {n:'VNE Virtuo 4',i:'img/vnevirtuo4.PNG',d:'Accetta tutte le banconote uno ad uno e dà resto con 4 tagli. Accetta tutte le monete simultaneamente in tagli misti e dà resto in tagli misti.',p:'pdf/vne.pdf'}
+      {n:{it:'Cashmatic SelfPay 460',en:'Cashmatic SelfPay 460'},i:'img/cashmatic460.PNG',d:{it:'Formato compatto e design innovativo. La cassa automatica rendiresto ideale per ogni tipologia di retailer che vuole ottimizzare i tempi e ridurre gli errori di cassa.',en:'Compact format and innovative design. The ideal automatic change machine for any retailer wanting to save time and reduce cash-handling errors.'},p:'pdf/cashmatic460.pdf'},
+      {n:{it:'PagAmico 3S',en:'PagAmico 3S'},i:'img/pagamico3s.PNG',d:{it:'PagAmico 3S (Smart): ultima generazione di casse rendiresto prodotte da PayPrint per il settore retail. Compatta, veloce, affidabile.',en:'PagAmico 3S (Smart): the latest generation of change machines made by PayPrint for the retail sector. Compact, fast and reliable.'},p:'pdf/pagamico3s.pdf'},
+      {n:{it:'VNE Virtuo 4',en:'VNE Virtuo 4'},i:'img/vnevirtuo4.PNG',d:{it:'Accetta tutte le banconote uno ad uno e dà resto con 4 tagli. Accetta tutte le monete simultaneamente in tagli misti e dà resto in tagli misti.',en:'Accepts all banknotes one by one and gives change in 4 denominations. Accepts all coins simultaneously in mixed denominations and gives change in mixed denominations.'},p:'pdf/vne.pdf'}
     ]
   },
   'kiosk':{
-    t:'Kiosk Interattivi',
+    t:{it:'Kiosk Interattivi',en:'Interactive Kiosks'},
     m:[
-      {n:'Wykiosk 1100',i:'img/wykiosk1100.PNG',d:'Per paninoteche, fast food, gelaterie e bar. Soluzione ideale per velocizzare il servizio e aumentare le vendite permettendo ai clienti di ordinare e pagare in autonomia.',p:'pdf/wykiosk.pdf'},
-      {n:'Smart Kiosk 21,5 pollici',i:'img/kiosk21.PNG',d:'Totem multimediale Axon Micrelec: la soluzione self-service più versatile per gestione code, ordinazioni autonome e servizi al cliente direttamente nel punto vendita.',p:'pdf/21kiosk.pdf'}
+      {n:{it:'Wykiosk 1100',en:'Wykiosk 1100'},i:'img/wykiosk1100.PNG',d:{it:'Per paninoteche, fast food, gelaterie e bar. Soluzione ideale per velocizzare il servizio e aumentare le vendite permettendo ai clienti di ordinare e pagare in autonomia.',en:'For sandwich shops, fast food, ice cream parlours and bars. The ideal solution to speed up service and boost sales by letting customers order and pay independently.'},p:'pdf/wykiosk.pdf'},
+      {n:{it:'Smart Kiosk 21,5 pollici',en:'Smart Kiosk 21.5"'},i:'img/kiosk21.PNG',d:{it:'Totem multimediale Axon Micrelec: la soluzione self-service più versatile per gestione code, ordinazioni autonome e servizi al cliente direttamente nel punto vendita.',en:'Axon Micrelec multimedia totem: the most versatile self-service solution for queue management, independent ordering and customer services directly at the point of sale.'},p:'pdf/21kiosk.pdf'}
     ]
   },
   'palmari-stampanti':{
-    t:'Palmari & Stampanti Cucina',
+    t:{it:'Palmari & Stampanti Cucina',en:'Handhelds & Kitchen Printers'},
     m:[
-      {n:'Serie DT50X',i:'img/palmareax.jpg',d:'Palmare Hospitality Edition: display touch 5,7 pollici HD visibile anche con forte luce solare. Funziona con guanti o dita bagnate. Prestazioni top per la ristorazione.',p:'pdf/palmareax.pdf'},
-      {n:'Serie POS 80K',i:'img/com.jpg',d:'Stampante per comande e ricevute termiche, la più versatile della famiglia. Forma compatta, installazione ovunque anche a parete. Veloce e silenzioso.',p:'pdf/com.pdf'}
+      {n:{it:'Serie DT50X',en:'DT50X Series'},i:'img/palmareax.jpg',d:{it:'Palmare Hospitality Edition: display touch 5,7 pollici HD visibile anche con forte luce solare. Funziona con guanti o dita bagnate. Prestazioni top per la ristorazione.',en:'Hospitality Edition handheld: 5.7" HD touch display visible even in strong sunlight. Works with gloves or wet fingers. Top performance for the food-service sector.'},p:'pdf/palmareax.pdf'},
+      {n:{it:'Serie POS 80K',en:'POS 80K Series'},i:'img/com.jpg',d:{it:'Stampante per comande e ricevute termiche, la più versatile della famiglia. Forma compatta, installazione ovunque anche a parete. Veloce e silenzioso.',en:'Thermal order/receipt printer, the most versatile of the family. Compact shape, can be installed anywhere, even on a wall. Fast and quiet.'},p:'pdf/com.pdf'}
     ]
   }
 };
@@ -348,22 +376,38 @@ var key=new URLSearchParams(window.location.search).get('prodotto');
 var cat=db[key];
 var grid=document.getElementById('grid');
 var pgTitle=document.getElementById('pgTitle');
-grid.innerHTML='';
 
-if(!cat){
-  grid.innerHTML='<p style="text-align:center;color:#999;padding:60px 0;font-size:1.05em">Prodotto non trovato. <a href="index.html" style="color:#F07020">Torna al sito</a></p>';
-}else{
-  pgTitle.innerHTML=cat.t+' <em>disponibili</em>';
-  document.title=cat.t+' – Spizzicotecnica & SPI System';
+function renderGrid(){
+  var t=modT[currentLang];
+  grid.innerHTML='';
+  if(!cat){
+    pgTitle.innerHTML=(currentLang==='it'?'Modelli <em>disponibili</em>':'Available <em>models</em>');
+    document.title='Modelli – Spizzicotecnica & SPI System';
+    grid.innerHTML='<p style="text-align:center;color:#999;padding:60px 0;font-size:1.05em">'+t.notfound+' <a href="index.html" style="color:#F07020">'+t.notfoundlink+'</a></p>';
+    return;
+  }
+  var catName=cat.t[currentLang]||cat.t.it;
+  pgTitle.innerHTML=catName+' <em>'+(currentLang==='it'?'disponibili':'available')+'</em>';
+  document.title=catName+' – Spizzicotecnica & SPI System';
   cat.m.forEach(function(m,i){
+    var name=(m.n[currentLang]||m.n.it);
+    var desc=(m.d[currentLang]||m.d.it);
     var el=document.createElement('div');
     el.className='card';
     el.style.animationDelay=(i*65)+'ms';
-    var pdf=m.p?'<a href="'+m.p+'" class="pdf-btn" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i> Scarica brochure</a>':'';
-    el.innerHTML='<div class="card-img"><img src="'+m.i+'" alt="'+m.n+'" loading="lazy"></div><div class="card-body"><h2>'+m.n+'</h2><p>'+m.d+'</p>'+pdf+'</div>';
+    var pdf=m.p?'<a href="'+m.p+'" class="pdf-btn" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i> '+t.pdf+'</a>':'';
+    el.innerHTML='<div class="card-img"><img src="'+m.i+'" alt="'+name+'" loading="lazy"></div><div class="card-body"><h2>'+name+'</h2><p>'+desc+'</p>'+pdf+'</div>';
     grid.appendChild(el);
   });
 }
+
+/* Init */
+updateLangBtn(currentLang);
+renderGrid();
+
+document.getElementById('langBtn').addEventListener('click',function(){
+  applyModLang(currentLang==='it'?'en':'it');
+});
 </script>
 </body>
 </html>
