@@ -949,7 +949,7 @@ body.intro-active{overflow:hidden}
   </div>
   <div class="promo-card2" data-reveal>
     <div class="promo-card2-info">
-      <span class="promo-badge2"><i class="fas fa-qrcode"></i> Digital Menu</span>
+      <span class="promo-badge2"><i class="fas fa-qrcode"></i> <span id="promoTag">Menù Digitale</span></span>
       <p class="promo-desc2" id="promoDesc">Sistema professionale di menù digitali multilingua per ristoranti e locali.</p>
       <ul class="promo-feats2">
         <li><i class="fas fa-check"></i><span id="promoFeat1">Aggiornabile</span></li>
@@ -1189,6 +1189,7 @@ var translations={
     'p7':'Palmari & Stampanti comande','p8':'Prezzatrici & Verificabanconote','p9':'Rotoli termici',
     'scopri':'Scopri',
     'promo-eyebrow':'Novità',
+    'promo-tag':'Menù Digitale',
     'promo-title':'Menù Digitali QR per Ristoranti',
     'promo-desc':'Sistema professionale di menù digitali multilingua per ristoranti e locali.',
     'promo-feat1':'Aggiornabile','promo-feat2':'Multilingua','promo-feat3':'Esperienza cliente moderna e veloce',
@@ -1237,6 +1238,7 @@ var translations={
     'p7':'Handhelds & Kitchen printers','p8':'Price labellers & Bill validators','p9':'Thermal rolls',
     'scopri':'Discover',
     'promo-eyebrow':'New',
+    'promo-tag':'Digital Menu',
     'promo-title':'Digital QR Menus for Restaurants',
     'promo-desc':'Professional multilingual digital menu system for restaurants and venues.',
     'promo-feat1':'Updatable','promo-feat2':'Multilingual','promo-feat3':'Modern, fast customer experience',
@@ -1299,6 +1301,7 @@ function applyLang(lang){
 
   /* promo menu qr */
   var pbEyebrow=document.getElementById('promoEyebrow');if(pbEyebrow)pbEyebrow.textContent=t['promo-eyebrow'];
+  var pbTag=document.getElementById('promoTag');if(pbTag)pbTag.textContent=t['promo-tag'];
   var pbTitle=document.getElementById('promoTitle');if(pbTitle)pbTitle.textContent=t['promo-title'];
   var pbDesc=document.getElementById('promoDesc');if(pbDesc)pbDesc.textContent=t['promo-desc'];
   var pbF1=document.getElementById('promoFeat1');if(pbF1)pbF1.textContent=t['promo-feat1'];
