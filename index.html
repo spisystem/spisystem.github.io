@@ -272,6 +272,78 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
 }
 
 /* ══════════════════════════════════════
+   PROMO MENU QR
+══════════════════════════════════════ */
+.promo-menu{
+  max-width:1080px;margin:0 auto;padding:0 28px 20px;
+}
+.promo-card{
+  position:relative;overflow:hidden;
+  display:flex;align-items:center;gap:36px;
+  background:var(--wh);
+  border:1px solid var(--lt2);
+  border-radius:var(--r20);
+  padding:38px 42px;
+  box-shadow:0 4px 28px rgba(0,0,0,.06);
+  transition:transform var(--spring),box-shadow var(--ease),border-color var(--ease);
+}
+.promo-card::before{
+  content:'';position:absolute;top:-80px;right:-80px;
+  width:280px;height:280px;border-radius:50%;
+  background:radial-gradient(circle,rgba(240,112,32,.10) 0%,transparent 70%);
+  pointer-events:none;
+}
+.promo-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 24px 56px rgba(0,0,0,.09);
+  border-color:rgba(240,112,32,.22);
+}
+.promo-icon{
+  width:76px;height:76px;border-radius:20px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--or),var(--or2));
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 10px 28px var(--glow);
+}
+.promo-icon i{font-size:30px;color:#fff}
+.promo-body{flex:1;min-width:0}
+.promo-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:.62em;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--or3);background:rgba(240,112,32,.09);
+  border:1px solid rgba(240,112,32,.22);border-radius:30px;
+  padding:5px 14px;margin-bottom:12px;
+}
+.promo-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.4em,2.6vw,1.9em);font-weight:700;
+  color:var(--tx);line-height:1.2;margin-bottom:8px;
+}
+.promo-desc{font-size:.94em;color:var(--txm);max-width:520px;line-height:1.65;margin-bottom:16px;font-weight:300}
+.promo-feats{list-style:none;display:flex;flex-wrap:wrap;gap:10px 20px;margin-bottom:0}
+.promo-feats li{
+  display:flex;align-items:center;gap:7px;
+  font-size:.82em;font-weight:600;color:var(--tx);
+}
+.promo-feats li i{color:var(--or);font-size:.85em}
+.promo-side{
+  display:flex;flex-direction:column;align-items:flex-end;gap:14px;flex-shrink:0;
+}
+.promo-price{
+  display:flex;align-items:baseline;gap:4px;
+  font-family:'Cormorant Garamond',serif;
+  color:var(--tx);
+}
+.promo-price b{font-size:1.9em;font-weight:700;color:var(--or3)}
+.promo-price small{font-size:.75em;color:var(--txm);font-weight:400}
+.promo-btn{white-space:nowrap}
+
+@media(max-width:768px){
+  .promo-card{flex-direction:column;align-items:flex-start;padding:30px 24px;gap:20px}
+  .promo-side{align-items:flex-start;width:100%}
+  .promo-btn{width:100%;justify-content:center}
+}
+
+/* ══════════════════════════════════════
    CHI SIAMO
 ══════════════════════════════════════ */
 #chi-siamo{position:relative;overflow:hidden}
@@ -825,6 +897,27 @@ body.intro-active{overflow:hidden}
   <div class="hero-dots" id="dots"></div>
 </section>
 
+<!-- ── PROMO MENU QR ── -->
+<div class="promo-menu" id="promo-menu">
+  <div class="promo-card" data-reveal>
+    <div class="promo-icon"><i class="fas fa-qrcode"></i></div>
+    <div class="promo-body">
+      <span class="promo-badge" id="promoBadge">Novità</span>
+      <h3 class="promo-title" id="promoTitle">Menù Digitali QR per Ristoranti</h3>
+      <p class="promo-desc" id="promoDesc">Sistema professionale di menù digitali multilingua per ristoranti e locali.</p>
+      <ul class="promo-feats">
+        <li><i class="fas fa-check"></i><span id="promoFeat1">Aggiornabile</span></li>
+        <li><i class="fas fa-check"></i><span id="promoFeat2">Multilingua</span></li>
+        <li><i class="fas fa-check"></i><span id="promoFeat3">Esperienza cliente moderna e veloce</span></li>
+      </ul>
+    </div>
+    <div class="promo-side">
+      <div class="promo-price"><b>€120</b><small id="promoPriceSuffix">/anno</small></div>
+      <a href="https://menu.spisystem.it" target="_blank" rel="noopener" class="h-btn promo-btn" id="promoBtn">Prova la Demo <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </div>
+</div>
+
 <!-- ── CHI SIAMO ── -->
 <div class="sec" id="chi-siamo">
   <div data-reveal>
@@ -1088,6 +1181,11 @@ var translations={
     'p4':'Casse automatiche','p5':'Kiosk interattivi','p6':'Affettatrici professionali',
     'p7':'Palmari & Stampanti comande','p8':'Prezzatrici & Verificabanconote','p9':'Rotoli termici',
     'scopri':'Scopri',
+    'promo-badge':'Novità',
+    'promo-title':'Menù Digitali QR per Ristoranti',
+    'promo-desc':'Sistema professionale di menù digitali multilingua per ristoranti e locali.',
+    'promo-feat1':'Aggiornabile','promo-feat2':'Multilingua','promo-feat3':'Esperienza cliente moderna e veloce',
+    'promo-price-suffix':'/anno','promo-btn':'Prova la Demo',
     'cont-eyebrow':'Siamo qui per te','cont-title':'Contatti',
     'cont-orari':'Lun – Ven<br>9:00 – 19:30',
     'prev-eyebrow':'Senza impegno','prev-title':'Richiedi un preventivo',
@@ -1129,6 +1227,11 @@ var translations={
     'p4':'Automatic tills','p5':'Interactive kiosks','p6':'Professional slicers',
     'p7':'Handhelds & Kitchen printers','p8':'Price labellers & Bill validators','p9':'Thermal rolls',
     'scopri':'Discover',
+    'promo-badge':'New',
+    'promo-title':'Digital QR Menus for Restaurants',
+    'promo-desc':'Professional multilingual digital menu system for restaurants and venues.',
+    'promo-feat1':'Updatable','promo-feat2':'Multilingual','promo-feat3':'Modern, fast customer experience',
+    'promo-price-suffix':'/year','promo-btn':'Try the Demo',
     'cont-eyebrow':'We\'re here for you','cont-title':'Contacts',
     'cont-orari':'Mon – Fri<br>9:00 – 19:30',
     'prev-eyebrow':'No commitment','prev-title':'Request a quote',
@@ -1182,6 +1285,16 @@ function applyLang(lang){
   if(hh)hh.innerHTML=t['h-head-1']+' <em>'+t['h-head-em']+'</em><br><strong>'+t['h-head-2']+'</strong>';
   var hs=document.querySelector('.h-sub');if(hs)hs.textContent=t['hero-sub'];
   var hb=document.querySelector('.h-btn');if(hb)hb.innerHTML=t['hero-btn']+' <i class="fas fa-arrow-right"></i>';
+
+  /* promo menu qr */
+  var pbBadge=document.getElementById('promoBadge');if(pbBadge)pbBadge.textContent=t['promo-badge'];
+  var pbTitle=document.getElementById('promoTitle');if(pbTitle)pbTitle.textContent=t['promo-title'];
+  var pbDesc=document.getElementById('promoDesc');if(pbDesc)pbDesc.textContent=t['promo-desc'];
+  var pbF1=document.getElementById('promoFeat1');if(pbF1)pbF1.textContent=t['promo-feat1'];
+  var pbF2=document.getElementById('promoFeat2');if(pbF2)pbF2.textContent=t['promo-feat2'];
+  var pbF3=document.getElementById('promoFeat3');if(pbF3)pbF3.textContent=t['promo-feat3'];
+  var pbSuffix=document.getElementById('promoPriceSuffix');if(pbSuffix)pbSuffix.textContent=t['promo-price-suffix'];
+  var pbBtn=document.getElementById('promoBtn');if(pbBtn)pbBtn.innerHTML=t['promo-btn']+' <i class="fas fa-arrow-right"></i>';
 
   /* about */
   var ae=document.querySelector('#chi-siamo .eyebrow');if(ae)ae.textContent=t['about-eyebrow'];
