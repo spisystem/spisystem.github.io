@@ -274,80 +274,73 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
 /* ══════════════════════════════════════
    PROMO MENU QR
 ══════════════════════════════════════ */
-#promo-menu{
-  background:linear-gradient(160deg,#211C17 0%,#161310 100%);
-  padding:100px 7vw;max-width:100%;
-  position:relative;overflow:hidden;
+#promo-menu{position:relative;overflow:hidden;padding-top:0}
+.promo-card2{
+  display:flex;align-items:stretch;
+  border-radius:var(--r20);overflow:hidden;
+  border:1px solid var(--lt2);
+  box-shadow:0 4px 24px rgba(0,0,0,.05);
+  margin-top:36px;
+  transition:transform var(--spring),box-shadow var(--ease);
 }
-#promo-menu::before{
-  content:'';position:absolute;top:50%;left:50%;
-  transform:translate(-50%,-50%);
-  width:700px;height:700px;border-radius:50%;
-  background:radial-gradient(circle,rgba(240,112,32,.09) 0%,transparent 65%);
+.promo-card2:hover{transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,.09)}
+.promo-card2-info{
+  flex:1.25;min-width:0;background:var(--wh);
+  padding:36px 40px;display:flex;flex-direction:column;justify-content:center;gap:14px;
+}
+.promo-badge2{
+  display:inline-flex;align-items:center;gap:7px;width:fit-content;
+  font-size:.62em;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--or3);background:rgba(240,112,32,.08);
+  border:1px solid rgba(240,112,32,.2);border-radius:30px;
+  padding:5px 14px;
+}
+.promo-title2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.35em,2.4vw,1.75em);font-weight:700;
+  color:var(--tx);line-height:1.2;
+}
+.promo-desc2{font-size:.9em;color:var(--txm);max-width:440px;line-height:1.6;font-weight:300}
+.promo-feats2{list-style:none;display:flex;flex-wrap:wrap;gap:8px 18px}
+.promo-feats2 li{display:flex;align-items:center;gap:7px;font-size:.8em;font-weight:600;color:var(--tx)}
+.promo-feats2 li i{
+  width:18px;height:18px;border-radius:50%;flex-shrink:0;
+  background:rgba(240,112,32,.1);color:var(--or);
+  display:flex;align-items:center;justify-content:center;font-size:.6em;
+}
+.promo-card2-cta{
+  flex:0.85;min-width:220px;flex-shrink:0;
+  background:linear-gradient(160deg,#221D18 0%,#171310 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
+  padding:32px 26px;position:relative;overflow:hidden;text-align:center;
+}
+.promo-card2-cta::before{
+  content:'';position:absolute;top:-60px;right:-60px;
+  width:180px;height:180px;border-radius:50%;
+  background:radial-gradient(circle,rgba(240,112,32,.16) 0%,transparent 70%);
   pointer-events:none;
 }
-.promo-watermark{
-  position:absolute;top:50%;right:6%;
-  transform:translateY(-50%) rotate(-8deg);
-  font-size:min(30vw,340px);
-  color:rgba(240,112,32,.05);
-  pointer-events:none;user-select:none;
-  z-index:0;line-height:1;
-}
-#promo-menu .sec-title{color:var(--wh)}
-#promo-menu .sec-divider{opacity:.6}
-.promo-inner{max-width:1080px;margin:0 auto;position:relative;z-index:1}
-.promo-flex{
-  display:flex;justify-content:space-between;align-items:flex-end;
-  gap:40px;flex-wrap:wrap;margin-top:36px;
-}
-.promo-text{flex:1;min-width:260px}
-.promo-desc{font-size:.98em;color:rgba(255,255,255,.68);max-width:480px;line-height:1.75;margin-bottom:20px;font-weight:300}
-.promo-feats{list-style:none;display:flex;flex-wrap:wrap;gap:12px 24px;margin-bottom:0}
-.promo-feats li{
-  display:flex;align-items:center;gap:8px;
-  font-size:.85em;font-weight:600;color:rgba(255,255,255,.88);
-}
-.promo-feats li i{
-  width:20px;height:20px;border-radius:50%;flex-shrink:0;
-  background:rgba(240,112,32,.15);color:var(--or2);
-  display:flex;align-items:center;justify-content:center;font-size:.68em;
-}
-.promo-side{
-  display:flex;flex-direction:column;align-items:flex-start;gap:18px;flex-shrink:0;
-}
-.promo-price{
-  display:flex;align-items:baseline;gap:5px;
-  font-family:'Cormorant Garamond',serif;
-}
-.promo-price b{font-size:2.3em;font-weight:700;color:var(--or2)}
-.promo-price small{font-size:.8em;color:rgba(255,255,255,.45);font-weight:400}
-.promo-btns{display:flex;gap:12px;flex-wrap:wrap}
-.promo-btn{white-space:nowrap}
+.promo-price2{position:relative;z-index:1;font-family:'Cormorant Garamond',serif;color:#fff}
+.promo-price2 b{font-size:2.1em;font-weight:700;color:var(--or2)}
+.promo-price2 small{font-size:.7em;color:rgba(255,255,255,.5);font-weight:400}
+.promo-btns2{position:relative;z-index:1;display:flex;flex-direction:column;gap:10px;width:100%}
+.promo-btns2 .h-btn{width:100%;justify-content:center;padding:13px 20px}
 .wa-cta-btn{
-  display:inline-flex;align-items:center;gap:9px;
-  padding:14px 28px;
-  background:rgba(255,255,255,.04);
-  border:1.5px solid rgba(240,112,32,.4);
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;
+  padding:12px 20px;
+  background:rgba(255,255,255,.05);
+  border:1.5px solid rgba(255,255,255,.16);
   color:#fff;text-decoration:none;border-radius:50px;
-  font-weight:700;font-size:.86em;letter-spacing:.6px;text-transform:uppercase;
+  font-weight:700;font-size:.8em;letter-spacing:.5px;text-transform:uppercase;
   transition:transform var(--spring),background var(--ease),border-color var(--ease);
-  white-space:nowrap;
 }
-.wa-cta-btn i{font-size:1.2em;color:#2FCE63}
-.wa-cta-btn:hover{
-  transform:translateY(-3px) scale(1.03);
-  background:rgba(240,112,32,.09);
-  border-color:var(--or);
-}
+.wa-cta-btn i{font-size:1.15em;color:#2FCE63}
+.wa-cta-btn:hover{transform:translateY(-2px);background:rgba(240,112,32,.1);border-color:rgba(240,112,32,.4)}
 
 @media(max-width:768px){
-  #promo-menu{padding:72px 5vw}
-  .promo-watermark{opacity:.7;right:-4%}
-  .promo-flex{align-items:flex-start}
-  .promo-side{width:100%}
-  .promo-btns{width:100%}
-  .promo-btn,.wa-cta-btn{flex:1;justify-content:center}
+  .promo-card2{flex-direction:column}
+  .promo-card2-info{padding:26px 24px}
+  .promo-card2-cta{padding:24px 24px}
 }
 
 /* ══════════════════════════════════════
@@ -948,27 +941,27 @@ body.intro-active{overflow:hidden}
 </div>
 
 <!-- ── PROMO MENU QR ── -->
-<div id="promo-menu">
-  <i class="fas fa-qrcode promo-watermark" aria-hidden="true"></i>
-  <div class="promo-inner" data-reveal>
-    <div class="eyebrow" style="color:rgba(255,255,255,.45)" id="promoEyebrow">Novità</div>
+<div class="sec" id="promo-menu">
+  <div data-reveal>
+    <div class="eyebrow" id="promoEyebrow">Novità</div>
     <h2 class="sec-title" id="promoTitle">Menù Digitali QR per Ristoranti</h2>
     <div class="sec-divider"></div>
-    <div class="promo-flex">
-      <div class="promo-text">
-        <p class="promo-desc" id="promoDesc">Sistema professionale di menù digitali multilingua per ristoranti e locali.</p>
-        <ul class="promo-feats">
-          <li><i class="fas fa-check"></i><span id="promoFeat1">Aggiornabile</span></li>
-          <li><i class="fas fa-check"></i><span id="promoFeat2">Multilingua</span></li>
-          <li><i class="fas fa-check"></i><span id="promoFeat3">Esperienza cliente moderna e veloce</span></li>
-        </ul>
-      </div>
-      <div class="promo-side">
-        <div class="promo-price"><b>€120</b><small id="promoPriceSuffix">/anno</small></div>
-        <div class="promo-btns">
-          <a href="https://menu.spisystem.it" target="_blank" rel="noopener" class="h-btn promo-btn" id="promoBtn">Prova la Demo <i class="fas fa-arrow-right"></i></a>
-          <a href="https://wa.me/393382247948?text=Salve%2C%20sono%20interessato%20al%20servizio%20Men%C3%B9%20Digitali%20QR%20(menu.spisystem.it).%20Potrei%20avere%20maggiori%20informazioni%3F" target="_blank" rel="noopener" class="wa-cta-btn" id="promoWaBtn"><i class="fab fa-whatsapp"></i> Contattaci su WhatsApp</a>
-        </div>
+  </div>
+  <div class="promo-card2" data-reveal>
+    <div class="promo-card2-info">
+      <span class="promo-badge2"><i class="fas fa-qrcode"></i> Digital Menu</span>
+      <p class="promo-desc2" id="promoDesc">Sistema professionale di menù digitali multilingua per ristoranti e locali.</p>
+      <ul class="promo-feats2">
+        <li><i class="fas fa-check"></i><span id="promoFeat1">Aggiornabile</span></li>
+        <li><i class="fas fa-check"></i><span id="promoFeat2">Multilingua</span></li>
+        <li><i class="fas fa-check"></i><span id="promoFeat3">Esperienza cliente moderna e veloce</span></li>
+      </ul>
+    </div>
+    <div class="promo-card2-cta">
+      <div class="promo-price2"><b>€120</b><small id="promoPriceSuffix">/anno</small></div>
+      <div class="promo-btns2">
+        <a href="https://menu.spisystem.it" target="_blank" rel="noopener" class="h-btn promo-btn" id="promoBtn">Prova la Demo <i class="fas fa-arrow-right"></i></a>
+        <a href="https://wa.me/393382247948?text=Salve%2C%20sono%20interessato%20al%20servizio%20Men%C3%B9%20Digitali%20QR%20(menu.spisystem.it).%20Potrei%20avere%20maggiori%20informazioni%3F" target="_blank" rel="noopener" class="wa-cta-btn" id="promoWaBtn"><i class="fab fa-whatsapp"></i> Contattaci su WhatsApp</a>
       </div>
     </div>
   </div>
