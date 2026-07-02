@@ -950,15 +950,16 @@ body.intro-active{overflow:hidden}
   <div class="promo-card2" data-reveal>
     <div class="promo-card2-info">
       <span class="promo-badge2"><i class="fas fa-qrcode"></i> <span id="promoTag">Menù Digitale</span></span>
-      <p class="promo-desc2" id="promoDesc">Sistema professionale di menù digitali multilingua per ristoranti e locali.</p>
+      <p class="promo-desc2" id="promoDesc">I tuoi clienti leggono il menu direttamente dal telefono, senza scaricare nessuna app: basta inquadrare il QR Code che ti forniamo, già pronto da stampare.</p>
       <ul class="promo-feats2">
-        <li><i class="fas fa-check"></i><span id="promoFeat1">Aggiornabile</span></li>
-        <li><i class="fas fa-check"></i><span id="promoFeat2">Multilingua</span></li>
-        <li><i class="fas fa-check"></i><span id="promoFeat3">Esperienza cliente moderna e veloce</span></li>
+        <li><i class="fas fa-check"></i><span id="promoFeat1">Nessuna app da scaricare</span></li>
+        <li><i class="fas fa-check"></i><span id="promoFeat2">QR Code pronto da stampare</span></li>
+        <li><i class="fas fa-check"></i><span id="promoFeat3">Compatibile con Android e iPhone</span></li>
+        <li><i class="fas fa-check"></i><span id="promoFeat4">Aggiornamenti e assistenza inclusi</span></li>
       </ul>
     </div>
     <div class="promo-card2-cta">
-      <div class="promo-price2"><b>€120</b><small id="promoPriceSuffix">/anno</small></div>
+      <div class="promo-price2"><b id="promoPriceNum">€9,90</b><small id="promoPriceSuffix">/mese</small></div>
       <div class="promo-btns2">
         <a href="https://menu.spisystem.it" target="_blank" rel="noopener" class="h-btn promo-btn" id="promoBtn">Prova la Demo <i class="fas fa-arrow-right"></i></a>
         <a href="https://wa.me/393382247948?text=Salve%2C%20sono%20interessato%20al%20servizio%20Men%C3%B9%20Digitali%20QR%20(menu.spisystem.it).%20Potrei%20avere%20maggiori%20informazioni%3F" target="_blank" rel="noopener" class="wa-cta-btn" id="promoWaBtn"><i class="fab fa-whatsapp"></i> Contattaci su WhatsApp</a>
@@ -1191,9 +1192,9 @@ var translations={
     'promo-eyebrow':'Novità',
     'promo-tag':'Menù Digitale',
     'promo-title':'Menù Digitali QR per Ristoranti',
-    'promo-desc':'Sistema professionale di menù digitali multilingua per ristoranti e locali.',
-    'promo-feat1':'Aggiornabile','promo-feat2':'Multilingua','promo-feat3':'Esperienza cliente moderna e veloce',
-    'promo-price-suffix':'/anno','promo-btn':'Prova la Demo',
+    'promo-desc':'I tuoi clienti leggono il menu direttamente dal telefono, senza scaricare nessuna app: basta inquadrare il QR Code che ti forniamo, già pronto da stampare.',
+    'promo-feat1':'Nessuna app da scaricare','promo-feat2':'QR Code pronto da stampare','promo-feat3':'Compatibile con Android e iPhone','promo-feat4':'Aggiornamenti e assistenza inclusi',
+    'promo-price-num':'€9,90','promo-price-suffix':'/mese','promo-btn':'Prova la Demo',
     'promo-wa-btn':'Contattaci su WhatsApp',
     'promo-wa-text':'Salve%2C%20sono%20interessato%20al%20servizio%20Men%C3%B9%20Digitali%20QR%20(menu.spisystem.it).%20Potrei%20avere%20maggiori%20informazioni%3F',
     'cont-eyebrow':'Siamo qui per te','cont-title':'Contatti',
@@ -1240,9 +1241,9 @@ var translations={
     'promo-eyebrow':'New',
     'promo-tag':'Digital Menu',
     'promo-title':'Digital QR Menus for Restaurants',
-    'promo-desc':'Professional multilingual digital menu system for restaurants and venues.',
-    'promo-feat1':'Updatable','promo-feat2':'Multilingual','promo-feat3':'Modern, fast customer experience',
-    'promo-price-suffix':'/year','promo-btn':'Try the Demo',
+    'promo-desc':'Your customers read the menu straight from their phone, no app required: just scan the QR Code we provide, ready to print.',
+    'promo-feat1':'No app to download','promo-feat2':'Print-ready QR Code','promo-feat3':'Works on Android and iPhone','promo-feat4':'Updates and support included',
+    'promo-price-num':'€9.90','promo-price-suffix':'/month','promo-btn':'Try the Demo',
     'promo-wa-btn':'Contact us on WhatsApp',
     'promo-wa-text':'Hello%2C%20I%E2%80%99m%20interested%20in%20the%20Digital%20QR%20Menu%20service%20(menu.spisystem.it).%20Could%20I%20get%20more%20information%3F',
     'cont-eyebrow':'We\'re here for you','cont-title':'Contacts',
@@ -1307,6 +1308,8 @@ function applyLang(lang){
   var pbF1=document.getElementById('promoFeat1');if(pbF1)pbF1.textContent=t['promo-feat1'];
   var pbF2=document.getElementById('promoFeat2');if(pbF2)pbF2.textContent=t['promo-feat2'];
   var pbF3=document.getElementById('promoFeat3');if(pbF3)pbF3.textContent=t['promo-feat3'];
+  var pbF4=document.getElementById('promoFeat4');if(pbF4)pbF4.textContent=t['promo-feat4'];
+  var pbPriceNum=document.getElementById('promoPriceNum');if(pbPriceNum)pbPriceNum.textContent=t['promo-price-num'];
   var pbSuffix=document.getElementById('promoPriceSuffix');if(pbSuffix)pbSuffix.textContent=t['promo-price-suffix'];
   var pbBtn=document.getElementById('promoBtn');if(pbBtn)pbBtn.innerHTML=t['promo-btn']+' <i class="fas fa-arrow-right"></i>';
   var pbWa=document.getElementById('promoWaBtn');
