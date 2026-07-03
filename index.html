@@ -272,6 +272,78 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
 }
 
 /* ══════════════════════════════════════
+   PROMO MENU QR
+══════════════════════════════════════ */
+#promo-menu{position:relative;overflow:hidden;padding-top:0}
+.promo-card2{
+  display:flex;align-items:stretch;
+  border-radius:var(--r20);overflow:hidden;
+  border:1px solid var(--lt2);
+  box-shadow:0 4px 24px rgba(0,0,0,.05);
+  margin-top:36px;
+  transition:transform var(--spring),box-shadow var(--ease);
+}
+.promo-card2:hover{transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,.09)}
+.promo-card2-info{
+  flex:1.25;min-width:0;background:var(--wh);
+  padding:36px 40px;display:flex;flex-direction:column;justify-content:center;gap:14px;
+}
+.promo-badge2{
+  display:inline-flex;align-items:center;gap:7px;width:fit-content;
+  font-size:.62em;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--or3);background:rgba(240,112,32,.08);
+  border:1px solid rgba(240,112,32,.2);border-radius:30px;
+  padding:5px 14px;
+}
+.promo-title2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.35em,2.4vw,1.75em);font-weight:700;
+  color:var(--tx);line-height:1.2;
+}
+.promo-desc2{font-size:.9em;color:var(--txm);max-width:440px;line-height:1.6;font-weight:300}
+.promo-feats2{list-style:none;display:flex;flex-wrap:wrap;gap:8px 18px}
+.promo-feats2 li{display:flex;align-items:center;gap:7px;font-size:.8em;font-weight:600;color:var(--tx)}
+.promo-feats2 li i{
+  width:18px;height:18px;border-radius:50%;flex-shrink:0;
+  background:rgba(240,112,32,.1);color:var(--or);
+  display:flex;align-items:center;justify-content:center;font-size:.6em;
+}
+.promo-card2-cta{
+  flex:0.85;min-width:220px;flex-shrink:0;
+  background:linear-gradient(160deg,#221D18 0%,#171310 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
+  padding:32px 26px;position:relative;overflow:hidden;text-align:center;
+}
+.promo-card2-cta::before{
+  content:'';position:absolute;top:-60px;right:-60px;
+  width:180px;height:180px;border-radius:50%;
+  background:radial-gradient(circle,rgba(240,112,32,.16) 0%,transparent 70%);
+  pointer-events:none;
+}
+.promo-price2{position:relative;z-index:1;font-family:'Cormorant Garamond',serif;color:#fff}
+.promo-price2 b{font-size:2.1em;font-weight:700;color:var(--or2)}
+.promo-price2 small{font-size:.7em;color:rgba(255,255,255,.5);font-weight:400}
+.promo-btns2{position:relative;z-index:1;display:flex;flex-direction:column;gap:10px;width:100%}
+.promo-btns2 .h-btn{width:100%;justify-content:center;padding:13px 20px}
+.wa-cta-btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;
+  padding:12px 20px;
+  background:rgba(255,255,255,.05);
+  border:1.5px solid rgba(255,255,255,.16);
+  color:#fff;text-decoration:none;border-radius:50px;
+  font-weight:700;font-size:.8em;letter-spacing:.5px;text-transform:uppercase;
+  transition:transform var(--spring),background var(--ease),border-color var(--ease);
+}
+.wa-cta-btn i{font-size:1.15em;color:#2FCE63}
+.wa-cta-btn:hover{transform:translateY(-2px);background:rgba(240,112,32,.1);border-color:rgba(240,112,32,.4)}
+
+@media(max-width:768px){
+  .promo-card2{flex-direction:column}
+  .promo-card2-info{padding:26px 24px}
+  .promo-card2-cta{padding:24px 24px}
+}
+
+/* ══════════════════════════════════════
    CHI SIAMO
 ══════════════════════════════════════ */
 #chi-siamo{position:relative;overflow:hidden}
@@ -636,10 +708,15 @@ footer a:hover{color:var(--or)}
    AOS-LIKE REVEALS
 ══════════════════════════════════════ */
 [data-reveal]{
-  opacity:0;transform:translateY(32px);
-  transition:opacity .7s ease,transform .7s ease;
+  opacity:0;
+  transform:translateY(46px) scale(.95);
+  filter:blur(4px);
+  transition:opacity .9s cubic-bezier(.16,1,.3,1),
+             transform .9s cubic-bezier(.16,1,.3,1),
+             filter .9s cubic-bezier(.16,1,.3,1);
+  will-change:transform,opacity,filter;
 }
-[data-reveal].revealed{opacity:1;transform:translateY(0)}
+[data-reveal].revealed{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}
 
 /* ══════════════════════════════════════
    MOBILE
@@ -669,17 +746,17 @@ footer a:hover{color:var(--or)}
 ══════════════════════════════════════ */
 #intro{
   position:fixed;inset:0;z-index:99999;
-  background:#0A0A0A;
+  background:radial-gradient(circle at 50% 45%,#141210 0%,#0A0A0A 70%);
   display:flex;align-items:center;justify-content:center;
   pointer-events:none;
   overflow:hidden;
 }
 #intro.done{
-  animation:introOut .8s cubic-bezier(.4,0,.2,1) forwards;
+  animation:introOut 1s cubic-bezier(.4,0,.2,1) forwards;
 }
 @keyframes introOut{
-  0%{opacity:1}
-  100%{opacity:0}
+  0%{opacity:1;filter:blur(0)}
+  100%{opacity:0;filter:blur(14px);transform:scale(1.06)}
 }
 
 .intro-inner{
@@ -688,27 +765,59 @@ footer a:hover{color:var(--or)}
   gap:0;
 }
 
+.intro-glow{
+  position:absolute;top:50%;left:50%;
+  width:420px;height:420px;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(240,112,32,.16) 0%,transparent 68%);
+  z-index:1;pointer-events:none;
+  animation:introGlowPulse 2.6s ease-in-out infinite;
+}
+@keyframes introGlowPulse{
+  0%,100%{opacity:.55;transform:translate(-50%,-50%) scale(.92)}
+  50%{opacity:1;transform:translate(-50%,-50%) scale(1.08)}
+}
+
+.intro-ring{
+  position:absolute;top:50%;left:50%;
+  width:150px;height:150px;
+  transform:translate(-50%,-50%) rotate(0deg);
+  border-radius:50%;
+  border:1px solid rgba(240,112,32,.18);
+  z-index:1;pointer-events:none;
+  animation:introRingSpin 7s linear infinite,introRingIn .9s cubic-bezier(.16,1,.3,1) both;
+}
+@keyframes introRingSpin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+@keyframes introRingIn{0%{opacity:0;width:60px;height:60px}100%{opacity:1;width:150px;height:150px}}
+
 .intro-logo-wrap{
-  margin-bottom:22px;
+  margin-bottom:22px;position:relative;z-index:2;
 }
 .intro-logo{
   width:60px;height:60px;
-  filter:drop-shadow(0 0 16px rgba(240,112,32,.22));
+  filter:drop-shadow(0 0 16px rgba(240,112,32,.35));
+  animation:introLogoIn 1.05s cubic-bezier(.16,1,.3,1) both;
+}
+@keyframes introLogoIn{
+  0%{opacity:0;transform:scale(.68);filter:blur(10px) drop-shadow(0 0 0 rgba(240,112,32,0))}
+  100%{opacity:1;transform:scale(1);filter:blur(0) drop-shadow(0 0 16px rgba(240,112,32,.35))}
 }
 
 .intro-name{
   font-family:'Cormorant Garamond',serif;
   display:flex;flex-direction:column;align-items:center;
   line-height:1.15;
-  animation:introFadeUp .7s .12s cubic-bezier(.4,0,.2,1) both;
+  animation:introFadeUp .9s .18s cubic-bezier(.16,1,.3,1) both;
   margin-bottom:24px;
   text-align:center;
-  gap:2px;
+  gap:2px;position:relative;z-index:2;
 }
 .intro-name b{
   font-size:1.05em;font-weight:700;text-transform:uppercase;
-  letter-spacing:4px;display:block;
+  letter-spacing:8px;display:block;
   color:rgba(255,255,255,.92);
+  animation:introLetterSpace 1.1s .18s cubic-bezier(.16,1,.3,1) both;
 }
 .intro-amp{
   font-size:.85em;font-weight:300;
@@ -719,15 +828,20 @@ footer a:hover{color:var(--or)}
 }
 
 @keyframes introFadeUp{
-  0%{opacity:0;transform:translateY(10px)}
-  100%{opacity:1;transform:translateY(0)}
+  0%{opacity:0;transform:translateY(14px);filter:blur(6px)}
+  100%{opacity:1;transform:translateY(0);filter:blur(0)}
+}
+@keyframes introLetterSpace{
+  0%{letter-spacing:1px;opacity:0}
+  100%{letter-spacing:4px;opacity:1}
 }
 
 .intro-divider{
   width:0;height:1px;
   background:linear-gradient(90deg,transparent,var(--or),transparent);
   margin-bottom:18px;
-  animation:dividerExpand .7s .3s ease both;
+  animation:dividerExpand .8s .48s cubic-bezier(.16,1,.3,1) both;
+  position:relative;z-index:2;
 }
 @keyframes dividerExpand{
   0%{width:0;opacity:0}
@@ -737,24 +851,28 @@ footer a:hover{color:var(--or)}
 .intro-phrase{
   font-size:.58em;font-weight:500;letter-spacing:5px;text-transform:uppercase;
   color:rgba(255,255,255,.32);
-  animation:introFadeUp .7s .42s cubic-bezier(.4,0,.2,1) both;
+  animation:introFadeUp .9s .62s cubic-bezier(.16,1,.3,1) both;
   font-family:'Inter',sans-serif;
+  position:relative;z-index:2;
 }
 
 body.intro-active{overflow:hidden}
 
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
-  [data-reveal]{opacity:1;transform:none}
+  [data-reveal]{opacity:1;transform:none;filter:none}
   #intro{display:none}
 }
   </style>
 </head>
 <body>
+
 <div id="top"></div>
 
 <!-- ── INTRO SCREEN ── -->
 <div id="intro">
+  <div class="intro-glow"></div>
+  <div class="intro-ring"></div>
   <div class="intro-inner">
     <div class="intro-logo-wrap">
       <img class="intro-logo" src="img/B0F190C1-ED18-45F3-B492-572A76ED7803.png" alt="Logo" width="60" height="60" onerror="this.style.display='none'">
@@ -794,6 +912,7 @@ body.intro-active{overflow:hidden}
 <nav class="sidebar" id="sidebar">
   <div class="sb-close" id="sb-close">&#10005;</div>
   <a href="#chi-siamo"><i class="fas fa-building"></i>Chi Siamo</a>
+  <a href="#promo-menu"><i class="fas fa-qrcode"></i>Menù Digitali QR</a>
   <a href="#prodotti"><i class="fas fa-box-open"></i>Prodotti</a>
   <a href="#contatti"><i class="fas fa-phone"></i>Contatti</a>
   <a href="#preventivo"><i class="fas fa-file-invoice"></i>Preventivo</a>
@@ -863,6 +982,34 @@ body.intro-active{overflow:hidden}
         <div class="stat-in"><span class="stat-n">500</span><span class="stat-u">+</span></div>
       </div>
       <div class="stat-lb">Installazioni</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── PROMO MENU QR ── -->
+<div class="sec" id="promo-menu">
+  <div data-reveal>
+    <div class="eyebrow" id="promoEyebrow">Novità</div>
+    <h2 class="sec-title" id="promoTitle">Menù Digitali QR per la Tua Attività</h2>
+    <div class="sec-divider"></div>
+  </div>
+  <div class="promo-card2" data-reveal>
+    <div class="promo-card2-info">
+      <span class="promo-badge2"><i class="fas fa-qrcode"></i> <span id="promoTag">Menù Digitale</span></span>
+      <p class="promo-desc2" id="promoDesc">I tuoi clienti leggono il menu direttamente dal telefono, senza scaricare nessuna app: basta inquadrare il QR Code che ti forniamo, già pronto da stampare.</p>
+      <ul class="promo-feats2">
+        <li><i class="fas fa-check"></i><span id="promoFeat1">Nessuna app da scaricare</span></li>
+        <li><i class="fas fa-check"></i><span id="promoFeat2">QR Code pronto da stampare</span></li>
+        <li><i class="fas fa-check"></i><span id="promoFeat3">Compatibile con Android e iOS</span></li>
+        <li><i class="fas fa-check"></i><span id="promoFeat4">Aggiornamenti e assistenza inclusi</span></li>
+      </ul>
+    </div>
+    <div class="promo-card2-cta">
+      <div class="promo-price2"><b id="promoPriceNum">€9,90</b><small id="promoPriceSuffix">/mese</small></div>
+      <div class="promo-btns2">
+        <a href="https://menu.spisystem.it" target="_blank" rel="noopener" class="h-btn promo-btn" id="promoBtn">Prova la Demo <i class="fas fa-arrow-right"></i></a>
+        <a href="https://wa.me/393382247948?text=Salve%2C%20sono%20interessato%20al%20servizio%20Men%C3%B9%20Digitali%20QR%20(menu.spisystem.it).%20Potrei%20avere%20maggiori%20informazioni%3F" target="_blank" rel="noopener" class="wa-cta-btn" id="promoWaBtn"><i class="fab fa-whatsapp"></i> Contattaci su WhatsApp</a>
+      </div>
     </div>
   </div>
 </div>
@@ -1051,7 +1198,7 @@ window.addEventListener('load',function(){
 });
 
 /* ══════════════════════════════════════
-   INTRO — durata 1.6s, fade elegante
+   INTRO — durata ~1.7s, fade cinematico
 ══════════════════════════════════════ */
 var introEl=document.getElementById('intro');
 if(sessionStorage.getItem('visited')){
@@ -1062,8 +1209,8 @@ if(sessionStorage.getItem('visited')){
   setTimeout(function(){
     introEl.classList.add('done');
     document.body.classList.remove('intro-active');
-    setTimeout(function(){introEl.style.display='none'},800);
-  },1600);
+    setTimeout(function(){introEl.style.display='none'},1000);
+  },1750);
 }
 
 /* ══════════════════════════════════════
@@ -1074,7 +1221,7 @@ if(sessionStorage.getItem('visited')){
 ══════════════════════════════════════ */
 var translations={
   it:{
-    'nav-chi':'Chi Siamo','nav-prod':'Prodotti','nav-cont':'Contatti','nav-prev':'Preventivo',
+    'nav-chi':'Chi Siamo','nav-menuqr':'Menù Digitali QR','nav-prod':'Prodotti','nav-cont':'Contatti','nav-prev':'Preventivo',
     'hero-sub':'Da oltre 35 anni al fianco di negozi, ristoranti e supermercati con sistemi professionali di cassa, pesatura e gestione.',
     'hero-btn':'Scopri i prodotti',
     'h-head-1':'Tecnologia','h-head-em':'intelligente','h-head-2':'per la tua attività',
@@ -1088,6 +1235,14 @@ var translations={
     'p4':'Casse automatiche','p5':'Kiosk interattivi','p6':'Affettatrici professionali',
     'p7':'Palmari & Stampanti comande','p8':'Prezzatrici & Verificabanconote','p9':'Rotoli termici',
     'scopri':'Scopri',
+    'promo-eyebrow':'Novità',
+    'promo-tag':'Menù Digitale',
+    'promo-title':'Menù Digitali QR per la Tua Attività',
+    'promo-desc':'I tuoi clienti leggono il menu direttamente dal telefono, senza scaricare nessuna app: basta inquadrare il QR Code che ti forniamo, già pronto da stampare.',
+    'promo-feat1':'Nessuna app da scaricare','promo-feat2':'QR Code pronto da stampare','promo-feat3':'Compatibile con Android e iOS','promo-feat4':'Aggiornamenti e assistenza inclusi',
+    'promo-price-num':'€9,90','promo-price-suffix':'/mese','promo-btn':'Prova la Demo',
+    'promo-wa-btn':'Contattaci su WhatsApp',
+    'promo-wa-text':'Salve%2C%20sono%20interessato%20al%20servizio%20Men%C3%B9%20Digitali%20QR%20(menu.spisystem.it).%20Potrei%20avere%20maggiori%20informazioni%3F',
     'cont-eyebrow':'Siamo qui per te','cont-title':'Contatti',
     'cont-orari':'Lun – Ven<br>9:00 – 19:30',
     'prev-eyebrow':'Senza impegno','prev-title':'Richiedi un preventivo',
@@ -1115,7 +1270,7 @@ var translations={
     'ck-cancel-btn':'Annulla','ck-save-btn':'Salva preferenze',
   },
   en:{
-    'nav-chi':'About Us','nav-prod':'Products','nav-cont':'Contacts','nav-prev':'Quote',
+    'nav-chi':'About Us','nav-menuqr':'Digital QR Menus','nav-prod':'Products','nav-cont':'Contacts','nav-prev':'Quote',
     'hero-sub':'For over 35 years alongside shops, restaurants and supermarkets with professional cash, weighing and management systems.',
     'hero-btn':'Explore products',
     'h-head-1':'Smart','h-head-em':'technology','h-head-2':'for your business',
@@ -1129,6 +1284,14 @@ var translations={
     'p4':'Automatic tills','p5':'Interactive kiosks','p6':'Professional slicers',
     'p7':'Handhelds & Kitchen printers','p8':'Price labellers & Bill validators','p9':'Thermal rolls',
     'scopri':'Discover',
+    'promo-eyebrow':'New',
+    'promo-tag':'Digital Menu',
+    'promo-title':'Digital QR Menus for Your Business',
+    'promo-desc':'Your customers read the menu straight from their phone, no app required: just scan the QR Code we provide, ready to print.',
+    'promo-feat1':'No app to download','promo-feat2':'Print-ready QR Code','promo-feat3':'Works on Android and iOS','promo-feat4':'Updates and support included',
+    'promo-price-num':'€9.90','promo-price-suffix':'/month','promo-btn':'Try the Demo',
+    'promo-wa-btn':'Contact us on WhatsApp',
+    'promo-wa-text':'Hello%2C%20I%E2%80%99m%20interested%20in%20the%20Digital%20QR%20Menu%20service%20(menu.spisystem.it).%20Could%20I%20get%20more%20information%3F',
     'cont-eyebrow':'We\'re here for you','cont-title':'Contacts',
     'cont-orari':'Mon – Fri<br>9:00 – 19:30',
     'prev-eyebrow':'No commitment','prev-title':'Request a quote',
@@ -1173,8 +1336,8 @@ function applyLang(lang){
 
   /* navbar */
   var sba=document.querySelectorAll('.sidebar a');
-  var keys=['nav-chi','nav-prod','nav-cont','nav-prev'];
-  var icons=['<i class="fas fa-building"></i>','<i class="fas fa-box-open"></i>','<i class="fas fa-phone"></i>','<i class="fas fa-file-invoice"></i>'];
+  var keys=['nav-chi','nav-menuqr','nav-prod','nav-cont','nav-prev'];
+  var icons=['<i class="fas fa-building"></i>','<i class="fas fa-qrcode"></i>','<i class="fas fa-box-open"></i>','<i class="fas fa-phone"></i>','<i class="fas fa-file-invoice"></i>'];
   sba.forEach(function(a,i){if(keys[i])a.innerHTML=icons[i]+t[keys[i]]});
 
   /* hero */
@@ -1182,6 +1345,24 @@ function applyLang(lang){
   if(hh)hh.innerHTML=t['h-head-1']+' <em>'+t['h-head-em']+'</em><br><strong>'+t['h-head-2']+'</strong>';
   var hs=document.querySelector('.h-sub');if(hs)hs.textContent=t['hero-sub'];
   var hb=document.querySelector('.h-btn');if(hb)hb.innerHTML=t['hero-btn']+' <i class="fas fa-arrow-right"></i>';
+
+  /* promo menu qr */
+  var pbEyebrow=document.getElementById('promoEyebrow');if(pbEyebrow)pbEyebrow.textContent=t['promo-eyebrow'];
+  var pbTag=document.getElementById('promoTag');if(pbTag)pbTag.textContent=t['promo-tag'];
+  var pbTitle=document.getElementById('promoTitle');if(pbTitle)pbTitle.textContent=t['promo-title'];
+  var pbDesc=document.getElementById('promoDesc');if(pbDesc)pbDesc.textContent=t['promo-desc'];
+  var pbF1=document.getElementById('promoFeat1');if(pbF1)pbF1.textContent=t['promo-feat1'];
+  var pbF2=document.getElementById('promoFeat2');if(pbF2)pbF2.textContent=t['promo-feat2'];
+  var pbF3=document.getElementById('promoFeat3');if(pbF3)pbF3.textContent=t['promo-feat3'];
+  var pbF4=document.getElementById('promoFeat4');if(pbF4)pbF4.textContent=t['promo-feat4'];
+  var pbPriceNum=document.getElementById('promoPriceNum');if(pbPriceNum)pbPriceNum.textContent=t['promo-price-num'];
+  var pbSuffix=document.getElementById('promoPriceSuffix');if(pbSuffix)pbSuffix.textContent=t['promo-price-suffix'];
+  var pbBtn=document.getElementById('promoBtn');if(pbBtn)pbBtn.innerHTML=t['promo-btn']+' <i class="fas fa-arrow-right"></i>';
+  var pbWa=document.getElementById('promoWaBtn');
+  if(pbWa){
+    pbWa.innerHTML='<i class="fab fa-whatsapp"></i> '+t['promo-wa-btn'];
+    pbWa.href='https://wa.me/393382247948?text='+t['promo-wa-text'];
+  }
 
   /* about */
   var ae=document.querySelector('#chi-siamo .eyebrow');if(ae)ae.textContent=t['about-eyebrow'];
