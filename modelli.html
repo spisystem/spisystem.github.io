@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Modelli – Spizzicotecnica & SPI System</title>
+  <title>Catalogo Prodotti – Spizzicotecnica & SPI System</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
@@ -104,7 +104,7 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
   content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
   background:linear-gradient(90deg,transparent,var(--or),var(--or2),var(--or),transparent);
 }
-.pg-hero-in{position:relative;z-index:1;padding:52px 22px 48px}
+.pg-hero-in{position:relative;z-index:1;padding:52px 22px 40px}
 .pg-crumb{
   display:flex;align-items:center;justify-content:center;gap:8px;
   font-size:.7em;font-weight:600;letter-spacing:.5px;
@@ -126,16 +126,43 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
 .pg-hero h1 em{font-style:italic;color:var(--or2);font-weight:300}
 .pg-hero h1 strong{font-weight:700;display:block}
 .pg-line{width:44px;height:2px;background:linear-gradient(90deg,var(--or),var(--or2));border-radius:2px;margin:20px auto 0}
-.pg-count{
-  margin-top:16px;font-size:.72em;color:rgba(255,255,255,.35);
-  letter-spacing:1px;font-weight:500;
+
+/* ── SEARCH BAR ── */
+.search-wrap{
+  max-width:620px;margin:32px auto 0;position:relative;z-index:1;padding:0 20px;
 }
-.pg-count span{color:var(--or2);font-weight:700}
+.search-box{
+  display:flex;align-items:center;gap:12px;
+  background:rgba(255,255,255,.06);
+  border:1.5px solid rgba(255,255,255,.14);
+  border-radius:50px;padding:6px 8px 6px 22px;
+  transition:border-color .3s ease,background .3s ease,box-shadow .3s ease;
+}
+.search-box:focus-within{
+  border-color:rgba(240,112,32,.55);
+  background:rgba(255,255,255,.09);
+  box-shadow:0 0 0 5px rgba(240,112,32,.10);
+}
+.search-box i.fa-magnifying-glass{color:rgba(255,255,255,.4);font-size:.95em;flex-shrink:0}
+.search-box input{
+  flex:1;background:none;border:none;outline:none;
+  color:#fff;font-family:'Inter',sans-serif;font-size:.95em;
+  padding:10px 0;min-width:0;
+}
+.search-box input::placeholder{color:rgba(255,255,255,.35)}
+.search-clear{
+  width:32px;height:32px;border-radius:50%;border:none;flex-shrink:0;
+  background:rgba(255,255,255,.08);color:rgba(255,255,255,.55);
+  display:none;align-items:center;justify-content:center;cursor:pointer;
+  font-size:.8em;transition:background .25s;
+}
+.search-clear:hover{background:rgba(240,112,32,.2);color:#fff}
+.search-clear.show{display:flex}
 
 /* ── CATEGORY CHIPS ── */
 .chip-row{
   display:flex;flex-wrap:wrap;gap:9px;justify-content:center;
-  max-width:900px;margin:26px auto 0;position:relative;z-index:1;padding:0 20px;
+  max-width:900px;margin:22px auto 0;position:relative;z-index:1;padding:0 20px;
 }
 .chip{
   display:inline-flex;align-items:center;gap:7px;
@@ -144,7 +171,7 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
   color:rgba(255,255,255,.6);
   background:rgba(255,255,255,.045);
   border:1px solid rgba(255,255,255,.08);
-  text-decoration:none;
+  cursor:pointer;
   transition:all .28s ease;
   white-space:nowrap;
 }
@@ -156,16 +183,29 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
   border-color:transparent;box-shadow:0 5px 16px var(--glow2);
 }
 .chip.active i{color:#fff}
+.chip .chip-count{
+  font-size:.85em;opacity:.6;font-weight:500;
+}
+
+.pg-count{
+  margin:20px auto 0;font-size:.72em;color:rgba(255,255,255,.35);
+  letter-spacing:1px;font-weight:500;text-align:center;
+  position:relative;z-index:1;padding-bottom:12px;
+}
+.pg-count span{color:var(--or2);font-weight:700}
 
 /* ── WRAPPER ── */
-.wrap{max-width:960px;margin:0 auto;padding:54px 20px 90px}
+.wrap{max-width:1080px;margin:0 auto;padding:50px 20px 90px}
 
-/* ── CARDS ── */
-.grid{display:flex;flex-direction:column;gap:22px}
-@keyframes cardIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+/* ── GRID (unified card view) ── */
+.grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+  gap:22px;
+}
+@keyframes cardIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
 .card{
   background:var(--wh);border-radius:var(--r20);overflow:hidden;
-  display:grid;grid-template-columns:190px 1fr;
+  display:flex;flex-direction:column;
   box-shadow:0 4px 24px rgba(0,0,0,.06);
   border:1px solid var(--lt2);
   position:relative;
@@ -173,45 +213,47 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
   transition:transform var(--spring),box-shadow var(--ease),border-color var(--ease);
 }
 .card::before{
-  content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
-  background:linear-gradient(180deg,var(--or),var(--or2));
-  transform:scaleY(0);transform-origin:top;transition:transform var(--ease);
+  content:'';position:absolute;left:0;top:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--or),var(--or2));
+  transform:scaleX(0);transform-origin:left;transition:transform var(--ease);
 }
-.card:hover{transform:translateY(-5px) scale(1.005);box-shadow:0 22px 52px rgba(0,0,0,.10);border-color:rgba(240,112,32,.15)}
-.card:hover::before{transform:scaleY(1)}
+.card:hover{transform:translateY(-7px);box-shadow:0 22px 52px rgba(0,0,0,.10);border-color:rgba(240,112,32,.15)}
+.card:hover::before{transform:scaleX(1)}
 .card-img{
   background:var(--lt);display:flex;align-items:center;justify-content:center;
-  padding:24px 18px;border-right:1px solid var(--lt2);min-height:175px;
+  padding:22px;border-bottom:1px solid var(--lt2);height:170px;
   transition:background var(--ease);position:relative;
 }
 .card:hover .card-img{background:rgba(240,112,32,.04)}
 .card-img img{
-  max-width:148px;max-height:148px;width:100%;height:auto;
+  max-width:100%;max-height:100%;width:auto;height:auto;
   object-fit:contain;border-radius:8px;
   transition:transform .44s ease;
 }
 .card:hover .card-img img{transform:scale(1.08)}
-.card-num{
-  position:absolute;top:10px;left:12px;
-  font-family:'Cormorant Garamond',serif;font-weight:700;
-  font-size:.78em;color:rgba(20,20,20,.18);letter-spacing:1px;
+.card-cat{
+  position:absolute;top:10px;left:10px;
+  font-size:.6em;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+  color:var(--or3,#E85C00);background:rgba(240,112,32,.1);
+  border:1px solid rgba(240,112,32,.22);border-radius:20px;
+  padding:4px 10px;
 }
-.card-body{padding:28px 26px;display:flex;flex-direction:column;gap:8px}
+.card-body{padding:20px 22px 22px;display:flex;flex-direction:column;gap:8px;flex:1}
 .card-body h2{
   font-family:'Cormorant Garamond',serif;
-  font-size:1.38em;font-weight:700;color:var(--tx);line-height:1.2;
+  font-size:1.26em;font-weight:700;color:var(--tx);line-height:1.25;
 }
-.card-body p{font-size:.91em;color:var(--txm);line-height:1.75;flex:1}
-.card-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+.card-body p{font-size:.87em;color:var(--txm);line-height:1.65;flex:1}
+.card-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
 .pdf-btn{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:11px 24px;border-radius:50px;
+  display:inline-flex;align-items:center;gap:7px;
+  padding:10px 18px;border-radius:50px;
   background:linear-gradient(135deg,var(--or),var(--or2));
-  color:#fff;text-decoration:none;font-weight:700;font-size:.78em;
-  letter-spacing:.8px;text-transform:uppercase;
+  color:#fff;text-decoration:none;font-weight:700;font-size:.74em;
+  letter-spacing:.6px;text-transform:uppercase;
   box-shadow:0 5px 16px var(--glow2);
   transition:transform var(--spring),box-shadow var(--ease);
-  align-self:flex-start;min-height:42px;cursor:pointer;
+  min-height:38px;cursor:pointer;
   position:relative;overflow:hidden;
 }
 .pdf-btn::after{
@@ -222,15 +264,30 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
 .pdf-btn:hover,.pdf-btn:active{transform:translateY(-2px) scale(1.05);box-shadow:0 10px 28px var(--glow)}
 .pdf-btn:hover::after{opacity:1}
 .info-btn{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:11px 22px;border-radius:50px;
+  display:inline-flex;align-items:center;gap:7px;
+  padding:10px 16px;border-radius:50px;
   background:var(--lt);color:var(--tx);text-decoration:none;
-  font-weight:700;font-size:.78em;letter-spacing:.5px;text-transform:uppercase;
+  font-weight:700;font-size:.74em;letter-spacing:.4px;text-transform:uppercase;
   border:1.5px solid var(--lt3);
-  transition:all var(--ease);align-self:flex-start;min-height:42px;
+  transition:all var(--ease);min-height:38px;
 }
 .info-btn i{color:#2FA84F}
 .info-btn:hover{border-color:rgba(240,112,32,.35);background:rgba(240,112,32,.06);transform:translateY(-2px)}
+
+/* empty state */
+.empty-state{
+  grid-column:1/-1;text-align:center;padding:70px 20px;color:var(--txm);
+}
+.empty-state i{font-size:2.2em;color:var(--lt3);margin-bottom:16px;display:block}
+.empty-state p{font-size:1.02em;margin-bottom:6px}
+.empty-state span{font-size:.85em;color:var(--txs,#9A9A9A)}
+.empty-reset{
+  margin-top:18px;display:inline-flex;align-items:center;gap:8px;
+  padding:10px 22px;border-radius:50px;border:1.5px solid var(--lt3);
+  background:var(--wh);color:var(--tx);font-weight:700;font-size:.8em;
+  text-transform:uppercase;letter-spacing:.5px;cursor:pointer;transition:all .25s;
+}
+.empty-reset:hover{border-color:rgba(240,112,32,.35);background:rgba(240,112,32,.06)}
 
 /* ── BACK TO TOP ── */
 #btt{
@@ -262,9 +319,7 @@ footer a:hover{color:var(--or)}
 
 /* ── MOBILE ── */
 @media(max-width:620px){
-  .card{grid-template-columns:1fr}
-  .card-img{border-right:none;border-bottom:1px solid var(--lt2);min-height:160px;padding:22px}
-  .card-body{padding:20px 22px}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}
   .bar{padding:0 16px}
   .bar-name b{font-size:.74em;letter-spacing:1.5px}
   .bar-name s{font-size:.64em}
@@ -272,6 +327,12 @@ footer a:hover{color:var(--or)}
   .back .back-txt{display:none}
   .chip-row{gap:7px}
   .chip{padding:8px 13px;font-size:.7em}
+  .card-img{height:140px}
+}
+@media(max-width:420px){
+  .grid{grid-template-columns:1fr 1fr;gap:14px}
+  .card-body{padding:14px 14px 16px}
+  .card-body h2{font-size:1.08em}
 }
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
@@ -305,19 +366,26 @@ footer a:hover{color:var(--or)}
 <!-- ── PAGE HERO ── -->
 <div class="pg-hero">
   <div class="pg-hero-in">
-    <div class="pg-crumb"><a href="index.html">Home</a> <i class="fas fa-chevron-right"></i> <a href="index.html#prodotti">Prodotti</a> <i class="fas fa-chevron-right"></i> <span id="pgCrumbCurrent">Catalogo</span></div>
+    <div class="pg-crumb"><a href="index.html">Home</a> <i class="fas fa-chevron-right"></i> <span id="pgCrumbCurrent">Catalogo</span></div>
     <div class="pg-pill" id="pgPill">Catalogo prodotti</div>
-    <h1 id="pgTitle">Modelli <em>disponibili</em></h1>
+    <h1 id="pgTitle">Tutti i <em>prodotti</em></h1>
     <div class="pg-line"></div>
-    <div class="pg-count" id="pgCount"></div>
+  </div>
+  <div class="search-wrap">
+    <div class="search-box">
+      <i class="fas fa-magnifying-glass"></i>
+      <input type="text" id="searchInput" placeholder="Cerca un modello, es. Wycash, bilancia, affettatrice…">
+      <button class="search-clear" id="searchClear" aria-label="Cancella ricerca"><i class="fas fa-xmark"></i></button>
+    </div>
   </div>
   <div class="chip-row" id="chipRow"></div>
+  <div class="pg-count" id="pgCount"></div>
 </div>
 
-<!-- ── MODELS ── -->
+<!-- ── PRODUCTS ── -->
 <div class="wrap">
   <div class="grid" id="grid">
-    <p style="text-align:center;color:#999;padding:60px 0">Caricamento…</p>
+    <p style="text-align:center;color:#999;padding:60px 0;grid-column:1/-1">Caricamento…</p>
   </div>
 </div>
 
@@ -333,38 +401,77 @@ footer a:hover{color:var(--or)}
 
 <script>
 /* ══════════════════════════════════════
-   LANGUAGE SYSTEM — mostra DESTINAZIONE
-   sei in IT → bottone mostra 🇬🇧 EN
-   sei in EN → bottone mostra 🇮🇹 IT
+   STORAGE SICURO — evita crash su browser
+   che bloccano localStorage/sessionStorage
+   (Safari privato, webview Instagram/FB/TikTok, ecc.)
 ══════════════════════════════════════ */
-var currentLang=localStorage.getItem('lang')||'it';
+function ssGet(k){try{return sessionStorage.getItem(k)}catch(e){return null}}
+function ssSet(k,v){try{sessionStorage.setItem(k,v)}catch(e){}}
+function ssRemove(k){try{sessionStorage.removeItem(k)}catch(e){}}
+function lsGet(k){try{return localStorage.getItem(k)}catch(e){return null}}
+function lsSet(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+
+/* ══════════════════════════════════════
+   SCROLL POSITION SAVE — per pagina
+   Stesso meccanismo usato su index.html: salva la
+   posizione di scroll quando si esce dalla pagina e la
+   ripristina al ritorno, per qualsiasi link interno.
+══════════════════════════════════════ */
+var SCROLL_KEY='scrollPos::'+location.pathname+location.search;
+function saveScrollPos(){ssSet(SCROLL_KEY,String(window.scrollY));}
+window.addEventListener('pagehide',saveScrollPos);
+window.addEventListener('beforeunload',saveScrollPos);
+document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden')saveScrollPos();});
+document.addEventListener('click',function(e){
+  var a=e.target.closest('a[href]');
+  if(!a)return;
+  var href=a.getAttribute('href')||'';
+  if(href.indexOf('#')===0||href.indexOf('javascript:')===0||href.indexOf('mailto:')===0||href.indexOf('tel:')===0||a.target==='_blank')return;
+  saveScrollPos();
+});
+window.addEventListener('load',function(){
+  var saved=ssGet(SCROLL_KEY);
+  if(saved!==null){
+    ssRemove(SCROLL_KEY);
+    requestAnimationFrame(function(){window.scrollTo({top:parseInt(saved,10),behavior:'instant'});});
+  }
+});
+
+/* ══════════════════════════════════════
+   LANGUAGE SYSTEM
+══════════════════════════════════════ */
+var currentLang=lsGet('lang')||'it';
 
 var modT={
   it:{
     pill:'Catalogo prodotti',
     back:'Torna indietro',
-    pdf:'Scarica brochure',
+    pdf:'Brochure',
     info:'Richiedi info',
-    loading:'Caricamento…',
-    notfound:'Prodotto non trovato.',
-    notfoundlink:'Torna al sito',
-    titlesuffix:' disponibili',
+    notfoundTitle:'Nessun risultato',
+    notfoundDesc:'Prova con un altro termine di ricerca o rimuovi il filtro attivo.',
+    resetBtn:'Mostra tutti i prodotti',
     footer:'© 2026 SpizzicoTecnica & SPI System — Tutti i diritti riservati.',
     crumb:'Catalogo',
-    countLabel:'modelli disponibili in questa categoria'
+    title:'Tutti i <em>prodotti</em>',
+    countLabel:'prodotti trovati',
+    all:'Tutti',
+    searchPh:'Cerca un modello, es. Wycash, bilancia, affettatrice…'
   },
   en:{
     pill:'Product catalogue',
     back:'Go back',
-    pdf:'Download brochure',
+    pdf:'Brochure',
     info:'Request info',
-    loading:'Loading…',
-    notfound:'Product not found.',
-    notfoundlink:'Back to site',
-    titlesuffix:' available',
+    notfoundTitle:'No results',
+    notfoundDesc:'Try a different search term or clear the active filter.',
+    resetBtn:'Show all products',
     footer:'© 2026 SpizzicoTecnica & SPI System — All rights reserved.',
     crumb:'Catalogue',
-    countLabel:'models available in this category'
+    title:'All <em>products</em>',
+    countLabel:'products found',
+    all:'All'
+    ,searchPh:'Search a model, e.g. Wycash, scale, slicer…'
   }
 };
 
@@ -376,15 +483,17 @@ function updateLangBtn(lang){
 
 function applyModLang(lang){
   currentLang=lang;
-  localStorage.setItem('lang',lang);
+  lsSet('lang',lang);
   document.documentElement.lang=lang;
   var t=modT[lang];
   var pill=document.getElementById('pgPill');if(pill)pill.textContent=t.pill;
   var bk=document.querySelector('.back-txt');if(bk)bk.textContent=t.back;
   var crumb=document.getElementById('pgCrumbCurrent');if(crumb)crumb.textContent=t.crumb;
+  var si=document.getElementById('searchInput');if(si)si.placeholder=t.searchPh;
+  var pgTitle=document.getElementById('pgTitle');if(pgTitle)pgTitle.innerHTML=t.title;
   updateLangBtn(lang);
-  renderGrid();
   renderChips();
+  renderGrid();
 }
 
 /* ── BACK TO TOP ── */
@@ -392,7 +501,9 @@ var btt=document.getElementById('btt');
 window.addEventListener('scroll',function(){btt.classList.toggle('show',window.scrollY>180)},{passive:true});
 btt.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
 
-/* ── DATA ── */
+/* ══════════════════════════════════════
+   DATA — categorie e prodotti
+══════════════════════════════════════ */
 var db={
   'sistemi-touch':{
     icon:'fa-desktop',
@@ -442,7 +553,7 @@ var db={
   },
   'casse':{
     icon:'fa-coins',
-    t:{it:'Casse Automatiche Rendiresto',en:'Automatic Change Machines'},
+    t:{it:'Casse Automatiche',en:'Automatic Change Machines'},
     m:[
       {n:{it:'Cashmatic SelfPay 460',en:'Cashmatic SelfPay 460'},i:'img/cashmatic460.PNG',d:{it:'Formato compatto e design innovativo. La cassa automatica rendiresto ideale per ogni tipologia di retailer che vuole ottimizzare i tempi e ridurre gli errori di cassa.',en:'Compact format and innovative design. The ideal automatic change machine for any retailer wanting to save time and reduce cash-handling errors.'},p:'pdf/cashmatic460.pdf'},
       {n:{it:'PagAmico 3S',en:'PagAmico 3S'},i:'img/pagamico3s.PNG',d:{it:'PagAmico 3S (Smart): ultima generazione di casse rendiresto prodotte da PayPrint per il settore retail. Compatta, veloce, affidabile.',en:'PagAmico 3S (Smart): the latest generation of change machines made by PayPrint for the retail sector. Compact, fast and reliable.'},p:'pdf/pagamico3s.pdf'},
@@ -459,7 +570,7 @@ var db={
   },
   'palmari-stampanti':{
     icon:'fa-print',
-    t:{it:'Palmari & Stampanti Cucina',en:'Handhelds & Kitchen Printers'},
+    t:{it:'Palmari & Stampanti',en:'Handhelds & Printers'},
     m:[
       {n:{it:'Serie DT50X',en:'DT50X Series'},i:'img/palmareax.jpg',d:{it:'Palmare Hospitality Edition: display touch 5,7 pollici HD visibile anche con forte luce solare. Funziona con guanti o dita bagnate. Prestazioni top per la ristorazione.',en:'Hospitality Edition handheld: 5.7" HD touch display visible even in strong sunlight. Works with gloves or wet fingers. Top performance for the food-service sector.'},p:'pdf/palmareax.pdf'},
       {n:{it:'Serie POS 80K',en:'POS 80K Series'},i:'img/com.jpg',d:{it:'Stampante per comande e ricevute termiche, la più versatile della famiglia. Forma compatta, installazione ovunque anche a parete. Veloce e silenzioso.',en:'Thermal order/receipt printer, the most versatile of the family. Compact shape, can be installed anywhere, even on a wall. Fast and quiet.'},p:'pdf/com.pdf'}
@@ -467,7 +578,7 @@ var db={
   },
   'prezzatrici-banconote':{
     icon:'fa-tags',
-    t:{it:'Prezzatrici & Verificabanconote',en:'Price Labellers & Bill Validators'},
+    t:{it:'Prezzatrici & Verificabanconote',en:'Labellers & Bill Validators'},
     m:[
       {n:{it:'Prezzatrici professionali',en:'Professional price labellers'},i:'img/prezzatrici.PNG',d:{it:'Etichettatrici manuali robuste e precise per il negozio e il mercato ambulante. Rapide da usare, con nastri intercambiabili per ogni esigenza di prezzatura.',en:'Robust, precise manual labellers for shops and street markets. Fast to use, with interchangeable rolls for every pricing need.'},p:''},
       {n:{it:'Verificabanconote professionali',en:'Professional bill validators'},i:'img/banconote.PNG',d:{it:'Rilevazione rapida e affidabile di banconote false tramite luce UV, infrarossi e magnetica. Indispensabili per la sicurezza del cassetto.',en:'Fast, reliable detection of counterfeit banknotes using UV, infrared and magnetic sensors. Essential for cash-drawer security.'},p:''}
@@ -484,58 +595,113 @@ var db={
 
 var catOrder=['registratori','bilance','sistemi-touch','casse','kiosk','affettatrici','palmari-stampanti','prezzatrici-banconote','rotoli'];
 
-var key=new URLSearchParams(window.location.search).get('prodotto');
-var cat=db[key];
+/* flatten to a single searchable list, keeping category key on each item */
+var allProducts=[];
+catOrder.forEach(function(k){
+  db[k].m.forEach(function(m){
+    allProducts.push({cat:k,n:m.n,i:m.i,d:m.d,p:m.p});
+  });
+});
+
+var initialCat=new URLSearchParams(window.location.search).get('prodotto');
+var activeCat=(initialCat&&db[initialCat])?initialCat:'all';
+var searchTerm='';
+
 var grid=document.getElementById('grid');
-var pgTitle=document.getElementById('pgTitle');
 var chipRow=document.getElementById('chipRow');
+var searchInput=document.getElementById('searchInput');
+var searchClear=document.getElementById('searchClear');
 
 function renderChips(){
+  var t=modT[currentLang];
   chipRow.innerHTML='';
+  var allChip=document.createElement('button');
+  allChip.type='button';
+  allChip.className='chip'+(activeCat==='all'?' active':'');
+  allChip.innerHTML='<i class="fas fa-layer-group"></i>'+t.all+' <span class="chip-count">('+allProducts.length+')</span>';
+  allChip.addEventListener('click',function(){activeCat='all';renderChips();renderGrid();});
+  chipRow.appendChild(allChip);
   catOrder.forEach(function(k){
     var c=db[k];
-    if(!c)return;
-    var a=document.createElement('a');
-    a.href='modelli.html?prodotto='+k;
-    a.className='chip'+(k===key?' active':'');
-    a.innerHTML='<i class="fas '+c.icon+'"></i>'+(c.t[currentLang]||c.t.it);
-    chipRow.appendChild(a);
+    var btn=document.createElement('button');
+    btn.type='button';
+    btn.className='chip'+(k===activeCat?' active':'');
+    btn.innerHTML='<i class="fas '+c.icon+'"></i>'+(c.t[currentLang]||c.t.it)+' <span class="chip-count">('+c.m.length+')</span>';
+    btn.addEventListener('click',function(){activeCat=k;renderChips();renderGrid();});
+    chipRow.appendChild(btn);
   });
 }
+
+function norm(s){return (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');}
 
 function renderGrid(){
   var t=modT[currentLang];
   grid.innerHTML='';
-  if(!cat){
-    pgTitle.innerHTML=(currentLang==='it'?'Modelli <em>disponibili</em>':'Available <em>models</em>');
-    document.title='Modelli – Spizzicotecnica & SPI System';
-    document.getElementById('pgCount').textContent='';
-    grid.innerHTML='<p style="text-align:center;color:#999;padding:60px 0;font-size:1.05em">'+t.notfound+' <a href="index.html" style="color:#F07020">'+t.notfoundlink+'</a></p>';
+  var term=norm(searchTerm);
+
+  var results=allProducts.filter(function(p){
+    if(activeCat!=='all'&&p.cat!==activeCat)return false;
+    if(!term)return true;
+    var name=norm(p.n[currentLang]||p.n.it);
+    var desc=norm(p.d[currentLang]||p.d.it);
+    var catName=norm(db[p.cat].t[currentLang]||db[p.cat].t.it);
+    return name.indexOf(term)!==-1||desc.indexOf(term)!==-1||catName.indexOf(term)!==-1;
+  });
+
+  document.getElementById('pgCount').innerHTML='<span>'+results.length+'</span> '+t.countLabel;
+
+  if(results.length===0){
+    var empty=document.createElement('div');
+    empty.className='empty-state';
+    empty.innerHTML='<i class="fas fa-magnifying-glass-minus"></i><p>'+t.notfoundTitle+'</p><span>'+t.notfoundDesc+'</span><br><button class="empty-reset" id="emptyReset">'+t.resetBtn+'</button>';
+    grid.appendChild(empty);
+    document.getElementById('emptyReset').addEventListener('click',function(){
+      activeCat='all';searchTerm='';searchInput.value='';searchClear.classList.remove('show');
+      renderChips();renderGrid();
+    });
     return;
   }
-  var catName=cat.t[currentLang]||cat.t.it;
-  pgTitle.innerHTML=catName+' <em>'+(currentLang==='it'?'disponibili':'available')+'</em>';
-  document.title=catName+' – Spizzicotecnica & SPI System';
-  document.getElementById('pgCount').innerHTML='<span>'+cat.m.length+'</span> '+t.countLabel;
-  cat.m.forEach(function(m,i){
-    var name=(m.n[currentLang]||m.n.it);
-    var desc=(m.d[currentLang]||m.d.it);
+
+  results.forEach(function(p,i){
+    var name=(p.n[currentLang]||p.n.it);
+    var desc=(p.d[currentLang]||p.d.it);
+    var catName=(db[p.cat].t[currentLang]||db[p.cat].t.it);
     var el=document.createElement('div');
     el.className='card';
-    el.style.animationDelay=(i*65)+'ms';
-    var pdf=m.p?'<a href="'+m.p+'" class="pdf-btn" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i> '+t.pdf+'</a>':'';
+    el.style.animationDelay=(Math.min(i,14)*45)+'ms';
+    var pdf=p.p?'<a href="'+p.p+'" class="pdf-btn" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i> '+t.pdf+'</a>':'';
     var waText=encodeURIComponent((currentLang==='it'?'Salve, sono interessato al modello: ':'Hello, I am interested in the model: ')+name);
     var info='<a href="https://wa.me/393382247948?text='+waText+'" class="info-btn" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> '+t.info+'</a>';
-    el.innerHTML='<div class="card-img"><span class="card-num">'+String(i+1).padStart(2,'0')+'</span><img src="'+m.i+'" alt="'+name+'" loading="lazy"></div><div class="card-body"><h2>'+name+'</h2><p>'+desc+'</p><div class="card-actions">'+pdf+info+'</div></div>';
+    el.innerHTML='<div class="card-img"><span class="card-cat">'+catName+'</span><img src="'+p.i+'" alt="'+name+'" loading="lazy"></div><div class="card-body"><h2>'+name+'</h2><p>'+desc+'</p><div class="card-actions">'+pdf+info+'</div></div>';
     grid.appendChild(el);
   });
 }
 
-/* Init: applica subito la lingua salvata (default italiano se non c'è nulla in memoria) a TUTTA la pagina */
+searchInput.addEventListener('input',function(){
+  searchTerm=searchInput.value;
+  searchClear.classList.toggle('show',searchTerm.length>0);
+  renderGrid();
+});
+searchClear.addEventListener('click',function(){
+  searchTerm='';searchInput.value='';searchClear.classList.remove('show');searchInput.focus();
+  renderGrid();
+});
+
+/* Init */
 applyModLang(currentLang);
 
 document.getElementById('langBtn').addEventListener('click',function(){
   applyModLang(currentLang==='it'?'en':'it');
+});
+
+/* Risincronizza la lingua se la pagina viene ripristinata dalla
+   cache del browser (bfcache) tornando indietro, così non torna
+   più in italiano da sola. */
+window.addEventListener('pageshow',function(e){
+  if(e.persisted){
+    var l=lsGet('lang')||'it';
+    if(l!==currentLang)applyModLang(l);
+  }
 });
 </script>
 </body>
