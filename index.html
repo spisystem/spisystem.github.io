@@ -410,65 +410,42 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
    PRODOTTI
 ══════════════════════════════════════ */
 #prodotti{background:var(--wh);max-width:100%;padding:100px 6vw;position:relative;overflow:hidden}
-.prod-inner{max-width:1080px;margin:0 auto;position:relative;z-index:1}
-.prod-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
-  gap:20px;margin-top:50px;
+.prod-inner{max-width:1080px;margin:0 auto;position:relative;z-index:1;text-align:center}
+.prod-inner .eyebrow,.prod-inner .sec-title{text-align:left}
+.prod-inner .sec-divider{margin-left:0}
+.prod-lead{
+  font-size:1.02em;color:var(--txm);max-width:620px;line-height:1.85;
+  font-weight:300;text-align:left;margin-bottom:44px;
 }
-.p-box{
-  display:flex;flex-direction:column;align-items:center;
-  background:var(--lt);border-radius:var(--r20);
-  padding:30px 20px 22px;text-align:center;
-  border:1px solid var(--lt2);
-  box-shadow:0 2px 12px rgba(0,0,0,.04);
-  position:relative;overflow:hidden;
+.prod-tags{
+  display:flex;flex-wrap:wrap;gap:12px;justify-content:center;
+  max-width:900px;margin:0 auto 46px;
+}
+.prod-tags span{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:12px 22px;border-radius:50px;
+  background:var(--lt);border:1px solid var(--lt2);
+  font-size:.86em;font-weight:600;color:var(--tx);
   transition:transform var(--spring),box-shadow var(--ease),border-color var(--ease),background var(--ease);
 }
-.p-box::after{
-  content:'';position:absolute;bottom:0;left:0;right:0;height:3px;
-  background:linear-gradient(90deg,var(--or),var(--or2));
-  transform:scaleX(0);transform-origin:center;
-  transition:transform .4s cubic-bezier(.4,0,.2,1);
+.prod-tags span:hover{
+  transform:translateY(-4px);
+  background:var(--wh);border-color:rgba(240,112,32,.25);
+  box-shadow:0 12px 28px rgba(0,0,0,.07);
 }
-.p-box:hover{
-  transform:translateY(-9px) scale(1.02);
-  box-shadow:0 24px 60px rgba(0,0,0,.11);
-  border-color:rgba(240,112,32,.2);
-  background:var(--wh);
-}
-.p-box:hover::after{transform:scaleX(1)}
-.p-img{width:138px;height:118px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;overflow:hidden}
-.p-img img,.dual img{max-width:100%;max-height:100%;object-fit:contain;border-radius:8px;transition:transform .45s ease}
-.p-box:hover .p-img img,.p-box:hover .dual img{transform:scale(1.1)}
-.dual{display:flex;gap:10px;justify-content:center;margin-bottom:18px}
-.dual img{width:62px;height:62px}
-.p-name{
-  font-family:'Cormorant Garamond',serif;
-  font-size:1.22em;font-weight:700;
-  color:var(--tx);margin-bottom:18px;flex:1;line-height:1.35;
-}
-.s-btn{
-  display:inline-flex;align-items:center;gap:7px;
-  padding:10px 26px;
+.prod-tags span i{
+  width:26px;height:26px;border-radius:50%;flex-shrink:0;
   background:linear-gradient(135deg,var(--or),var(--or2));
-  color:var(--wh);font-weight:700;border-radius:50px;
-  text-decoration:none;font-size:.8em;letter-spacing:.8px;text-transform:uppercase;
-  box-shadow:0 4px 16px var(--glow2);
-  transition:transform var(--spring),box-shadow var(--ease);
-  min-height:42px;cursor:pointer;position:relative;overflow:hidden;
+  color:#fff;display:flex;align-items:center;justify-content:center;font-size:.72em;
+  box-shadow:0 3px 10px var(--glow2);
 }
-.s-btn::before{
-  content:'';position:absolute;top:50%;left:50%;
-  width:0;height:0;border-radius:50%;
-  background:rgba(255,255,255,.2);
-  transform:translate(-50%,-50%);
-  transition:width .4s ease,height .4s ease;
+.prod-cta{display:flex;justify-content:center}
+.prod-cta .h-btn{box-shadow:0 10px 32px var(--glow)}
+.prod-note{
+  margin-top:18px;font-size:.8em;color:var(--txm);
+  display:flex;align-items:center;justify-content:center;gap:8px;
 }
-.s-btn:hover::before{width:200px;height:200px}
-.s-btn:hover,.s-btn:active{transform:translateY(-2px) scale(1.06);box-shadow:0 10px 28px var(--glow)}
-.s-btn i{transition:transform .3s ease}
-.s-btn:hover i{transform:translateX(3px)}
+.prod-note i{color:var(--or)}
 
 /* ══════════════════════════════════════
    CONTATTI
@@ -520,6 +497,15 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
 .c-card p{font-size:.95em;color:rgba(255,255,255,.78);line-height:1.65}
 .c-card a{color:inherit;text-decoration:none;transition:color var(--ease)}
 .c-card a:hover{color:var(--or2)}
+
+/* map */
+.c-map{
+  max-width:1080px;margin:24px auto 0;position:relative;z-index:1;
+  border-radius:var(--r20);overflow:hidden;
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:0 20px 60px rgba(0,0,0,.45);
+}
+.c-map iframe{display:block;width:100%;height:340px;border:0;filter:grayscale(.25) contrast(1.05)}
 
 /* ══════════════════════════════════════
    PREVENTIVO
@@ -708,10 +694,13 @@ footer a:hover{color:var(--or)}
    AOS-LIKE REVEALS
 ══════════════════════════════════════ */
 [data-reveal]{
-  opacity:0;transform:translateY(32px);
-  transition:opacity .7s ease,transform .7s ease;
+  opacity:0;
+  transform:translateY(46px) scale(.95);
+  transition:opacity .9s cubic-bezier(.16,1,.3,1),
+             transform .9s cubic-bezier(.16,1,.3,1);
+  will-change:transform,opacity;
 }
-[data-reveal].revealed{opacity:1;transform:translateY(0)}
+[data-reveal].revealed{opacity:1;transform:translateY(0) scale(1)}
 
 /* ══════════════════════════════════════
    MOBILE
@@ -734,6 +723,7 @@ footer a:hover{color:var(--or)}
   .brand-name s{font-size:.64em}
   .brand-logo{height:42px}
   .hero-counter{display:none}
+  .c-map iframe{height:260px}
 }
 
 /* ══════════════════════════════════════
@@ -741,13 +731,34 @@ footer a:hover{color:var(--or)}
 ══════════════════════════════════════ */
 #intro{
   position:fixed;inset:0;z-index:99999;
-  background:#0A0A0A;
+  background:
+    radial-gradient(circle at 50% 38%, rgba(240,112,32,.16) 0%, transparent 55%),
+    radial-gradient(circle at 15% 90%, rgba(240,112,32,.08) 0%, transparent 50%),
+    radial-gradient(circle at 88% 12%, rgba(255,148,72,.07) 0%, transparent 45%),
+    linear-gradient(160deg,#1c140d 0%,#120d09 55%,#0a0807 100%);
   display:flex;align-items:center;justify-content:center;
   pointer-events:none;
   overflow:hidden;
 }
+#intro::before{
+  content:'';position:absolute;inset:0;z-index:0;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:180px;
+}
+#intro::after{
+  content:'';position:absolute;left:50%;top:50%;
+  width:420px;height:420px;transform:translate(-50%,-50%);
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(240,112,32,.14) 0%,transparent 70%);
+  animation:introPulse 2.6s ease-in-out infinite;
+  z-index:0;
+}
+@keyframes introPulse{
+  0%,100%{opacity:.55;transform:translate(-50%,-50%) scale(.92)}
+  50%{opacity:1;transform:translate(-50%,-50%) scale(1.06)}
+}
 #intro.done{
-  animation:introOut .8s cubic-bezier(.4,0,.2,1) forwards;
+  animation:introOut .7s ease forwards;
 }
 @keyframes introOut{
   0%{opacity:1}
@@ -761,26 +772,35 @@ footer a:hover{color:var(--or)}
 }
 
 .intro-logo-wrap{
-  margin-bottom:22px;
+  margin-bottom:22px;position:relative;z-index:2;
 }
 .intro-logo{
   width:60px;height:60px;
-  filter:drop-shadow(0 0 16px rgba(240,112,32,.22));
+  filter:drop-shadow(0 0 16px rgba(240,112,32,.4));
+  opacity:0;transform:scale(.85);
+  animation:introLogoIn .8s cubic-bezier(.16,1,.3,1) forwards;
+}
+@keyframes introLogoIn{
+  0%{opacity:0;transform:scale(.85)}
+  100%{opacity:1;transform:scale(1)}
 }
 
 .intro-name{
   font-family:'Cormorant Garamond',serif;
   display:flex;flex-direction:column;align-items:center;
   line-height:1.15;
-  animation:introFadeUp .7s .12s cubic-bezier(.4,0,.2,1) both;
+  opacity:0;transform:translateY(14px);
+  animation:introFadeUp .8s .16s cubic-bezier(.16,1,.3,1) forwards;
   margin-bottom:24px;
   text-align:center;
-  gap:2px;
+  gap:2px;position:relative;z-index:2;
 }
 .intro-name b{
   font-size:1.05em;font-weight:700;text-transform:uppercase;
-  letter-spacing:4px;display:block;
+  letter-spacing:8px;display:block;
   color:rgba(255,255,255,.92);
+  opacity:0;
+  animation:introLetterSpace 1s .16s cubic-bezier(.16,1,.3,1) forwards;
 }
 .intro-amp{
   font-size:.85em;font-weight:300;
@@ -791,15 +811,20 @@ footer a:hover{color:var(--or)}
 }
 
 @keyframes introFadeUp{
-  0%{opacity:0;transform:translateY(10px)}
+  0%{opacity:0;transform:translateY(14px)}
   100%{opacity:1;transform:translateY(0)}
+}
+@keyframes introLetterSpace{
+  0%{letter-spacing:1px;opacity:0}
+  100%{letter-spacing:4px;opacity:1}
 }
 
 .intro-divider{
   width:0;height:1px;
   background:linear-gradient(90deg,transparent,var(--or),transparent);
   margin-bottom:18px;
-  animation:dividerExpand .7s .3s ease both;
+  animation:dividerExpand .7s .42s ease forwards;
+  position:relative;z-index:2;
 }
 @keyframes dividerExpand{
   0%{width:0;opacity:0}
@@ -809,20 +834,23 @@ footer a:hover{color:var(--or)}
 .intro-phrase{
   font-size:.58em;font-weight:500;letter-spacing:5px;text-transform:uppercase;
   color:rgba(255,255,255,.32);
-  animation:introFadeUp .7s .42s cubic-bezier(.4,0,.2,1) both;
+  opacity:0;transform:translateY(14px);
+  animation:introFadeUp .8s .56s cubic-bezier(.16,1,.3,1) forwards;
   font-family:'Inter',sans-serif;
+  position:relative;z-index:2;
 }
 
 body.intro-active{overflow:hidden}
 
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
-  [data-reveal]{opacity:1;transform:none}
+  [data-reveal]{opacity:1;transform:none;filter:none}
   #intro{display:none}
 }
   </style>
 </head>
 <body>
+
 <div id="top"></div>
 
 <!-- ── INTRO SCREEN ── -->
@@ -944,7 +972,7 @@ body.intro-active{overflow:hidden}
 <div class="sec" id="promo-menu">
   <div data-reveal>
     <div class="eyebrow" id="promoEyebrow">Novità</div>
-    <h2 class="sec-title" id="promoTitle">Menù Digitali QR per Ristoranti</h2>
+    <h2 class="sec-title" id="promoTitle">Menù Digitali QR per la Tua Attività</h2>
     <div class="sec-divider"></div>
   </div>
   <div class="promo-card2" data-reveal>
@@ -954,7 +982,7 @@ body.intro-active{overflow:hidden}
       <ul class="promo-feats2">
         <li><i class="fas fa-check"></i><span id="promoFeat1">Nessuna app da scaricare</span></li>
         <li><i class="fas fa-check"></i><span id="promoFeat2">QR Code pronto da stampare</span></li>
-        <li><i class="fas fa-check"></i><span id="promoFeat3">Compatibile con Android e iPhone</span></li>
+        <li><i class="fas fa-check"></i><span id="promoFeat3">Compatibile con Android e iOS</span></li>
         <li><i class="fas fa-check"></i><span id="promoFeat4">Aggiornamenti e assistenza inclusi</span></li>
       </ul>
     </div>
@@ -975,52 +1003,23 @@ body.intro-active{overflow:hidden}
       <div class="eyebrow">Il nostro catalogo</div>
       <h2 class="sec-title">Prodotti</h2>
       <div class="sec-divider"></div>
+      <p class="prod-lead" id="prodLead">Registratori di cassa, bilance elettroniche, sistemi gestionali, casse automatiche, kiosk, affettatrici, palmari, prezzatrici e molto altro: tutto il nostro catalogo è raccolto in un unico posto, con ricerca e filtri per trovare subito ciò che ti serve.</p>
     </div>
-    <div class="prod-grid">
-      <div class="p-box" data-reveal>
-        <div class="p-img"><img src="img/registratori.PNG" alt="Registratori di cassa" loading="lazy"></div>
-        <div class="p-name">Registratori di cassa</div>
-        <a href="modelli.html?prodotto=registratori" class="s-btn">Scopri <i class="fas fa-chevron-right"></i></a>
-      </div>
-      <div class="p-box" data-reveal>
-        <div class="p-img"><img src="img/bilance.PNG" alt="Bilance elettroniche" loading="lazy"></div>
-        <div class="p-name">Bilance elettroniche</div>
-        <a href="modelli.html?prodotto=bilance" class="s-btn">Scopri <i class="fas fa-chevron-right"></i></a>
-      </div>
-      <div class="p-box" data-reveal>
-        <div class="p-img"><img src="img/IMG_1747.png" alt="Sistemi gestionali" loading="lazy"></div>
-        <div class="p-name">Sistemi gestionali</div>
-        <a href="modelli.html?prodotto=sistemi-touch" class="s-btn">Scopri <i class="fas fa-chevron-right"></i></a>
-      </div>
-      <div class="p-box" data-reveal>
-        <div class="p-img"><img src="img/casse.PNG" alt="Casse automatiche" loading="lazy"></div>
-        <div class="p-name">Casse automatiche</div>
-        <a href="modelli.html?prodotto=casse" class="s-btn">Scopri <i class="fas fa-chevron-right"></i></a>
-      </div>
-      <div class="p-box" data-reveal>
-        <div class="p-img"><img src="img/IMG_1767.png" alt="Kiosk interattivi" loading="lazy"></div>
-        <div class="p-name">Kiosk interattivi</div>
-        <a href="modelli.html?prodotto=kiosk" class="s-btn">Scopri <i class="fas fa-chevron-right"></i></a>
-      </div>
-      <div class="p-box" data-reveal>
-        <div class="p-img"><img src="img/affettatrici.PNG" alt="Affettatrici professionali" loading="lazy"></div>
-        <div class="p-name">Affettatrici professionali</div>
-        <a href="modelli.html?prodotto=affettatrici" class="s-btn">Scopri <i class="fas fa-chevron-right"></i></a>
-      </div>
-      <div class="p-box" data-reveal>
-        <div class="dual"><img src="img/palmari.PNG" alt="Palmari" loading="lazy"><img src="img/comande.PNG" alt="Stampanti" loading="lazy"></div>
-        <div class="p-name">Palmari & Stampanti comande</div>
-        <a href="modelli.html?prodotto=palmari-stampanti" class="s-btn">Scopri <i class="fas fa-chevron-right"></i></a>
-      </div>
-      <div class="p-box" data-reveal>
-        <div class="dual"><img src="img/prezzatrici.PNG" alt="Prezzatrici" loading="lazy"><img src="img/banconote.PNG" alt="Verificabanconote" loading="lazy"></div>
-        <div class="p-name">Prezzatrici & Verificabanconote</div>
-      </div>
-      <div class="p-box" data-reveal>
-        <div class="p-img"><img src="img/rotolo.PNG" alt="Rotoli termici" loading="lazy"></div>
-        <div class="p-name">Rotoli termici</div>
-      </div>
+    <div class="prod-tags" data-reveal id="prodTags">
+      <span><i class="fas fa-cash-register"></i><span id="prodTag1">Registratori di cassa</span></span>
+      <span><i class="fas fa-weight-hanging"></i><span id="prodTag2">Bilance elettroniche</span></span>
+      <span><i class="fas fa-desktop"></i><span id="prodTag3">Sistemi gestionali</span></span>
+      <span><i class="fas fa-coins"></i><span id="prodTag4">Casse automatiche</span></span>
+      <span><i class="fas fa-display"></i><span id="prodTag5">Kiosk interattivi</span></span>
+      <span><i class="fas fa-slash"></i><span id="prodTag6">Affettatrici</span></span>
+      <span><i class="fas fa-print"></i><span id="prodTag7">Palmari & Stampanti</span></span>
+      <span><i class="fas fa-tags"></i><span id="prodTag8">Prezzatrici & Verificabanconote</span></span>
+      <span><i class="fas fa-receipt"></i><span id="prodTag9">Rotoli termici</span></span>
     </div>
+    <div class="prod-cta" data-reveal>
+      <a href="modelli.html" class="h-btn" id="prodCtaBtn">Esplora tutto il catalogo <i class="fas fa-arrow-right"></i></a>
+    </div>
+    <p class="prod-note" data-reveal id="prodNote"><i class="fas fa-magnifying-glass"></i> Ricerca e filtri per categoria disponibili nella pagina del catalogo</p>
   </div>
 </div>
 
@@ -1053,6 +1052,14 @@ body.intro-active{overflow:hidden}
         <strong>Orari</strong>
         <p>Lun – Ven<br>9:00 – 19:30</p>
       </div>
+    </div>
+    <div class="c-map" data-reveal>
+      <iframe
+        src="https://www.google.com/maps?q=Via+Monterosa+22,+Palo+del+Colle+(BA)&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Mappa - Via Monterosa 22, Palo del Colle (BA)">
+      </iframe>
     </div>
   </div>
 </div>
@@ -1105,7 +1112,7 @@ body.intro-active{overflow:hidden}
     <div class="ck-icon"><i class="fas fa-cookie-bite"></i></div>
     <div class="ck-text">
       <strong id="ckBarTitle">La tua privacy è importante per noi</strong>
-      <span id="ckBarDesc">Utilizziamo cookie tecnici e, con il tuo consenso, cookie analitici per migliorare il sito. Consulta la nostra <a href="cookie.html">Cookie Policy</a> e la <a href="privacy.html">Privacy Policy</a>.</span>
+      <span id="ckBarDesc">Utilizziamo cookie tecnici necessari al corretto funzionamento del sito e, solo con il tuo consenso, cookie analitici per capire come viene utilizzato il sito e migliorarne l'esperienza nel tempo. Puoi accettare tutti i cookie, rifiutare quelli non necessari oppure personalizzare le tue scelte in qualsiasi momento dalle preferenze. Per maggiori dettagli consulta la nostra <a href="cookie.html">Cookie Policy</a> e la <a href="privacy.html">Privacy Policy</a>.</span>
     </div>
   </div>
   <div class="ck-btns">
@@ -1141,30 +1148,59 @@ body.intro-active{overflow:hidden}
 
 <script>
 /* ══════════════════════════════════════
-   SCROLL POSITION SAVE
+   STORAGE SICURO — evita crash su browser
+   che bloccano localStorage/sessionStorage
+   (Safari privato, webview Instagram/FB/TikTok, ecc.)
 ══════════════════════════════════════ */
-document.querySelectorAll('a[href*="modelli.html"]').forEach(function(a){
-  a.addEventListener('click',function(){sessionStorage.setItem('scrollY',window.scrollY);});
+function ssGet(k){try{return sessionStorage.getItem(k)}catch(e){return null}}
+function ssSet(k,v){try{sessionStorage.setItem(k,v)}catch(e){}}
+function ssRemove(k){try{sessionStorage.removeItem(k)}catch(e){}}
+function lsGet(k){try{return localStorage.getItem(k)}catch(e){return null}}
+function lsSet(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+
+/* ══════════════════════════════════════
+   SCROLL POSITION SAVE — per pagina
+   Salva la posizione di scroll quando si esce dalla
+   pagina (click su un link, chiusura, cambio tab) e la
+   ripristina al ritorno. Vale per QUALSIASI link interno
+   (footer, prodotti, ecc.), non solo verso modelli.html.
+   Utile anche nei browser/webview che non gestiscono bene
+   lo scroll restore nativo del tasto "indietro".
+══════════════════════════════════════ */
+var SCROLL_KEY='scrollPos::'+location.pathname;
+function saveScrollPos(){ssSet(SCROLL_KEY,String(window.scrollY));}
+window.addEventListener('pagehide',saveScrollPos);
+window.addEventListener('beforeunload',saveScrollPos);
+document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden')saveScrollPos();});
+document.addEventListener('click',function(e){
+  var a=e.target.closest('a[href]');
+  if(!a)return;
+  var href=a.getAttribute('href')||'';
+  if(href.indexOf('#')===0||href.indexOf('javascript:')===0||href.indexOf('mailto:')===0||href.indexOf('tel:')===0||a.target==='_blank')return;
+  saveScrollPos();
 });
 window.addEventListener('load',function(){
-  var saved=sessionStorage.getItem('scrollY');
-  if(saved){sessionStorage.removeItem('scrollY');window.scrollTo({top:parseInt(saved),behavior:'instant'});}
+  var saved=ssGet(SCROLL_KEY);
+  if(saved!==null){
+    ssRemove(SCROLL_KEY);
+    requestAnimationFrame(function(){window.scrollTo({top:parseInt(saved,10),behavior:'instant'});});
+  }
 });
 
 /* ══════════════════════════════════════
-   INTRO — durata 1.6s, fade elegante
+   INTRO — durata ~1.5s, fade cinematico
 ══════════════════════════════════════ */
 var introEl=document.getElementById('intro');
-if(sessionStorage.getItem('visited')){
+if(ssGet('visited')){
   introEl.style.display='none';
 }else{
-  sessionStorage.setItem('visited','1');
+  ssSet('visited','1');
   document.body.classList.add('intro-active');
   setTimeout(function(){
     introEl.classList.add('done');
     document.body.classList.remove('intro-active');
-    setTimeout(function(){introEl.style.display='none'},800);
-  },1600);
+    setTimeout(function(){introEl.style.display='none'},700);
+  },1500);
 }
 
 /* ══════════════════════════════════════
@@ -1185,15 +1221,17 @@ var translations={
     'about-card2-p':'Verifiche periodiche','about-card2-s':'Bilance elettroniche',
     'stat1-lb':'Esperienza','stat2-lb':'Installazioni',
     'prod-eyebrow':'Il nostro catalogo','prod-title':'Prodotti',
+    'prod-lead':'Registratori di cassa, bilance elettroniche, sistemi gestionali, casse automatiche, kiosk, affettatrici, palmari, prezzatrici e molto altro: tutto il nostro catalogo è raccolto in un unico posto, con ricerca e filtri per trovare subito ciò che ti serve.',
     'p1':'Registratori di cassa','p2':'Bilance elettroniche','p3':'Sistemi gestionali',
     'p4':'Casse automatiche','p5':'Kiosk interattivi','p6':'Affettatrici professionali',
     'p7':'Palmari & Stampanti comande','p8':'Prezzatrici & Verificabanconote','p9':'Rotoli termici',
-    'scopri':'Scopri',
+    'prod-cta':'Esplora tutto il catalogo',
+    'prod-note':'Ricerca e filtri per categoria disponibili nella pagina del catalogo',
     'promo-eyebrow':'Novità',
     'promo-tag':'Menù Digitale',
-    'promo-title':'Menù Digitali QR per Ristoranti',
+    'promo-title':'Menù Digitali QR per la Tua Attività',
     'promo-desc':'I tuoi clienti leggono il menu direttamente dal telefono, senza scaricare nessuna app: basta inquadrare il QR Code che ti forniamo, già pronto da stampare.',
-    'promo-feat1':'Nessuna app da scaricare','promo-feat2':'QR Code pronto da stampare','promo-feat3':'Compatibile con Android e iPhone','promo-feat4':'Aggiornamenti e assistenza inclusi',
+    'promo-feat1':'Nessuna app da scaricare','promo-feat2':'QR Code pronto da stampare','promo-feat3':'Compatibile con Android e iOS','promo-feat4':'Aggiornamenti e assistenza inclusi',
     'promo-price-num':'€9,90','promo-price-suffix':'/mese','promo-btn':'Prova la Demo',
     'promo-wa-btn':'Contattaci su WhatsApp',
     'promo-wa-text':'Salve%2C%20sono%20interessato%20al%20servizio%20Men%C3%B9%20Digitali%20QR%20(menu.spisystem.it).%20Potrei%20avere%20maggiori%20informazioni%3F',
@@ -1211,7 +1249,7 @@ var translations={
     'footer-credit':'Sito realizzato da',
     'orari-label':'Orari','tel-label':'Telefono','email-label':'Email','addr-label':'Indirizzo',
     'ck-title':'La tua privacy è importante per noi',
-    'ck-desc-pre':'Utilizziamo cookie tecnici e, con il tuo consenso, cookie analitici per migliorare il sito. Consulta la nostra ',
+    'ck-desc-pre':'Utilizziamo cookie tecnici necessari al corretto funzionamento del sito e, solo con il tuo consenso, cookie analitici per capire come viene utilizzato il sito e migliorarne l\'esperienza nel tempo. Puoi accettare tutti i cookie, rifiutare quelli non necessari oppure personalizzare le tue scelte in qualsiasi momento dalle preferenze. Per maggiori dettagli consulta la nostra ',
     'ck-desc-mid':' e la ',
     'ck-desc-end':'.',
     'ck-cookie-link':'Cookie Policy','ck-privacy-link':'Privacy Policy',
@@ -1234,15 +1272,17 @@ var translations={
     'about-card2-p':'Periodic inspections','about-card2-s':'Electronic scales',
     'stat1-lb':'Experience','stat2-lb':'Installations',
     'prod-eyebrow':'Our catalogue','prod-title':'Products',
+    'prod-lead':'Cash registers, electronic scales, management systems, automatic change machines, kiosks, slicers, handhelds, price labellers and much more: our entire catalogue is gathered in one place, with search and filters to find exactly what you need.',
     'p1':'Cash registers','p2':'Electronic scales','p3':'Management systems',
     'p4':'Automatic tills','p5':'Interactive kiosks','p6':'Professional slicers',
     'p7':'Handhelds & Kitchen printers','p8':'Price labellers & Bill validators','p9':'Thermal rolls',
-    'scopri':'Discover',
+    'prod-cta':'Explore the full catalogue',
+    'prod-note':'Search and category filters available on the catalogue page',
     'promo-eyebrow':'New',
     'promo-tag':'Digital Menu',
-    'promo-title':'Digital QR Menus for Restaurants',
+    'promo-title':'Digital QR Menus for Your Business',
     'promo-desc':'Your customers read the menu straight from their phone, no app required: just scan the QR Code we provide, ready to print.',
-    'promo-feat1':'No app to download','promo-feat2':'Print-ready QR Code','promo-feat3':'Works on Android and iPhone','promo-feat4':'Updates and support included',
+    'promo-feat1':'No app to download','promo-feat2':'Print-ready QR Code','promo-feat3':'Works on Android and iOS','promo-feat4':'Updates and support included',
     'promo-price-num':'€9.90','promo-price-suffix':'/month','promo-btn':'Try the Demo',
     'promo-wa-btn':'Contact us on WhatsApp',
     'promo-wa-text':'Hello%2C%20I%E2%80%99m%20interested%20in%20the%20Digital%20QR%20Menu%20service%20(menu.spisystem.it).%20Could%20I%20get%20more%20information%3F',
@@ -1260,7 +1300,7 @@ var translations={
     'footer-credit':'Website by',
     'orari-label':'Hours','tel-label':'Phone','email-label':'Email','addr-label':'Address',
     'ck-title':'Your privacy matters to us',
-    'ck-desc-pre':'We use technical cookies and, with your consent, analytics cookies to improve the site. See our ',
+    'ck-desc-pre':'We use technical cookies necessary for the site to work properly and, only with your consent, analytics cookies to understand how the site is used and improve your experience over time. You can accept all cookies, reject the non-essential ones, or customise your choices at any time from your preferences. For more details see our ',
     'ck-desc-mid':' and ',
     'ck-desc-end':'.',
     'ck-cookie-link':'Cookie Policy','ck-privacy-link':'Privacy Policy',
@@ -1285,7 +1325,7 @@ function updateLangBtn(lang){
 function applyLang(lang){
   var t=translations[lang];
   currentLang=lang;
-  localStorage.setItem('lang',lang);
+  lsSet('lang',lang);
   document.documentElement.lang=lang;
 
   /* navbar */
@@ -1332,10 +1372,11 @@ function applyLang(lang){
   /* prodotti */
   var pe=document.querySelector('#prodotti .eyebrow');if(pe)pe.textContent=t['prod-eyebrow'];
   var pt=document.querySelector('#prodotti .sec-title');if(pt&&pt.childNodes[0])pt.childNodes[0].textContent=t['prod-title'];
-  var pnames=document.querySelectorAll('.p-name');
+  var pl=document.getElementById('prodLead');if(pl)pl.textContent=t['prod-lead'];
   var pkeys=['p1','p2','p3','p4','p5','p6','p7','p8','p9'];
-  pnames.forEach(function(n,i){if(t[pkeys[i]])n.textContent=t[pkeys[i]]});
-  document.querySelectorAll('.s-btn').forEach(function(b){b.innerHTML=t['scopri']+' <i class="fas fa-chevron-right"></i>';});
+  pkeys.forEach(function(k,i){var el=document.getElementById('prodTag'+(i+1));if(el&&t[k])el.textContent=t[k];});
+  var pcta=document.getElementById('prodCtaBtn');if(pcta)pcta.innerHTML=t['prod-cta']+' <i class="fas fa-arrow-right"></i>';
+  var pnote=document.getElementById('prodNote');if(pnote)pnote.innerHTML='<i class="fas fa-magnifying-glass"></i> '+t['prod-note'];
 
   /* contatti */
   var ce=document.querySelector('#contatti .eyebrow');if(ce)ce.textContent=t['cont-eyebrow'];
@@ -1413,8 +1454,19 @@ document.getElementById('langBtn').addEventListener('click',function(){
 });
 
 /* restore saved language */
-var savedLang=localStorage.getItem('lang');
+var savedLang=lsGet('lang');
 if(savedLang&&savedLang!=='it')applyLang(savedLang);
+
+/* Alcuni browser (e molte webview tipo Instagram/Facebook/TikTok)
+   ripristinano la pagina dalla cache (bfcache) quando si torna
+   indietro, senza rieseguire lo script: risincronizziamo la lingua
+   in quel caso, così non "torna" più in italiano da sola. */
+window.addEventListener('pageshow',function(e){
+  if(e.persisted){
+    var l=lsGet('lang')||'it';
+    if(l!==currentLang)applyLang(l);
+  }
+});
 
 /* ── HEADER scroll ── */
 var hdr=document.getElementById('hdr');
@@ -1491,12 +1543,16 @@ btt.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'
 
 /* ── SCROLL REVEALS ── */
 var revEls=document.querySelectorAll('[data-reveal]');
-var ro=new IntersectionObserver(function(entries){
-  entries.forEach(function(e){
-    if(e.isIntersecting){e.target.classList.add('revealed');ro.unobserve(e.target);}
-  });
-},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
-revEls.forEach(function(el){ro.observe(el)});
+if('IntersectionObserver' in window){
+  var ro=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('revealed');ro.unobserve(e.target);}
+    });
+  },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  revEls.forEach(function(el){ro.observe(el)});
+}else{
+  revEls.forEach(function(el){el.classList.add('revealed')});
+}
 
 /* ── IMAGE PROTECT ── */
 document.addEventListener('contextmenu',function(e){if(e.target.tagName==='IMG')e.preventDefault()});
@@ -1508,18 +1564,18 @@ var ckForm=document.getElementById('ck-form');
 function hideBanner(){ckBar.style.display='none'}
 function hideModal(){ckMod.style.display='none'}
 function applyC(){
-  if(localStorage.getItem('an')==='1'){}
-  if(localStorage.getItem('mk')==='1'){}
+  if(lsGet('an')==='1'){}
+  if(lsGet('mk')==='1'){}
 }
-if(localStorage.getItem('ck')==='1'){hideBanner();applyC()}
-document.getElementById('ck-acc').addEventListener('click',function(){localStorage.setItem('ck','1');localStorage.setItem('an','1');localStorage.setItem('mk','1');hideBanner();applyC()});
-document.getElementById('ck-rej').addEventListener('click',function(){localStorage.setItem('ck','2');localStorage.setItem('an','0');localStorage.setItem('mk','0');hideBanner()});
-document.getElementById('ck-pref').addEventListener('click',function(){ckMod.style.display='flex';ckForm.analytics.checked=localStorage.getItem('an')==='1';ckForm.marketing.checked=localStorage.getItem('mk')==='1'});
+if(lsGet('ck')==='1'){hideBanner();applyC()}
+document.getElementById('ck-acc').addEventListener('click',function(){lsSet('ck','1');lsSet('an','1');lsSet('mk','1');hideBanner();applyC()});
+document.getElementById('ck-rej').addEventListener('click',function(){lsSet('ck','2');lsSet('an','0');lsSet('mk','0');hideBanner()});
+document.getElementById('ck-pref').addEventListener('click',function(){ckMod.style.display='flex';ckForm.analytics.checked=lsGet('an')==='1';ckForm.marketing.checked=lsGet('mk')==='1'});
 document.getElementById('ck-cancel').addEventListener('click',hideModal);
 document.getElementById('ck-save').addEventListener('click',function(){
-  localStorage.setItem('ck','1');
-  localStorage.setItem('an',ckForm.analytics.checked?'1':'0');
-  localStorage.setItem('mk',ckForm.marketing.checked?'1':'0');
+  lsSet('ck','1');
+  lsSet('an',ckForm.analytics.checked?'1':'0');
+  lsSet('mk',ckForm.marketing.checked?'1':'0');
   hideModal();hideBanner();applyC();
 });
 </script>
