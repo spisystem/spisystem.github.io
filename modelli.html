@@ -87,12 +87,17 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
 
 /* ── PAGE HERO ── */
 .pg-hero{
-  padding-top:68px;background:var(--dk);
+  padding-top:68px;
+  background:
+    radial-gradient(circle at 50% 130%, rgba(240,112,32,.20) 0%, transparent 60%),
+    radial-gradient(circle at 90% -10%, rgba(255,148,72,.10) 0%, transparent 45%),
+    linear-gradient(160deg,#1c140d 0%,#120d09 55%,#0a0807 100%);
   text-align:center;position:relative;overflow:hidden;
 }
 .pg-hero::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse 75% 60% at 50% 115%,rgba(240,112,32,.18) 0%,transparent 68%);
+  content:'';position:absolute;inset:0;opacity:.045;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:180px;
   pointer-events:none;
 }
 .pg-hero::after{
@@ -100,6 +105,14 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
   background:linear-gradient(90deg,transparent,var(--or),var(--or2),var(--or),transparent);
 }
 .pg-hero-in{position:relative;z-index:1;padding:52px 22px 48px}
+.pg-crumb{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  font-size:.7em;font-weight:600;letter-spacing:.5px;
+  color:rgba(255,255,255,.38);margin-bottom:18px;
+}
+.pg-crumb a{color:rgba(255,255,255,.5);text-decoration:none;transition:color .25s}
+.pg-crumb a:hover{color:var(--or2)}
+.pg-crumb i{font-size:.65em;color:rgba(255,255,255,.25)}
 .pg-pill{
   font-size:.62em;font-weight:700;letter-spacing:5px;text-transform:uppercase;
   color:var(--or);background:rgba(240,112,32,.08);border:1px solid rgba(240,112,32,.22);
@@ -113,6 +126,36 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
 .pg-hero h1 em{font-style:italic;color:var(--or2);font-weight:300}
 .pg-hero h1 strong{font-weight:700;display:block}
 .pg-line{width:44px;height:2px;background:linear-gradient(90deg,var(--or),var(--or2));border-radius:2px;margin:20px auto 0}
+.pg-count{
+  margin-top:16px;font-size:.72em;color:rgba(255,255,255,.35);
+  letter-spacing:1px;font-weight:500;
+}
+.pg-count span{color:var(--or2);font-weight:700}
+
+/* ── CATEGORY CHIPS ── */
+.chip-row{
+  display:flex;flex-wrap:wrap;gap:9px;justify-content:center;
+  max-width:900px;margin:26px auto 0;position:relative;z-index:1;padding:0 20px;
+}
+.chip{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:9px 16px;border-radius:40px;
+  font-size:.74em;font-weight:600;letter-spacing:.2px;
+  color:rgba(255,255,255,.6);
+  background:rgba(255,255,255,.045);
+  border:1px solid rgba(255,255,255,.08);
+  text-decoration:none;
+  transition:all .28s ease;
+  white-space:nowrap;
+}
+.chip i{font-size:.85em;color:rgba(255,255,255,.4);transition:color .28s}
+.chip:hover{color:#fff;background:rgba(240,112,32,.10);border-color:rgba(240,112,32,.3)}
+.chip:hover i{color:var(--or2)}
+.chip.active{
+  color:#fff;background:linear-gradient(135deg,var(--or),var(--or2));
+  border-color:transparent;box-shadow:0 5px 16px var(--glow2);
+}
+.chip.active i{color:#fff}
 
 /* ── WRAPPER ── */
 .wrap{max-width:960px;margin:0 auto;padding:54px 20px 90px}
@@ -139,7 +182,7 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
 .card-img{
   background:var(--lt);display:flex;align-items:center;justify-content:center;
   padding:24px 18px;border-right:1px solid var(--lt2);min-height:175px;
-  transition:background var(--ease);
+  transition:background var(--ease);position:relative;
 }
 .card:hover .card-img{background:rgba(240,112,32,.04)}
 .card-img img{
@@ -148,15 +191,21 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
   transition:transform .44s ease;
 }
 .card:hover .card-img img{transform:scale(1.08)}
+.card-num{
+  position:absolute;top:10px;left:12px;
+  font-family:'Cormorant Garamond',serif;font-weight:700;
+  font-size:.78em;color:rgba(20,20,20,.18);letter-spacing:1px;
+}
 .card-body{padding:28px 26px;display:flex;flex-direction:column;gap:8px}
 .card-body h2{
   font-family:'Cormorant Garamond',serif;
   font-size:1.38em;font-weight:700;color:var(--tx);line-height:1.2;
 }
 .card-body p{font-size:.91em;color:var(--txm);line-height:1.75;flex:1}
+.card-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
 .pdf-btn{
   display:inline-flex;align-items:center;gap:8px;
-  margin-top:10px;padding:11px 24px;border-radius:50px;
+  padding:11px 24px;border-radius:50px;
   background:linear-gradient(135deg,var(--or),var(--or2));
   color:#fff;text-decoration:none;font-weight:700;font-size:.78em;
   letter-spacing:.8px;text-transform:uppercase;
@@ -172,6 +221,16 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
 }
 .pdf-btn:hover,.pdf-btn:active{transform:translateY(-2px) scale(1.05);box-shadow:0 10px 28px var(--glow)}
 .pdf-btn:hover::after{opacity:1}
+.info-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:11px 22px;border-radius:50px;
+  background:var(--lt);color:var(--tx);text-decoration:none;
+  font-weight:700;font-size:.78em;letter-spacing:.5px;text-transform:uppercase;
+  border:1.5px solid var(--lt3);
+  transition:all var(--ease);align-self:flex-start;min-height:42px;
+}
+.info-btn i{color:#2FA84F}
+.info-btn:hover{border-color:rgba(240,112,32,.35);background:rgba(240,112,32,.06);transform:translateY(-2px)}
 
 /* ── BACK TO TOP ── */
 #btt{
@@ -211,6 +270,8 @@ footer a:hover{color:var(--or)}
   .bar-name s{font-size:.64em}
   .bar-logo{height:38px}
   .back .back-txt{display:none}
+  .chip-row{gap:7px}
+  .chip{padding:8px 13px;font-size:.7em}
 }
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
@@ -244,10 +305,13 @@ footer a:hover{color:var(--or)}
 <!-- ── PAGE HERO ── -->
 <div class="pg-hero">
   <div class="pg-hero-in">
+    <div class="pg-crumb"><a href="index.html">Home</a> <i class="fas fa-chevron-right"></i> <a href="index.html#prodotti">Prodotti</a> <i class="fas fa-chevron-right"></i> <span id="pgCrumbCurrent">Catalogo</span></div>
     <div class="pg-pill" id="pgPill">Catalogo prodotti</div>
     <h1 id="pgTitle">Modelli <em>disponibili</em></h1>
     <div class="pg-line"></div>
+    <div class="pg-count" id="pgCount"></div>
   </div>
+  <div class="chip-row" id="chipRow"></div>
 </div>
 
 <!-- ── MODELS ── -->
@@ -280,21 +344,27 @@ var modT={
     pill:'Catalogo prodotti',
     back:'Torna indietro',
     pdf:'Scarica brochure',
+    info:'Richiedi info',
     loading:'Caricamento…',
     notfound:'Prodotto non trovato.',
     notfoundlink:'Torna al sito',
     titlesuffix:' disponibili',
-    footer:'© 2026 SpizzicoTecnica & SPI System — Tutti i diritti riservati.'
+    footer:'© 2026 SpizzicoTecnica & SPI System — Tutti i diritti riservati.',
+    crumb:'Catalogo',
+    countLabel:'modelli disponibili in questa categoria'
   },
   en:{
     pill:'Product catalogue',
     back:'Go back',
     pdf:'Download brochure',
+    info:'Request info',
     loading:'Loading…',
     notfound:'Product not found.',
     notfoundlink:'Back to site',
     titlesuffix:' available',
-    footer:'© 2026 SpizzicoTecnica & SPI System — All rights reserved.'
+    footer:'© 2026 SpizzicoTecnica & SPI System — All rights reserved.',
+    crumb:'Catalogue',
+    countLabel:'models available in this category'
   }
 };
 
@@ -311,13 +381,10 @@ function applyModLang(lang){
   var t=modT[lang];
   var pill=document.getElementById('pgPill');if(pill)pill.textContent=t.pill;
   var bk=document.querySelector('.back-txt');if(bk)bk.textContent=t.back;
-  document.querySelectorAll('.pdf-btn').forEach(function(b){
-    b.innerHTML='<i class="fas fa-file-pdf"></i> '+t.pdf;
-  });
-  var fcopy=document.querySelector('footer p:first-child');
-  if(fcopy)fcopy.textContent=t.footer;
+  var crumb=document.getElementById('pgCrumbCurrent');if(crumb)crumb.textContent=t.crumb;
   updateLangBtn(lang);
   renderGrid();
+  renderChips();
 }
 
 /* ── BACK TO TOP ── */
@@ -328,6 +395,7 @@ btt.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'
 /* ── DATA ── */
 var db={
   'sistemi-touch':{
+    icon:'fa-desktop',
     t:{it:'Sistemi Gestionali',en:'Management Systems'},
     m:[
       {n:{it:'WYCASH 2600',en:'WYCASH 2600'},i:'img/IMG_0418.jpeg',d:{it:'Wycash 2600 è il sistema di cassa potente e versatile per gestire il tuo negozio in maniera semplice ed efficiente. Display touch 15,6 pollici full HD super brillante.',en:'Wycash 2600 is the powerful, versatile cash system for managing your shop simply and efficiently. Ultra-bright 15.6" full HD touch display.'},p:'pdf/wycash-2600.pdf'},
@@ -339,6 +407,7 @@ var db={
     ]
   },
   'registratori':{
+    icon:'fa-cash-register',
     t:{it:'Registratori di Cassa',en:'Cash Registers'},
     m:[
       {n:{it:'SERIE HELIOS PLUS RT',en:'HELIOS PLUS RT SERIES'},i:'img/helios.jpeg',d:{it:'Alte prestazioni di affidabilità, doppio display LCD grande e luminoso, cambio carta facilitato con dispositivo Easy loading super-fast. Ideale per tutte le attività di vendita.',en:'High reliability performance, large bright dual LCD display, easy paper change with super-fast Easy Loading device. Ideal for any retail business.'},p:'pdf/helios.pdf'},
@@ -349,6 +418,7 @@ var db={
     ]
   },
   'bilance':{
+    icon:'fa-weight-hanging',
     t:{it:'Bilance Elettroniche',en:'Electronic Scales'},
     m:[
       {n:{it:'Linea',en:'Linea'},i:'img/IMG_0436.jpeg',d:{it:'Eurobil ridefinisce il concetto di bilancia da banco: prodotto esclusivo che unisce innovazione, efficienza e semplicità d\u2019uso.',en:'Eurobil redefines the concept of a counter scale: an exclusive product combining innovation, efficiency and ease of use.'},p:'pdf/linea.pdf'},
@@ -363,6 +433,7 @@ var db={
     ]
   },
   'affettatrici':{
+    icon:'fa-slash',
     t:{it:'Affettatrici Professionali',en:'Professional Slicers'},
     m:[
       {n:{it:'Sirman Leonardo 350 EVO BS2',en:'Sirman Leonardo 350 EVO BS2'},i:'img/affettatrici.jpg',d:{it:'Affettatrice professionale verticale per utilizzo intensivo e grande produzione. Struttura alluminio anodizzato priva di spigoli, minuterie e parafetta in acciaio inox. Ideale per macellerie, salumerie, GDO.',en:'Professional vertical slicer for heavy-duty use and high output. Anodised aluminium body with no sharp edges, stainless-steel fittings and slice deflector. Ideal for butchers, delicatessens and large retail.'},p:'pdf/affettatrici.pdf'},
@@ -370,6 +441,7 @@ var db={
     ]
   },
   'casse':{
+    icon:'fa-coins',
     t:{it:'Casse Automatiche Rendiresto',en:'Automatic Change Machines'},
     m:[
       {n:{it:'Cashmatic SelfPay 460',en:'Cashmatic SelfPay 460'},i:'img/cashmatic460.PNG',d:{it:'Formato compatto e design innovativo. La cassa automatica rendiresto ideale per ogni tipologia di retailer che vuole ottimizzare i tempi e ridurre gli errori di cassa.',en:'Compact format and innovative design. The ideal automatic change machine for any retailer wanting to save time and reduce cash-handling errors.'},p:'pdf/cashmatic460.pdf'},
@@ -378,6 +450,7 @@ var db={
     ]
   },
   'kiosk':{
+    icon:'fa-display',
     t:{it:'Kiosk Interattivi',en:'Interactive Kiosks'},
     m:[
       {n:{it:'Wykiosk 1100',en:'Wykiosk 1100'},i:'img/wykiosk1100.PNG',d:{it:'Per paninoteche, fast food, gelaterie e bar. Soluzione ideale per velocizzare il servizio e aumentare le vendite permettendo ai clienti di ordinare e pagare in autonomia.',en:'For sandwich shops, fast food, ice cream parlours and bars. The ideal solution to speed up service and boost sales by letting customers order and pay independently.'},p:'pdf/wykiosk.pdf'},
@@ -385,18 +458,50 @@ var db={
     ]
   },
   'palmari-stampanti':{
+    icon:'fa-print',
     t:{it:'Palmari & Stampanti Cucina',en:'Handhelds & Kitchen Printers'},
     m:[
       {n:{it:'Serie DT50X',en:'DT50X Series'},i:'img/palmareax.jpg',d:{it:'Palmare Hospitality Edition: display touch 5,7 pollici HD visibile anche con forte luce solare. Funziona con guanti o dita bagnate. Prestazioni top per la ristorazione.',en:'Hospitality Edition handheld: 5.7" HD touch display visible even in strong sunlight. Works with gloves or wet fingers. Top performance for the food-service sector.'},p:'pdf/palmareax.pdf'},
       {n:{it:'Serie POS 80K',en:'POS 80K Series'},i:'img/com.jpg',d:{it:'Stampante per comande e ricevute termiche, la più versatile della famiglia. Forma compatta, installazione ovunque anche a parete. Veloce e silenzioso.',en:'Thermal order/receipt printer, the most versatile of the family. Compact shape, can be installed anywhere, even on a wall. Fast and quiet.'},p:'pdf/com.pdf'}
     ]
+  },
+  'prezzatrici-banconote':{
+    icon:'fa-tags',
+    t:{it:'Prezzatrici & Verificabanconote',en:'Price Labellers & Bill Validators'},
+    m:[
+      {n:{it:'Prezzatrici professionali',en:'Professional price labellers'},i:'img/prezzatrici.PNG',d:{it:'Etichettatrici manuali robuste e precise per il negozio e il mercato ambulante. Rapide da usare, con nastri intercambiabili per ogni esigenza di prezzatura.',en:'Robust, precise manual labellers for shops and street markets. Fast to use, with interchangeable rolls for every pricing need.'},p:''},
+      {n:{it:'Verificabanconote professionali',en:'Professional bill validators'},i:'img/banconote.PNG',d:{it:'Rilevazione rapida e affidabile di banconote false tramite luce UV, infrarossi e magnetica. Indispensabili per la sicurezza del cassetto.',en:'Fast, reliable detection of counterfeit banknotes using UV, infrared and magnetic sensors. Essential for cash-drawer security.'},p:''}
+    ]
+  },
+  'rotoli':{
+    icon:'fa-receipt',
+    t:{it:'Rotoli Termici',en:'Thermal Rolls'},
+    m:[
+      {n:{it:'Rotoli termici per registratori di cassa',en:'Thermal rolls for cash registers'},i:'img/rotolo.PNG',d:{it:'Carta termica di alta qualità, disponibile in vari formati, compatibile con la maggior parte dei registratori di cassa e stampanti fiscali in commercio.',en:'High-quality thermal paper, available in various sizes, compatible with most cash registers and fiscal printers on the market.'},p:''}
+    ]
   }
 };
+
+var catOrder=['registratori','bilance','sistemi-touch','casse','kiosk','affettatrici','palmari-stampanti','prezzatrici-banconote','rotoli'];
 
 var key=new URLSearchParams(window.location.search).get('prodotto');
 var cat=db[key];
 var grid=document.getElementById('grid');
 var pgTitle=document.getElementById('pgTitle');
+var chipRow=document.getElementById('chipRow');
+
+function renderChips(){
+  chipRow.innerHTML='';
+  catOrder.forEach(function(k){
+    var c=db[k];
+    if(!c)return;
+    var a=document.createElement('a');
+    a.href='modelli.html?prodotto='+k;
+    a.className='chip'+(k===key?' active':'');
+    a.innerHTML='<i class="fas '+c.icon+'"></i>'+(c.t[currentLang]||c.t.it);
+    chipRow.appendChild(a);
+  });
+}
 
 function renderGrid(){
   var t=modT[currentLang];
@@ -404,12 +509,14 @@ function renderGrid(){
   if(!cat){
     pgTitle.innerHTML=(currentLang==='it'?'Modelli <em>disponibili</em>':'Available <em>models</em>');
     document.title='Modelli – Spizzicotecnica & SPI System';
+    document.getElementById('pgCount').textContent='';
     grid.innerHTML='<p style="text-align:center;color:#999;padding:60px 0;font-size:1.05em">'+t.notfound+' <a href="index.html" style="color:#F07020">'+t.notfoundlink+'</a></p>';
     return;
   }
   var catName=cat.t[currentLang]||cat.t.it;
   pgTitle.innerHTML=catName+' <em>'+(currentLang==='it'?'disponibili':'available')+'</em>';
   document.title=catName+' – Spizzicotecnica & SPI System';
+  document.getElementById('pgCount').innerHTML='<span>'+cat.m.length+'</span> '+t.countLabel;
   cat.m.forEach(function(m,i){
     var name=(m.n[currentLang]||m.n.it);
     var desc=(m.d[currentLang]||m.d.it);
@@ -417,7 +524,9 @@ function renderGrid(){
     el.className='card';
     el.style.animationDelay=(i*65)+'ms';
     var pdf=m.p?'<a href="'+m.p+'" class="pdf-btn" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i> '+t.pdf+'</a>':'';
-    el.innerHTML='<div class="card-img"><img src="'+m.i+'" alt="'+name+'" loading="lazy"></div><div class="card-body"><h2>'+name+'</h2><p>'+desc+'</p>'+pdf+'</div>';
+    var waText=encodeURIComponent((currentLang==='it'?'Salve, sono interessato al modello: ':'Hello, I am interested in the model: ')+name);
+    var info='<a href="https://wa.me/393382247948?text='+waText+'" class="info-btn" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> '+t.info+'</a>';
+    el.innerHTML='<div class="card-img"><span class="card-num">'+String(i+1).padStart(2,'0')+'</span><img src="'+m.i+'" alt="'+name+'" loading="lazy"></div><div class="card-body"><h2>'+name+'</h2><p>'+desc+'</p><div class="card-actions">'+pdf+info+'</div></div>';
     grid.appendChild(el);
   });
 }
