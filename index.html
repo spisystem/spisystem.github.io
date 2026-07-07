@@ -410,42 +410,37 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
    PRODOTTI
 ══════════════════════════════════════ */
 #prodotti{background:var(--wh);max-width:100%;padding:100px 6vw;position:relative;overflow:hidden}
-.prod-inner{max-width:1080px;margin:0 auto;position:relative;z-index:1;text-align:center}
-.prod-inner .eyebrow,.prod-inner .sec-title{text-align:left}
-.prod-inner .sec-divider{margin-left:0}
-.prod-lead{
-  font-size:1.02em;color:var(--txm);max-width:620px;line-height:1.85;
-  font-weight:300;text-align:left;margin-bottom:44px;
+.prod-inner{max-width:1080px;margin:0 auto;position:relative;z-index:1}
+.prod-header{max-width:640px}
+.prod-card{
+  max-width:680px;margin:44px auto 0;text-align:center;
+  background:var(--lt);border:1px solid var(--lt2);border-radius:var(--r20);
+  padding:56px 48px;position:relative;overflow:hidden;
+  box-shadow:0 4px 24px rgba(0,0,0,.05);
+  transition:transform var(--spring),box-shadow var(--ease),border-color var(--ease);
 }
-.prod-tags{
-  display:flex;flex-wrap:wrap;gap:12px;justify-content:center;
-  max-width:900px;margin:0 auto 46px;
+.prod-card::before{
+  content:'';position:absolute;top:-70px;right:-70px;
+  width:200px;height:200px;border-radius:50%;
+  background:radial-gradient(circle,rgba(240,112,32,.08) 0%,transparent 70%);
+  pointer-events:none;
 }
-.prod-tags span{
-  display:inline-flex;align-items:center;gap:9px;
-  padding:12px 22px;border-radius:50px;
-  background:var(--lt);border:1px solid var(--lt2);
-  font-size:.86em;font-weight:600;color:var(--tx);
-  transition:transform var(--spring),box-shadow var(--ease),border-color var(--ease),background var(--ease);
-}
-.prod-tags span:hover{
-  transform:translateY(-4px);
-  background:var(--wh);border-color:rgba(240,112,32,.25);
-  box-shadow:0 12px 28px rgba(0,0,0,.07);
-}
-.prod-tags span i{
-  width:26px;height:26px;border-radius:50%;flex-shrink:0;
+.prod-card:hover{transform:translateY(-5px);box-shadow:0 24px 56px rgba(0,0,0,.09);border-color:rgba(240,112,32,.18)}
+.prod-card-icon{
+  width:74px;height:74px;border-radius:20px;margin:0 auto 26px;position:relative;z-index:1;
   background:linear-gradient(135deg,var(--or),var(--or2));
-  color:#fff;display:flex;align-items:center;justify-content:center;font-size:.72em;
-  box-shadow:0 3px 10px var(--glow2);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 10px 28px var(--glow);
+  transition:transform var(--spring);
 }
-.prod-cta{display:flex;justify-content:center}
+.prod-card:hover .prod-card-icon{transform:scale(1.08) rotate(-3deg)}
+.prod-card-icon i{font-size:28px;color:#fff}
+.prod-lead{
+  font-size:1em;color:var(--txm);line-height:1.85;
+  font-weight:300;text-align:center;margin-bottom:30px;position:relative;z-index:1;
+}
+.prod-cta{display:flex;justify-content:center;position:relative;z-index:1}
 .prod-cta .h-btn{box-shadow:0 10px 32px var(--glow)}
-.prod-note{
-  margin-top:18px;font-size:.8em;color:var(--txm);
-  display:flex;align-items:center;justify-content:center;gap:8px;
-}
-.prod-note i{color:var(--or)}
 
 /* ══════════════════════════════════════
    CONTATTI
@@ -999,27 +994,18 @@ body.intro-active{overflow:hidden}
 <!-- ── PRODOTTI ── -->
 <div id="prodotti">
   <div class="prod-inner">
-    <div data-reveal>
+    <div class="prod-header" data-reveal>
       <div class="eyebrow">Il nostro catalogo</div>
       <h2 class="sec-title">Prodotti</h2>
       <div class="sec-divider"></div>
+    </div>
+    <div class="prod-card" data-reveal>
+      <div class="prod-card-icon"><i class="fas fa-boxes-stacked"></i></div>
       <p class="prod-lead" id="prodLead">Registratori di cassa, bilance elettroniche, sistemi gestionali, casse automatiche, kiosk, affettatrici, palmari, prezzatrici e molto altro: tutto il nostro catalogo è raccolto in un unico posto, con ricerca e filtri per trovare subito ciò che ti serve.</p>
+      <div class="prod-cta">
+        <a href="modelli.html" class="h-btn" id="prodCtaBtn">Esplora il catalogo <i class="fas fa-arrow-right"></i></a>
+      </div>
     </div>
-    <div class="prod-tags" data-reveal id="prodTags">
-      <span><i class="fas fa-cash-register"></i><span id="prodTag1">Registratori di cassa</span></span>
-      <span><i class="fas fa-weight-hanging"></i><span id="prodTag2">Bilance elettroniche</span></span>
-      <span><i class="fas fa-desktop"></i><span id="prodTag3">Sistemi gestionali</span></span>
-      <span><i class="fas fa-coins"></i><span id="prodTag4">Casse automatiche</span></span>
-      <span><i class="fas fa-display"></i><span id="prodTag5">Kiosk interattivi</span></span>
-      <span><i class="fas fa-slash"></i><span id="prodTag6">Affettatrici</span></span>
-      <span><i class="fas fa-print"></i><span id="prodTag7">Palmari & Stampanti</span></span>
-      <span><i class="fas fa-tags"></i><span id="prodTag8">Prezzatrici & Verificabanconote</span></span>
-      <span><i class="fas fa-receipt"></i><span id="prodTag9">Rotoli termici</span></span>
-    </div>
-    <div class="prod-cta" data-reveal>
-      <a href="modelli.html" class="h-btn" id="prodCtaBtn">Esplora tutto il catalogo <i class="fas fa-arrow-right"></i></a>
-    </div>
-    <p class="prod-note" data-reveal id="prodNote"><i class="fas fa-magnifying-glass"></i> Ricerca e filtri per categoria disponibili nella pagina del catalogo</p>
   </div>
 </div>
 
@@ -1222,11 +1208,7 @@ var translations={
     'stat1-lb':'Esperienza','stat2-lb':'Installazioni',
     'prod-eyebrow':'Il nostro catalogo','prod-title':'Prodotti',
     'prod-lead':'Registratori di cassa, bilance elettroniche, sistemi gestionali, casse automatiche, kiosk, affettatrici, palmari, prezzatrici e molto altro: tutto il nostro catalogo è raccolto in un unico posto, con ricerca e filtri per trovare subito ciò che ti serve.',
-    'p1':'Registratori di cassa','p2':'Bilance elettroniche','p3':'Sistemi gestionali',
-    'p4':'Casse automatiche','p5':'Kiosk interattivi','p6':'Affettatrici professionali',
-    'p7':'Palmari & Stampanti comande','p8':'Prezzatrici & Verificabanconote','p9':'Rotoli termici',
-    'prod-cta':'Esplora tutto il catalogo',
-    'prod-note':'Ricerca e filtri per categoria disponibili nella pagina del catalogo',
+    'prod-cta':'Esplora il catalogo',
     'promo-eyebrow':'Novità',
     'promo-tag':'Menù Digitale',
     'promo-title':'Menù Digitali QR per la Tua Attività',
@@ -1273,11 +1255,7 @@ var translations={
     'stat1-lb':'Experience','stat2-lb':'Installations',
     'prod-eyebrow':'Our catalogue','prod-title':'Products',
     'prod-lead':'Cash registers, electronic scales, management systems, automatic change machines, kiosks, slicers, handhelds, price labellers and much more: our entire catalogue is gathered in one place, with search and filters to find exactly what you need.',
-    'p1':'Cash registers','p2':'Electronic scales','p3':'Management systems',
-    'p4':'Automatic tills','p5':'Interactive kiosks','p6':'Professional slicers',
-    'p7':'Handhelds & Kitchen printers','p8':'Price labellers & Bill validators','p9':'Thermal rolls',
-    'prod-cta':'Explore the full catalogue',
-    'prod-note':'Search and category filters available on the catalogue page',
+    'prod-cta':'Explore the catalogue',
     'promo-eyebrow':'New',
     'promo-tag':'Digital Menu',
     'promo-title':'Digital QR Menus for Your Business',
@@ -1373,10 +1351,7 @@ function applyLang(lang){
   var pe=document.querySelector('#prodotti .eyebrow');if(pe)pe.textContent=t['prod-eyebrow'];
   var pt=document.querySelector('#prodotti .sec-title');if(pt&&pt.childNodes[0])pt.childNodes[0].textContent=t['prod-title'];
   var pl=document.getElementById('prodLead');if(pl)pl.textContent=t['prod-lead'];
-  var pkeys=['p1','p2','p3','p4','p5','p6','p7','p8','p9'];
-  pkeys.forEach(function(k,i){var el=document.getElementById('prodTag'+(i+1));if(el&&t[k])el.textContent=t[k];});
   var pcta=document.getElementById('prodCtaBtn');if(pcta)pcta.innerHTML=t['prod-cta']+' <i class="fas fa-arrow-right"></i>';
-  var pnote=document.getElementById('prodNote');if(pnote)pnote.innerHTML='<i class="fas fa-magnifying-glass"></i> '+t['prod-note'];
 
   /* contatti */
   var ce=document.querySelector('#contatti .eyebrow');if(ce)ce.textContent=t['cont-eyebrow'];
