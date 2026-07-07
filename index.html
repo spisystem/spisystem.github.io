@@ -413,34 +413,52 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
 .prod-inner{max-width:1080px;margin:0 auto;position:relative;z-index:1}
 .prod-header{max-width:640px}
 .prod-card{
-  max-width:680px;margin:44px auto 0;text-align:center;
-  background:var(--lt);border:1px solid var(--lt2);border-radius:var(--r20);
-  padding:56px 48px;position:relative;overflow:hidden;
+  display:flex;align-items:stretch;max-width:920px;margin:44px auto 0;
+  border-radius:var(--r20);overflow:hidden;
+  border:1px solid var(--lt2);
   box-shadow:0 4px 24px rgba(0,0,0,.05);
-  transition:transform var(--spring),box-shadow var(--ease),border-color var(--ease);
+  transition:transform var(--spring),box-shadow var(--ease);
 }
-.prod-card::before{
+.prod-card:hover{transform:translateY(-5px);box-shadow:0 26px 58px rgba(0,0,0,.10)}
+.prod-card-side{
+  flex:0 0 250px;position:relative;overflow:hidden;
+  background:linear-gradient(160deg,#221D18 0%,#171310 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:26px;padding:40px 26px;
+}
+.prod-card-side::before{
   content:'';position:absolute;top:-70px;right:-70px;
   width:200px;height:200px;border-radius:50%;
-  background:radial-gradient(circle,rgba(240,112,32,.08) 0%,transparent 70%);
+  background:radial-gradient(circle,rgba(240,112,32,.20) 0%,transparent 70%);
   pointer-events:none;
 }
-.prod-card:hover{transform:translateY(-5px);box-shadow:0 24px 56px rgba(0,0,0,.09);border-color:rgba(240,112,32,.18)}
 .prod-card-icon{
-  width:74px;height:74px;border-radius:20px;margin:0 auto 26px;position:relative;z-index:1;
+  width:68px;height:68px;border-radius:18px;position:relative;z-index:1;
   background:linear-gradient(135deg,var(--or),var(--or2));
   display:flex;align-items:center;justify-content:center;
   box-shadow:0 10px 28px var(--glow);
   transition:transform var(--spring);
 }
 .prod-card:hover .prod-card-icon{transform:scale(1.08) rotate(-3deg)}
-.prod-card-icon i{font-size:28px;color:#fff}
-.prod-lead{
-  font-size:1em;color:var(--txm);line-height:1.85;
-  font-weight:300;text-align:center;margin-bottom:30px;position:relative;z-index:1;
+.prod-card-icon i{font-size:26px;color:#fff}
+.prod-card-stats{display:flex;gap:30px;position:relative;z-index:1}
+.prod-card-stats div{text-align:center}
+.prod-card-stats b{display:block;font-family:'Cormorant Garamond',serif;font-size:1.9em;font-weight:700;color:#fff;line-height:1}
+.prod-card-stats span{font-size:.6em;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.45);font-weight:700;display:block;margin-top:5px}
+.prod-card-info{
+  flex:1;min-width:0;background:var(--lt);
+  padding:44px 46px;display:flex;flex-direction:column;justify-content:center;gap:26px;
 }
-.prod-cta{display:flex;justify-content:center;position:relative;z-index:1}
+.prod-lead{font-size:1em;color:var(--txm);line-height:1.85;font-weight:300}
+.prod-cta{display:flex}
 .prod-cta .h-btn{box-shadow:0 10px 32px var(--glow)}
+
+@media(max-width:680px){
+  .prod-card{flex-direction:column}
+  .prod-card-side{flex-direction:row;justify-content:center;padding:28px 20px}
+  .prod-card-info{padding:32px 28px;text-align:center;align-items:center}
+  .prod-cta{justify-content:center}
+}
 
 /* ══════════════════════════════════════
    CONTATTI
@@ -1000,10 +1018,18 @@ body.intro-active{overflow:hidden}
       <div class="sec-divider"></div>
     </div>
     <div class="prod-card" data-reveal>
-      <div class="prod-card-icon"><i class="fas fa-boxes-stacked"></i></div>
-      <p class="prod-lead" id="prodLead">Registratori di cassa, bilance elettroniche, sistemi gestionali, casse automatiche, kiosk, affettatrici, palmari, prezzatrici e molto altro: tutto il nostro catalogo è raccolto in un unico posto, con ricerca e filtri per trovare subito ciò che ti serve.</p>
-      <div class="prod-cta">
-        <a href="modelli.html" class="h-btn" id="prodCtaBtn">Esplora il catalogo <i class="fas fa-arrow-right"></i></a>
+      <div class="prod-card-side">
+        <div class="prod-card-icon"><i class="fas fa-store"></i></div>
+        <div class="prod-card-stats">
+          <div><b>9</b><span id="prodStat1">Categorie</span></div>
+          <div><b>30+</b><span id="prodStat2">Modelli</span></div>
+        </div>
+      </div>
+      <div class="prod-card-info">
+        <p class="prod-lead" id="prodLead">Registratori di cassa, bilance elettroniche, sistemi gestionali, casse automatiche, kiosk, affettatrici, palmari, prezzatrici e molto altro: tutto il nostro catalogo è raccolto in un unico posto, con ricerca e filtri per trovare subito ciò che ti serve.</p>
+        <div class="prod-cta">
+          <a href="modelli.html" class="h-btn" id="prodCtaBtn">Esplora il catalogo <i class="fas fa-arrow-right"></i></a>
+        </div>
       </div>
     </div>
   </div>
@@ -1209,6 +1235,7 @@ var translations={
     'prod-eyebrow':'Il nostro catalogo','prod-title':'Prodotti',
     'prod-lead':'Registratori di cassa, bilance elettroniche, sistemi gestionali, casse automatiche, kiosk, affettatrici, palmari, prezzatrici e molto altro: tutto il nostro catalogo è raccolto in un unico posto, con ricerca e filtri per trovare subito ciò che ti serve.',
     'prod-cta':'Esplora il catalogo',
+    'prod-stat1':'Categorie','prod-stat2':'Modelli',
     'promo-eyebrow':'Novità',
     'promo-tag':'Menù Digitale',
     'promo-title':'Menù Digitali QR per la Tua Attività',
@@ -1256,6 +1283,7 @@ var translations={
     'prod-eyebrow':'Our catalogue','prod-title':'Products',
     'prod-lead':'Cash registers, electronic scales, management systems, automatic change machines, kiosks, slicers, handhelds, price labellers and much more: our entire catalogue is gathered in one place, with search and filters to find exactly what you need.',
     'prod-cta':'Explore the catalogue',
+    'prod-stat1':'Categories','prod-stat2':'Models',
     'promo-eyebrow':'New',
     'promo-tag':'Digital Menu',
     'promo-title':'Digital QR Menus for Your Business',
@@ -1352,6 +1380,8 @@ function applyLang(lang){
   var pt=document.querySelector('#prodotti .sec-title');if(pt&&pt.childNodes[0])pt.childNodes[0].textContent=t['prod-title'];
   var pl=document.getElementById('prodLead');if(pl)pl.textContent=t['prod-lead'];
   var pcta=document.getElementById('prodCtaBtn');if(pcta)pcta.innerHTML=t['prod-cta']+' <i class="fas fa-arrow-right"></i>';
+  var ps1=document.getElementById('prodStat1');if(ps1)ps1.textContent=t['prod-stat1'];
+  var ps2=document.getElementById('prodStat2');if(ps2)ps2.textContent=t['prod-stat2'];
 
   /* contatti */
   var ce=document.querySelector('#contatti .eyebrow');if(ce)ce.textContent=t['cont-eyebrow'];
