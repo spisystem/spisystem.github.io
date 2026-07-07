@@ -129,7 +129,7 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
 
 /* ── SEARCH BAR ── */
 .search-wrap{
-  max-width:620px;margin:32px auto 0;position:relative;z-index:1;padding:0 20px;
+  max-width:560px;margin:32px auto 0;position:relative;z-index:1;padding:0 20px;
 }
 .search-box{
   display:flex;align-items:center;gap:12px;
@@ -159,10 +159,40 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
 .search-clear:hover{background:rgba(240,112,32,.2);color:#fff}
 .search-clear.show{display:flex}
 
-/* ── CATEGORY CHIPS — barra scorrevole su una riga sola ── */
-.chip-row-outer{
-  position:relative;max-width:1080px;margin:22px auto 0;padding:0 20px;
+/* ── piccolo controllo "Ordina", accanto alle categorie ── */
+.sort-wrap{
+  display:flex;align-items:center;gap:8px;flex-shrink:0;
+  position:relative;z-index:1;
 }
+.sort-wrap i{color:rgba(255,255,255,.35);font-size:.8em}
+.sort-select{
+  appearance:none;-webkit-appearance:none;
+  background:rgba(255,255,255,.045);
+  border:1px solid rgba(255,255,255,.1);
+  color:rgba(255,255,255,.7);
+  font-family:'Inter',sans-serif;font-size:.76em;font-weight:600;
+  padding:8px 30px 8px 14px;border-radius:40px;cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%23FF9448' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 12px center;
+  transition:border-color .25s,background-color .25s;
+}
+.sort-select:hover,.sort-select:focus{border-color:rgba(240,112,32,.4);background-color:rgba(240,112,32,.08);outline:none}
+.sort-select option{background:#171310;color:#fff}
+
+/* ── CATEGORY CHIPS — barra scorrevole su una riga sola ── */
+.chips-and-sort{
+  display:flex;align-items:center;gap:14px;
+  max-width:1080px;margin:22px auto 0;padding:0 20px;
+  position:relative;z-index:1;
+}
+.chip-row-outer{
+  position:relative;flex:1;min-width:0;
+}
+.chip-row-outer::before,.chip-row-outer::after{
+  content:'';position:absolute;top:0;bottom:6px;width:28px;z-index:2;pointer-events:none;
+}
+.chip-row-outer::before{left:0;background:linear-gradient(90deg,#120d09,transparent)}
+.chip-row-outer::after{right:0;background:linear-gradient(270deg,#120d09,transparent)}
 .chip-row{
   display:flex;flex-wrap:nowrap;gap:9px;
   overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
@@ -170,11 +200,6 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
   scroll-behavior:smooth;
 }
 .chip-row::-webkit-scrollbar{display:none}
-.chip-row-outer::before,.chip-row-outer::after{
-  content:'';position:absolute;top:0;bottom:6px;width:36px;z-index:2;pointer-events:none;
-}
-.chip-row-outer::before{left:20px;background:linear-gradient(90deg,#120d09,transparent)}
-.chip-row-outer::after{right:20px;background:linear-gradient(270deg,#120d09,transparent)}
 .chip{
   display:inline-flex;align-items:center;gap:7px;flex-shrink:0;
   padding:9px 16px;border-radius:40px;
@@ -243,11 +268,11 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
 }
 .card:hover .card-img img{transform:scale(1.08)}
 .card-cat{
-  position:absolute;top:10px;left:10px;
-  font-size:.6em;font-weight:700;letter-spacing:1px;text-transform:uppercase;
-  color:var(--or3,#E85C00);background:rgba(240,112,32,.1);
-  border:1px solid rgba(240,112,32,.22);border-radius:20px;
-  padding:4px 10px;
+  display:inline-flex;align-items:center;gap:5px;width:fit-content;
+  font-size:.62em;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+  color:var(--or3,#E85C00);background:rgba(240,112,32,.08);
+  border:1px solid rgba(240,112,32,.2);border-radius:20px;
+  padding:4px 11px;
 }
 .card-body{padding:20px 22px 22px;display:flex;flex-direction:column;gap:8px;flex:1}
 .card-body h2{
@@ -300,6 +325,10 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
   font-size:.72em;font-weight:700;color:#2FA84F;
   background:rgba(47,168,79,.08);border:1px solid rgba(47,168,79,.22);
   border-radius:20px;padding:5px 12px;margin-top:2px;
+}
+.delivery-badge + .delivery-badge{margin-top:6px}
+.minorder-badge{
+  color:#3B82F6;background:rgba(59,130,246,.08);border-color:rgba(59,130,246,.22);
 }
 
 /* empty state */
@@ -356,6 +385,9 @@ footer a:hover{color:var(--or)}
   .chip-row{gap:7px}
   .chip{padding:8px 13px;font-size:.7em}
   .card-img{height:140px}
+  .chips-and-sort{flex-wrap:wrap;gap:10px}
+  .chip-row-outer{flex:1 1 100%;order:1}
+  .sort-wrap{order:2;margin:0 auto}
 }
 @media(max-width:420px){
   .grid{grid-template-columns:1fr 1fr;gap:14px}
@@ -406,7 +438,17 @@ footer a:hover{color:var(--or)}
       <button class="search-clear" id="searchClear" aria-label="Cancella ricerca"><i class="fas fa-xmark"></i></button>
     </div>
   </div>
-  <div class="chip-row-outer"><div class="chip-row" id="chipRow"></div></div>
+  <div class="chips-and-sort">
+    <div class="chip-row-outer"><div class="chip-row" id="chipRow"></div></div>
+    <div class="sort-wrap">
+      <i class="fas fa-arrow-down-wide-short"></i>
+      <select id="sortSelect" class="sort-select">
+        <option value="default" id="sortOptDefault">Categoria</option>
+        <option value="az" id="sortOptAZ">Nome A-Z</option>
+        <option value="za" id="sortOptZA">Nome Z-A</option>
+      </select>
+    </div>
+  </div>
   <div class="pg-count" id="pgCount"></div>
 </div>
 
@@ -485,7 +527,10 @@ var modT={
     title:'Tutti i <em>prodotti</em>',
     countLabel:'prodotti trovati',
     all:'Tutti',
-    searchPh:'Cerca un modello, es. Wycash, bilancia, affettatrice…'
+    searchPh:'Cerca un modello, es. Wycash, bilancia, affettatrice…',
+    sortDefault:'Categoria',
+    sortAZ:'Nome A-Z',
+    sortZA:'Nome Z-A'
   },
   en:{
     pill:'Product catalogue',
@@ -501,7 +546,10 @@ var modT={
     title:'All <em>products</em>',
     countLabel:'products found',
     all:'All'
-    ,searchPh:'Search a model, e.g. Wycash, scale, slicer…'
+    ,searchPh:'Search a model, e.g. Wycash, scale, slicer…',
+    sortDefault:'Category',
+    sortAZ:'Name A-Z',
+    sortZA:'Name Z-A'
   }
 };
 
@@ -521,6 +569,9 @@ function applyModLang(lang){
   var crumb=document.getElementById('pgCrumbCurrent');if(crumb)crumb.textContent=t.crumb;
   var si=document.getElementById('searchInput');if(si)si.placeholder=t.searchPh;
   var pgTitle=document.getElementById('pgTitle');if(pgTitle)pgTitle.innerHTML=t.title;
+  var so1=document.getElementById('sortOptDefault');if(so1)so1.textContent=t.sortDefault;
+  var so2=document.getElementById('sortOptAZ');if(so2)so2.textContent=t.sortAZ;
+  var so3=document.getElementById('sortOptZA');if(so3)so3.textContent=t.sortZA;
   updateLangBtn(lang);
   renderChips();
   renderGrid();
@@ -618,7 +669,7 @@ var db={
     icon:'fa-receipt',
     t:{it:'Rotoli Termici',en:'Thermal Rolls'},
     m:[
-      {n:{it:'Rotoli termici per registratori di cassa',en:'Thermal rolls for cash registers'},i:'img/rotolo.PNG',d:{it:'Carta termica di alta qualità, disponibile in vari formati, compatibile con la maggior parte dei registratori di cassa e stampanti fiscali in commercio.',en:'High-quality thermal paper, available in various sizes, compatible with most cash registers and fiscal printers on the market.'},p:'',order:true,delivery:{it:'Consegna gratuita in provincia di Bari',en:'Free delivery within the province of Bari'}}
+      {n:{it:'Rotoli termici per tutti i tuoi dispositivi',en:'Thermal rolls for all your devices'},i:'img/rotolo.PNG',d:{it:'Carta termica di alta qualità in vari formati, adatta a registratori di cassa, bilance, stampanti fiscali e alla maggior parte dei prodotti che vendiamo. Un unico fornitore per tutti i consumabili del tuo punto vendita.',en:'High-quality thermal paper in various sizes, suitable for cash registers, scales, fiscal printers and most of the products we sell. One single supplier for all your point-of-sale consumables.'},p:'',order:true,minOrder:{it:'Ordine minimo: 1 scatola',en:'Minimum order: 1 box'},orderMsg:{it:'Salve, vorrei ordinare una scatola di rotoli termici.',en:'Hello, I would like to order a box of thermal rolls.'},delivery:{it:'Consegna gratuita in provincia di Bari',en:'Free delivery within the province of Bari'}}
     ]
   }
 };
@@ -629,18 +680,20 @@ var catOrder=['registratori','bilance','sistemi-touch','casse','kiosk','affettat
 var allProducts=[];
 catOrder.forEach(function(k){
   db[k].m.forEach(function(m){
-    allProducts.push({cat:k,n:m.n,i:m.i,d:m.d,p:m.p,order:m.order,delivery:m.delivery});
+    allProducts.push({cat:k,n:m.n,i:m.i,d:m.d,p:m.p,order:m.order,delivery:m.delivery,minOrder:m.minOrder,orderMsg:m.orderMsg});
   });
 });
 
 var initialCat=new URLSearchParams(window.location.search).get('prodotto');
 var activeCat=(initialCat&&db[initialCat])?initialCat:'all';
 var searchTerm='';
+var sortMode='default';
 
 var grid=document.getElementById('grid');
 var chipRow=document.getElementById('chipRow');
 var searchInput=document.getElementById('searchInput');
 var searchClear=document.getElementById('searchClear');
+var sortSelect=document.getElementById('sortSelect');
 
 function renderChips(){
   var t=modT[currentLang];
@@ -678,6 +731,14 @@ function renderGrid(){
     return name.indexOf(term)!==-1||desc.indexOf(term)!==-1||catName.indexOf(term)!==-1;
   });
 
+  if(sortMode==='az'||sortMode==='za'){
+    results=results.slice().sort(function(a,b){
+      var an=(a.n[currentLang]||a.n.it).toLowerCase();
+      var bn=(b.n[currentLang]||b.n.it).toLowerCase();
+      return sortMode==='az'?an.localeCompare(bn):bn.localeCompare(an);
+    });
+  }
+
   document.getElementById('pgCount').innerHTML='<span>'+results.length+'</span> '+t.countLabel;
 
   if(results.length===0){
@@ -703,14 +764,17 @@ function renderGrid(){
     var waText=encodeURIComponent((currentLang==='it'?'Salve, sono interessato al modello: ':'Hello, I am interested in the model: ')+name);
     var actions;
     if(p.order){
-      var orderText=encodeURIComponent((currentLang==='it'?'Salve, vorrei ordinare: ':'Hello, I would like to order: ')+name);
+      var orderMsgText=p.orderMsg?(p.orderMsg[currentLang]||p.orderMsg.it):((currentLang==='it'?'Salve, vorrei ordinare: ':'Hello, I would like to order: ')+name);
+      var orderText=encodeURIComponent(orderMsgText);
       actions='<a href="https://wa.me/393382247948?text='+orderText+'" class="order-btn" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> '+t.order+'</a>';
     }else{
       var info='<a href="https://wa.me/393382247948?text='+waText+'" class="info-btn" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> '+t.info+'</a>';
       actions=pdf+info;
     }
-    var deliveryBadge=p.delivery?'<div class="delivery-badge"><i class="fas fa-truck"></i> '+(p.delivery[currentLang]||p.delivery.it)+'</div>':'';
-    el.innerHTML='<div class="card-img"><span class="card-cat">'+catName+'</span><img src="'+p.i+'" alt="'+name+'" loading="lazy"></div><div class="card-body"><h2>'+name+'</h2><p>'+desc+'</p>'+deliveryBadge+'<div class="card-actions">'+actions+'</div></div>';
+    var badges='';
+    if(p.delivery)badges+='<div class="delivery-badge"><i class="fas fa-truck"></i> '+(p.delivery[currentLang]||p.delivery.it)+'</div>';
+    if(p.minOrder)badges+='<div class="delivery-badge minorder-badge"><i class="fas fa-box"></i> '+(p.minOrder[currentLang]||p.minOrder.it)+'</div>';
+    el.innerHTML='<div class="card-img"><img src="'+p.i+'" alt="'+name+'" loading="lazy"></div><div class="card-body"><span class="card-cat">'+catName+'</span><h2>'+name+'</h2><p>'+desc+'</p>'+badges+'<div class="card-actions">'+actions+'</div></div>';
     grid.appendChild(el);
   });
 }
@@ -722,6 +786,11 @@ searchInput.addEventListener('input',function(){
 });
 searchClear.addEventListener('click',function(){
   searchTerm='';searchInput.value='';searchClear.classList.remove('show');searchInput.focus();
+  renderGrid();
+});
+
+sortSelect.addEventListener('change',function(){
+  sortMode=sortSelect.value;
   renderGrid();
 });
 
