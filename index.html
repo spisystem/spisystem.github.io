@@ -726,57 +726,36 @@ footer::before{
   content:'';position:absolute;top:0;left:0;right:0;height:1px;
   background:linear-gradient(90deg,transparent,rgba(240,112,32,.4),transparent);
 }
-.foot-grid{
-  max-width:1080px;margin:0 auto;
-  display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;
-  padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,.07);
+.foot-brand-solo{
+  max-width:600px;margin:0 auto;text-align:center;
+  padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,.07);
 }
 .foot-brand-name{
   font-family:'Cormorant Garamond',serif;color:#fff;
   font-size:1.15em;font-weight:700;letter-spacing:.5px;margin-bottom:14px;
 }
 .foot-brand-name span{color:var(--or2);font-weight:400;margin:0 5px}
-.foot-tag{font-size:.92em;line-height:1.7;color:rgba(255,255,255,.42);max-width:320px;margin-bottom:18px}
+.foot-tag{font-size:.92em;line-height:1.7;color:rgba(255,255,255,.42);margin:0 auto 14px}
 .foot-piva{font-size:.82em;line-height:1.8;color:rgba(255,255,255,.3)}
-.foot-col-title{
-  font-size:.6em;font-weight:700;letter-spacing:2px;text-transform:uppercase;
-  color:rgba(255,255,255,.26);margin-bottom:13px;
-}
-.foot-col{display:flex;flex-direction:column;gap:8px}
-.foot-col a{
-  color:rgba(255,255,255,.5);text-decoration:none;font-size:.82em;
-  display:flex;align-items:center;gap:8px;transition:color .25s,transform .25s;
-}
-.foot-col a i{color:var(--or2);font-size:.75em;width:13px;flex-shrink:0}
-.foot-col a:hover{color:#fff;transform:translateX(3px)}
 .foot-bottom{
-  max-width:1080px;margin:0 auto;padding:26px 0;
+  max-width:1080px;margin:0 auto;padding:22px 0;
   display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;
 }
 .foot-bottom p{margin:0;line-height:1.6;font-size:.86em}
 footer a{color:rgba(255,255,255,.5);text-decoration:none;transition:color .25s}
 footer a:hover{color:var(--or)}
 .foot-credit{
-  text-align:center;padding:16px 0 22px;font-size:.78em;
+  text-align:center;padding:14px 0 20px;font-size:.78em;
   color:rgba(255,255,255,.18);letter-spacing:.5px;
 }
 .nosel{pointer-events:none;user-select:none}
 
-@media(max-width:820px){
-  .foot-grid{grid-template-columns:1fr 1fr;gap:32px}
-  .foot-brand{grid-column:1/-1;text-align:center}
-  .foot-brand .foot-tag,.foot-brand .foot-piva{margin-left:auto;margin-right:auto}
-}
 @media(max-width:540px){
-  footer{padding:40px 20px 0}
-  .foot-grid{gap:26px;padding-bottom:28px}
-  .foot-tag{display:none}
+  footer{padding:36px 20px 0}
+  .foot-brand-solo{padding-bottom:24px}
   .foot-piva{font-size:.78em}
-  .foot-col{align-items:center}
-  .foot-col-title{margin-bottom:12px}
-  .foot-col a{justify-content:center;font-size:.86em}
-  .foot-bottom{flex-direction:column;text-align:center;padding:18px 0}
-  .foot-credit{padding:12px 0 18px}
+  .foot-bottom{flex-direction:column;text-align:center;padding:16px 0}
+  .foot-credit{padding:10px 0 16px}
 }
 
 /* ══════════════════════════════════════
@@ -1101,8 +1080,8 @@ body.intro-active{overflow:hidden}
 <nav class="sidebar" id="sidebar">
   <div class="sb-close" id="sb-close">&#10005;</div>
   <a href="#chi-siamo"><i class="fas fa-building"></i>Chi Siamo</a>
-  <a href="#promo-menu"><i class="fas fa-qrcode"></i>Menù Digitali QR</a>
   <a href="#prodotti"><i class="fas fa-box-open"></i>Prodotti</a>
+  <a href="#promo-menu"><i class="fas fa-qrcode"></i>Menù Digitali QR</a>
   <a href="#preventivo"><i class="fas fa-file-invoice"></i>Preventivo</a>
   <a href="#contatti"><i class="fas fa-phone"></i>Contatti</a>
 </nav>
@@ -1175,34 +1154,6 @@ body.intro-active{overflow:hidden}
   </div>
 </div>
 
-<!-- ── PROMO MENU QR ── -->
-<div class="sec" id="promo-menu">
-  <div data-reveal>
-    <div class="eyebrow" id="promoEyebrow">Novità</div>
-    <h2 class="sec-title" id="promoTitle">Menù Digitali QR per la Tua Attività</h2>
-    <div class="sec-divider"></div>
-  </div>
-  <div class="promo-card2" data-reveal>
-    <div class="promo-card2-info">
-      <span class="promo-badge2"><i class="fas fa-qrcode"></i> <span id="promoTag">Menù Digitale</span></span>
-      <p class="promo-desc2" id="promoDesc">I tuoi clienti leggono il menu direttamente dal telefono, senza scaricare nessuna app: basta inquadrare il QR Code che ti forniamo, già pronto da stampare.</p>
-      <ul class="promo-feats2">
-        <li><i class="fas fa-check"></i><span id="promoFeat1">Nessuna app da scaricare</span></li>
-        <li><i class="fas fa-check"></i><span id="promoFeat2">QR Code pronto da stampare</span></li>
-        <li><i class="fas fa-check"></i><span id="promoFeat3">Compatibile con Android e iOS</span></li>
-        <li><i class="fas fa-check"></i><span id="promoFeat4">Aggiornamenti e assistenza inclusi</span></li>
-      </ul>
-    </div>
-    <div class="promo-card2-cta">
-      <div class="promo-price2"><b id="promoPriceNum">€9,90</b><small id="promoPriceSuffix">/mese</small></div>
-      <div class="promo-btns2">
-        <a href="https://menu.spisystem.it" target="_blank" rel="noopener" class="h-btn promo-btn" id="promoBtn">Prova la Demo <i class="fas fa-arrow-right"></i></a>
-        <a href="https://wa.me/393382247948?text=Salve%2C%20sono%20interessato%20al%20servizio%20Men%C3%B9%20Digitali%20QR%20(menu.spisystem.it).%20Potrei%20avere%20maggiori%20informazioni%3F" target="_blank" rel="noopener" class="wa-cta-btn" id="promoWaBtn"><i class="fab fa-whatsapp"></i> Contattaci su WhatsApp</a>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- ── PRODOTTI ── -->
 <div id="prodotti">
   <div class="prod-inner">
@@ -1233,6 +1184,34 @@ body.intro-active{overflow:hidden}
             <a href="modelli.html" class="h-btn" id="prodCtaBtn">Esplora il catalogo <i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── PROMO MENU QR ── -->
+<div class="sec" id="promo-menu">
+  <div data-reveal>
+    <div class="eyebrow" id="promoEyebrow">Novità</div>
+    <h2 class="sec-title" id="promoTitle">Menù Digitali QR per la Tua Attività</h2>
+    <div class="sec-divider"></div>
+  </div>
+  <div class="promo-card2" data-reveal>
+    <div class="promo-card2-info">
+      <span class="promo-badge2"><i class="fas fa-qrcode"></i> <span id="promoTag">Menù Digitale</span></span>
+      <p class="promo-desc2" id="promoDesc">I tuoi clienti leggono il menu direttamente dal telefono, senza scaricare nessuna app: basta inquadrare il QR Code che ti forniamo, già pronto da stampare.</p>
+      <ul class="promo-feats2">
+        <li><i class="fas fa-check"></i><span id="promoFeat1">Nessuna app da scaricare</span></li>
+        <li><i class="fas fa-check"></i><span id="promoFeat2">QR Code pronto da stampare</span></li>
+        <li><i class="fas fa-check"></i><span id="promoFeat3">Compatibile con Android e iOS</span></li>
+        <li><i class="fas fa-check"></i><span id="promoFeat4">Aggiornamenti e assistenza inclusi</span></li>
+      </ul>
+    </div>
+    <div class="promo-card2-cta">
+      <div class="promo-price2"><b id="promoPriceNum">€9,90</b><small id="promoPriceSuffix">/mese</small></div>
+      <div class="promo-btns2">
+        <a href="https://menu.spisystem.it" target="_blank" rel="noopener" class="h-btn promo-btn" id="promoBtn">Prova la Demo <i class="fas fa-arrow-right"></i></a>
+        <a href="https://wa.me/393382247948?text=Salve%2C%20sono%20interessato%20al%20servizio%20Men%C3%B9%20Digitali%20QR%20(menu.spisystem.it).%20Potrei%20avere%20maggiori%20informazioni%3F" target="_blank" rel="noopener" class="wa-cta-btn" id="promoWaBtn"><i class="fab fa-whatsapp"></i> Contattaci su WhatsApp</a>
       </div>
     </div>
   </div>
@@ -1319,25 +1298,10 @@ body.intro-active{overflow:hidden}
 
 <!-- ── FOOTER ── -->
 <footer>
-  <div class="foot-grid">
-    <div class="foot-brand">
-      <div class="foot-brand-name">Spizzicotecnica <span>&</span> SPI System</div>
-      <p class="foot-tag" id="footTag">Soluzioni professionali di cassa, pesatura e gestione per il tuo punto vendita, da oltre 35 anni.</p>
-      <p class="foot-piva">P. IVA Spizzicotecnica di Spizzico Antonio: <span class="nosel">05857040728</span><br>P. IVA SPI System di Spizzico Giuseppe: <span class="nosel">08791580726</span></p>
-    </div>
-    <div class="foot-col">
-      <div class="foot-col-title" id="footLinksTitle">Link utili</div>
-      <a href="#chi-siamo"><i class="fas fa-chevron-right"></i> <span id="footLink1">Chi Siamo</span></a>
-      <a href="#prodotti"><i class="fas fa-chevron-right"></i> <span id="footLink2">Prodotti</span></a>
-      <a href="#preventivo"><i class="fas fa-chevron-right"></i> <span id="footLink3">Preventivo</span></a>
-      <a href="#contatti"><i class="fas fa-chevron-right"></i> <span id="footLink4">Contatti</span></a>
-    </div>
-    <div class="foot-col">
-      <div class="foot-col-title" id="footContactTitle">Contatti</div>
-      <a href="tel:+393382247948"><i class="fas fa-phone"></i> 338 224 7948</a>
-      <a href="mailto:spizzicotecnica@gmail.com"><i class="fas fa-envelope"></i> spizzicotecnica@gmail.com</a>
-      <a href="https://www.google.com/maps?q=Via+Monterosa+22,+Palo+del+Colle+(BA)" target="_blank"><i class="fas fa-map-marker-alt"></i> Palo del Colle (BA)</a>
-    </div>
+  <div class="foot-brand-solo">
+    <div class="foot-brand-name">Spizzicotecnica <span>&</span> SPI System</div>
+    <p class="foot-tag" id="footTag">Soluzioni professionali di cassa, pesatura e gestione per il tuo punto vendita, da oltre 35 anni.</p>
+    <p class="foot-piva">P. IVA Spizzicotecnica di Spizzico Antonio: <span class="nosel">05857040728</span><br>P. IVA SPI System di Spizzico Giuseppe: <span class="nosel">08791580726</span></p>
   </div>
   <div class="foot-bottom">
     <p id="footCopy">&copy; 2026 SpizzicoTecnica & SPI System — Tutti i diritti riservati.</p>
@@ -1588,8 +1552,8 @@ function applyLang(lang){
 
   /* navbar */
   var sba=document.querySelectorAll('.sidebar a');
-  var keys=['nav-chi','nav-menuqr','nav-prod','nav-prev','nav-cont'];
-  var icons=['<i class="fas fa-building"></i>','<i class="fas fa-qrcode"></i>','<i class="fas fa-box-open"></i>','<i class="fas fa-file-invoice"></i>','<i class="fas fa-phone"></i>'];
+  var keys=['nav-chi','nav-prod','nav-menuqr','nav-prev','nav-cont'];
+  var icons=['<i class="fas fa-building"></i>','<i class="fas fa-box-open"></i>','<i class="fas fa-qrcode"></i>','<i class="fas fa-file-invoice"></i>','<i class="fas fa-phone"></i>'];
   sba.forEach(function(a,i){if(keys[i])a.innerHTML=icons[i]+t[keys[i]]});
 
   /* hero */
@@ -1675,12 +1639,6 @@ function applyLang(lang){
   var fcopy=document.getElementById('footCopy');if(fcopy)fcopy.textContent=t['footer-copy'];
   var fcredit=document.querySelector('.footer-credit-label');if(fcredit)fcredit.textContent=t['footer-credit'];
   var ftag=document.getElementById('footTag');if(ftag)ftag.textContent=t['foot-tag'];
-  var flt=document.getElementById('footLinksTitle');if(flt)flt.textContent=t['foot-links-title'];
-  var fct=document.getElementById('footContactTitle');if(fct)fct.textContent=t['nav-cont'];
-  var fl1=document.getElementById('footLink1');if(fl1)fl1.textContent=t['nav-chi'];
-  var fl2=document.getElementById('footLink2');if(fl2)fl2.textContent=t['nav-prod'];
-  var fl3=document.getElementById('footLink3');if(fl3)fl3.textContent=t['nav-prev'];
-  var fl4=document.getElementById('footLink4');if(fl4)fl4.textContent=t['nav-cont'];
 
   /* cookie banner */
   var ckTitle=document.getElementById('ckBarTitle');if(ckTitle)ckTitle.textContent=t['ck-title'];
@@ -1848,6 +1806,21 @@ document.getElementById('ck-save').addEventListener('click',function(){
   lsSet('mk',ckForm.marketing.checked?'1':'0');
   hideModal();hideBanner();applyC();
 });
+
+/* ── PREVENTIVO → invia anche su WhatsApp ── */
+var prevForm=document.querySelector('.prev-form');
+if(prevForm){
+  prevForm.addEventListener('submit',function(){
+    var val=function(name){var f=prevForm.querySelector('[name="'+name+'"]');return f?f.value.trim():'';};
+    var msg='Salve, vorrei richiedere un preventivo.'
+      +'\nNome: '+val('Nome')+' '+val('Cognome')
+      +'\nTelefono: '+val('Telefono')
+      +'\nIndirizzo: '+val('Indirizzo')
+      +'\nTipologia attività: '+val('Tipologia attività')
+      +'\nProdotti di interesse: '+val('Prodotti di interesse');
+    window.open('https://wa.me/393382247948?text='+encodeURIComponent(msg),'_blank');
+  });
+}
 </script>
 </body>
 </html>
