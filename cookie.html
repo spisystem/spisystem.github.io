@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cookie Policy – Spizzicotecnica & SPI System</title>
+  <meta name="description" content="Cookie Policy di Spizzicotecnica & SPI System, Palo del Colle (BA): quali cookie tecnici e analitici utilizziamo e come gestire le tue preferenze.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.spisystem.it/cookie.html">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
@@ -24,7 +27,6 @@
     ::-webkit-scrollbar-track { background: var(--dark); }
     ::-webkit-scrollbar-thumb { background: var(--orange); border-radius: 10px; }
 
-    /* TOP BAR */
     .top-bar {
       position: fixed; top: 0; left: 0;
       width: 100%; height: 68px;
@@ -55,7 +57,6 @@
     }
     .back-home:hover { color: var(--orange); }
 
-    /* Lang switch */
     .lang-switch{
       position:relative;display:flex;align-items:center;
       width:72px;height:30px;padding:3px;
@@ -82,7 +83,6 @@
     .lang-switch:not(.is-en) .lang-opt:first-child{color:#fff}
     .lang-switch.is-en .lang-opt:last-child{color:#fff}
 
-    /* PAGE HERO */
     .page-hero { padding-top: 68px; background: var(--dark); text-align: center; position: relative; overflow: hidden; }
     .page-hero::before {
       content: ''; position: absolute; inset: 0;
@@ -100,7 +100,6 @@
     .page-hero h1 em { font-style: normal; color: var(--orange-lt); }
     .page-hero-stripe { width: 52px; height: 3px; background: linear-gradient(90deg, var(--orange), var(--orange-lt)); border-radius: 2px; margin: 18px auto 0; }
 
-    /* CONTENT */
     .content-wrap { max-width: 860px; margin: 0 auto; padding: 56px 24px 80px; }
     .policy-section {
       background: var(--white); border-radius: var(--radius-md); padding: 32px 36px;
@@ -127,7 +126,6 @@
     .policy-section a { color: var(--orange); text-decoration: none; transition: color var(--transition); }
     .policy-section a:hover { color: var(--orange-lt); text-decoration: underline; }
 
-    /* TABLE */
     .cookie-table-wrap { overflow-x: auto; margin-top: 16px; border-radius: 10px; border: 1px solid var(--light-2); }
     table { width: 100%; border-collapse: collapse; font-size: 0.9em; }
     thead tr { background: linear-gradient(135deg, var(--orange), var(--orange-lt)); }
@@ -141,7 +139,6 @@
     .badge-tecnico { background: rgba(59,130,246,0.1); color: #2563eb; }
     .badge-analitico { background: rgba(240,112,32,0.1); color: var(--orange); }
 
-    /* BROWSER LINKS */
     .browser-links { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; margin-top: 16px; }
     .browser-link {
       display: flex; align-items: center; gap: 10px; padding: 12px 16px;
@@ -152,10 +149,67 @@
     .browser-link:hover { border-color: var(--orange); background: rgba(240,112,32,0.05); color: var(--orange); transform: translateY(-2px); }
     .browser-link i { color: var(--orange); font-size: 1.1em; }
 
-    /* FOOTER */
-    footer { background: var(--dark-mid, #1A1A1A); color: rgba(255,255,255,0.5); text-align: center; padding: 32px 24px; font-size: 0.87em; border-top: 1px solid rgba(240,112,32,0.18); }
-    footer a { color: rgba(255,255,255,0.65); text-decoration: none; transition: color 0.2s; }
-    footer a:hover { color: var(--orange); }
+    /* FOOTER — coerente con index.html: 3 colonne */
+    footer{
+      background: var(--dark-mid, #1A1A1A); color: rgba(255,255,255,0.38);
+      padding: 64px 24px 0; font-size: 0.86em;
+      border-top: 1px solid rgba(240,112,32,0.18);
+      position: relative;
+    }
+    footer::before{
+      content:'';position:absolute;top:0;left:0;right:0;height:1px;
+      background:linear-gradient(90deg,transparent,rgba(240,112,32,.4),transparent);
+    }
+    .foot-grid{
+      max-width:1080px;margin:0 auto;
+      display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;
+      padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,.07);
+    }
+    .foot-brand-name{
+      font-family:'Cormorant Garamond',serif;color:#fff;
+      font-size:1.15em;font-weight:700;letter-spacing:.5px;margin-bottom:14px;
+    }
+    .foot-brand-name span{color:var(--orange-lt);font-weight:400;margin:0 5px}
+    .foot-tag{font-size:.92em;line-height:1.7;color:rgba(255,255,255,.42);max-width:320px;margin-bottom:18px}
+    .foot-piva{font-size:.82em;line-height:1.8;color:rgba(255,255,255,.3)}
+    .foot-col-title{
+      font-size:.68em;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
+      color:rgba(255,255,255,.3);margin-bottom:18px;
+    }
+    .foot-col{display:flex;flex-direction:column;gap:12px}
+    .foot-col a{
+      color:rgba(255,255,255,.55);text-decoration:none;font-size:.94em;
+      display:flex;align-items:center;gap:9px;transition:color .25s,transform .25s;
+    }
+    .foot-col a i{color:var(--orange-lt);font-size:.85em;width:14px;flex-shrink:0}
+    .foot-col a:hover{color:#fff;transform:translateX(3px)}
+    .foot-bottom{
+      max-width:1080px;margin:0 auto;padding:26px 0;
+      display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;
+    }
+    .foot-bottom p{margin:0;line-height:1.6;font-size:.86em}
+    footer a{color:rgba(255,255,255,.5);text-decoration:none;transition:color .25s}
+    footer a:hover{color:var(--orange)}
+    .foot-credit{
+      text-align:center;padding:16px 0 22px;font-size:.78em;
+      color:rgba(255,255,255,.18);letter-spacing:.5px;
+    }
+    @media(max-width:820px){
+      .foot-grid{grid-template-columns:1fr 1fr;gap:32px}
+      .foot-brand{grid-column:1/-1;text-align:center}
+      .foot-brand .foot-tag,.foot-brand .foot-piva{margin-left:auto;margin-right:auto}
+    }
+    @media(max-width:540px){
+      footer{padding:40px 20px 0}
+      .foot-grid{gap:26px;padding-bottom:28px}
+      .foot-tag{display:none}
+      .foot-piva{font-size:.78em}
+      .foot-col{align-items:center}
+      .foot-col-title{margin-bottom:12px}
+      .foot-col a{justify-content:center;font-size:.86em}
+      .foot-bottom{flex-direction:column;text-align:center;padding:18px 0}
+      .foot-credit{padding:12px 0 18px}
+    }
 
     @media (max-width: 600px) {
       .top-bar { padding: 0 16px; }
@@ -252,13 +306,63 @@
   </div>
 </div>
 
+<!-- FOOTER — coerente con index.html -->
 <footer>
-  <p id="footerCopy">&copy; 2026 Spizzicotecnica & SPI System – Tutti i diritti riservati</p>
-  <p style="margin-top:8px;"><a href="privacy.html">Privacy Policy</a> &nbsp;|&nbsp; <a href="cookie.html">Cookie Policy</a> &nbsp;|&nbsp; <a href="index.html" id="footerHome">Home</a></p>
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <div class="foot-brand-name">Spizzicotecnica <span>&</span> SPI System</div>
+      <p class="foot-tag" id="footTag">Soluzioni professionali di cassa, pesatura e gestione per il tuo punto vendita, da oltre 35 anni.</p>
+      <p class="foot-piva">P. IVA Spizzicotecnica di Spizzico Antonio: <span>05857040728</span><br>P. IVA SPI System di Spizzico Giuseppe: <span>08791580726</span></p>
+    </div>
+    <div class="foot-col">
+      <div class="foot-col-title" id="footLinksTitle">Link utili</div>
+      <a href="index.html#chi-siamo"><i class="fas fa-chevron-right"></i> <span id="footLink1">Chi Siamo</span></a>
+      <a href="index.html#prodotti"><i class="fas fa-chevron-right"></i> <span id="footLink2">Prodotti</span></a>
+      <a href="index.html#contatti"><i class="fas fa-chevron-right"></i> <span id="footLink3">Contatti</span></a>
+      <a href="index.html#preventivo"><i class="fas fa-chevron-right"></i> <span id="footLink4">Preventivo</span></a>
+    </div>
+    <div class="foot-col">
+      <div class="foot-col-title" id="footContactTitle">Contatti</div>
+      <a href="tel:+393382247948"><i class="fas fa-phone"></i> 338 224 7948</a>
+      <a href="mailto:spizzicotecnica@gmail.com"><i class="fas fa-envelope"></i> spizzicotecnica@gmail.com</a>
+      <a href="https://www.google.com/maps?q=Via+Monterosa+22,+Palo+del+Colle+(BA)" target="_blank"><i class="fas fa-map-marker-alt"></i> Palo del Colle (BA)</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <p id="footerCopy">&copy; 2026 Spizzicotecnica & SPI System – Tutti i diritti riservati</p>
+    <p><a href="privacy.html">Privacy Policy</a> &nbsp;|&nbsp; <a href="cookie.html">Cookie Policy</a> &nbsp;|&nbsp; <a href="index.html" id="footerHome">Home</a></p>
+  </div>
+  <p class="foot-credit"><span id="footCreditLabel">Sito realizzato da</span> <span style="color:rgba(240,112,32,.5);font-weight:600">SPI System</span></p>
 </footer>
 
 <script>
-var currentLang = localStorage.getItem('lang') || 'it';
+function ssGet(k){try{return sessionStorage.getItem(k)}catch(e){return null}}
+function ssSet(k,v){try{sessionStorage.setItem(k,v)}catch(e){}}
+function ssRemove(k){try{sessionStorage.removeItem(k)}catch(e){}}
+function lsGet(k){try{return localStorage.getItem(k)}catch(e){return null}}
+function lsSet(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+
+var SCROLL_KEY='scrollPos::'+location.pathname;
+function saveScrollPos(){ssSet(SCROLL_KEY,String(window.scrollY));}
+window.addEventListener('pagehide',saveScrollPos);
+window.addEventListener('beforeunload',saveScrollPos);
+document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden')saveScrollPos();});
+document.addEventListener('click',function(e){
+  var a=e.target.closest('a[href]');
+  if(!a)return;
+  var href=a.getAttribute('href')||'';
+  if(href.indexOf('#')===0||href.indexOf('javascript:')===0||href.indexOf('mailto:')===0||href.indexOf('tel:')===0||a.target==='_blank')return;
+  saveScrollPos();
+});
+window.addEventListener('load',function(){
+  var saved=ssGet(SCROLL_KEY);
+  if(saved!==null){
+    ssRemove(SCROLL_KEY);
+    requestAnimationFrame(function(){window.scrollTo({top:parseInt(saved,10),behavior:'instant'});});
+  }
+});
+
+var currentLang = lsGet('lang') || 'it';
 
 var ckT = {
   it: {
@@ -290,7 +394,12 @@ var ckT = {
     'td1':'Salva le preferenze dell\u2019utente sui cookie',
     'td2':'Statistiche anonime su traffico e comportamento',
     footer:'© 2026 Spizzicotecnica & SPI System – Tutti i diritti riservati',
-    home:'Home'
+    home:'Home',
+    footTag:'Soluzioni professionali di cassa, pesatura e gestione per il tuo punto vendita, da oltre 35 anni.',
+    footLinksTitle:'Link utili',
+    footContactTitle:'Contatti',
+    footCredit:'Sito realizzato da',
+    navChi:'Chi Siamo', navProd:'Prodotti', navCont:'Contatti', navPrev:'Preventivo'
   },
   en: {
     eyebrow:'Legal notice', back:'Back to site', heroTitle:'Cookie <em>Policy</em>',
@@ -321,7 +430,12 @@ var ckT = {
     'td1':'Saves the user\u2019s cookie preferences',
     'td2':'Anonymous aggregate traffic and behaviour statistics',
     footer:'© 2026 Spizzicotecnica & SPI System – All rights reserved',
-    home:'Home'
+    home:'Home',
+    footTag:'Professional cash, weighing and management solutions for your business, for over 35 years.',
+    footLinksTitle:'Quick links',
+    footContactTitle:'Contacts',
+    footCredit:'Website by',
+    navChi:'About Us', navProd:'Products', navCont:'Contacts', navPrev:'Quote'
   }
 };
 
@@ -333,7 +447,7 @@ function updateLangBtn(lang) {
 
 function applyCkLang(lang) {
   currentLang = lang;
-  localStorage.setItem('lang', lang);
+  lsSet('lang', lang);
   document.documentElement.lang = lang;
   var t = ckT[lang];
   updateLangBtn(lang);
@@ -369,6 +483,14 @@ function applyCkLang(lang) {
   var td2=document.getElementById('t-td2'); if(td2) td2.textContent=t['td2'];
   var fc=document.getElementById('footerCopy'); if(fc) fc.textContent=t.footer;
   var fh=document.getElementById('footerHome'); if(fh) fh.textContent=t.home;
+  var ftag=document.getElementById('footTag'); if(ftag) ftag.textContent=t.footTag;
+  var flt=document.getElementById('footLinksTitle'); if(flt) flt.textContent=t.footLinksTitle;
+  var fct=document.getElementById('footContactTitle'); if(fct) fct.textContent=t.footContactTitle;
+  var fcl=document.getElementById('footCreditLabel'); if(fcl) fcl.textContent=t.footCredit;
+  var fl1=document.getElementById('footLink1'); if(fl1) fl1.textContent=t.navChi;
+  var fl2=document.getElementById('footLink2'); if(fl2) fl2.textContent=t.navProd;
+  var fl3=document.getElementById('footLink3'); if(fl3) fl3.textContent=t.navCont;
+  var fl4=document.getElementById('footLink4'); if(fl4) fl4.textContent=t.navPrev;
 }
 
 updateLangBtn(currentLang);
@@ -376,6 +498,13 @@ if (currentLang !== 'it') applyCkLang(currentLang);
 
 document.getElementById('langBtn').addEventListener('click', function(){
   applyCkLang(currentLang === 'it' ? 'en' : 'it');
+});
+
+window.addEventListener('pageshow', function(e){
+  if(e.persisted){
+    var l=lsGet('lang')||'it';
+    if(l!==currentLang)applyCkLang(l);
+  }
 });
 </script>
 </body>
