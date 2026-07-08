@@ -739,15 +739,15 @@ footer::before{
 .foot-tag{font-size:.92em;line-height:1.7;color:rgba(255,255,255,.42);max-width:320px;margin-bottom:18px}
 .foot-piva{font-size:.82em;line-height:1.8;color:rgba(255,255,255,.3)}
 .foot-col-title{
-  font-size:.68em;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
-  color:rgba(255,255,255,.3);margin-bottom:18px;
+  font-size:.6em;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:rgba(255,255,255,.26);margin-bottom:13px;
 }
-.foot-col{display:flex;flex-direction:column;gap:12px}
+.foot-col{display:flex;flex-direction:column;gap:8px}
 .foot-col a{
-  color:rgba(255,255,255,.55);text-decoration:none;font-size:.94em;
-  display:flex;align-items:center;gap:9px;transition:color .25s,transform .25s;
+  color:rgba(255,255,255,.5);text-decoration:none;font-size:.82em;
+  display:flex;align-items:center;gap:8px;transition:color .25s,transform .25s;
 }
-.foot-col a i{color:var(--or2);font-size:.85em;width:14px;flex-shrink:0}
+.foot-col a i{color:var(--or2);font-size:.75em;width:13px;flex-shrink:0}
 .foot-col a:hover{color:#fff;transform:translateX(3px)}
 .foot-bottom{
   max-width:1080px;margin:0 auto;padding:26px 0;
@@ -1103,8 +1103,8 @@ body.intro-active{overflow:hidden}
   <a href="#chi-siamo"><i class="fas fa-building"></i>Chi Siamo</a>
   <a href="#promo-menu"><i class="fas fa-qrcode"></i>Menù Digitali QR</a>
   <a href="#prodotti"><i class="fas fa-box-open"></i>Prodotti</a>
-  <a href="#contatti"><i class="fas fa-phone"></i>Contatti</a>
   <a href="#preventivo"><i class="fas fa-file-invoice"></i>Preventivo</a>
+  <a href="#contatti"><i class="fas fa-phone"></i>Contatti</a>
 </nav>
 
 <!-- ── HERO ── -->
@@ -1238,6 +1238,44 @@ body.intro-active{overflow:hidden}
   </div>
 </div>
 
+<!-- ── PREVENTIVO ── -->
+<div class="sec" id="preventivo">
+  <div data-reveal>
+    <div class="eyebrow">Senza impegno</div>
+    <h2 class="sec-title">Richiedi un preventivo</h2>
+    <div class="sec-divider"></div>
+  </div>
+  <div class="prev-card-wrap" data-reveal>
+    <div class="prev-card">
+      <div class="prev-card-side">
+        <div class="prev-card-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+        <ul class="prev-side-list">
+          <li><i class="fas fa-check"></i><span id="prevSide1">Preventivo gratuito e senza impegno</span></li>
+          <li><i class="fas fa-check"></i><span id="prevSide2">Ti ricontattiamo entro 24 ore lavorative</span></li>
+          <li><i class="fas fa-check"></i><span id="prevSide3">Consulenza su misura per la tua attività</span></li>
+        </ul>
+      </div>
+      <form action="https://formsubmit.co/spisystem20@gmail.com" method="POST" class="prev-form">
+        <div class="f-grid">
+          <div class="f-grp"><label>Nome</label><input type="text" name="Nome" placeholder="Mario" required></div>
+          <div class="f-grp"><label>Cognome</label><input type="text" name="Cognome" placeholder="Rossi" required></div>
+          <div class="f-grp"><label>Telefono</label><input type="tel" name="Telefono" placeholder="+39 000 000 0000" required></div>
+          <div class="f-grp"><label>Indirizzo</label><input type="text" name="Indirizzo" placeholder="Via Roma, 1 – Città" required></div>
+          <div class="f-grp f-full"><label>Tipologia attività</label><input type="text" name="Tipologia attività" placeholder="es. Bar, Supermercato, Macelleria…" required></div>
+          <div class="f-grp f-full"><label>Prodotti di interesse</label><textarea name="Prodotti di interesse" placeholder="Descrivi brevemente cosa ti serve…" rows="5" required></textarea></div>
+          <label class="priv">
+            <input type="checkbox" name="privacy" required>
+            Acconsento al trattamento dei miei dati personali ai sensi del GDPR esclusivamente per ricevere un preventivo. <a href="privacy.html" target="_blank">Leggi l'informativa</a>.
+          </label>
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://spisystem.it/grazie.html">
+          <button type="submit" class="sub-btn">Invia richiesta &nbsp;<i class="fas fa-paper-plane"></i></button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
 <!-- ── CONTATTI ── -->
 <div id="contatti">
   <div style="max-width:1080px;margin:0 auto">
@@ -1279,44 +1317,6 @@ body.intro-active{overflow:hidden}
   </div>
 </div>
 
-<!-- ── PREVENTIVO ── -->
-<div class="sec" id="preventivo">
-  <div data-reveal>
-    <div class="eyebrow">Senza impegno</div>
-    <h2 class="sec-title">Richiedi un preventivo</h2>
-    <div class="sec-divider"></div>
-  </div>
-  <div class="prev-card-wrap" data-reveal>
-    <div class="prev-card">
-      <div class="prev-card-side">
-        <div class="prev-card-icon"><i class="fas fa-file-invoice-dollar"></i></div>
-        <ul class="prev-side-list">
-          <li><i class="fas fa-check"></i><span id="prevSide1">Preventivo gratuito e senza impegno</span></li>
-          <li><i class="fas fa-check"></i><span id="prevSide2">Ti ricontattiamo entro 24 ore lavorative</span></li>
-          <li><i class="fas fa-check"></i><span id="prevSide3">Consulenza su misura per la tua attività</span></li>
-        </ul>
-      </div>
-      <form action="https://formsubmit.co/spisystem20@gmail.com" method="POST" class="prev-form">
-        <div class="f-grid">
-          <div class="f-grp"><label>Nome</label><input type="text" name="Nome" placeholder="Mario" required></div>
-          <div class="f-grp"><label>Cognome</label><input type="text" name="Cognome" placeholder="Rossi" required></div>
-          <div class="f-grp"><label>Telefono</label><input type="tel" name="Telefono" placeholder="+39 000 000 0000" required></div>
-          <div class="f-grp"><label>Indirizzo</label><input type="text" name="Indirizzo" placeholder="Via Roma, 1 – Città" required></div>
-          <div class="f-grp f-full"><label>Tipologia attività</label><input type="text" name="Tipologia attività" placeholder="es. Bar, Supermercato, Macelleria…" required></div>
-          <div class="f-grp f-full"><label>Prodotti di interesse</label><textarea name="Prodotti di interesse" placeholder="Descrivi brevemente cosa ti serve…" rows="5" required></textarea></div>
-          <label class="priv">
-            <input type="checkbox" name="privacy" required>
-            Acconsento al trattamento dei miei dati personali ai sensi del GDPR esclusivamente per ricevere un preventivo. <a href="privacy.html" target="_blank">Leggi l'informativa</a>.
-          </label>
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_next" value="https://spisystem.it/grazie.html">
-          <button type="submit" class="sub-btn">Invia richiesta &nbsp;<i class="fas fa-paper-plane"></i></button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-
 <!-- ── FOOTER ── -->
 <footer>
   <div class="foot-grid">
@@ -1329,8 +1329,8 @@ body.intro-active{overflow:hidden}
       <div class="foot-col-title" id="footLinksTitle">Link utili</div>
       <a href="#chi-siamo"><i class="fas fa-chevron-right"></i> <span id="footLink1">Chi Siamo</span></a>
       <a href="#prodotti"><i class="fas fa-chevron-right"></i> <span id="footLink2">Prodotti</span></a>
-      <a href="#contatti"><i class="fas fa-chevron-right"></i> <span id="footLink3">Contatti</span></a>
-      <a href="#preventivo"><i class="fas fa-chevron-right"></i> <span id="footLink4">Preventivo</span></a>
+      <a href="#preventivo"><i class="fas fa-chevron-right"></i> <span id="footLink3">Preventivo</span></a>
+      <a href="#contatti"><i class="fas fa-chevron-right"></i> <span id="footLink4">Contatti</span></a>
     </div>
     <div class="foot-col">
       <div class="foot-col-title" id="footContactTitle">Contatti</div>
@@ -1588,8 +1588,8 @@ function applyLang(lang){
 
   /* navbar */
   var sba=document.querySelectorAll('.sidebar a');
-  var keys=['nav-chi','nav-menuqr','nav-prod','nav-cont','nav-prev'];
-  var icons=['<i class="fas fa-building"></i>','<i class="fas fa-qrcode"></i>','<i class="fas fa-box-open"></i>','<i class="fas fa-phone"></i>','<i class="fas fa-file-invoice"></i>'];
+  var keys=['nav-chi','nav-menuqr','nav-prod','nav-prev','nav-cont'];
+  var icons=['<i class="fas fa-building"></i>','<i class="fas fa-qrcode"></i>','<i class="fas fa-box-open"></i>','<i class="fas fa-file-invoice"></i>','<i class="fas fa-phone"></i>'];
   sba.forEach(function(a,i){if(keys[i])a.innerHTML=icons[i]+t[keys[i]]});
 
   /* hero */
@@ -1679,8 +1679,8 @@ function applyLang(lang){
   var fct=document.getElementById('footContactTitle');if(fct)fct.textContent=t['nav-cont'];
   var fl1=document.getElementById('footLink1');if(fl1)fl1.textContent=t['nav-chi'];
   var fl2=document.getElementById('footLink2');if(fl2)fl2.textContent=t['nav-prod'];
-  var fl3=document.getElementById('footLink3');if(fl3)fl3.textContent=t['nav-cont'];
-  var fl4=document.getElementById('footLink4');if(fl4)fl4.textContent=t['nav-prev'];
+  var fl3=document.getElementById('footLink3');if(fl3)fl3.textContent=t['nav-prev'];
+  var fl4=document.getElementById('footLink4');if(fl4)fl4.textContent=t['nav-cont'];
 
   /* cookie banner */
   var ckTitle=document.getElementById('ckBarTitle');if(ckTitle)ckTitle.textContent=t['ck-title'];
