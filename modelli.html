@@ -289,6 +289,7 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
 .card-img img{
   max-width:100%;max-height:100%;width:auto;height:auto;
   object-fit:contain;border-radius:8px;cursor:zoom-in;
+  pointer-events:auto;
   transition:transform .44s ease;
 }
 .card:hover .card-img img{transform:scale(1.08)}
@@ -724,7 +725,11 @@ function closeLightbox(){
 }
 document.addEventListener('click',function(e){
   var img=e.target.closest('.card-img img');
-  if(img){openLightbox(img.getAttribute('src'),img.getAttribute('data-lightbox-name'));return;}
+  if(!img){
+    var box=e.target.closest('.card-img');
+    if(box)img=box.querySelector('img');
+  }
+  if(img){openLightbox(img.getAttribute('src'),img.getAttribute('data-lightbox-name'));}
 });
 document.getElementById('lightboxClose').addEventListener('click',closeLightbox);
 lightbox.addEventListener('click',function(e){if(e.target===lightbox)closeLightbox();});
