@@ -464,91 +464,66 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
 .stat-lb{font-size:.72em;font-weight:600;color:var(--txm);text-transform:uppercase;letter-spacing:2px;margin-top:4px}
 
 /* ══════════════════════════════════════
-   PRODOTTI
+   PRODOTTI — banner immersivo, non una card
 ══════════════════════════════════════ */
-#prodotti{background:var(--wh);max-width:100%;padding:100px 6vw;position:relative;overflow:hidden}
-.prod-inner{max-width:1080px;margin:0 auto;position:relative;z-index:1}
-.prod-header{max-width:640px}
-.prod-card-wrap{
-  max-width:920px;margin:44px auto 0;border-radius:calc(var(--r20) + 2px);
-  padding:1.5px;
-  background:linear-gradient(135deg, rgba(240,112,32,.5) 0%, rgba(255,148,72,.18) 35%, rgba(240,112,32,.05) 65%, rgba(255,148,72,.45) 100%);
-  box-shadow:0 4px 24px rgba(0,0,0,.05);
-  transition:transform var(--spring),box-shadow var(--ease);
+#prodotti{
+  background:
+    radial-gradient(circle at 12% 20%, rgba(240,112,32,.16) 0%, transparent 55%),
+    radial-gradient(circle at 92% 85%, rgba(255,148,72,.12) 0%, transparent 50%),
+    linear-gradient(160deg,#1c140d 0%,#120d09 60%,#0a0807 100%);
+  max-width:100%;padding:88px 6vw;position:relative;overflow:hidden;
 }
-.prod-card-wrap:hover{transform:translateY(-6px);box-shadow:0 30px 64px rgba(0,0,0,.12)}
-.prod-card{
-  display:flex;align-items:stretch;
-  border-radius:calc(var(--r20) - .5px);overflow:hidden;
-  background:var(--wh);
+#prodotti::before{
+  content:'';position:absolute;inset:0;opacity:.04;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:180px;
 }
-.prod-card-side{
-  flex:0 0 250px;position:relative;overflow:hidden;
-  background:linear-gradient(160deg,#221D18 0%,#171310 100%);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:28px;padding:40px 26px;
+.prod-banner{
+  max-width:1120px;margin:0 auto;position:relative;z-index:1;
+  display:flex;align-items:center;gap:36px;flex-wrap:wrap;
 }
-.prod-card-side::before{
-  content:'';position:absolute;top:-70px;right:-70px;
-  width:200px;height:200px;border-radius:50%;
-  background:radial-gradient(circle,rgba(240,112,32,.20) 0%,transparent 70%);
-  pointer-events:none;
+.prod-banner-icon-wrap{
+  position:relative;width:96px;height:96px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
 }
-.prod-card-side::after{
-  content:'';position:absolute;bottom:-55px;left:-55px;
-  width:160px;height:160px;border-radius:50%;
-  background:radial-gradient(circle,rgba(255,148,72,.14) 0%,transparent 70%);
-  pointer-events:none;
+.prod-banner-icon-wrap::before{
+  content:'';position:absolute;inset:-10px;border-radius:50%;
+  background:radial-gradient(circle,rgba(240,112,32,.32) 0%,transparent 72%);
+  animation:iconPulse 3.2s ease-in-out infinite;
 }
-.prod-card-icon-wrap{
-  position:relative;width:88px;height:88px;
-  display:flex;align-items:center;justify-content:center;z-index:1;
+@keyframes iconPulse{
+  0%,100%{opacity:.55;transform:scale(.9)}
+  50%{opacity:1;transform:scale(1.1)}
 }
-.prod-card-icon-ring{
-  position:absolute;inset:0;border-radius:50%;
-  background:conic-gradient(from 0deg,var(--or),var(--or2) 30%,transparent 65%,var(--or) 100%);
-  animation:ringSpin 7s linear infinite;
-  -webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 2.5px),#000 calc(100% - 2.5px));
-  mask:radial-gradient(farthest-side,transparent calc(100% - 2.5px),#000 calc(100% - 2.5px));
-}
-.prod-card-icon{
-  width:68px;height:68px;border-radius:18px;position:relative;z-index:1;
+.prod-banner-icon{
+  width:76px;height:76px;border-radius:20px;position:relative;z-index:1;
   background:linear-gradient(135deg,var(--or),var(--or2));
   display:flex;align-items:center;justify-content:center;
-  box-shadow:0 10px 28px var(--glow);
-  transition:transform var(--spring);
+  box-shadow:0 12px 32px var(--glow);
 }
-.prod-card-wrap:hover .prod-card-icon{transform:scale(1.08) rotate(-3deg)}
-.prod-card-icon i{font-size:26px;color:#fff}
-.prod-card-stats{display:flex;position:relative;z-index:1}
-.prod-card-stats div{text-align:center;padding:0 22px}
-.prod-card-stats div+div{border-left:1px solid rgba(255,255,255,.14)}
-.prod-card-stats b{display:block;font-family:'Cormorant Garamond',serif;font-size:1.9em;font-weight:700;color:#fff;line-height:1}
-.prod-card-stats span{font-size:.6em;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.45);font-weight:700;display:block;margin-top:5px}
-.prod-card-info{
-  flex:1;min-width:0;background:var(--lt);
-  padding:44px 46px;display:flex;flex-direction:column;justify-content:center;gap:22px;
+.prod-banner-icon i{font-size:30px;color:#fff}
+.prod-banner-text{flex:1;min-width:280px}
+.prod-banner-eyebrow{
+  font-size:.62em;font-weight:700;letter-spacing:4px;text-transform:uppercase;
+  color:var(--or2);margin-bottom:10px;
 }
-.prod-lead{font-size:1em;color:var(--txm);line-height:1.85;font-weight:300}
-.prod-features{
-  list-style:none;display:flex;flex-direction:column;gap:11px;
-  padding-top:20px;border-top:1px solid var(--lt2);
+.prod-banner-title{
+  font-family:'Cormorant Garamond',serif;color:#fff;
+  font-size:clamp(1.6em,3.2vw,2.3em);font-weight:700;line-height:1.2;margin-bottom:12px;
 }
-.prod-features li{display:flex;align-items:center;gap:11px;font-size:.87em;color:var(--tx);font-weight:600}
-.prod-features li i{
-  width:21px;height:21px;border-radius:50%;flex-shrink:0;
-  background:linear-gradient(135deg,rgba(240,112,32,.16),rgba(255,148,72,.1));color:var(--or);
-  display:flex;align-items:center;justify-content:center;font-size:.62em;
-}
-.prod-cta{display:flex}
-.prod-cta .h-btn{box-shadow:0 10px 32px var(--glow)}
+.prod-banner-title em{color:var(--or2);font-style:italic;font-weight:400}
+.prod-banner-lead{color:rgba(255,255,255,.5);font-size:.94em;line-height:1.75;max-width:520px;font-weight:300}
+.prod-banner-stats{display:flex;gap:30px;margin-top:18px}
+.prod-banner-stats div{text-align:left}
+.prod-banner-stats b{font-family:'Cormorant Garamond',serif;color:#fff;font-size:1.7em;font-weight:700;line-height:1}
+.prod-banner-stats span{display:block;font-size:.6em;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.4);font-weight:700;margin-top:4px}
+.prod-banner-cta{flex-shrink:0}
+.prod-banner-cta .h-btn{box-shadow:0 10px 32px var(--glow)}
 
-@media(max-width:680px){
-  .prod-card{flex-direction:column}
-  .prod-card-side{flex-direction:row;justify-content:center;padding:28px 20px}
-  .prod-card-info{padding:32px 28px;text-align:center;align-items:center}
-  .prod-features li{justify-content:center}
-  .prod-cta{justify-content:center}
+@media(max-width:860px){
+  .prod-banner{flex-direction:column;text-align:center}
+  .prod-banner-stats{justify-content:center}
+  .prod-banner-lead{margin-left:auto;margin-right:auto}
 }
 
 /* ══════════════════════════════════════
@@ -621,52 +596,28 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
   background:radial-gradient(circle,rgba(240,112,32,.06) 0%,transparent 65%);
   pointer-events:none;
 }
-.prev-card-wrap{
-  max-width:980px;margin:44px auto 0;border-radius:calc(var(--r20) + 2px);
-  padding:1.5px;position:relative;z-index:1;
-  background:linear-gradient(135deg, rgba(240,112,32,.5) 0%, rgba(255,148,72,.18) 35%, rgba(240,112,32,.05) 65%, rgba(255,148,72,.45) 100%);
-  box-shadow:0 4px 24px rgba(0,0,0,.05);
-  transition:box-shadow var(--ease);
+.prev-trust-row{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:14px;
+  max-width:820px;margin:0 auto 32px;position:relative;z-index:1;
 }
-.prev-card-wrap:hover{box-shadow:0 26px 58px rgba(0,0,0,.09)}
-.prev-card{
-  display:flex;align-items:stretch;
-  border-radius:calc(var(--r20) - .5px);overflow:hidden;
-  background:var(--wh);
+.prev-trust-item{
+  display:flex;align-items:center;gap:10px;
+  background:var(--wh);border:1px solid var(--lt2);border-radius:40px;
+  padding:11px 20px;font-size:.85em;font-weight:600;color:var(--tx);
+  box-shadow:0 2px 10px rgba(0,0,0,.03);
 }
-.prev-card-side{
-  flex:0 0 270px;position:relative;overflow:hidden;
-  background:linear-gradient(160deg,#221D18 0%,#171310 100%);
-  display:flex;flex-direction:column;justify-content:center;gap:26px;
-  padding:42px 32px;
-}
-.prev-card-side::before{
-  content:'';position:absolute;top:-70px;right:-70px;
-  width:200px;height:200px;border-radius:50%;
-  background:radial-gradient(circle,rgba(240,112,32,.20) 0%,transparent 70%);
-  pointer-events:none;
-}
-.prev-card-side::after{
-  content:'';position:absolute;bottom:-55px;left:-55px;
-  width:160px;height:160px;border-radius:50%;
-  background:radial-gradient(circle,rgba(255,148,72,.14) 0%,transparent 70%);
-  pointer-events:none;
-}
-.prev-card-icon{
-  width:60px;height:60px;border-radius:16px;position:relative;z-index:1;
-  background:linear-gradient(135deg,var(--or),var(--or2));
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 10px 26px var(--glow);
-}
-.prev-card-icon i{font-size:23px;color:#fff}
-.prev-side-list{list-style:none;display:flex;flex-direction:column;gap:15px;position:relative;z-index:1}
-.prev-side-list li{display:flex;align-items:flex-start;gap:11px;font-size:.86em;color:rgba(255,255,255,.82);font-weight:500;line-height:1.45}
-.prev-side-list li i{
-  width:20px;height:20px;border-radius:50%;flex-shrink:0;margin-top:1px;
-  background:rgba(240,112,32,.18);color:var(--or2);
+.prev-trust-item i{
+  width:20px;height:20px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,rgba(240,112,32,.16),rgba(255,148,72,.1));color:var(--or);
   display:flex;align-items:center;justify-content:center;font-size:.6em;
 }
-.prev-form{flex:1;min-width:0;padding:40px 44px}
+.prev-form-card{
+  max-width:820px;margin:0 auto;position:relative;z-index:1;
+  background:var(--wh);border:1px solid var(--lt2);border-radius:var(--r20);
+  padding:44px 48px;box-shadow:0 4px 24px rgba(0,0,0,.05);
+  transition:box-shadow var(--ease);
+}
+.prev-form-card:hover{box-shadow:0 26px 58px rgba(0,0,0,.08)}
 .f-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .f-full{grid-column:1/-1}
 .f-grp{display:flex;flex-direction:column;gap:6px}
@@ -705,10 +656,9 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
 .sub-btn:hover::after{opacity:1}
 
 @media(max-width:760px){
-  .prev-card{flex-direction:column}
-  .prev-card-side{padding:30px 26px}
-  .prev-form{padding:32px 26px}
+  .prev-form-card{padding:32px 24px}
   .f-grid{grid-template-columns:1fr}
+  .prev-trust-item{font-size:.8em;padding:10px 16px}
 }
 
 /* ══════════════════════════════════════
@@ -724,52 +674,36 @@ footer::before{
   content:'';position:absolute;top:0;left:0;right:0;height:1px;
   background:linear-gradient(90deg,transparent,rgba(240,112,32,.4),transparent);
 }
-.foot-grid{
-  max-width:1080px;margin:0 auto;
-  display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;
-  padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,.07);
+.foot-brand-solo{
+  max-width:600px;margin:0 auto;text-align:center;
+  padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,.07);
 }
 .foot-brand-name{
   font-family:'Cormorant Garamond',serif;color:#fff;
   font-size:1.15em;font-weight:700;letter-spacing:.5px;margin-bottom:14px;
 }
 .foot-brand-name span{color:var(--or2);font-weight:400;margin:0 5px}
-.foot-tag{font-size:.92em;line-height:1.7;color:rgba(255,255,255,.42);max-width:320px;margin-bottom:18px}
+.foot-tag{font-size:.92em;line-height:1.7;color:rgba(255,255,255,.42);margin:0 auto 14px}
 .foot-piva{font-size:.82em;line-height:1.8;color:rgba(255,255,255,.3)}
-.foot-col-title{
-  font-size:.68em;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
-  color:rgba(255,255,255,.3);margin-bottom:18px;
-}
-.foot-col{display:flex;flex-direction:column;gap:12px}
-.foot-col a{
-  color:rgba(255,255,255,.55);text-decoration:none;font-size:.94em;
-  display:flex;align-items:center;gap:9px;transition:color .25s,transform .25s;
-}
-.foot-col a i{color:var(--or2);font-size:.85em;width:14px;flex-shrink:0}
-.foot-col a:hover{color:#fff;transform:translateX(3px)}
 .foot-bottom{
-  max-width:1080px;margin:0 auto;padding:26px 0;
+  max-width:1080px;margin:0 auto;padding:22px 0;
   display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;
 }
 .foot-bottom p{margin:0;line-height:1.6;font-size:.86em}
 footer a{color:rgba(255,255,255,.5);text-decoration:none;transition:color .25s}
 footer a:hover{color:var(--or)}
 .foot-credit{
-  text-align:center;padding:16px 0 22px;font-size:.78em;
+  text-align:center;padding:14px 0 20px;font-size:.78em;
   color:rgba(255,255,255,.18);letter-spacing:.5px;
 }
 .nosel{pointer-events:none;user-select:none}
 
-@media(max-width:820px){
-  .foot-grid{grid-template-columns:1fr 1fr;gap:32px}
-  .foot-brand{grid-column:1/-1}
-}
 @media(max-width:540px){
-  footer{padding:52px 20px 0}
-  .foot-grid{grid-template-columns:1fr;gap:30px;text-align:center}
-  .foot-tag{max-width:none;margin-left:auto;margin-right:auto}
-  .foot-col a{justify-content:center}
-  .foot-bottom{flex-direction:column;text-align:center}
+  footer{padding:36px 20px 0}
+  .foot-brand-solo{padding-bottom:24px}
+  .foot-piva{font-size:.78em}
+  .foot-bottom{flex-direction:column;text-align:center;padding:16px 0}
+  .foot-credit{padding:10px 0 16px}
 }
 
 /* ══════════════════════════════════════
@@ -1094,10 +1028,10 @@ body.intro-active{overflow:hidden}
 <nav class="sidebar" id="sidebar">
   <div class="sb-close" id="sb-close">&#10005;</div>
   <a href="#chi-siamo"><i class="fas fa-building"></i>Chi Siamo</a>
-  <a href="#promo-menu"><i class="fas fa-qrcode"></i>Menù Digitali QR</a>
   <a href="#prodotti"><i class="fas fa-box-open"></i>Prodotti</a>
-  <a href="#contatti"><i class="fas fa-phone"></i>Contatti</a>
+  <a href="#promo-menu"><i class="fas fa-qrcode"></i>Menù Digitali QR</a>
   <a href="#preventivo"><i class="fas fa-file-invoice"></i>Preventivo</a>
+  <a href="#contatti"><i class="fas fa-phone"></i>Contatti</a>
 </nav>
 
 <!-- ── HERO ── -->
@@ -1114,7 +1048,7 @@ body.intro-active{overflow:hidden}
   </div>
   <div class="hero-body">
     <p class="h-sub">Da oltre 35 anni al fianco di negozi, ristoranti e supermercati con sistemi professionali di cassa, pesatura e gestione.</p>
-    <a href="#prodotti" class="h-btn">Scopri i prodotti <i class="fas fa-arrow-right"></i></a>
+    <a href="modelli.html" class="h-btn">Scopri i prodotti <i class="fas fa-arrow-right"></i></a>
   </div>
   <div class="hero-counter">
     <span id="curNum">01</span> / <span id="totNum">05</span>
@@ -1168,6 +1102,27 @@ body.intro-active{overflow:hidden}
   </div>
 </div>
 
+<!-- ── PRODOTTI ── -->
+<div id="prodotti">
+  <div class="prod-banner" data-reveal>
+    <div class="prod-banner-icon-wrap">
+      <div class="prod-banner-icon"><i class="fas fa-store"></i></div>
+    </div>
+    <div class="prod-banner-text">
+      <div class="prod-banner-eyebrow" id="prodBannerEyebrow">Il nostro catalogo</div>
+      <h2 class="prod-banner-title" id="prodBannerTitle">Tutti i prodotti, <em>in un unico posto</em></h2>
+      <p class="prod-banner-lead" id="prodLead">Dai registratori di cassa alle bilance elettroniche, dai sistemi gestionali alle soluzioni per il punto vendita: un catalogo completo, pensato per farti trovare in pochi secondi il prodotto giusto per la tua attività.</p>
+      <div class="prod-banner-stats">
+        <div><b>9</b><span id="prodStat1">Categorie</span></div>
+        <div><b>30+</b><span id="prodStat2">Modelli</span></div>
+      </div>
+    </div>
+    <div class="prod-banner-cta">
+      <a href="modelli.html" class="h-btn" id="prodCtaBtn">Esplora il catalogo <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </div>
+</div>
+
 <!-- ── PROMO MENU QR ── -->
 <div class="sec" id="promo-menu">
   <div data-reveal>
@@ -1196,39 +1151,36 @@ body.intro-active{overflow:hidden}
   </div>
 </div>
 
-<!-- ── PRODOTTI ── -->
-<div id="prodotti">
-  <div class="prod-inner">
-    <div class="prod-header" data-reveal>
-      <div class="eyebrow">Il nostro catalogo</div>
-      <h2 class="sec-title">Prodotti</h2>
-      <div class="sec-divider"></div>
-    </div>
-    <div class="prod-card-wrap" data-reveal>
-      <div class="prod-card">
-        <div class="prod-card-side">
-          <div class="prod-card-icon-wrap">
-            <div class="prod-card-icon-ring"></div>
-            <div class="prod-card-icon"><i class="fas fa-store"></i></div>
-          </div>
-          <div class="prod-card-stats">
-            <div><b>9</b><span id="prodStat1">Categorie</span></div>
-            <div><b>30+</b><span id="prodStat2">Modelli</span></div>
-          </div>
-        </div>
-        <div class="prod-card-info">
-          <p class="prod-lead" id="prodLead">Dai registratori di cassa alle bilance elettroniche, dai sistemi gestionali alle soluzioni per il punto vendita: un catalogo completo, pensato per farti trovare in pochi secondi il prodotto giusto per la tua attività.</p>
-          <ul class="prod-features">
-            <li><i class="fas fa-check"></i><span id="prodFeat1">Preventivo gratuito e senza impegno</span></li>
-            <li><i class="fas fa-check"></i><span id="prodFeat2">Vendita e assistenza</span></li>
-            <li><i class="fas fa-check"></i><span id="prodFeat3">Oltre 35 anni di esperienza nel settore</span></li>
-          </ul>
-          <div class="prod-cta">
-            <a href="modelli.html" class="h-btn" id="prodCtaBtn">Esplora il catalogo <i class="fas fa-arrow-right"></i></a>
-          </div>
-        </div>
+<!-- ── PREVENTIVO ── -->
+<div class="sec" id="preventivo">
+  <div data-reveal>
+    <div class="eyebrow">Senza impegno</div>
+    <h2 class="sec-title">Richiedi un preventivo</h2>
+    <div class="sec-divider"></div>
+  </div>
+  <div class="prev-trust-row" data-reveal>
+    <div class="prev-trust-item"><i class="fas fa-check"></i><span id="prevSide1">Preventivo gratuito e senza impegno</span></div>
+    <div class="prev-trust-item"><i class="fas fa-check"></i><span id="prevSide2">Ti ricontattiamo entro 24 ore lavorative</span></div>
+    <div class="prev-trust-item"><i class="fas fa-check"></i><span id="prevSide3">Consulenza su misura per la tua attività</span></div>
+  </div>
+  <div class="prev-form-card" data-reveal>
+    <form action="https://formsubmit.co/spisystem20@gmail.com" method="POST" class="prev-form">
+      <div class="f-grid">
+        <div class="f-grp"><label>Nome</label><input type="text" name="Nome" placeholder="Mario" required></div>
+        <div class="f-grp"><label>Cognome</label><input type="text" name="Cognome" placeholder="Rossi" required></div>
+        <div class="f-grp"><label>Telefono</label><input type="tel" name="Telefono" placeholder="+39 000 000 0000" required></div>
+        <div class="f-grp"><label>Indirizzo</label><input type="text" name="Indirizzo" placeholder="Via Roma, 1 – Città" required></div>
+        <div class="f-grp f-full"><label>Tipologia attività</label><input type="text" name="Tipologia attività" placeholder="es. Bar, Supermercato, Macelleria…" required></div>
+        <div class="f-grp f-full"><label>Prodotti di interesse</label><textarea name="Prodotti di interesse" placeholder="Descrivi brevemente cosa ti serve…" rows="5" required></textarea></div>
+        <label class="priv">
+          <input type="checkbox" name="privacy" required>
+          Acconsento al trattamento dei miei dati personali ai sensi del GDPR esclusivamente per ricevere un preventivo. <a href="privacy.html" target="_blank">Leggi l'informativa</a>.
+        </label>
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://spisystem.it/grazie.html">
+        <button type="submit" class="sub-btn">Invia richiesta &nbsp;<i class="fas fa-paper-plane"></i></button>
       </div>
-    </div>
+    </form>
   </div>
 </div>
 
@@ -1273,65 +1225,12 @@ body.intro-active{overflow:hidden}
   </div>
 </div>
 
-<!-- ── PREVENTIVO ── -->
-<div class="sec" id="preventivo">
-  <div data-reveal>
-    <div class="eyebrow">Senza impegno</div>
-    <h2 class="sec-title">Richiedi un preventivo</h2>
-    <div class="sec-divider"></div>
-  </div>
-  <div class="prev-card-wrap" data-reveal>
-    <div class="prev-card">
-      <div class="prev-card-side">
-        <div class="prev-card-icon"><i class="fas fa-file-invoice-dollar"></i></div>
-        <ul class="prev-side-list">
-          <li><i class="fas fa-check"></i><span id="prevSide1">Preventivo gratuito e senza impegno</span></li>
-          <li><i class="fas fa-check"></i><span id="prevSide2">Ti ricontattiamo entro 24 ore lavorative</span></li>
-          <li><i class="fas fa-check"></i><span id="prevSide3">Consulenza su misura per la tua attività</span></li>
-        </ul>
-      </div>
-      <form action="https://formsubmit.co/spisystem20@gmail.com" method="POST" class="prev-form">
-        <div class="f-grid">
-          <div class="f-grp"><label>Nome</label><input type="text" name="Nome" placeholder="Mario" required></div>
-          <div class="f-grp"><label>Cognome</label><input type="text" name="Cognome" placeholder="Rossi" required></div>
-          <div class="f-grp"><label>Telefono</label><input type="tel" name="Telefono" placeholder="+39 000 000 0000" required></div>
-          <div class="f-grp"><label>Indirizzo</label><input type="text" name="Indirizzo" placeholder="Via Roma, 1 – Città" required></div>
-          <div class="f-grp f-full"><label>Tipologia attività</label><input type="text" name="Tipologia attività" placeholder="es. Bar, Supermercato, Macelleria…" required></div>
-          <div class="f-grp f-full"><label>Prodotti di interesse</label><textarea name="Prodotti di interesse" placeholder="Descrivi brevemente cosa ti serve…" rows="5" required></textarea></div>
-          <label class="priv">
-            <input type="checkbox" name="privacy" required>
-            Acconsento al trattamento dei miei dati personali ai sensi del GDPR esclusivamente per ricevere un preventivo. <a href="privacy.html" target="_blank">Leggi l'informativa</a>.
-          </label>
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_next" value="https://spisystem.it/grazie.html">
-          <button type="submit" class="sub-btn">Invia richiesta &nbsp;<i class="fas fa-paper-plane"></i></button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-
 <!-- ── FOOTER ── -->
 <footer>
-  <div class="foot-grid">
-    <div class="foot-brand">
-      <div class="foot-brand-name">Spizzicotecnica <span>&</span> SPI System</div>
-      <p class="foot-tag" id="footTag">Soluzioni professionali di cassa, pesatura e gestione per il tuo punto vendita, da oltre 35 anni.</p>
-      <p class="foot-piva">P. IVA Spizzicotecnica di Spizzico Antonio: <span class="nosel">05857040728</span><br>P. IVA SPI System di Spizzico Giuseppe: <span class="nosel">08791580726</span></p>
-    </div>
-    <div class="foot-col">
-      <div class="foot-col-title" id="footLinksTitle">Link utili</div>
-      <a href="#chi-siamo"><i class="fas fa-chevron-right"></i> <span id="footLink1">Chi Siamo</span></a>
-      <a href="#prodotti"><i class="fas fa-chevron-right"></i> <span id="footLink2">Prodotti</span></a>
-      <a href="#contatti"><i class="fas fa-chevron-right"></i> <span id="footLink3">Contatti</span></a>
-      <a href="#preventivo"><i class="fas fa-chevron-right"></i> <span id="footLink4">Preventivo</span></a>
-    </div>
-    <div class="foot-col">
-      <div class="foot-col-title" id="footContactTitle">Contatti</div>
-      <a href="tel:+393382247948"><i class="fas fa-phone"></i> 338 224 7948</a>
-      <a href="mailto:spizzicotecnica@gmail.com"><i class="fas fa-envelope"></i> spizzicotecnica@gmail.com</a>
-      <a href="https://www.google.com/maps?q=Via+Monterosa+22,+Palo+del+Colle+(BA)" target="_blank"><i class="fas fa-map-marker-alt"></i> Palo del Colle (BA)</a>
-    </div>
+  <div class="foot-brand-solo">
+    <div class="foot-brand-name">Spizzicotecnica <span>&</span> SPI System</div>
+    <p class="foot-tag" id="footTag">Soluzioni professionali di cassa, pesatura e gestione per il tuo punto vendita, da oltre 35 anni.</p>
+    <p class="foot-piva">P. IVA Spizzicotecnica di Spizzico Antonio: <span class="nosel">05857040728</span><br>P. IVA SPI System di Spizzico Giuseppe: <span class="nosel">08791580726</span></p>
   </div>
   <div class="foot-bottom">
     <p id="footCopy">&copy; 2026 SpizzicoTecnica & SPI System — Tutti i diritti riservati.</p>
@@ -1462,7 +1361,7 @@ var translations={
     'about-card1-p':'Verifiche periodiche','about-card1-s':'Registratori di cassa',
     'about-card2-p':'Verifiche periodiche','about-card2-s':'Bilance elettroniche',
     'stat1-lb':'Esperienza','stat2-lb':'Installazioni',
-    'prod-eyebrow':'Il nostro catalogo','prod-title':'Prodotti',
+    'prod-eyebrow':'Il nostro catalogo','prod-title':'Tutti i prodotti, <em>in un unico posto</em>',
     'prod-lead':'Dai registratori di cassa alle bilance elettroniche, dai sistemi gestionali alle soluzioni per il punto vendita: un catalogo completo, pensato per farti trovare in pochi secondi il prodotto giusto per la tua attività.',
     'prod-cta':'Esplora il catalogo',
     'prod-stat1':'Categorie','prod-stat2':'Modelli',
@@ -1518,7 +1417,7 @@ var translations={
     'about-card1-p':'Periodic inspections','about-card1-s':'Cash registers',
     'about-card2-p':'Periodic inspections','about-card2-s':'Electronic scales',
     'stat1-lb':'Experience','stat2-lb':'Installations',
-    'prod-eyebrow':'Our catalogue','prod-title':'Products',
+    'prod-eyebrow':'Our catalogue','prod-title':'All products, <em>in one place</em>',
     'prod-lead':'From cash registers to electronic scales, from management systems to point-of-sale solutions: a complete catalogue designed to help you find the right product for your business in seconds.',
     'prod-cta':'Explore the catalogue',
     'prod-stat1':'Categories','prod-stat2':'Models',
@@ -1582,8 +1481,8 @@ function applyLang(lang){
 
   /* navbar */
   var sba=document.querySelectorAll('.sidebar a');
-  var keys=['nav-chi','nav-menuqr','nav-prod','nav-cont','nav-prev'];
-  var icons=['<i class="fas fa-building"></i>','<i class="fas fa-qrcode"></i>','<i class="fas fa-box-open"></i>','<i class="fas fa-phone"></i>','<i class="fas fa-file-invoice"></i>'];
+  var keys=['nav-chi','nav-prod','nav-menuqr','nav-prev','nav-cont'];
+  var icons=['<i class="fas fa-building"></i>','<i class="fas fa-box-open"></i>','<i class="fas fa-qrcode"></i>','<i class="fas fa-file-invoice"></i>','<i class="fas fa-phone"></i>'];
   sba.forEach(function(a,i){if(keys[i])a.innerHTML=icons[i]+t[keys[i]]});
 
   /* hero */
@@ -1622,15 +1521,12 @@ function applyLang(lang){
   if(slbs[1])slbs[1].textContent=t['stat2-lb'];
 
   /* prodotti */
-  var pe=document.querySelector('#prodotti .eyebrow');if(pe)pe.textContent=t['prod-eyebrow'];
-  var pt=document.querySelector('#prodotti .sec-title');if(pt&&pt.childNodes[0])pt.childNodes[0].textContent=t['prod-title'];
+  var pe=document.getElementById('prodBannerEyebrow');if(pe)pe.textContent=t['prod-eyebrow'];
+  var pt=document.getElementById('prodBannerTitle');if(pt)pt.innerHTML=t['prod-title'];
   var pl=document.getElementById('prodLead');if(pl)pl.textContent=t['prod-lead'];
   var pcta=document.getElementById('prodCtaBtn');if(pcta)pcta.innerHTML=t['prod-cta']+' <i class="fas fa-arrow-right"></i>';
   var ps1=document.getElementById('prodStat1');if(ps1)ps1.textContent=t['prod-stat1'];
   var ps2=document.getElementById('prodStat2');if(ps2)ps2.textContent=t['prod-stat2'];
-  var pf1=document.getElementById('prodFeat1');if(pf1)pf1.textContent=t['prod-feat1'];
-  var pf2=document.getElementById('prodFeat2');if(pf2)pf2.textContent=t['prod-feat2'];
-  var pf3=document.getElementById('prodFeat3');if(pf3)pf3.textContent=t['prod-feat3'];
 
   /* contatti */
   var ce=document.querySelector('#contatti .eyebrow');if(ce)ce.textContent=t['cont-eyebrow'];
@@ -1669,12 +1565,6 @@ function applyLang(lang){
   var fcopy=document.getElementById('footCopy');if(fcopy)fcopy.textContent=t['footer-copy'];
   var fcredit=document.querySelector('.footer-credit-label');if(fcredit)fcredit.textContent=t['footer-credit'];
   var ftag=document.getElementById('footTag');if(ftag)ftag.textContent=t['foot-tag'];
-  var flt=document.getElementById('footLinksTitle');if(flt)flt.textContent=t['foot-links-title'];
-  var fct=document.getElementById('footContactTitle');if(fct)fct.textContent=t['nav-cont'];
-  var fl1=document.getElementById('footLink1');if(fl1)fl1.textContent=t['nav-chi'];
-  var fl2=document.getElementById('footLink2');if(fl2)fl2.textContent=t['nav-prod'];
-  var fl3=document.getElementById('footLink3');if(fl3)fl3.textContent=t['nav-cont'];
-  var fl4=document.getElementById('footLink4');if(fl4)fl4.textContent=t['nav-prev'];
 
   /* cookie banner */
   var ckTitle=document.getElementById('ckBarTitle');if(ckTitle)ckTitle.textContent=t['ck-title'];
@@ -1842,6 +1732,21 @@ document.getElementById('ck-save').addEventListener('click',function(){
   lsSet('mk',ckForm.marketing.checked?'1':'0');
   hideModal();hideBanner();applyC();
 });
+
+/* ── PREVENTIVO → invia anche su WhatsApp ── */
+var prevForm=document.querySelector('.prev-form');
+if(prevForm){
+  prevForm.addEventListener('submit',function(){
+    var val=function(name){var f=prevForm.querySelector('[name="'+name+'"]');return f?f.value.trim():'';};
+    var msg='Salve, vorrei richiedere un preventivo.'
+      +'\nNome: '+val('Nome')+' '+val('Cognome')
+      +'\nTelefono: '+val('Telefono')
+      +'\nIndirizzo: '+val('Indirizzo')
+      +'\nTipologia attività: '+val('Tipologia attività')
+      +'\nProdotti di interesse: '+val('Prodotti di interesse');
+    window.open('https://wa.me/393382247948?text='+encodeURIComponent(msg),'_blank');
+  });
+}
 </script>
 </body>
 </html>
