@@ -199,9 +199,25 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
 }
 .chip-row-outer::before,.chip-row-outer::after{
   content:'';position:absolute;top:0;bottom:6px;width:28px;z-index:2;pointer-events:none;
+  transition:opacity .25s ease;
 }
 .chip-row-outer::before{left:0;background:linear-gradient(90deg,#120d09,transparent)}
 .chip-row-outer::after{right:0;background:linear-gradient(270deg,#120d09,transparent)}
+.chip-row-outer.at-start::before{opacity:0}
+.chip-row-outer.at-end::after{opacity:0}
+.chip-scroll-btn{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:26px;height:26px;border-radius:50%;z-index:3;
+  background:rgba(18,13,9,.9);border:1px solid rgba(255,255,255,.14);
+  color:rgba(255,255,255,.7);display:flex;align-items:center;justify-content:center;
+  font-size:.62em;cursor:pointer;transition:all .25s ease;
+}
+.chip-scroll-btn:hover{background:rgba(240,112,32,.25);border-color:rgba(240,112,32,.4);color:#fff}
+.chip-scroll-left{left:-4px}
+.chip-scroll-right{right:-4px}
+.chip-row-outer.at-start .chip-scroll-left,
+.chip-row-outer.at-end .chip-scroll-right{opacity:0;pointer-events:none}
+@media(hover:none){.chip-scroll-btn{display:none}.chip-row-outer::before,.chip-row-outer::after{display:none}}
 .chip-row{
   display:flex;flex-wrap:nowrap;gap:9px;
   overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
@@ -272,10 +288,45 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
 .card:hover .card-img{background:rgba(240,112,32,.04)}
 .card-img img{
   max-width:100%;max-height:100%;width:auto;height:auto;
-  object-fit:contain;border-radius:8px;
+  object-fit:contain;border-radius:8px;cursor:zoom-in;
   transition:transform .44s ease;
 }
 .card:hover .card-img img{transform:scale(1.08)}
+.card-zoom-hint{
+  position:absolute;bottom:8px;right:8px;
+  width:26px;height:26px;border-radius:50%;
+  background:rgba(255,255,255,.9);color:var(--tx);
+  display:flex;align-items:center;justify-content:center;font-size:.62em;
+  opacity:0;transform:scale(.85);transition:opacity .25s ease,transform .25s ease;
+  box-shadow:0 3px 10px rgba(0,0,0,.12);pointer-events:none;
+}
+.card:hover .card-zoom-hint{opacity:1;transform:scale(1)}
+
+/* ── LIGHTBOX foto ── */
+.lightbox{
+  position:fixed;inset:0;z-index:10000;
+  background:rgba(8,6,4,.92);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  display:none;align-items:center;justify-content:center;padding:40px;
+  opacity:0;transition:opacity .25s ease;
+}
+.lightbox.open{display:flex;opacity:1}
+.lightbox img{
+  max-width:min(90vw,780px);max-height:82vh;object-fit:contain;
+  border-radius:14px;box-shadow:0 30px 80px rgba(0,0,0,.6);
+  transform:scale(.94);transition:transform .28s cubic-bezier(.34,1.56,.64,1);
+}
+.lightbox.open img{transform:scale(1)}
+.lightbox-caption{
+  position:absolute;bottom:28px;left:0;right:0;text-align:center;
+  color:rgba(255,255,255,.75);font-size:.9em;font-weight:600;letter-spacing:.3px;
+}
+.lightbox-close{
+  position:absolute;top:22px;right:26px;
+  width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.18);
+  background:rgba(255,255,255,.06);color:#fff;font-size:18px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;transition:all .25s ease;
+}
+.lightbox-close:hover{background:rgba(240,112,32,.25);border-color:rgba(240,112,32,.4)}
 .card-cat{
   display:inline-flex;align-items:center;gap:5px;width:fit-content;
   font-size:.62em;font-weight:700;letter-spacing:1px;text-transform:uppercase;
@@ -482,7 +533,11 @@ footer a:hover{color:var(--or)}
     </div>
   </div>
   <div class="chips-and-sort">
-    <div class="chip-row-outer"><div class="chip-row" id="chipRow"></div></div>
+    <div class="chip-row-outer" id="chipRowOuter">
+      <button class="chip-scroll-btn chip-scroll-left" id="chipScrollLeft" type="button" aria-label="Scorri a sinistra"><i class="fas fa-chevron-left"></i></button>
+      <div class="chip-row" id="chipRow"></div>
+      <button class="chip-scroll-btn chip-scroll-right" id="chipScrollRight" type="button" aria-label="Scorri a destra"><i class="fas fa-chevron-right"></i></button>
+    </div>
     <div class="sort-wrap">
       <i class="fas fa-arrow-down-wide-short"></i>
       <select id="sortSelect" class="sort-select">
@@ -518,6 +573,13 @@ footer a:hover{color:var(--or)}
 
 <!-- ── BACK TO TOP ── -->
 <button id="btt" aria-label="Torna in cima"><i class="fas fa-chevron-up"></i></button>
+
+<!-- ── LIGHTBOX foto prodotto ── -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Chiudi"><i class="fas fa-xmark"></i></button>
+  <img src="" alt="" id="lightboxImg">
+  <div class="lightbox-caption" id="lightboxCaption"></div>
+</div>
 
 <script>
 /* ══════════════════════════════════════
@@ -645,6 +707,29 @@ var btt=document.getElementById('btt');
 window.addEventListener('scroll',function(){btt.classList.toggle('show',window.scrollY>180)},{passive:true});
 btt.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
 
+/* ── LIGHTBOX foto prodotto (clic per ingrandire) ── */
+var lightbox=document.getElementById('lightbox');
+var lightboxImg=document.getElementById('lightboxImg');
+var lightboxCaption=document.getElementById('lightboxCaption');
+function openLightbox(src,name){
+  lightboxImg.src=src;
+  lightboxImg.alt=name||'';
+  lightboxCaption.textContent=name||'';
+  lightbox.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeLightbox(){
+  lightbox.classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('click',function(e){
+  var img=e.target.closest('.card-img img');
+  if(img){openLightbox(img.getAttribute('src'),img.getAttribute('data-lightbox-name'));return;}
+});
+document.getElementById('lightboxClose').addEventListener('click',closeLightbox);
+lightbox.addEventListener('click',function(e){if(e.target===lightbox)closeLightbox();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLightbox();});
+
 /* ══════════════════════════════════════
    DATA — categorie e prodotti
 ══════════════════════════════════════ */
@@ -755,9 +840,32 @@ var sortMode='default';
 
 var grid=document.getElementById('grid');
 var chipRow=document.getElementById('chipRow');
+var chipRowOuter=document.getElementById('chipRowOuter');
+var chipScrollLeft=document.getElementById('chipScrollLeft');
+var chipScrollRight=document.getElementById('chipScrollRight');
 var searchInput=document.getElementById('searchInput');
 var searchClear=document.getElementById('searchClear');
 var sortSelect=document.getElementById('sortSelect');
+
+/* Frecce per scorrere le categorie col mouse (desktop), oltre allo swipe già disponibile su mobile */
+function updateChipScrollState(){
+  if(!chipRowOuter)return;
+  var atStart=chipRow.scrollLeft<=2;
+  var atEnd=chipRow.scrollLeft>=chipRow.scrollWidth-chipRow.clientWidth-2;
+  chipRowOuter.classList.toggle('at-start',atStart);
+  chipRowOuter.classList.toggle('at-end',atEnd);
+}
+if(chipScrollLeft)chipScrollLeft.addEventListener('click',function(){chipRow.scrollBy({left:-220,behavior:'smooth'});});
+if(chipScrollRight)chipScrollRight.addEventListener('click',function(){chipRow.scrollBy({left:220,behavior:'smooth'});});
+chipRow.addEventListener('scroll',updateChipScrollState,{passive:true});
+/* Permette di scorrere la fila con la rotellina del mouse (utile su desktop, dove non si può trascinare col dito) */
+chipRow.addEventListener('wheel',function(e){
+  if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){
+    chipRow.scrollLeft+=e.deltaY;
+    e.preventDefault();
+  }
+},{passive:false});
+window.addEventListener('resize',updateChipScrollState);
 
 function renderChips(){
   var t=modT[currentLang];
@@ -777,6 +885,7 @@ function renderChips(){
     btn.addEventListener('click',function(){activeCat=k;renderChips();renderGrid();});
     chipRow.appendChild(btn);
   });
+  requestAnimationFrame(updateChipScrollState);
 }
 
 function norm(s){return (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');}
@@ -840,7 +949,7 @@ function renderGrid(){
     if(p.cod)infoRows+='<div class="info-row cod-row"><i class="fas fa-hand-holding-dollar"></i><span>'+(p.cod[currentLang]||p.cod.it)+'</span></div>';
     if(p.minOrder)infoRows+='<div class="info-row minorder-row"><i class="fas fa-box"></i><span>'+(p.minOrder[currentLang]||p.minOrder.it)+'</span></div>';
     var badges=infoRows?'<div class="product-info-list">'+infoRows+'</div>':'';
-    el.innerHTML='<div class="card-img"><img src="'+p.i+'" alt="'+name+'" loading="lazy"></div><div class="card-body"><span class="card-cat">'+catName+'</span><h2>'+name+'</h2><p>'+desc+'</p>'+badges+'<div class="card-actions">'+actions+'</div></div>';
+    el.innerHTML='<div class="card-img"><img src="'+p.i+'" alt="'+name+'" loading="lazy" data-lightbox-name="'+name.replace(/"/g,'&quot;')+'"><span class="card-zoom-hint"><i class="fas fa-magnifying-glass-plus"></i></span></div><div class="card-body"><span class="card-cat">'+catName+'</span><h2>'+name+'</h2><p>'+desc+'</p>'+badges+'<div class="card-actions">'+actions+'</div></div>';
     grid.appendChild(el);
   });
 }
