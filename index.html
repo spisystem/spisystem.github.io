@@ -388,7 +388,7 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
   display:flex;align-items:center;gap:20px;
   background:var(--wh);border-radius:var(--r20);padding:24px 22px;
   border:1px solid var(--lt2);
-  box-shadow:0 2px 20px rgba(0,0,0,.05);
+  box-shadow:0 1px 2px rgba(20,20,20,.03),0 10px 24px rgba(20,20,20,.045),0 28px 56px -22px rgba(20,20,20,.09);
   transition:transform var(--spring),box-shadow var(--ease),border-color var(--ease);
   position:relative;overflow:hidden;
 }
@@ -397,17 +397,18 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
   background:linear-gradient(135deg,rgba(240,112,32,.03) 0%,transparent 60%);
   opacity:0;transition:opacity .3s;
 }
-.a-card:hover{transform:translateY(-6px) scale(1.01);box-shadow:0 20px 48px rgba(0,0,0,.08);border-color:rgba(240,112,32,.18)}
+.a-card:hover{transform:translateY(-6px) scale(1.01);box-shadow:0 2px 4px rgba(20,20,20,.05),0 18px 36px rgba(20,20,20,.07),0 36px 72px -24px rgba(240,112,32,.22);border-color:rgba(240,112,32,.18)}
 .a-card:hover::before{opacity:1}
 .a-icon{
   width:58px;height:58px;border-radius:16px;flex-shrink:0;
-  background:linear-gradient(135deg,var(--or),var(--or2));
+  background:linear-gradient(145deg,rgba(240,112,32,.11),rgba(255,148,72,.05));
+  border:1.5px solid rgba(240,112,32,.22);
   display:flex;align-items:center;justify-content:center;
-  box-shadow:0 6px 18px var(--glow);
-  transition:transform var(--spring);
+  transition:transform var(--spring),background var(--ease),border-color var(--ease);
 }
-.a-card:hover .a-icon{transform:scale(1.1) rotate(-3deg)}
-.a-icon i{font-size:22px;color:#fff}
+.a-card:hover .a-icon{transform:scale(1.08) rotate(-3deg);background:linear-gradient(145deg,var(--or),var(--or2));border-color:transparent;box-shadow:0 8px 20px var(--glow)}
+.a-icon i{font-size:21px;color:var(--or);transition:color var(--ease)}
+.a-card:hover .a-icon i{color:#fff}
 .a-txt p{font-size:.96em;font-weight:600;color:var(--tx);margin-bottom:3px}
 .a-txt span{font-size:.8em;color:var(--txm)}
 .stats{display:flex;gap:52px;flex-wrap:wrap;justify-content:center;align-items:center;padding-top:12px}
@@ -417,7 +418,7 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
   background:var(--dk);
   display:flex;align-items:center;justify-content:center;
   margin:0 auto 16px;
-  box-shadow:0 0 0 1px rgba(240,112,32,.12),0 12px 40px rgba(0,0,0,.5);
+  box-shadow:0 0 0 1px rgba(240,112,32,.12),0 4px 10px rgba(0,0,0,.3),0 20px 44px -10px rgba(0,0,0,.5);
   transition:transform var(--spring),box-shadow var(--ease);
 }
 .ring-spin{
@@ -451,11 +452,14 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
 }
 .prod-flow-icon{
   width:60px;height:60px;border-radius:16px;flex-shrink:0;
-  background:linear-gradient(135deg,var(--or),var(--or2));
+  background:linear-gradient(145deg,rgba(240,112,32,.11),rgba(255,148,72,.05));
+  border:1.5px solid rgba(240,112,32,.22);
   display:flex;align-items:center;justify-content:center;
-  box-shadow:0 8px 24px var(--glow2);
+  transition:transform var(--spring),background var(--ease),border-color var(--ease);
 }
-.prod-flow-icon i{font-size:24px;color:#fff}
+.prod-flow:hover .prod-flow-icon{transform:scale(1.06) rotate(-3deg);background:linear-gradient(145deg,var(--or),var(--or2));border-color:transparent;box-shadow:0 8px 22px var(--glow)}
+.prod-flow-icon i{font-size:23px;color:var(--or);transition:color var(--ease)}
+.prod-flow:hover .prod-flow-icon i{color:#fff}
 .prod-flow-text{flex:1;min-width:260px}
 .prod-lead{font-size:.98em;color:var(--txm);line-height:1.85;font-weight:300}
 .prod-stats-inline{display:flex;gap:32px;margin-top:20px}
@@ -492,7 +496,7 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
   background:var(--wh);
   border:1px solid var(--lt2);
   border-radius:var(--r20);padding:32px 22px;text-align:center;
-  box-shadow:0 2px 12px rgba(0,0,0,.04);
+  box-shadow:0 1px 2px rgba(20,20,20,.03),0 8px 20px rgba(20,20,20,.04);
   transition:all var(--spring);
   position:relative;overflow:hidden;
 }
@@ -504,19 +508,20 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
 .c-card:hover{
   border-color:rgba(240,112,32,.25);
   transform:translateY(-6px) scale(1.02);
-  box-shadow:0 20px 44px rgba(0,0,0,.08);
+  box-shadow:0 2px 4px rgba(20,20,20,.05),0 16px 32px rgba(20,20,20,.07),0 32px 64px -20px rgba(240,112,32,.2);
 }
 .c-card:hover::before{opacity:1}
 .c-icon{
   width:52px;height:52px;border-radius:14px;
-  background:linear-gradient(135deg,var(--or),var(--or2));
+  background:linear-gradient(145deg,rgba(240,112,32,.11),rgba(255,148,72,.05));
+  border:1.5px solid rgba(240,112,32,.22);
   display:flex;align-items:center;justify-content:center;
   margin:0 auto 16px;
-  box-shadow:0 6px 18px var(--glow);
-  transition:transform var(--spring);
+  transition:transform var(--spring),background var(--ease),border-color var(--ease);
 }
-.c-card:hover .c-icon{transform:scale(1.12) rotate(-4deg)}
-.c-icon i{font-size:20px;color:#fff}
+.c-card:hover .c-icon{transform:scale(1.12) rotate(-4deg);background:linear-gradient(145deg,var(--or),var(--or2));border-color:transparent;box-shadow:0 8px 20px var(--glow)}
+.c-icon i{font-size:19px;color:var(--or);transition:color var(--ease)}
+.c-card:hover .c-icon i{color:#fff}
 .c-card strong{display:block;font-size:.62em;letter-spacing:3.5px;text-transform:uppercase;color:var(--txs);margin-bottom:10px}
 .c-card p{font-size:.95em;color:var(--tx);line-height:1.65}
 .c-card a{color:inherit;text-decoration:none;transition:color var(--ease)}
@@ -573,6 +578,10 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
   box-shadow:0 0 0 4px rgba(240,112,32,.09);
   transform:translateY(-1px);
 }
+a:focus-visible,button:focus-visible,.chip:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{
+  outline:2px solid var(--or2);outline-offset:3px;border-radius:6px;
+}
+.h-btn:focus-visible,.sub-btn:focus-visible,.pdf-btn:focus-visible{outline-offset:4px}
 .f-grp textarea{resize:vertical;min-height:110px}
 .priv{grid-column:1/-1;display:flex;align-items:flex-start;gap:12px;font-size:.84em;color:var(--txm);line-height:1.55}
 .priv input{accent-color:var(--or);width:20px;height:20px;flex-shrink:0;margin-top:2px;cursor:pointer}
@@ -1076,6 +1085,7 @@ body.intro-active{overflow:hidden}
       <li><i class="fas fa-check"></i><span id="promoFeat2">QR Code pronto da stampare</span></li>
       <li><i class="fas fa-check"></i><span id="promoFeat3">Compatibile con Android e iOS</span></li>
       <li><i class="fas fa-check"></i><span id="promoFeat4">Aggiornamenti e assistenza inclusi</span></li>
+      <li><i class="fas fa-check"></i><span id="promoFeat5">Modifichi tu stesso prodotti e prezzi, quando vuoi</span></li>
     </ul>
     <div class="promo-cta-row">
       <div class="promo-price-inline"><b id="promoPriceNum">€9,90</b><small id="promoPriceSuffix">/mese</small></div>
@@ -1306,7 +1316,7 @@ var translations={
     'promo-tag':'Menù Digitale',
     'promo-title':'Menù Digitali QR per la Tua Attività',
     'promo-desc':'I tuoi clienti leggono il menu direttamente dal telefono, senza scaricare nessuna app: basta inquadrare il QR Code che ti forniamo, già pronto da stampare.',
-    'promo-feat1':'Nessuna app da scaricare','promo-feat2':'QR Code pronto da stampare','promo-feat3':'Compatibile con Android e iOS','promo-feat4':'Aggiornamenti e assistenza inclusi',
+    'promo-feat1':'Nessuna app da scaricare','promo-feat2':'QR Code pronto da stampare','promo-feat3':'Compatibile con Android e iOS','promo-feat4':'Aggiornamenti e assistenza inclusi','promo-feat5':'Modifichi tu stesso prodotti e prezzi, quando vuoi',
     'promo-price-num':'€9,90','promo-price-suffix':'/mese','promo-btn':'Prova la Demo',
     'promo-wa-btn':'Contattaci su WhatsApp',
     'promo-wa-text':'Salve%2C%20sono%20interessato%20al%20servizio%20Men%C3%B9%20Digitali%20QR%20(menu.spisystem.it).%20Potrei%20avere%20maggiori%20informazioni%3F',
@@ -1362,7 +1372,7 @@ var translations={
     'promo-tag':'Digital Menu',
     'promo-title':'Digital QR Menus for Your Business',
     'promo-desc':'Your customers read the menu straight from their phone, no app required: just scan the QR Code we provide, ready to print.',
-    'promo-feat1':'No app to download','promo-feat2':'Print-ready QR Code','promo-feat3':'Works on Android and iOS','promo-feat4':'Updates and support included',
+    'promo-feat1':'No app to download','promo-feat2':'Print-ready QR Code','promo-feat3':'Works on Android and iOS','promo-feat4':'Updates and support included','promo-feat5':'Edit your own products and prices, anytime',
     'promo-price-num':'€9.90','promo-price-suffix':'/month','promo-btn':'Try the Demo',
     'promo-wa-btn':'Contact us on WhatsApp',
     'promo-wa-text':'Hello%2C%20I%E2%80%99m%20interested%20in%20the%20Digital%20QR%20Menu%20service%20(menu.spisystem.it).%20Could%20I%20get%20more%20information%3F',
@@ -1434,6 +1444,7 @@ function applyLang(lang){
   var pbF2=document.getElementById('promoFeat2');if(pbF2)pbF2.textContent=t['promo-feat2'];
   var pbF3=document.getElementById('promoFeat3');if(pbF3)pbF3.textContent=t['promo-feat3'];
   var pbF4=document.getElementById('promoFeat4');if(pbF4)pbF4.textContent=t['promo-feat4'];
+  var pbF5=document.getElementById('promoFeat5');if(pbF5)pbF5.textContent=t['promo-feat5'];
   var pbPriceNum=document.getElementById('promoPriceNum');if(pbPriceNum)pbPriceNum.textContent=t['promo-price-num'];
   var pbSuffix=document.getElementById('promoPriceSuffix');if(pbSuffix)pbSuffix.textContent=t['promo-price-suffix'];
   var pbBtn=document.getElementById('promoBtn');if(pbBtn)pbBtn.innerHTML=t['promo-btn']+' <i class="fas fa-arrow-right"></i>';
