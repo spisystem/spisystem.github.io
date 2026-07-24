@@ -152,6 +152,9 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
   background:rgba(255,255,255,.09);
   box-shadow:0 0 0 5px rgba(240,112,32,.10);
 }
+a:focus-visible,button:focus-visible,.chip:focus-visible,input:focus-visible,select:focus-visible{
+  outline:2px solid var(--or2);outline-offset:3px;border-radius:6px;
+}
 .search-box i.fa-magnifying-glass{color:rgba(255,255,255,.4);font-size:.95em;flex-shrink:0}
 .search-box input{
   flex:1;background:none;border:none;outline:none;
@@ -267,7 +270,7 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
 .card{
   background:var(--wh);border-radius:var(--r20);overflow:hidden;
   display:flex;flex-direction:column;
-  box-shadow:0 4px 24px rgba(0,0,0,.06);
+  box-shadow:0 1px 2px rgba(20,20,20,.03),0 8px 20px rgba(20,20,20,.045),0 24px 48px -20px rgba(20,20,20,.08);
   border:1px solid var(--lt2);
   position:relative;
   animation:cardIn .46s ease both;
@@ -278,17 +281,19 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
   background:linear-gradient(90deg,var(--or),var(--or2));
   transform:scaleX(0);transform-origin:left;transition:transform var(--ease);
 }
-.card:hover{transform:translateY(-7px);box-shadow:0 22px 52px rgba(0,0,0,.10);border-color:rgba(240,112,32,.15)}
+.card:hover{transform:translateY(-7px);box-shadow:0 2px 4px rgba(20,20,20,.05),0 20px 40px rgba(20,20,20,.08),0 40px 80px -24px rgba(240,112,32,.22);border-color:rgba(240,112,32,.15)}
 .card:hover::before{transform:scaleX(1)}
 .card-img{
-  background:var(--lt);display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(circle at 50% 38%,#ffffff 0%,var(--lt) 65%,var(--lt2) 100%);
+  display:flex;align-items:center;justify-content:center;
   padding:22px;border-bottom:1px solid var(--lt2);height:170px;
   transition:background var(--ease);position:relative;
 }
-.card:hover .card-img{background:rgba(240,112,32,.04)}
+.card:hover .card-img{background:radial-gradient(circle at 50% 38%,#fff 0%,rgba(240,112,32,.05) 70%,rgba(240,112,32,.08) 100%)}
 .card-img img{
   max-width:100%;max-height:100%;width:auto;height:auto;
   object-fit:contain;border-radius:8px;cursor:zoom-in;
+  pointer-events:auto;
   transition:transform .44s ease;
 }
 .card:hover .card-img img{transform:scale(1.08)}
@@ -724,7 +729,11 @@ function closeLightbox(){
 }
 document.addEventListener('click',function(e){
   var img=e.target.closest('.card-img img');
-  if(img){openLightbox(img.getAttribute('src'),img.getAttribute('data-lightbox-name'));return;}
+  if(!img){
+    var box=e.target.closest('.card-img');
+    if(box)img=box.querySelector('img');
+  }
+  if(img){openLightbox(img.getAttribute('src'),img.getAttribute('data-lightbox-name'));}
 });
 document.getElementById('lightboxClose').addEventListener('click',closeLightbox);
 lightbox.addEventListener('click',function(e){if(e.target===lightbox)closeLightbox();});
