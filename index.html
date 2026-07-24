@@ -485,32 +485,34 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
 /* ══════════════════════════════════════
    PRODOTTI — sezione chiara, coerente col resto del sito
 ══════════════════════════════════════ */
-#prodotti{
-  position:relative;overflow:hidden;
-  background:linear-gradient(160deg,#171208 0%,#100c07 55%,#0a0807 100%);
-}
+#prodotti{position:relative;overflow:hidden}
 #prodotti::before{
-  content:'';position:absolute;left:-140px;top:-60px;
-  width:480px;height:480px;border-radius:50%;
-  background:radial-gradient(circle,rgba(240,112,32,.18) 0%,transparent 70%);
+  content:'';position:absolute;left:-120px;top:-60px;
+  width:460px;height:460px;border-radius:50%;
+  background:radial-gradient(circle,rgba(240,112,32,.06) 0%,transparent 70%);
   pointer-events:none;
 }
-#prodotti::after{
-  content:'';position:absolute;inset:0;opacity:.045;pointer-events:none;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='pn'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23pn)'/%3E%3C/svg%3E");
-  background-size:180px;
+.prod-showcase{
+  background:var(--dk);border-radius:var(--r20);
+  padding:40px 34px;position:relative;overflow:hidden;
+  box-shadow:0 30px 70px -22px rgba(0,0,0,.4);
+  margin-top:30px;
 }
-#prodotti .eyebrow{color:var(--or2)}
-#prodotti .eyebrow::before{background:var(--or2)}
-#prodotti .sec-title{color:#fff}
-#prodotti .prod-lead{color:rgba(255,255,255,.6)}
-#prodotti .prod-stats-inline b{color:#fff}
-#prodotti .prod-stats-inline span{color:rgba(255,255,255,.4)}
-#prodotti .prod-cta-row{border-top-color:rgba(255,255,255,.1)}
-#prodotti .prod-flow-icon{background:linear-gradient(145deg,rgba(240,112,32,.22),rgba(255,148,72,.08));border:1.5px solid rgba(240,112,32,.32);box-shadow:none}
-#prodotti .prod-flow-icon i{color:var(--or2)}
-#prodotti .btn-adv{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.2);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:none}
-#prodotti .btn-adv:hover{background:rgba(255,255,255,.14);border-color:rgba(240,112,32,.55);box-shadow:0 12px 32px rgba(0,0,0,.35)}
+.prod-showcase::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at 80% 0%,rgba(240,112,32,.18) 0%,transparent 60%);
+  pointer-events:none;
+}
+.prod-showcase .prod-flow{margin-top:0;position:relative;z-index:1}
+.prod-showcase .prod-flow-icon{background:linear-gradient(145deg,rgba(240,112,32,.22),rgba(255,148,72,.08));border:1.5px solid rgba(240,112,32,.32);box-shadow:none}
+.prod-showcase .prod-flow-icon i{color:var(--or2)}
+.prod-showcase .prod-lead{color:rgba(255,255,255,.62)}
+.prod-showcase .prod-stats-inline b{color:#fff}
+.prod-showcase .prod-stats-inline span{color:rgba(255,255,255,.42)}
+.prod-showcase .prod-cta-row{border-top-color:rgba(255,255,255,.1)}
+.prod-showcase .btn-adv{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.2);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:none}
+.prod-showcase .btn-adv:hover{background:rgba(255,255,255,.14);border-color:rgba(240,112,32,.55);box-shadow:0 12px 32px rgba(0,0,0,.35)}
+@media(max-width:540px){.prod-showcase{padding:30px 22px}}
 .prod-flow{
   max-width:820px;margin-top:30px;position:relative;z-index:1;
   display:flex;align-items:flex-start;gap:26px;flex-wrap:wrap;
@@ -1053,7 +1055,6 @@ body.intro-active{overflow:hidden}
   <div class="hero-stripe"></div>
   <div class="hero-top">
     <div style="display:flex;flex-direction:column;align-items:center">
-      <span class="h-kicker" id="heroKicker"><i class="fas fa-award"></i>Dal 1989 · Palo del Colle</span>
       <h1 class="h-head">
         Tecnologia <em>intelligente</em><br>
         <strong>per la tua attività</strong>
@@ -1130,7 +1131,8 @@ body.intro-active{overflow:hidden}
     <h2 class="sec-title" id="prodBannerTitle">Prodotti</h2>
     <div class="sec-divider"></div>
   </div>
-  <div class="prod-flow" data-reveal>
+  <div class="prod-showcase" data-reveal>
+    <div class="prod-flow">
     <div class="prod-flow-icon"><i class="fas fa-store"></i></div>
     <div class="prod-flow-text">
       <p class="prod-lead" id="prodLead">Dai registratori di cassa alle bilance elettroniche, dai sistemi gestionali alle soluzioni per il punto vendita: un catalogo completo, pensato per farti trovare in pochi secondi il prodotto giusto per la tua attività.</p>
@@ -1141,6 +1143,7 @@ body.intro-active{overflow:hidden}
       <div class="prod-cta-row">
         <a href="modelli.html" class="btn-adv" id="prodCtaBtn"><span id="prodCtaTxt">Esplora il catalogo</span><span class="btn-adv-arrow"><i class="fas fa-arrow-right"></i></span></a>
       </div>
+    </div>
     </div>
   </div>
 </div>
