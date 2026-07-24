@@ -171,95 +171,85 @@ a:focus-visible,button:focus-visible,.chip:focus-visible,input:focus-visible,sel
 .search-clear:hover{background:rgba(240,112,32,.2);color:#fff}
 .search-clear.show{display:flex}
 
-/* ── piccolo controllo "Ordina", accanto alle categorie ── */
-.sort-wrap{
-  display:flex;align-items:center;gap:8px;flex-shrink:0;
-  position:relative;z-index:1;
-}
-.sort-wrap i{color:rgba(255,255,255,.35);font-size:.8em}
-.sort-select{
-  appearance:none;-webkit-appearance:none;
-  background:rgba(255,255,255,.045);
-  border:1px solid rgba(255,255,255,.1);
-  color:rgba(255,255,255,.7);
-  font-family:'Inter',sans-serif;font-size:.76em;font-weight:600;
-  padding:8px 30px 8px 14px;border-radius:40px;cursor:pointer;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%23FF9448' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;background-position:right 12px center;
-  transition:border-color .25s,background-color .25s;
-}
-.sort-select:hover,.sort-select:focus{border-color:rgba(240,112,32,.4);background-color:rgba(240,112,32,.08);outline:none}
-.sort-select option{background:#171310;color:#fff}
+/* ══════════════════════════════════════
+   CATALOG LAYOUT — sidebar categorie fissa + contenuto
+══════════════════════════════════════ */
+.catalog-layout{display:grid;grid-template-columns:230px 1fr;gap:32px;align-items:start}
+@media(max-width:900px){.catalog-layout{grid-template-columns:1fr;gap:20px}}
 
-/* ── CATEGORY CHIPS — barra scorrevole su una riga sola ── */
-.chips-and-sort{
-  display:flex;align-items:center;gap:14px;
-  max-width:1080px;margin:22px auto 0;padding:0 20px;
-  position:relative;z-index:1;
+.cat-sidebar{
+  position:sticky;top:84px;
+  display:flex;flex-direction:column;gap:4px;
+  background:var(--wh);border:1px solid var(--lt2);border-radius:var(--r20);
+  padding:10px;
+  box-shadow:0 1px 2px rgba(20,20,20,.03),0 10px 26px rgba(20,20,20,.05);
+  max-height:calc(100vh - 104px);overflow-y:auto;
 }
-.chip-row-outer{
-  position:relative;flex:1;min-width:0;
+.cat-sidebar-title{
+  font-size:.64em;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--txm);padding:12px 14px 10px;
 }
-.chip-row-outer::before,.chip-row-outer::after{
-  content:'';position:absolute;top:0;bottom:6px;width:28px;z-index:2;pointer-events:none;
-  transition:opacity .25s ease;
+@media(max-width:900px){
+  .cat-sidebar{
+    position:static;flex-direction:row;overflow-x:auto;overflow-y:visible;
+    max-height:none;padding:8px;gap:8px;
+    scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .cat-sidebar::-webkit-scrollbar{display:none}
+  .cat-sidebar-title{display:none}
 }
-.chip-row-outer::before{left:0;background:linear-gradient(90deg,#120d09,transparent)}
-.chip-row-outer::after{right:0;background:linear-gradient(270deg,#120d09,transparent)}
-.chip-row-outer.at-start::before{opacity:0}
-.chip-row-outer.at-end::after{opacity:0}
-.chip-scroll-btn{
-  position:absolute;top:50%;transform:translateY(-50%);
-  width:26px;height:26px;border-radius:50%;z-index:3;
-  background:rgba(18,13,9,.9);border:1px solid rgba(255,255,255,.14);
-  color:rgba(255,255,255,.7);display:flex;align-items:center;justify-content:center;
-  font-size:.62em;cursor:pointer;transition:all .25s ease;
-}
-.chip-scroll-btn:hover{background:rgba(240,112,32,.25);border-color:rgba(240,112,32,.4);color:#fff}
-.chip-scroll-left{left:-4px}
-.chip-scroll-right{right:-4px}
-.chip-row-outer.at-start .chip-scroll-left,
-.chip-row-outer.at-end .chip-scroll-right{opacity:0;pointer-events:none}
-@media(hover:none){.chip-scroll-btn{display:none}.chip-row-outer::before,.chip-row-outer::after{display:none}}
-.chip-row{
-  display:flex;flex-wrap:nowrap;gap:9px;
-  overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
-  padding:2px 2px 6px;position:relative;z-index:1;
-  scroll-behavior:smooth;
-}
-.chip-row::-webkit-scrollbar{display:none}
+
+.chip-row{display:flex;flex-direction:column;gap:2px}
+@media(max-width:900px){.chip-row{flex-direction:row;gap:8px}}
+
 .chip{
-  display:inline-flex;align-items:center;gap:7px;flex-shrink:0;
-  padding:9px 16px;border-radius:40px;
-  font-size:.74em;font-weight:600;letter-spacing:.2px;
-  color:rgba(255,255,255,.6);
-  background:rgba(255,255,255,.045);
-  border:1px solid rgba(255,255,255,.08);
-  cursor:pointer;
-  transition:all .28s ease;
-  white-space:nowrap;
+  display:flex;align-items:center;gap:10px;flex-shrink:0;
+  padding:11px 14px;border-radius:14px;
+  font-size:.82em;font-weight:600;letter-spacing:.1px;
+  color:var(--txm);background:transparent;border:1px solid transparent;
+  cursor:pointer;transition:all .25s ease;white-space:nowrap;text-align:left;
 }
-.chip i{font-size:.85em;color:rgba(255,255,255,.4);transition:color .28s}
-.chip:hover{color:#fff;background:rgba(240,112,32,.10);border-color:rgba(240,112,32,.3)}
-.chip:hover i{color:var(--or2)}
+.chip i{font-size:.9em;color:var(--txs,#9A9A9A);transition:color .25s;width:16px;text-align:center}
+.chip:hover{color:var(--tx);background:rgba(240,112,32,.07)}
+.chip:hover i{color:var(--or)}
 .chip.active{
   color:#fff;background:linear-gradient(135deg,var(--or),var(--or2));
-  border-color:transparent;box-shadow:0 5px 16px var(--glow2);
+  box-shadow:0 6px 18px var(--glow2);
 }
 .chip.active i{color:#fff}
-.chip .chip-count{
-  font-size:.85em;opacity:.6;font-weight:500;
+.chip .chip-count{margin-left:auto;font-size:.85em;opacity:.65;font-weight:500}
+@media(max-width:900px){
+  .chip{padding:9px 15px;border-radius:40px;background:var(--wh);border-color:var(--lt2)}
+  .chip .chip-count{margin-left:0}
 }
 
-.pg-count{
-  margin:20px auto 0;font-size:.72em;color:rgba(255,255,255,.35);
-  letter-spacing:1px;font-weight:500;text-align:center;
-  position:relative;z-index:1;padding-bottom:12px;
+.cat-main{min-width:0}
+.cat-toolbar{
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  margin-bottom:20px;flex-wrap:wrap;
 }
-.pg-count span{color:var(--or2);font-weight:700}
+.pg-count{
+  font-size:.76em;color:var(--txm);letter-spacing:.3px;font-weight:500;
+}
+.pg-count span{color:var(--or3,#E85C00);font-weight:700}
+.sort-wrap{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.sort-wrap i{color:var(--txs,#9A9A9A);font-size:.8em}
+.sort-select{
+  appearance:none;-webkit-appearance:none;
+  background:var(--wh);
+  border:1px solid var(--lt3);
+  color:var(--tx);
+  font-family:'Inter',sans-serif;font-size:.78em;font-weight:600;
+  padding:9px 32px 9px 15px;border-radius:40px;cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%23F07020' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 13px center;
+  transition:border-color .25s,background-color .25s;
+}
+.sort-select:hover,.sort-select:focus{border-color:rgba(240,112,32,.45);outline:none}
+.sort-select option{background:#fff;color:var(--tx)}
 
 /* ── WRAPPER ── */
-.wrap{max-width:1080px;margin:0 auto;padding:50px 20px 90px}
+.wrap{max-width:1200px;margin:0 auto;padding:44px 20px 90px}
 
 /* ── GRID (unified card view) ── */
 .grid{
@@ -537,28 +527,31 @@ footer a:hover{color:var(--or)}
       <button class="search-clear" id="searchClear" aria-label="Cancella ricerca"><i class="fas fa-xmark"></i></button>
     </div>
   </div>
-  <div class="chips-and-sort">
-    <div class="chip-row-outer" id="chipRowOuter">
-      <button class="chip-scroll-btn chip-scroll-left" id="chipScrollLeft" type="button" aria-label="Scorri a sinistra"><i class="fas fa-chevron-left"></i></button>
-      <div class="chip-row" id="chipRow"></div>
-      <button class="chip-scroll-btn chip-scroll-right" id="chipScrollRight" type="button" aria-label="Scorri a destra"><i class="fas fa-chevron-right"></i></button>
-    </div>
-    <div class="sort-wrap">
-      <i class="fas fa-arrow-down-wide-short"></i>
-      <select id="sortSelect" class="sort-select">
-        <option value="default" id="sortOptDefault">Categoria</option>
-        <option value="az" id="sortOptAZ">Nome A-Z</option>
-        <option value="za" id="sortOptZA">Nome Z-A</option>
-      </select>
-    </div>
-  </div>
-  <div class="pg-count" id="pgCount"></div>
 </div>
 
-<!-- ── PRODUCTS ── -->
+<!-- ── CATALOG: sidebar categorie + griglia prodotti ── -->
 <div class="wrap">
-  <div class="grid" id="grid">
-    <p style="text-align:center;color:#999;padding:60px 0;grid-column:1/-1">Caricamento…</p>
+  <div class="catalog-layout">
+    <aside class="cat-sidebar">
+      <div class="cat-sidebar-title" id="catSidebarTitle">Categorie</div>
+      <div class="chip-row" id="chipRow"></div>
+    </aside>
+    <div class="cat-main">
+      <div class="cat-toolbar">
+        <div class="pg-count" id="pgCount"></div>
+        <div class="sort-wrap">
+          <i class="fas fa-arrow-down-wide-short"></i>
+          <select id="sortSelect" class="sort-select">
+            <option value="default" id="sortOptDefault">Categoria</option>
+            <option value="az" id="sortOptAZ">Nome A-Z</option>
+            <option value="za" id="sortOptZA">Nome Z-A</option>
+          </select>
+        </div>
+      </div>
+      <div class="grid" id="grid">
+        <p style="text-align:center;color:#999;padding:60px 0;grid-column:1/-1">Caricamento…</p>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -648,6 +641,7 @@ var modT={
     sortDefault:'Categoria',
     sortAZ:'Nome A-Z',
     sortZA:'Nome Z-A',
+    catSidebar:'Categorie',
     footTag:'Soluzioni professionali di cassa, pesatura e gestione per il tuo punto vendita, da oltre 35 anni.',
     footLinksTitle:'Link utili',
     footContactTitle:'Contatti',
@@ -672,6 +666,7 @@ var modT={
     sortDefault:'Category',
     sortAZ:'Name A-Z',
     sortZA:'Name Z-A',
+    catSidebar:'Categories',
     footTag:'Professional cash, weighing and management solutions for your business, for over 35 years.',
     footLinksTitle:'Quick links',
     footContactTitle:'Contacts',
@@ -699,6 +694,7 @@ function applyModLang(lang){
   var so1=document.getElementById('sortOptDefault');if(so1)so1.textContent=t.sortDefault;
   var so2=document.getElementById('sortOptAZ');if(so2)so2.textContent=t.sortAZ;
   var so3=document.getElementById('sortOptZA');if(so3)so3.textContent=t.sortZA;
+  var cst=document.getElementById('catSidebarTitle');if(cst)cst.textContent=t.catSidebar;
   var fc=document.getElementById('footerCopy');if(fc)fc.textContent=t.footer;
   var ftag=document.getElementById('footTag');if(ftag)ftag.textContent=t.footTag;
   var fcl=document.getElementById('footCreditLabel');if(fcl)fcl.textContent=t.footCredit;
