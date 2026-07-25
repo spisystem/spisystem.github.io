@@ -204,12 +204,21 @@ a:focus-visible,button:focus-visible,.chip:focus-visible,input:focus-visible,sel
 }
 @media(max-width:900px){
   .cat-sidebar{
-    position:static;flex-direction:row;overflow-x:auto;overflow-y:visible;
+    position:sticky;top:74px;z-index:600;
+    flex-direction:row;overflow-x:auto;overflow-y:visible;
     max-height:none;padding:8px;gap:8px;
     scrollbar-width:none;-ms-overflow-style:none;
   }
   .cat-sidebar::-webkit-scrollbar{display:none}
   .cat-sidebar-title,.cat-sidebar-sub{display:none}
+  .cat-sidebar::before,.cat-sidebar::after{
+    content:'';position:absolute;top:0;bottom:0;width:26px;z-index:5;pointer-events:none;
+    transition:opacity .25s ease;border-radius:inherit;
+  }
+  .cat-sidebar::before{left:0;background:linear-gradient(90deg,#fff,transparent)}
+  .cat-sidebar::after{right:0;background:linear-gradient(270deg,#fff,transparent)}
+  .cat-sidebar.at-start::before{opacity:0}
+  .cat-sidebar.at-end::after{opacity:0}
 }
 
 .chip-row{display:flex;flex-direction:column;gap:2px}
@@ -881,28 +890,24 @@ var sortMode='default';
 
 var grid=document.getElementById('grid');
 var chipRow=document.getElementById('chipRow');
-var chipRowOuter=document.getElementById('chipRowOuter');
-var chipScrollLeft=document.getElementById('chipScrollLeft');
-var chipScrollRight=document.getElementById('chipScrollRight');
+var catSidebar=document.querySelector('.cat-sidebar');
 var searchInput=document.getElementById('searchInput');
 var searchClear=document.getElementById('searchClear');
 var sortSelect=document.getElementById('sortSelect');
 
-/* Frecce per scorrere le categorie col mouse (desktop), oltre allo swipe già disponibile su mobile */
+/* Sfumature ai bordi (mobile): fanno capire che ci sono altre categorie da scoprire scorrendo */
 function updateChipScrollState(){
-  if(!chipRowOuter)return;
-  var atStart=chipRow.scrollLeft<=2;
-  var atEnd=chipRow.scrollLeft>=chipRow.scrollWidth-chipRow.clientWidth-2;
-  chipRowOuter.classList.toggle('at-start',atStart);
-  chipRowOuter.classList.toggle('at-end',atEnd);
+  if(!catSidebar)return;
+  var atStart=catSidebar.scrollLeft<=2;
+  var atEnd=catSidebar.scrollLeft>=catSidebar.scrollWidth-catSidebar.clientWidth-2;
+  catSidebar.classList.toggle('at-start',atStart);
+  catSidebar.classList.toggle('at-end',atEnd);
 }
-if(chipScrollLeft)chipScrollLeft.addEventListener('click',function(){chipRow.scrollBy({left:-220,behavior:'smooth'});});
-if(chipScrollRight)chipScrollRight.addEventListener('click',function(){chipRow.scrollBy({left:220,behavior:'smooth'});});
-chipRow.addEventListener('scroll',updateChipScrollState,{passive:true});
-/* Permette di scorrere la fila con la rotellina del mouse (utile su desktop, dove non si può trascinare col dito) */
-chipRow.addEventListener('wheel',function(e){
-  if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){
-    chipRow.scrollLeft+=e.deltaY;
+if(catSidebar)catSidebar.addEventListener('scroll',updateChipScrollState,{passive:true});
+/* Permette di scorrere la fila con la rotellina del mouse (utile su desktop) */
+if(catSidebar)catSidebar.addEventListener('wheel',function(e){
+  if(Math.abs(e.deltaY)>Math.abs(e.deltaX)&&catSidebar.scrollWidth>catSidebar.clientWidth){
+    catSidebar.scrollLeft+=e.deltaY;
     e.preventDefault();
   }
 },{passive:false});
@@ -928,7 +933,14 @@ function renderChips(){
     btn.addEventListener('click',function(){activeCat=k;renderChips();renderGrid();});
     chipRow.appendChild(btn);
   });
-  requestAnimationFrame(updateChipScrollState);
+  requestAnimationFrame(function(){
+    updateChipScrollState();
+    /* Centra la categoria selezionata così l'utente scopre subito cosa c'è "prima" e "dopo" nella barra */
+    var activeChip=chipRow.querySelector('.chip.active');
+    if(activeChip&&activeChip.scrollIntoView){
+      activeChip.scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});
+    }
+  });
 }
 
 function norm(s){return (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');}
