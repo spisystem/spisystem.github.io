@@ -198,6 +198,36 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
 .sidebar a:hover::before{width:calc(100% - 56px)}
 .sidebar a i{font-size:14px;color:var(--or);width:16px}
 
+/* ── ACCORDION "Prodotti" nel menu — mostra le categorie senza uscire dal menu ── */
+.sb-toggle{
+  all:unset;box-sizing:border-box;cursor:pointer;width:100%;
+  color:rgba(255,255,255,.6);
+  padding:16px 28px;font-size:.8em;font-weight:600;
+  letter-spacing:2.5px;text-transform:uppercase;
+  border-bottom:1px solid rgba(255,255,255,.04);
+  transition:all .3s ease;
+  display:flex;align-items:center;gap:12px;
+}
+.sb-toggle:hover{color:var(--wh);padding-left:36px}
+.sb-toggle i:first-child{font-size:14px;color:var(--or);width:16px}
+.sb-chevron{margin-left:auto;font-size:11px;transition:transform .3s ease;color:rgba(255,255,255,.35)}
+.sb-toggle.open .sb-chevron{transform:rotate(180deg);color:var(--or)}
+.sb-submenu{max-height:0;overflow:hidden;background:rgba(0,0,0,.22);transition:max-height .42s cubic-bezier(.4,0,.2,1)}
+.sb-submenu.open{max-height:640px}
+.sb-submenu a{
+  display:block;color:rgba(255,255,255,.5);text-decoration:none;
+  padding:12px 28px 12px 54px;font-size:.76em;font-weight:500;
+  letter-spacing:.6px;text-transform:none;
+  border-bottom:1px solid rgba(255,255,255,.03);
+  transition:all .22s ease;
+}
+.sb-submenu a:hover{color:#fff;background:rgba(240,112,32,.1);padding-left:60px}
+.sb-submenu a.sb-viewall{
+  color:var(--or2);font-weight:700;letter-spacing:1.2px;text-transform:uppercase;font-size:.7em;
+  border-bottom:1px solid rgba(255,255,255,.08);padding-left:54px;
+}
+.sb-submenu a.sb-viewall:hover{padding-left:60px}
+
 /* ══════════════════════════════════════
    HERO
 ══════════════════════════════════════ */
@@ -1064,11 +1094,26 @@ body.intro-active{overflow:hidden}
 <div class="sidebar-overlay" id="sbOverlay"></div>
 <nav class="sidebar" id="sidebar">
   <div class="sb-close" id="sb-close">&#10005;</div>
-  <a href="#chi-siamo"><i class="fas fa-building"></i>Chi Siamo</a>
-  <a href="#prodotti"><i class="fas fa-box-open"></i>Prodotti</a>
-  <a href="#promo-menu"><i class="fas fa-qrcode"></i>Menù Digitali QR</a>
-  <a href="#preventivo"><i class="fas fa-file-invoice"></i>Preventivo</a>
-  <a href="#contatti"><i class="fas fa-phone"></i>Contatti</a>
+  <a href="#chi-siamo" id="navChi"><i class="fas fa-building"></i><span>Chi Siamo</span></a>
+  <button class="sb-toggle" id="sbProdToggle" type="button">
+    <i class="fas fa-box-open"></i><span id="navProdLabel">Prodotti</span>
+    <i class="fas fa-chevron-down sb-chevron"></i>
+  </button>
+  <div class="sb-submenu" id="sbProdSubmenu">
+    <a href="modelli.html" class="sb-viewall" id="sbViewAll">Vedi tutto</a>
+    <a href="modelli.html?prodotto=registratori" data-cat="registratori">Registratori di Cassa</a>
+    <a href="modelli.html?prodotto=bilance" data-cat="bilance">Bilance Elettroniche</a>
+    <a href="modelli.html?prodotto=sistemi-touch" data-cat="sistemi-touch">Sistemi Gestionali</a>
+    <a href="modelli.html?prodotto=casse" data-cat="casse">Casse Automatiche</a>
+    <a href="modelli.html?prodotto=kiosk" data-cat="kiosk">Kiosk Interattivi</a>
+    <a href="modelli.html?prodotto=affettatrici" data-cat="affettatrici">Affettatrici Professionali</a>
+    <a href="modelli.html?prodotto=palmari-stampanti" data-cat="palmari-stampanti">Palmari &amp; Stampanti</a>
+    <a href="modelli.html?prodotto=prezzatrici-banconote" data-cat="prezzatrici-banconote">Prezzatrici &amp; Verificabanconote</a>
+    <a href="modelli.html?prodotto=rotoli" data-cat="rotoli">Rotoli Termici</a>
+  </div>
+  <a href="#promo-menu" id="navMenuQr"><i class="fas fa-qrcode"></i><span>Menù Digitali QR</span></a>
+  <a href="#preventivo" id="navPrev"><i class="fas fa-file-invoice"></i><span>Preventivo</span></a>
+  <a href="#contatti" id="navCont"><i class="fas fa-phone"></i><span>Contatti</span></a>
 </nav>
 
 <!-- ── HERO ── -->
@@ -1401,6 +1446,10 @@ if(ssGet('visited')){
 var translations={
   it:{
     'nav-chi':'Chi Siamo','nav-menuqr':'Menù Digitali QR','nav-prod':'Prodotti','nav-cont':'Contatti','nav-prev':'Preventivo',
+    'sb-viewall':'Vedi tutto',
+    'cat-registratori':'Registratori di Cassa','cat-bilance':'Bilance Elettroniche','cat-sistemi-touch':'Sistemi Gestionali',
+    'cat-casse':'Casse Automatiche','cat-kiosk':'Kiosk Interattivi','cat-affettatrici':'Affettatrici Professionali',
+    'cat-palmari-stampanti':'Palmari & Stampanti','cat-prezzatrici-banconote':'Prezzatrici & Verificabanconote','cat-rotoli':'Rotoli Termici',
     'hero-sub':'Da oltre 35 anni al fianco di negozi, ristoranti e supermercati con sistemi professionali di cassa, pesatura e gestione.',
     'hero-btn':'Scopri i prodotti',
     'h-head-1':'Tecnologia','h-head-em':'intelligente','h-head-2':'per la tua attività',
@@ -1457,6 +1506,10 @@ var translations={
   },
   en:{
     'nav-chi':'About Us','nav-menuqr':'Digital QR Menus','nav-prod':'Products','nav-cont':'Contacts','nav-prev':'Quote',
+    'sb-viewall':'View all',
+    'cat-registratori':'Cash Registers','cat-bilance':'Electronic Scales','cat-sistemi-touch':'Management Systems',
+    'cat-casse':'Automatic Change Machines','cat-kiosk':'Interactive Kiosks','cat-affettatrici':'Professional Slicers',
+    'cat-palmari-stampanti':'Handhelds & Printers','cat-prezzatrici-banconote':'Labellers & Bill Validators','cat-rotoli':'Thermal Rolls',
     'hero-sub':'For over 35 years alongside shops, restaurants and supermarkets with professional cash, weighing and management systems.',
     'hero-btn':'Explore products',
     'h-head-1':'Smart','h-head-em':'technology','h-head-2':'for your business',
@@ -1528,10 +1581,16 @@ function applyLang(lang){
   document.documentElement.lang=lang;
 
   /* navbar */
-  var sba=document.querySelectorAll('.sidebar a');
-  var keys=['nav-chi','nav-prod','nav-menuqr','nav-prev','nav-cont'];
-  var icons=['<i class="fas fa-building"></i>','<i class="fas fa-box-open"></i>','<i class="fas fa-qrcode"></i>','<i class="fas fa-file-invoice"></i>','<i class="fas fa-phone"></i>'];
-  sba.forEach(function(a,i){if(keys[i])a.innerHTML=icons[i]+t[keys[i]]});
+  var navChi=document.getElementById('navChi');if(navChi)navChi.innerHTML='<i class="fas fa-building"></i><span>'+t['nav-chi']+'</span>';
+  var navProdLabel=document.getElementById('navProdLabel');if(navProdLabel)navProdLabel.textContent=t['nav-prod'];
+  var navMenuQr=document.getElementById('navMenuQr');if(navMenuQr)navMenuQr.innerHTML='<i class="fas fa-qrcode"></i><span>'+t['nav-menuqr']+'</span>';
+  var navPrev=document.getElementById('navPrev');if(navPrev)navPrev.innerHTML='<i class="fas fa-file-invoice"></i><span>'+t['nav-prev']+'</span>';
+  var navCont=document.getElementById('navCont');if(navCont)navCont.innerHTML='<i class="fas fa-phone"></i><span>'+t['nav-cont']+'</span>';
+  var sbViewAll=document.getElementById('sbViewAll');if(sbViewAll)sbViewAll.textContent=t['sb-viewall'];
+  document.querySelectorAll('#sbProdSubmenu a[data-cat]').forEach(function(a){
+    var key='cat-'+a.getAttribute('data-cat');
+    if(t[key])a.textContent=t[key];
+  });
 
   /* hero */
   var hh=document.querySelector('.h-head');
@@ -1739,6 +1798,16 @@ burger.addEventListener('click',openSB);
 sbc.addEventListener('click',closeSB);
 sbo.addEventListener('click',closeSB);
 sb.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeSB)});
+
+/* ── ACCORDION "Prodotti" — apre/chiude le categorie senza uscire dal menu ── */
+var sbProdToggle=document.getElementById('sbProdToggle');
+var sbProdSubmenu=document.getElementById('sbProdSubmenu');
+if(sbProdToggle&&sbProdSubmenu){
+  sbProdToggle.addEventListener('click',function(){
+    var isOpen=sbProdSubmenu.classList.toggle('open');
+    sbProdToggle.classList.toggle('open',isOpen);
+  });
+}
 
 /* ── BACK TO TOP ── */
 var btt=document.getElementById('btt');
