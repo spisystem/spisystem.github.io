@@ -351,7 +351,31 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
    PROMO MENU QR — niente più card, contenuto libero
 ══════════════════════════════════════ */
 #promo-menu{position:relative;overflow:hidden;padding-top:0}
-.promo-flow{max-width:640px;margin-top:30px}
+.promo-flow{max-width:640px;margin-top:0}
+.promo-showcase{
+  background:var(--dk);border-radius:var(--r20);
+  padding:40px 34px;position:relative;overflow:hidden;
+  box-shadow:0 30px 70px -22px rgba(0,0,0,.4);
+  margin-top:30px;
+}
+.promo-showcase::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at 15% 100%,rgba(240,112,32,.18) 0%,transparent 60%);
+  pointer-events:none;
+}
+.promo-showcase .promo-flow{position:relative;z-index:1}
+.promo-showcase .promo-badge2{color:var(--or2);background:rgba(240,112,32,.13);border-color:rgba(240,112,32,.32)}
+.promo-showcase .promo-desc2{color:rgba(255,255,255,.62)}
+.promo-showcase .promo-feats2 li{color:#fff}
+.promo-showcase .promo-feats2 li i{background:rgba(255,255,255,.14);color:var(--or2)}
+.promo-showcase .promo-cta-row{border-top-color:rgba(255,255,255,.1)}
+.promo-showcase .promo-price-inline b{color:var(--or2)}
+.promo-showcase .promo-price-inline small{color:rgba(255,255,255,.4)}
+.promo-showcase .btn-adv{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.2);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:none}
+.promo-showcase .btn-adv:hover{background:rgba(255,255,255,.14);border-color:rgba(240,112,32,.55);box-shadow:0 12px 32px rgba(0,0,0,.35)}
+.promo-showcase .wa-cta-btn{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.18);color:#fff}
+.promo-showcase .wa-cta-btn:hover{background:rgba(255,255,255,.12);border-color:rgba(240,112,32,.4)}
+@media(max-width:540px){.promo-showcase{padding:30px 22px}}
 .promo-badge2{
   display:inline-flex;align-items:center;gap:7px;width:fit-content;
   font-size:.62em;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
@@ -1155,7 +1179,8 @@ body.intro-active{overflow:hidden}
     <h2 class="sec-title" id="promoTitle">Menù Digitali QR per la Tua Attività</h2>
     <div class="sec-divider"></div>
   </div>
-  <div class="promo-flow" data-reveal>
+  <div class="promo-showcase" data-reveal>
+    <div class="promo-flow">
     <span class="promo-badge2"><i class="fas fa-qrcode"></i> <span id="promoTag">Menù Digitale</span></span>
     <p class="promo-desc2" id="promoDesc">I tuoi clienti leggono il menu direttamente dal telefono, senza scaricare nessuna app: basta inquadrare il QR Code che ti forniamo, già pronto da stampare.</p>
     <ul class="promo-feats2">
@@ -1169,6 +1194,7 @@ body.intro-active{overflow:hidden}
       <div class="promo-price-inline"><b id="promoPriceNum">€9,90</b><small id="promoPriceSuffix">/mese</small></div>
       <a href="https://menu.spisystem.it" target="_blank" rel="noopener" class="btn-adv promo-btn" id="promoBtn"><span id="promoBtnTxt">Prova la Demo</span><span class="btn-adv-arrow"><i class="fas fa-arrow-right"></i></span></a>
       <a href="https://wa.me/393382247948?text=Salve%2C%20sono%20interessato%20al%20servizio%20Men%C3%B9%20Digitali%20QR%20(menu.spisystem.it).%20Potrei%20avere%20maggiori%20informazioni%3F" target="_blank" rel="noopener" class="wa-cta-btn" id="promoWaBtn"><i class="fab fa-whatsapp"></i> Contattaci su WhatsApp</a>
+    </div>
     </div>
   </div>
 </div>
