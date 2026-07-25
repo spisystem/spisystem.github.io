@@ -232,13 +232,15 @@ a:focus-visible,button:focus-visible,.chip:focus-visible,input:focus-visible,sel
   cursor:pointer;transition:all .25s ease;white-space:nowrap;text-align:left;
 }
 .chip-icon{
-  width:30px;height:30px;border-radius:9px;flex-shrink:0;
+  width:34px;height:34px;border-radius:10px;flex-shrink:0;overflow:hidden;
   display:flex;align-items:center;justify-content:center;
   background:rgba(240,112,32,.09);color:var(--or);font-size:.82em;
   transition:all .25s ease;
 }
+.chip-icon img{width:100%;height:100%;object-fit:contain;padding:4px;background:var(--wh)}
 .chip:hover .chip-icon{background:rgba(240,112,32,.16)}
 .chip.active .chip-icon{background:rgba(255,255,255,.2);color:#fff}
+.chip.active .chip-icon img{background:rgba(255,255,255,.15)}
 .chip:hover{color:var(--tx);background:rgba(240,112,32,.07)}
 .chip.active{
   color:#fff;background:linear-gradient(135deg,var(--or),var(--or2));
@@ -251,6 +253,27 @@ a:focus-visible,button:focus-visible,.chip:focus-visible,input:focus-visible,sel
 }
 
 .cat-main{min-width:0}
+
+/* ── ACTIVE FILTER PILL — mostra la categoria selezionata, sempre visibile sopra i risultati ── */
+.active-filter{
+  display:flex;align-items:center;gap:12px;margin-bottom:18px;
+  background:rgba(240,112,32,.055);border:1px solid rgba(240,112,32,.2);
+  border-radius:14px;padding:11px 14px 11px 11px;
+}
+.active-filter-icon{
+  width:32px;height:32px;border-radius:9px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--or),var(--or2));
+  display:flex;align-items:center;justify-content:center;color:#fff;font-size:.82em;
+}
+.active-filter-txt{flex:1;font-size:.85em;font-weight:600;color:var(--tx)}
+.active-filter-txt span{color:var(--txm);font-weight:500}
+.active-filter-clear{
+  width:28px;height:28px;border-radius:50%;border:none;background:var(--wh);
+  color:var(--txm);cursor:pointer;display:flex;align-items:center;justify-content:center;
+  font-size:.78em;transition:all .2s ease;flex-shrink:0;
+}
+.active-filter-clear:hover{background:var(--or);color:#fff;transform:scale(1.08)}
+
 .cat-toolbar{
   display:flex;align-items:center;justify-content:space-between;gap:14px;
   margin-bottom:20px;flex-wrap:wrap;
@@ -582,6 +605,11 @@ footer a:hover{color:var(--or)}
       <div class="chip-row" id="chipRow"></div>
     </aside>
     <div class="cat-main">
+      <div class="active-filter" id="activeFilterBar" style="display:none">
+        <div class="active-filter-icon" id="activeFilterIcon"><i class="fas fa-box"></i></div>
+        <div class="active-filter-txt" id="activeFilterTxt"></div>
+        <button class="active-filter-clear" id="activeFilterClear" aria-label="Rimuovi filtro"><i class="fas fa-xmark"></i></button>
+      </div>
       <div class="cat-toolbar">
         <div class="pg-count" id="pgCount"></div>
         <div class="sort-wrap">
@@ -746,6 +774,7 @@ function applyModLang(lang){
   updateLangBtn(lang);
   renderChips();
   renderGrid();
+  renderActiveFilter();
 }
 
 /* ── BACK TO TOP ── */
@@ -922,15 +951,17 @@ function renderChips(){
   allChip.type='button';
   allChip.className='chip'+(activeCat==='all'?' active':'');
   allChip.innerHTML='<span class="chip-icon"><i class="fas fa-layer-group"></i></span>'+t.all+' <span class="chip-count">('+allProducts.length+')</span>';
-  allChip.addEventListener('click',function(){activeCat='all';renderChips();renderGrid();});
+  allChip.addEventListener('click',function(){activeCat='all';refreshAll();});
   chipRow.appendChild(allChip);
   catOrder.forEach(function(k){
     var c=db[k];
+    var previewImg=c.m[0]?c.m[0].i:'';
     var btn=document.createElement('button');
     btn.type='button';
     btn.className='chip'+(k===activeCat?' active':'');
-    btn.innerHTML='<span class="chip-icon"><i class="fas '+c.icon+'"></i></span>'+(c.t[currentLang]||c.t.it)+' <span class="chip-count">('+c.m.length+')</span>';
-    btn.addEventListener('click',function(){activeCat=k;renderChips();renderGrid();});
+    var iconHtml=previewImg?'<img src="'+previewImg+'" alt="" loading="lazy">':'<i class="fas '+c.icon+'"></i>';
+    btn.innerHTML='<span class="chip-icon">'+iconHtml+'</span>'+(c.t[currentLang]||c.t.it)+' <span class="chip-count">('+c.m.length+')</span>';
+    btn.addEventListener('click',function(){activeCat=k;refreshAll();});
     chipRow.appendChild(btn);
   });
   requestAnimationFrame(function(){
@@ -941,6 +972,28 @@ function renderChips(){
       activeChip.scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});
     }
   });
+}
+
+function renderActiveFilter(){
+  var bar=document.getElementById('activeFilterBar');
+  if(!bar)return;
+  if(activeCat==='all'){
+    bar.style.display='none';
+    return;
+  }
+  var c=db[activeCat];
+  var name=(c.t[currentLang]||c.t.it);
+  var modelsWord=currentLang==='it'?'modelli':'models';
+  var prefix=currentLang==='it'?'Categoria:':'Category:';
+  bar.style.display='flex';
+  document.getElementById('activeFilterIcon').innerHTML='<i class="fas '+c.icon+'"></i>';
+  document.getElementById('activeFilterTxt').innerHTML=prefix+' <strong>'+name+'</strong> <span>('+c.m.length+' '+modelsWord+')</span>';
+}
+
+function refreshAll(){
+  renderChips();
+  renderGrid();
+  renderActiveFilter();
 }
 
 function norm(s){return (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');}
@@ -976,7 +1029,7 @@ function renderGrid(){
     grid.appendChild(empty);
     document.getElementById('emptyReset').addEventListener('click',function(){
       activeCat='all';searchTerm='';searchInput.value='';searchClear.classList.remove('show');
-      renderChips();renderGrid();
+      refreshAll();
     });
     return;
   }
@@ -1022,6 +1075,12 @@ searchClear.addEventListener('click',function(){
 sortSelect.addEventListener('change',function(){
   sortMode=sortSelect.value;
   renderGrid();
+});
+
+var activeFilterClearBtn=document.getElementById('activeFilterClear');
+if(activeFilterClearBtn)activeFilterClearBtn.addEventListener('click',function(){
+  activeCat='all';
+  refreshAll();
 });
 
 /* Init */
