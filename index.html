@@ -213,7 +213,6 @@ img{pointer-events:none;user-select:none;-webkit-user-drag:none}
 .sb-chevron{margin-left:auto;font-size:11px;transition:transform .3s ease;color:rgba(255,255,255,.35)}
 .sb-toggle.open .sb-chevron{transform:rotate(180deg);color:var(--or)}
 .sb-submenu{max-height:0;overflow:hidden;background:rgba(0,0,0,.22);transition:max-height .42s cubic-bezier(.4,0,.2,1)}
-.sb-submenu.open{max-height:640px}
 .sb-submenu a{
   display:block;color:rgba(255,255,255,.5);text-decoration:none;
   padding:12px 28px 12px 54px;font-size:.76em;font-weight:500;
@@ -1207,7 +1206,7 @@ body.intro-active{overflow:hidden}
       <p class="prod-lead" id="prodLead">Dai registratori di cassa alle bilance elettroniche, dai sistemi gestionali alle soluzioni per il punto vendita: un catalogo completo, pensato per farti trovare in pochi secondi il prodotto giusto per la tua attività.</p>
       <div class="prod-stats-inline">
         <div><b>9</b><span id="prodStat1">Categorie</span></div>
-        <div><b>30+</b><span id="prodStat2">Modelli</span></div>
+        <div><b>40+</b><span id="prodStat2">Modelli</span></div>
       </div>
       <div class="prod-cta-row">
         <a href="modelli.html" class="btn-adv" id="prodCtaBtn"><span id="prodCtaTxt">Esplora il catalogo</span><span class="btn-adv-arrow"><i class="fas fa-arrow-right"></i></span></a>
@@ -1806,6 +1805,8 @@ if(sbProdToggle&&sbProdSubmenu){
   sbProdToggle.addEventListener('click',function(){
     var isOpen=sbProdSubmenu.classList.toggle('open');
     sbProdToggle.classList.toggle('open',isOpen);
+    /* altezza calcolata con precisione (non una stima fissa): niente scatti di layout che potrebbero far toccare la voce sbagliata */
+    sbProdSubmenu.style.maxHeight=isOpen?(sbProdSubmenu.scrollHeight+'px'):'0px';
   });
 }
 
