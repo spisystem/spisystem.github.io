@@ -705,6 +705,25 @@ footer a:hover{color:var(--or)}
       </div>
     </div>
   </div>
+
+  <!-- ── PAGINA PRODOTTO (vera pagina, non un popup) ── -->
+  <div class="product-page" id="productPage" style="display:none">
+    <button class="pp-back" id="ppBack"><i class="fas fa-arrow-left"></i> <span id="ppBackTxt">Torna al catalogo</span></button>
+    <div class="pp-header">
+      <div class="pp-media"><img src="" alt="" id="ppImg"></div>
+      <div class="pp-info">
+        <span class="pp-cat" id="ppCat"></span>
+        <h1 class="pp-name" id="ppName"></h1>
+        <p class="pp-desc" id="ppDesc"></p>
+        <div class="pp-actions" id="ppActions"></div>
+      </div>
+    </div>
+    <div id="ppSpecsSection">
+      <h2 class="pp-specs-heading" id="ppSpecsHeading">Caratteristiche tecniche</h2>
+      <p class="pp-specs-note" id="ppSpecsNote" style="display:none"></p>
+      <div class="pp-specs-grid" id="ppSpecsGrid"></div>
+    </div>
+  </div>
 </div>
 
 <!-- ── FOOTER — coerente con index.html ── -->
@@ -729,25 +748,6 @@ footer a:hover{color:var(--or)}
   <button class="lightbox-close" id="lightboxClose" aria-label="Chiudi"><i class="fas fa-xmark"></i></button>
   <img src="" alt="" id="lightboxImg">
   <div class="lightbox-caption" id="lightboxCaption"></div>
-</div>
-
-<!-- ── PAGINA PRODOTTO (vera pagina, non un popup) ── -->
-<div class="product-page" id="productPage" style="display:none">
-  <button class="pp-back" id="ppBack"><i class="fas fa-arrow-left"></i> <span id="ppBackTxt">Torna al catalogo</span></button>
-  <div class="pp-header">
-    <div class="pp-media"><img src="" alt="" id="ppImg"></div>
-    <div class="pp-info">
-      <span class="pp-cat" id="ppCat"></span>
-      <h1 class="pp-name" id="ppName"></h1>
-      <p class="pp-desc" id="ppDesc"></p>
-      <div class="pp-actions" id="ppActions"></div>
-    </div>
-  </div>
-  <div id="ppSpecsSection">
-    <h2 class="pp-specs-heading" id="ppSpecsHeading">Caratteristiche tecniche</h2>
-    <p class="pp-specs-note" id="ppSpecsNote" style="display:none"></p>
-    <div class="pp-specs-grid" id="ppSpecsGrid"></div>
-  </div>
 </div>
 
 <script>
