@@ -373,6 +373,74 @@ a:focus-visible,button:focus-visible,.chip:focus-visible,input:focus-visible,sel
   display:flex;align-items:center;justify-content:center;transition:all .25s ease;
 }
 .lightbox-close:hover{background:rgba(240,112,32,.25);border-color:rgba(240,112,32,.4)}
+
+/* ══════════════════════════════════════
+   PAGINA PRODOTTO — vera pagina, non un popup:
+   sostituisce catalogo+sidebar nello stesso spazio,
+   cambia l'URL e risponde al tasto Indietro del browser.
+══════════════════════════════════════ */
+.product-page{animation:cardIn .4s ease both}
+.pp-back{
+  display:inline-flex;align-items:center;gap:9px;
+  background:none;border:none;cursor:pointer;
+  color:var(--txm);font-family:'Inter',sans-serif;font-size:.84em;font-weight:600;
+  padding:8px 0;margin-bottom:22px;transition:color .2s ease;
+}
+.pp-back:hover{color:var(--or)}
+.pp-back i{font-size:.85em;transition:transform .2s ease}
+.pp-back:hover i{transform:translateX(-3px)}
+
+.pp-header{
+  display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:start;
+  margin-bottom:44px;
+}
+@media(max-width:800px){.pp-header{grid-template-columns:1fr;gap:22px}}
+.pp-media{
+  background:radial-gradient(circle at 50% 40%,#ffffff 0%,var(--lt) 70%,var(--lt2) 100%);
+  border:1px solid var(--lt2);border-radius:var(--r20);
+  display:flex;align-items:center;justify-content:center;padding:38px;min-height:280px;
+  box-shadow:0 1px 2px rgba(20,20,20,.03),0 10px 26px rgba(20,20,20,.05);
+}
+.pp-media img{max-width:100%;max-height:360px;object-fit:contain}
+.pp-info{display:flex;flex-direction:column;gap:14px;padding-top:4px}
+.pp-cat{
+  display:inline-flex;align-items:center;gap:5px;width:fit-content;
+  font-size:.66em;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--or3,#E85C00);background:rgba(240,112,32,.08);
+  border:1px solid rgba(240,112,32,.2);border-radius:20px;padding:5px 13px;
+}
+.pp-name{font-family:'Cormorant Garamond',serif;font-size:2.1em;font-weight:700;color:var(--tx);line-height:1.15}
+.pp-desc{font-size:.98em;color:var(--txm);line-height:1.8}
+.pp-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px;padding-top:20px;border-top:1px solid var(--lt2)}
+
+.pp-specs-heading{
+  font-family:'Cormorant Garamond',serif;font-size:1.5em;font-weight:700;color:var(--tx);
+  margin-bottom:6px;display:flex;align-items:center;gap:10px;
+}
+.pp-specs-heading::before{content:'';width:22px;height:2px;background:linear-gradient(90deg,var(--or),var(--or2));border-radius:2px}
+.pp-specs-note{font-size:.8em;color:var(--txm);margin-bottom:22px}
+.pp-specs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.pp-specs-group{
+  background:var(--wh);border:1px solid var(--lt2);border-radius:16px;overflow:hidden;
+  box-shadow:0 1px 2px rgba(20,20,20,.03),0 8px 20px rgba(20,20,20,.04);
+}
+.pp-specs-group-title{
+  font-size:.68em;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--or3,#E85C00);background:rgba(240,112,32,.06);
+  padding:12px 16px;border-bottom:1px solid var(--lt2);
+}
+.pp-specs-row{
+  display:flex;flex-direction:column;gap:2px;
+  padding:12px 16px;border-bottom:1px solid var(--lt2);
+}
+.pp-specs-row:last-child{border-bottom:none}
+.pp-specs-row b{font-size:.78em;color:var(--tx);font-weight:700}
+.pp-specs-row span{font-size:.82em;color:var(--txm);line-height:1.5}
+@media(max-width:640px){
+  .pp-name{font-size:1.6em}
+  .pp-media{padding:26px;min-height:200px}
+  .pp-media img{max-height:220px}
+}
 .card-cat{
   display:inline-flex;align-items:center;gap:5px;width:fit-content;
   font-size:.62em;font-weight:700;letter-spacing:1px;text-transform:uppercase;
@@ -415,6 +483,17 @@ a:focus-visible,button:focus-visible,.chip:focus-visible,input:focus-visible,sel
 }
 .info-btn i{color:#2FA84F}
 .info-btn:hover{border-color:rgba(240,112,32,.35);background:rgba(240,112,32,.06);transform:translateY(-2px)}
+.details-btn{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:10px 16px;border-radius:50px;
+  background:var(--dk);color:#fff;border:none;cursor:pointer;
+  font-weight:700;font-size:.74em;letter-spacing:.4px;text-transform:uppercase;
+  transition:all var(--ease);min-height:38px;font-family:'Inter',sans-serif;
+}
+.details-btn i{color:var(--or2)}
+.details-btn:hover{background:#000;transform:translateY(-2px)}
+.card-body h2{cursor:pointer;transition:color .2s ease}
+.card-body h2:hover{color:var(--or)}
 .order-btn{
   display:inline-flex;align-items:center;gap:8px;
   padding:11px 22px;border-radius:50px;width:100%;justify-content:center;
@@ -598,7 +677,7 @@ footer a:hover{color:var(--or)}
 
 <!-- ── CATALOG: sidebar categorie + griglia prodotti ── -->
 <div class="wrap">
-  <div class="catalog-layout">
+  <div class="catalog-layout" id="catalogLayout">
     <aside class="cat-sidebar">
       <div class="cat-sidebar-title" id="catSidebarTitle">Categorie</div>
       <div class="cat-sidebar-sub" id="catSidebarSub"></div>
@@ -652,6 +731,25 @@ footer a:hover{color:var(--or)}
   <div class="lightbox-caption" id="lightboxCaption"></div>
 </div>
 
+<!-- ── PAGINA PRODOTTO (vera pagina, non un popup) ── -->
+<div class="product-page" id="productPage" style="display:none">
+  <button class="pp-back" id="ppBack"><i class="fas fa-arrow-left"></i> <span id="ppBackTxt">Torna al catalogo</span></button>
+  <div class="pp-header">
+    <div class="pp-media"><img src="" alt="" id="ppImg"></div>
+    <div class="pp-info">
+      <span class="pp-cat" id="ppCat"></span>
+      <h1 class="pp-name" id="ppName"></h1>
+      <p class="pp-desc" id="ppDesc"></p>
+      <div class="pp-actions" id="ppActions"></div>
+    </div>
+  </div>
+  <div id="ppSpecsSection">
+    <h2 class="pp-specs-heading" id="ppSpecsHeading">Caratteristiche tecniche</h2>
+    <p class="pp-specs-note" id="ppSpecsNote" style="display:none"></p>
+    <div class="pp-specs-grid" id="ppSpecsGrid"></div>
+  </div>
+</div>
+
 <script>
 /* ══════════════════════════════════════
    STORAGE SICURO — evita crash su browser
@@ -659,6 +757,10 @@ footer a:hover{color:var(--or)}
    (Safari privato, webview Instagram/FB/TikTok, ecc.)
 ══════════════════════════════════════ */
 function ssGet(k){try{return sessionStorage.getItem(k)}catch(e){return null}}
+
+/* Placeholder elegante per foto non ancora caricate (es. nuovi prodotti in attesa di immagine reale):
+   evita di mostrare l'icona di "immagine rotta" del browser. */
+var IMG_FALLBACK='data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"%3E%3Crect width="200" height="200" fill="%23F5F3EF"/%3E%3Ccircle cx="72" cy="64" r="15" fill="%23DEDAD0"/%3E%3Cpath d="M35 148l40-50 27 30 24-28 34 48H35z" fill="%23DEDAD0"/%3E%3C/svg%3E';
 function ssSet(k,v){try{sessionStorage.setItem(k,v)}catch(e){}}
 function ssRemove(k){try{sessionStorage.removeItem(k)}catch(e){}}
 function lsGet(k){try{return localStorage.getItem(k)}catch(e){return null}}
@@ -775,6 +877,10 @@ function applyModLang(lang){
   renderChips();
   renderGrid();
   renderActiveFilter();
+  if(typeof currentProductSlug!=='undefined'&&currentProductSlug){
+    var openProduct=allProducts.filter(function(p){return p.slug===currentProductSlug;})[0];
+    if(openProduct)renderProductPage(openProduct);
+  }
 }
 
 /* ── BACK TO TOP ── */
@@ -787,6 +893,7 @@ var lightbox=document.getElementById('lightbox');
 var lightboxImg=document.getElementById('lightboxImg');
 var lightboxCaption=document.getElementById('lightboxCaption');
 function openLightbox(src,name){
+  lightboxImg.onerror=function(){this.onerror=null;this.src=IMG_FALLBACK;};
   lightboxImg.src=src;
   lightboxImg.alt=name||'';
   lightboxCaption.textContent=name||'';
@@ -810,6 +917,115 @@ lightbox.addEventListener('click',function(e){if(e.target===lightbox)closeLightb
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLightbox();});
 
 /* ══════════════════════════════════════
+   PAGINA PRODOTTO — vera navigazione (URL, tasto Indietro),
+   non un popup: sostituisce il catalogo nello stesso spazio.
+══════════════════════════════════════ */
+var catalogLayout=document.getElementById('catalogLayout');
+var productPage=document.getElementById('productPage');
+
+function renderProductPage(p){
+  var t=modT[currentLang];
+  var name=(p.n[currentLang]||p.n.it);
+  var desc=(p.d[currentLang]||p.d.it);
+  var catName=(db[p.cat].t[currentLang]||db[p.cat].t.it);
+
+  var ppImgEl=document.getElementById('ppImg');
+  ppImgEl.onerror=function(){this.onerror=null;this.src=IMG_FALLBACK;};
+  ppImgEl.src=p.i;
+  ppImgEl.alt=name;
+  document.getElementById('ppCat').textContent=catName;
+  document.getElementById('ppName').textContent=name;
+  document.getElementById('ppDesc').textContent=desc;
+  document.title=name+' | Spizzicotecnica & SPI System';
+
+  var specsGrid=document.getElementById('ppSpecsGrid');
+  var specsNote=document.getElementById('ppSpecsNote');
+  specsGrid.innerHTML='';
+  if(p.specs&&p.specs.length){
+    specsNote.style.display='none';
+    p.specs.forEach(function(group){
+      var groupEl=document.createElement('div');
+      groupEl.className='pp-specs-group';
+      var rowsHtml='';
+      group.items.forEach(function(item){
+        rowsHtml+='<div class="pp-specs-row"><b>'+(item.label[currentLang]||item.label.it)+'</b><span>'+(item.value[currentLang]||item.value.it)+'</span></div>';
+      });
+      groupEl.innerHTML='<div class="pp-specs-group-title">'+(group.group[currentLang]||group.group.it)+'</div>'+rowsHtml;
+      specsGrid.appendChild(groupEl);
+    });
+  }else{
+    /* finché non riceviamo la scheda tecnica reale, mostriamo la descrizione spezzata in punti */
+    specsNote.style.display='block';
+    specsNote.textContent=currentLang==='it'?'Scheda tecnica dettagliata in arrivo — nel frattempo, ecco i punti principali:':'Detailed technical sheet coming soon — in the meantime, here are the key points:';
+    var groupEl=document.createElement('div');
+    groupEl.className='pp-specs-group';
+    var sentences=desc.split(/\.\s+/).map(function(s){return s.trim();}).filter(function(s){return s.length>3;});
+    var rowsHtml='';
+    sentences.forEach(function(s){
+      var clean=s.replace(/\.$/,'')+'.';
+      rowsHtml+='<div class="pp-specs-row"><span>'+clean+'</span></div>';
+    });
+    groupEl.innerHTML='<div class="pp-specs-group-title">'+(currentLang==='it'?'In breve':'At a glance')+'</div>'+rowsHtml;
+    specsGrid.appendChild(groupEl);
+  }
+
+  var actionsWrap=document.getElementById('ppActions');
+  var pdfHtml=p.p?'<a href="'+p.p+'" class="pdf-btn" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i> '+t.pdf+'</a>':'';
+  var waTextD=encodeURIComponent((currentLang==='it'?'Salve, sono interessato al modello: ':'Hello, I am interested in the model: ')+name);
+  var ctaHtml;
+  if(p.order){
+    var orderMsgText=p.orderMsg?(p.orderMsg[currentLang]||p.orderMsg.it):((currentLang==='it'?'Salve, vorrei ordinare: ':'Hello, I would like to order: ')+name);
+    ctaHtml='<a href="https://wa.me/393382247948?text='+encodeURIComponent(orderMsgText)+'" class="order-btn" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> '+t.order+'</a>';
+  }else{
+    ctaHtml=pdfHtml+'<a href="https://wa.me/393382247948?text='+waTextD+'" class="info-btn" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> '+t.info+'</a>';
+  }
+  actionsWrap.innerHTML=ctaHtml;
+
+  var ppBackTxt=document.getElementById('ppBackTxt');if(ppBackTxt)ppBackTxt.textContent=currentLang==='it'?'Torna al catalogo':'Back to catalogue';
+  var ppSpecsHeading=document.getElementById('ppSpecsHeading');if(ppSpecsHeading)ppSpecsHeading.textContent=currentLang==='it'?'Caratteristiche tecniche':'Technical specifications';
+}
+
+var currentProductSlug=null;
+
+function showProductPage(p,pushState){
+  currentProductSlug=p.slug;
+  renderProductPage(p);
+  catalogLayout.style.display='none';
+  productPage.style.display='block';
+  window.scrollTo({top:0,behavior:'instant'});
+  if(pushState!==false){
+    var url=new URL(window.location.href);
+    url.searchParams.set('scheda',p.slug);
+    history.pushState({scheda:p.slug},'',url);
+  }
+}
+
+function showCatalogView(pushState){
+  currentProductSlug=null;
+  productPage.style.display='none';
+  catalogLayout.style.display='';
+  document.title='Catalogo Prodotti: Registratori di Cassa, Bilance, Rotoli Termici | Spizzicotecnica & SPI System';
+  if(pushState!==false){
+    var url=new URL(window.location.href);
+    url.searchParams.delete('scheda');
+    history.pushState({},'',url);
+  }
+}
+
+document.getElementById('ppBack').addEventListener('click',function(){showCatalogView();});
+
+window.addEventListener('popstate',function(){
+  var schedaParam=new URLSearchParams(window.location.search).get('scheda');
+  if(schedaParam){
+    var found=allProducts.filter(function(p){return p.slug===schedaParam;})[0];
+    if(found)showProductPage(found,false);
+    else showCatalogView(false);
+  }else{
+    showCatalogView(false);
+  }
+});
+
+/* ══════════════════════════════════════
    DATA — categorie e prodotti
 ══════════════════════════════════════ */
 var db={
@@ -817,24 +1033,332 @@ var db={
     icon:'fa-desktop',
     t:{it:'Sistemi Gestionali',en:'Management Systems'},
     m:[
-      {n:{it:'WYCASH 2600',en:'WYCASH 2600'},i:'img/IMG_0418.jpeg',d:{it:'Wycash 2600 è il sistema di cassa potente e versatile per gestire il tuo negozio in maniera semplice ed efficiente. Display touch 15,6 pollici full HD super brillante.',en:'Wycash 2600 is the powerful, versatile cash system for managing your shop simply and efficiently. Ultra-bright 15.6" full HD touch display.'},p:'pdf/wycash-2600.pdf'},
-      {n:{it:'WYCASH 1300',en:'WYCASH 1300'},i:'img/IMG_0417.jpeg',d:{it:'Per negozi, ristorazione e tabaccherie. Sistema di cassa compatto e flessibile per la gestione integrata del punto vendita. Interfaccia touch screen facile e intuitiva.',en:'For shops, catering and tobacconists. A compact, flexible cash system for integrated point-of-sale management. Easy, intuitive touch-screen interface.'},p:'pdf/wycash-1300.pdf'},
-      {n:{it:'WYCASH 800',en:'WYCASH 800'},i:'img/wycash800.jpeg',d:{it:'Soluzione di cassa intelligente con display touch screen 10 pollici. Controlla ogni aspetto della tua attività in pochi tocchi grazie all\u2019applicazione Wycash integrata.',en:'A smart cash solution with a 10" touch-screen display. Control every aspect of your business in a few taps thanks to the built-in Wycash app.'},p:'pdf/wycash800.pdf'},
-      {n:{it:'WYCASH 600',en:'WYCASH 600'},i:'img/wycash-600.jpeg',d:{it:'Soluzione touch screen compatta e flessibile per la gestione integrata del punto vendita. Gestisci e invia lo scontrino digitale in totale sicurezza.',en:'A compact, flexible touch-screen solution for integrated point-of-sale management. Manage and send the digital receipt with total security.'},p:'pdf/wycash-600.pdf'},
-      {n:{it:'WYCASH 300',en:'WYCASH 300'},i:'img/wycash300.PNG',d:{it:'Dimensioni contenute, peso ridotto e batteria a lunga durata. Il sistema POS RT che consente la massima flessibilità operativa.',en:'Compact size, light weight and long-lasting battery. The telematic POS system that allows maximum operational flexibility.'},p:'pdf/wycash300.pdf'},
-      {n:{it:'SOFTWARE GESTIONALE LAVANDERIA',en:'LAUNDRY MANAGEMENT SOFTWARE'},i:'img/3logis.PNG',d:{it:'3logiS: piattaforma gestionale semplice, economica e modulare progettata per Lavanderie, Sartorie, Calzolerie, Stirerie e Centri-Servizi.',en:'3logiS: a simple, affordable and modular management platform designed for laundries, tailors, shoe repairers, ironing services and service centres.'},p:'pdf/3logis.pdf'}
+      {n:{it:'WYCASH 2600',en:'WYCASH 2600'},i:'img/IMG_0418.jpeg',d:{it:'Wycash 2600 è il sistema di cassa potente e versatile per gestire il tuo negozio in maniera semplice ed efficiente. Display touch 15,6 pollici full HD super brillante.',en:'Wycash 2600 is the powerful, versatile cash system for managing your shop simply and efficiently. Ultra-bright 15.6" full HD touch display.'},p:'pdf/wycash-2600.pdf',
+        specs:[
+          {group:{it:'Monitor e processore',en:'Monitor and processor'},items:[
+            {label:{it:'Display',en:'Display'},value:{it:'15,6” Full HD 1920x1080 multi-touch orientabile, alta luminosità',en:'15.6" Full HD 1920x1080 rotating multi-touch, high brightness'}},
+            {label:{it:'Processore',en:'Processor'},value:{it:'Rockchip Hexa-Core',en:'Rockchip Hexa-Core'}}
+          ]},
+          {group:{it:'Stampante',en:'Printer'},items:[
+            {label:{it:'Tipo',en:'Type'},value:{it:'Telematica 80 mm con customer display LCD 2x20 e taglierina automatica',en:'80 mm telematic printer with 2x20 LCD customer display and automatic cutter'}}
+          ]},
+          {group:{it:'Connettività e software',en:'Connectivity and software'},items:[
+            {label:{it:'Connessione',en:'Connectivity'},value:{it:'Dual Band WiFi (2,4-5GHz), Bluetooth 5.0, Ethernet 1 Gbit',en:'Dual-band WiFi (2.4-5GHz), Bluetooth 5.0, 1 Gbit Ethernet'}},
+            {label:{it:'Software',en:'Software'},value:{it:'Applicazione Wycash PRO 3.0 inclusa',en:'Wycash PRO 3.0 app included'}},
+            {label:{it:'Colori disponibili',en:'Available colours'},value:{it:'Bianco, Grigio antracite',en:'White, Anthracite grey'}}
+          ]}
+        ]
+      },
+      {n:{it:'WYCASH 1300',en:'WYCASH 1300'},i:'img/IMG_0417.jpeg',d:{it:'Per negozi, ristorazione e tabaccherie. Sistema di cassa compatto e flessibile per la gestione integrata del punto vendita. Interfaccia touch screen facile e intuitiva.',en:'For shops, catering and tobacconists. A compact, flexible cash system for integrated point-of-sale management. Easy, intuitive touch-screen interface.'},p:'pdf/wycash-1300.pdf',
+        specs:[
+          {group:{it:'Monitor e processore',en:'Monitor and processor'},items:[
+            {label:{it:'Display',en:'Display'},value:{it:'13,3” Full HD 1920x1080 multi-touch orientabile, alta luminosità',en:'13.3" Full HD 1920x1080 rotating multi-touch, high brightness'}},
+            {label:{it:'Customer display',en:'Customer display'},value:{it:'LCD 2x20 posteriore integrato',en:'Built-in rear 2x20 LCD'}},
+            {label:{it:'Processore',en:'Processor'},value:{it:'Rockchip Hexa-Core',en:'Rockchip Hexa-Core'}}
+          ]},
+          {group:{it:'Stampante',en:'Printer'},items:[
+            {label:{it:'Tipo',en:'Type'},value:{it:'Telematica 80 mm integrata con taglierina automatica',en:'Built-in 80 mm telematic printer with automatic cutter'}}
+          ]},
+          {group:{it:'Connettività e software',en:'Connectivity and software'},items:[
+            {label:{it:'Connessione',en:'Connectivity'},value:{it:'Dual Band WiFi, Bluetooth 5.0, Ethernet 1 Gbit',en:'Dual-band WiFi, Bluetooth 5.0, 1 Gbit Ethernet'}},
+            {label:{it:'Software',en:'Software'},value:{it:'Applicazione Wycash PRO 3.0 inclusa',en:'Wycash PRO 3.0 app included'}},
+            {label:{it:'Colori disponibili',en:'Available colours'},value:{it:'Bianco, Grigio antracite',en:'White, Anthracite grey'}}
+          ]}
+        ]
+      },
+      {n:{it:'WYCASH 800',en:'WYCASH 800'},i:'img/wycash800.jpeg',d:{it:'Soluzione di cassa intelligente con display touch screen 10 pollici. Controlla ogni aspetto della tua attività in pochi tocchi grazie all\u2019applicazione Wycash integrata.',en:'A smart cash solution with a 10" touch-screen display. Control every aspect of your business in a few taps thanks to the built-in Wycash app.'},p:'pdf/wycash800.pdf',
+        specs:[
+          {group:{it:'Monitor e processore',en:'Monitor and processor'},items:[
+            {label:{it:'Display',en:'Display'},value:{it:'10,1” 1280x800 multi-touch capacitivo, alta luminosità',en:'10.1" 1280x800 capacitive multi-touch, high brightness'}},
+            {label:{it:'Customer display',en:'Customer display'},value:{it:'4” a colori, personalizzabile',en:'4" colour, customisable'}},
+            {label:{it:'Processore',en:'Processor'},value:{it:'Cortex Quad-Core',en:'Cortex Quad-Core'}}
+          ]},
+          {group:{it:'Stampante e fiscalità',en:'Printer and fiscal features'},items:[
+            {label:{it:'Stampante',en:'Printer'},value:{it:'Termica 80 mm integrata con taglierina automatica',en:'Built-in 80 mm thermal printer with automatic cutter'}},
+            {label:{it:'Fiscalità',en:'Fiscal'},value:{it:'DGFE, memoria fiscale, scheda fiscale, scontrino digitale',en:'Electronic journal, fiscal memory, fiscal card, digital receipt'}},
+            {label:{it:'Pagamenti',en:'Payments'},value:{it:'Pagamenti elettronici integrati',en:'Integrated electronic payments'}}
+          ]},
+          {group:{it:'Connettività e software',en:'Connectivity and software'},items:[
+            {label:{it:'Connessione',en:'Connectivity'},value:{it:'Dual Band WiFi, Bluetooth 5.0, Ethernet 100Mbps, 4G',en:'Dual-band WiFi, Bluetooth 5.0, 100Mbps Ethernet, 4G'}},
+            {label:{it:'Monitoraggio',en:'Monitoring'},value:{it:'RT Cloud',en:'RT Cloud'}},
+            {label:{it:'Software',en:'Software'},value:{it:'Applicazione Wycash inclusa',en:'Wycash app included'}},
+            {label:{it:'Colori disponibili',en:'Available colours'},value:{it:'Bianco, Grigio antracite',en:'White, Anthracite grey'}}
+          ]}
+        ]
+      },
+      {n:{it:'WYCASH 600',en:'WYCASH 600'},i:'img/wycash-600.jpeg',d:{it:'Soluzione touch screen compatta e flessibile per la gestione integrata del punto vendita. Gestisci e invia lo scontrino digitale in totale sicurezza.',en:'A compact, flexible touch-screen solution for integrated point-of-sale management. Manage and send the digital receipt with total security.'},p:'pdf/wycash-600.pdf',
+        specs:[
+          {group:{it:'Monitor e processore',en:'Monitor and processor'},items:[
+            {label:{it:'Display',en:'Display'},value:{it:'10,1” 1280x800 multi-touch capacitivo, alta luminosità',en:'10.1" 1280x800 capacitive multi-touch, high brightness'}},
+            {label:{it:'Processore',en:'Processor'},value:{it:'Cortex Quad-Core',en:'Cortex Quad-Core'}}
+          ]},
+          {group:{it:'Stampante e alimentazione',en:'Printer and power'},items:[
+            {label:{it:'Stampante',en:'Printer'},value:{it:'Telematica 80 mm con customer display LCD 2x20 e taglierina automatica',en:'80 mm telematic printer with 2x20 LCD customer display and automatic cutter'}},
+            {label:{it:'Batteria di emergenza',en:'Backup battery'},value:{it:'Integrata, 2600 mAh',en:'Built-in, 2600 mAh'}}
+          ]},
+          {group:{it:'Connettività e software',en:'Connectivity and software'},items:[
+            {label:{it:'Connessione',en:'Connectivity'},value:{it:'Dual Band WiFi, Bluetooth 5.1, Ethernet 100Mbps',en:'Dual-band WiFi, Bluetooth 5.1, 100Mbps Ethernet'}},
+            {label:{it:'Software',en:'Software'},value:{it:'Applicazione Wycash PRO 3.0 inclusa',en:'Wycash PRO 3.0 app included'}}
+          ]}
+        ]
+      },
+      {n:{it:'WYCASH 300',en:'WYCASH 300'},i:'img/wycash300.PNG',d:{it:'Dimensioni contenute, peso ridotto e batteria a lunga durata. Il sistema POS RT che consente la massima flessibilità operativa.',en:'Compact size, light weight and long-lasting battery. The telematic POS system that allows maximum operational flexibility.'},p:'pdf/wycash300.pdf',
+        specs:[
+          {group:{it:'Monitor, dimensioni e peso',en:'Monitor, dimensions and weight'},items:[
+            {label:{it:'Display',en:'Display'},value:{it:'8” IPS 800x1280 multi-touch capacitivo, alta luminosità',en:'8" IPS 800x1280 capacitive multi-touch, high brightness'}},
+            {label:{it:'Processore',en:'Processor'},value:{it:'Cortex Quad-Core',en:'Cortex Quad-Core'}},
+            {label:{it:'Dimensioni',en:'Dimensions'},value:{it:'265 x 125 x 100 mm (L x P x H)',en:'265 x 125 x 100 mm (W x D x H)'}},
+            {label:{it:'Peso',en:'Weight'},value:{it:'720 g senza batteria, 820 g con batteria',en:'720 g without battery, 820 g with battery'}}
+          ]},
+          {group:{it:'Stampante e fiscalità',en:'Printer and fiscal features'},items:[
+            {label:{it:'Stampante',en:'Printer'},value:{it:'Telematica integrata da 58 mm',en:'Built-in 58 mm telematic printer'}},
+            {label:{it:'Fiscalità',en:'Fiscal'},value:{it:'DGFE, memoria fiscale, scheda fiscale, scontrino digitale',en:'Electronic journal, fiscal memory, fiscal card, digital receipt'}},
+            {label:{it:'Pagamenti',en:'Payments'},value:{it:'NFC integrato per pagamenti innovativi',en:'Built-in NFC for innovative payments'}}
+          ]},
+          {group:{it:'Connettività e software',en:'Connectivity and software'},items:[
+            {label:{it:'Connessione',en:'Connectivity'},value:{it:'Dual Band WiFi, Bluetooth 5, 4G LTE (opzionale)',en:'Dual-band WiFi, Bluetooth 5, optional 4G LTE'}},
+            {label:{it:'Monitoraggio',en:'Monitoring'},value:{it:'RT Cloud',en:'RT Cloud'}},
+            {label:{it:'Software',en:'Software'},value:{it:'Applicazione Wycash inclusa',en:'Wycash app included'}}
+          ]}
+        ]
+      },
+      {n:{it:'SOFTWARE GESTIONALE LAVANDERIA',en:'LAUNDRY MANAGEMENT SOFTWARE'},i:'img/3logis.PNG',d:{it:'3logiS: piattaforma gestionale semplice, economica e modulare progettata per Lavanderie, Sartorie, Calzolerie, Stirerie e Centri-Servizi.',en:'3logiS: a simple, affordable and modular management platform designed for laundries, tailors, shoe repairers, ironing services and service centres.'},p:'pdf/3logis.pdf',
+        specs:[
+          {group:{it:'Piattaforma',en:'Platform'},items:[
+            {label:{it:'Tipo',en:'Type'},value:{it:'Gestionale modulare via web, attivabile solo per le funzioni che servono',en:'Modular web-based management software, activated only for the features you need'}},
+            {label:{it:'Settori',en:'Sectors'},value:{it:'Lavanderie, sartorie, calzolerie, stirerie, centri servizi',en:'Laundries, tailors, shoe repairers, ironing services, service centres'}}
+          ]},
+          {group:{it:'Funzioni principali',en:'Main features'},items:[
+            {label:{it:'Gestione clienti e capi',en:'Customer and garment management'},value:{it:'Anagrafica clienti, tracciamento capi con etichette/codici, storico servizi',en:'Customer database, garment tracking with tags/codes, service history'}},
+            {label:{it:'Cassa e fatturazione',en:'Till and invoicing'},value:{it:'Emissione scontrini/fatture e integrazione con i registratori di cassa',en:'Receipt/invoice issuing and integration with cash registers'}},
+            {label:{it:'Accesso',en:'Access'},value:{it:'Da web, anche multi-sede',en:'Web-based, also multi-location'}}
+          ]}
+        ]
+      }
     ]
   },
   'registratori':{
     icon:'fa-cash-register',
     t:{it:'Registratori di Cassa',en:'Cash Registers'},
     m:[
-      {n:{it:'SERIE HELIOS PLUS RT',en:'HELIOS PLUS RT SERIES'},i:'img/helios.jpeg',d:{it:'Alte prestazioni di affidabilità, doppio display LCD grande e luminoso, cambio carta facilitato con dispositivo Easy loading super-fast. Ideale per tutte le attività di vendita.',en:'High reliability performance, large bright dual LCD display, easy paper change with super-fast Easy Loading device. Ideal for any retail business.'},p:'pdf/helios.pdf'},
-      {n:{it:'SERIE AURA RT',en:'AURA RT SERIES'},i:'img/aura.jpeg',d:{it:'Registratore telematico per il commercio ambulante. Il più leggero e compatto della famiglia Axon Micrelec: batteria Litio lunga durata, cavo auto, cover impermeabile e borsa inclusi.',en:'Telematic register for street vending. The lightest and most compact of the Axon Micrelec family: long-life lithium battery, car cable, waterproof cover and bag included.'},p:'pdf/aura.pdf'},
-      {n:{it:'SERIE EDO PLUS II RT',en:'EDO PLUS II RT SERIES'},i:'img/edoplus.jpeg',d:{it:'Design ergonomico, elevate performance di velocità e affidabilità. Doppio display LCD luminoso facilita la lettura per operatore e cliente. Tastiera illuminata a intensità variabile.',en:'Ergonomic design, high speed and reliability performance. Bright dual LCD display makes reading easier for both operator and customer. Backlit keyboard with variable intensity.'},p:'pdf/edoplus.pdf'},
-      {n:{it:'SERIE MILO RT',en:'MILO RT SERIES'},i:'img/milo.jpeg',d:{it:'Design elegante e compatto con tutte le funzionalità essenziali per il punto vendita. Tastiera ergonomica e doppio display LCD integrato per operatività semplice e veloce.',en:'Elegant, compact design with all the essential point-of-sale features. Ergonomic keyboard and built-in dual LCD display for simple, fast operation.'},p:'pdf/milo.pdf'},
-      {n:{it:'SERIE HELIOS TOUCH RT',en:'HELIOS TOUCH RT SERIES'},i:'img/heliost.jpeg',d:{it:'Registratore Telematico touch screen in elegante struttura alluminio. Tastiera touch 7 pollici ad alta luminosità regolabile. 40 tasti su 80 completamente personalizzabili per funzione e colore.',en:'Touch-screen telematic register in an elegant aluminium body. 7" touch keyboard with adjustable high brightness. 40 of 80 keys fully customisable by function and colour.'},p:'pdf/heliostouch.pdf'},
-      {n:{it:'SERIE DADO RT',en:'DADO RT SERIES'},i:'img/dado.PNG',d:{it:'Display cliente integrato, design compatto. La nuova forma dell\u2019innovazione.',en:'Built-in customer display, compact design. The new shape of innovation.'},p:'pdf/dado.pdf'}
+      {n:{it:'SERIE HELIOS PLUS RT',en:'HELIOS PLUS RT SERIES'},i:'img/helios.jpeg',d:{it:'Alte prestazioni di affidabilità, doppio display LCD grande e luminoso, cambio carta facilitato con dispositivo Easy loading super-fast. Ideale per tutte le attività di vendita.',en:'High reliability performance, large bright dual LCD display, easy paper change with super-fast Easy Loading device. Ideal for any retail business.'},p:'pdf/helios.pdf',
+        specs:[
+          {group:{it:'Sistema',en:'System'},items:[
+            {label:{it:'Processore',en:'Processor'},value:{it:'Advanced CPU ARM 32 bit Gen. 2',en:'Advanced CPU ARM 32-bit Gen. 2'}}
+          ]},
+          {group:{it:'Tastiera',en:'Keyboard'},items:[
+            {label:{it:'Tasti',en:'Keys'},value:{it:'Tastiera meccanica integrata con 40 tasti programmabili',en:'Built-in mechanical keyboard with 40 programmable keys'}},
+            {label:{it:'Durata',en:'Lifespan'},value:{it:'50 milioni di battute',en:'50 million keystrokes'}}
+          ]},
+          {group:{it:'Display',en:'Display'},items:[
+            {label:{it:'Operatore',en:'Operator'},value:{it:'LCD retroilluminato integrato 2x16 caratteri',en:'Built-in backlit LCD, 2x16 characters'}},
+            {label:{it:'Cliente',en:'Customer'},value:{it:'LCD retroilluminato integrato 2x16 caratteri',en:'Built-in backlit LCD, 2x16 characters'}}
+          ]},
+          {group:{it:'Stampante',en:'Printer'},items:[
+            {label:{it:'Tipo',en:'Type'},value:{it:'Grafica su carta termica ad alta definizione',en:'High-definition graphic printing on thermal paper'}},
+            {label:{it:'Velocità di stampa',en:'Print speed'},value:{it:'Fino a 90 mm/sec',en:'Up to 90 mm/sec'}},
+            {label:{it:'Larghezza di stampa',en:'Print width'},value:{it:'57 mm (32 caratteri per linea ad alta leggibilità)',en:'57 mm (32 highly legible characters per line)'}},
+            {label:{it:'Caricamento carta',en:'Paper loading'},value:{it:'Automatico con tecnologia Easy loading super-fast',en:'Automatic, super-fast Easy Loading technology'}},
+            {label:{it:'Durata testina',en:'Print head life'},value:{it:'100 milioni di impulsi o 50 km di stampa',en:'100 million pulses or 50 km of printing'}}
+          ]},
+          {group:{it:'Memoria e funzioni',en:'Memory and features'},items:[
+            {label:{it:'Reparti',en:'Departments'},value:{it:'Fino a 60 reparti (8 diretti da tastiera)',en:'Up to 60 departments (8 direct from keyboard)'}},
+            {label:{it:'Pagamenti',en:'Payments'},value:{it:'Fino a 20 funzioni di pagamento',en:'Up to 20 payment functions'}},
+            {label:{it:'Aliquote IVA',en:'VAT rates'},value:{it:'Fino a 12 aliquote IVA / Codici Natura prefissate',en:'Up to 12 preset VAT rates / Nature codes'}},
+            {label:{it:'Loghi grafici',en:'Graphic logos'},value:{it:'Fino a 9, in testa e coda scontrino',en:'Up to 9, at the top and bottom of the receipt'}}
+          ]},
+          {group:{it:'Porte I/O e alimentazione',en:'I/O ports and power'},items:[
+            {label:{it:'Porte',en:'Ports'},value:{it:'2x USB, 2 seriali, 1x Ethernet RJ45, 1x RJ11 cassetto',en:'2x USB, 2 serial, 1x Ethernet RJ45, 1x RJ11 cash drawer'}},
+            {label:{it:'Alimentatore',en:'Power supply'},value:{it:'AC 100-240V 50/60Hz, DC +12V 2.5A',en:'AC 100-240V 50/60Hz, DC +12V 2.5A'}}
+          ]},
+          {group:{it:'Certificazioni e dimensioni',en:'Certifications and dimensions'},items:[
+            {label:{it:'Certificazioni',en:'Certifications'},value:{it:'CE, ISO 9001',en:'CE, ISO 9001'}},
+            {label:{it:'Dimensioni',en:'Dimensions'},value:{it:'224 x 213 x 233 mm (L x P x H)',en:'224 x 213 x 233 mm (W x D x H)'}},
+            {label:{it:'Peso',en:'Weight'},value:{it:'1,4 kg',en:'1.4 kg'}},
+            {label:{it:'Colori disponibili',en:'Available colours'},value:{it:'Nero, Bianco',en:'Black, White'}}
+          ]}
+        ]
+      },
+      {n:{it:'SERIE AURA RT',en:'AURA RT SERIES'},i:'img/aura.jpeg',d:{it:'Registratore telematico per il commercio ambulante. Il più leggero e compatto della famiglia Axon Micrelec: batteria Litio lunga durata, cavo auto, cover impermeabile e borsa inclusi.',en:'Telematic register for street vending. The lightest and most compact of the Axon Micrelec family: long-life lithium battery, car cable, waterproof cover and bag included.'},p:'pdf/aura.pdf',
+        specs:[
+          {group:{it:'Sistema',en:'System'},items:[
+            {label:{it:'Processore',en:'Processor'},value:{it:'ST 32 bit, 120 MHz',en:'ST 32-bit, 120 MHz'}}
+          ]},
+          {group:{it:'Display e tastiera',en:'Display and keyboard'},items:[
+            {label:{it:'Operatore',en:'Operator'},value:{it:'LCD retroilluminato integrato 1x16 caratteri',en:'Built-in backlit LCD, 1x16 characters'}},
+            {label:{it:'Cliente',en:'Customer'},value:{it:'LCD retroilluminato integrato 1x16 caratteri',en:'Built-in backlit LCD, 1x16 characters'}},
+            {label:{it:'Tasti',en:'Keys'},value:{it:'34 tasti programmabili, durata 50 milioni di battute',en:'34 programmable keys, 50 million keystroke lifespan'}}
+          ]},
+          {group:{it:'Stampante',en:'Printer'},items:[
+            {label:{it:'Tipo',en:'Type'},value:{it:'Grafica su carta termica ad alta definizione',en:'High-definition graphic printing on thermal paper'}},
+            {label:{it:'Velocità di stampa',en:'Print speed'},value:{it:'Fino a 90 mm/sec',en:'Up to 90 mm/sec'}},
+            {label:{it:'Specifiche rotolo',en:'Roll specs'},value:{it:'57 mm di larghezza per 50 mt di lunghezza',en:'57 mm wide, 50 m long'}}
+          ]},
+          {group:{it:'Memoria e funzioni',en:'Memory and features'},items:[
+            {label:{it:'Reparti',en:'Departments'},value:{it:'Fino a 60 reparti (5+5 diretti da tastiera)',en:'Up to 60 departments (5+5 direct from keyboard)'}},
+            {label:{it:'Pagamenti',en:'Payments'},value:{it:'Fino a 20 funzioni di pagamento',en:'Up to 20 payment functions'}},
+            {label:{it:'Aliquote IVA',en:'VAT rates'},value:{it:'Fino a 12 aliquote IVA / Codici Natura prefissate',en:'Up to 12 preset VAT rates / Nature codes'}}
+          ]},
+          {group:{it:'Porte I/O e alimentazione',en:'I/O ports and power'},items:[
+            {label:{it:'Porte',en:'Ports'},value:{it:'2x USB, 1x RJ11 seriale RS232, 1x Ethernet RJ45',en:'2x USB, 1x RJ11 serial RS232, 1x Ethernet RJ45'}},
+            {label:{it:'Alimentatore',en:'Power supply'},value:{it:'Esterno 12VDC / 2.5A',en:'External 12VDC / 2.5A'}}
+          ]},
+          {group:{it:'Certificazioni, dimensioni e dotazione ambulante',en:'Certifications, dimensions and street-vending kit'},items:[
+            {label:{it:'Certificazioni',en:'Certifications'},value:{it:'CE, ISO 9001',en:'CE, ISO 9001'}},
+            {label:{it:'Dimensioni',en:'Dimensions'},value:{it:'160 x 250 x 97 mm (L x P x H)',en:'160 x 250 x 97 mm (W x D x H)'}},
+            {label:{it:'Peso',en:'Weight'},value:{it:'1,4 kg',en:'1.4 kg'}},
+            {label:{it:'Dotazione ambulante',en:'Street-vending kit'},value:{it:'2x batterie ricaricabili al Litio (2600mAh cad.), kit alimentazione e protezione per esterni',en:'2x rechargeable lithium batteries (2600mAh each), outdoor power and protection kit'}}
+          ]}
+        ]
+      },
+      {n:{it:'SERIE EDO PLUS II RT',en:'EDO PLUS II RT SERIES'},i:'img/edoplus.jpeg',d:{it:'Design ergonomico, elevate performance di velocità e affidabilità. Doppio display LCD luminoso facilita la lettura per operatore e cliente. Tastiera illuminata a intensità variabile.',en:'Ergonomic design, high speed and reliability performance. Bright dual LCD display makes reading easier for both operator and customer. Backlit keyboard with variable intensity.'},p:'pdf/edoplus.pdf',
+        specs:[
+          {group:{it:'Sistema',en:'System'},items:[
+            {label:{it:'Processore',en:'Processor'},value:{it:'Advanced CPU ARM 32 bit',en:'Advanced CPU ARM 32-bit'}}
+          ]},
+          {group:{it:'Tastiera e display',en:'Keyboard and display'},items:[
+            {label:{it:'Tasti',en:'Keys'},value:{it:'Tastiera meccanica retroilluminata, 40 tasti programmabili, luminosità regolabile',en:'Backlit mechanical keyboard, 40 programmable keys, adjustable brightness'}},
+            {label:{it:'Durata tastiera',en:'Keyboard lifespan'},value:{it:'50 milioni di battute',en:'50 million keystrokes'}},
+            {label:{it:'Operatore',en:'Operator'},value:{it:'LCD retroilluminato integrato 2x16 caratteri',en:'Built-in backlit LCD, 2x16 characters'}},
+            {label:{it:'Cliente',en:'Customer'},value:{it:'LCD retroilluminato integrato 2x16 caratteri ad alta luminosità',en:'Built-in high-brightness backlit LCD, 2x16 characters'}}
+          ]},
+          {group:{it:'Stampante',en:'Printer'},items:[
+            {label:{it:'Velocità di stampa',en:'Print speed'},value:{it:'Fino a 200 mm/sec',en:'Up to 200 mm/sec'}},
+            {label:{it:'Larghezza di stampa',en:'Print width'},value:{it:'57 mm (32 caratteri per linea)',en:'57 mm (32 characters per line)'}},
+            {label:{it:'Caricamento carta',en:'Paper loading'},value:{it:'Automatico, tecnologia Super Easy Load',en:'Automatic, Super Easy Load technology'}},
+            {label:{it:'Durata testina',en:'Print head life'},value:{it:'100 milioni di impulsi o 100 km di stampa',en:'100 million pulses or 100 km of printing'}}
+          ]},
+          {group:{it:'Memoria e funzioni',en:'Memory and features'},items:[
+            {label:{it:'Reparti',en:'Departments'},value:{it:'Fino a 60 reparti (8 diretti da tastiera)',en:'Up to 60 departments (8 direct from keyboard)'}},
+            {label:{it:'Pagamenti',en:'Payments'},value:{it:'Fino a 20 modalità di gestione pagamento',en:'Up to 20 payment management modes'}},
+            {label:{it:'Aliquote IVA',en:'VAT rates'},value:{it:'Fino a 12 aliquote IVA prefissate, 6 codici natura',en:'Up to 12 preset VAT rates, 6 nature codes'}},
+            {label:{it:'Statistiche e report',en:'Statistics and reports'},value:{it:'Per reparti, gruppi, IVA, articoli, pagamenti, sconti e maggiorazioni',en:'By department, group, VAT, item, payment, discount and surcharge'}}
+          ]},
+          {group:{it:'Porte I/O e alimentazione',en:'I/O ports and power'},items:[
+            {label:{it:'Porte',en:'Ports'},value:{it:'2x USB, 2 seriali, 1x Ethernet RJ45, 1x RJ11 cassetto',en:'2x USB, 2 serial, 1x Ethernet RJ45, 1x RJ11 cash drawer'}},
+            {label:{it:'Alimentatore',en:'Power supply'},value:{it:'AC 100-240V 50/60Hz, DC +12V 4A',en:'AC 100-240V 50/60Hz, DC +12V 4A'}}
+          ]},
+          {group:{it:'Certificazioni e dimensioni',en:'Certifications and dimensions'},items:[
+            {label:{it:'Certificazioni',en:'Certifications'},value:{it:'CE, ISO 9001 — omologato RT nativo',en:'CE, ISO 9001 — approved as native RT'}},
+            {label:{it:'Dimensioni',en:'Dimensions'},value:{it:'189 x 124 x 316 mm (L x P x H)',en:'189 x 124 x 316 mm (W x D x H)'}},
+            {label:{it:'Peso',en:'Weight'},value:{it:'1,3 kg',en:'1.3 kg'}},
+            {label:{it:'Colori disponibili',en:'Available colours'},value:{it:'Nero, Bianco',en:'Black, White'}}
+          ]}
+        ]
+      },
+      {n:{it:'SERIE MILO RT',en:'MILO RT SERIES'},i:'img/milo.jpeg',d:{it:'Design elegante e compatto con tutte le funzionalità essenziali per il punto vendita. Tastiera ergonomica e doppio display LCD integrato per operatività semplice e veloce.',en:'Elegant, compact design with all the essential point-of-sale features. Ergonomic keyboard and built-in dual LCD display for simple, fast operation.'},p:'pdf/milo.pdf',
+        specs:[
+          {group:{it:'Sistema',en:'System'},items:[
+            {label:{it:'Processore',en:'Processor'},value:{it:'Advanced CPU ARM 32 bit',en:'Advanced CPU ARM 32-bit'}}
+          ]},
+          {group:{it:'Tastiera e display',en:'Keyboard and display'},items:[
+            {label:{it:'Tasti',en:'Keys'},value:{it:'Tastiera meccanica integrata, 40 tasti programmabili',en:'Built-in mechanical keyboard, 40 programmable keys'}},
+            {label:{it:'Durata tastiera',en:'Keyboard lifespan'},value:{it:'50 milioni di battute',en:'50 million keystrokes'}},
+            {label:{it:'Operatore',en:'Operator'},value:{it:'LCD retroilluminato integrato 2x16 caratteri',en:'Built-in backlit LCD, 2x16 characters'}},
+            {label:{it:'Cliente',en:'Customer'},value:{it:'LCD retroilluminato integrato 2x16 caratteri ad alta luminosità',en:'Built-in high-brightness backlit LCD, 2x16 characters'}}
+          ]},
+          {group:{it:'Stampante',en:'Printer'},items:[
+            {label:{it:'Velocità di stampa',en:'Print speed'},value:{it:'Fino a 90 mm/sec',en:'Up to 90 mm/sec'}},
+            {label:{it:'Larghezza di stampa',en:'Print width'},value:{it:'57 mm (32 caratteri per linea)',en:'57 mm (32 characters per line)'}},
+            {label:{it:'Caricamento carta',en:'Paper loading'},value:{it:'Automatico, tecnologia Super Easy Load',en:'Automatic, Super Easy Load technology'}},
+            {label:{it:'Durata testina',en:'Print head life'},value:{it:'100 milioni di impulsi o 100 km di stampa',en:'100 million pulses or 100 km of printing'}}
+          ]},
+          {group:{it:'Memoria e funzioni',en:'Memory and features'},items:[
+            {label:{it:'Reparti',en:'Departments'},value:{it:'Fino a 60 reparti (8 diretti da tastiera), con barcode per vendita rapida',en:'Up to 60 departments (8 direct from keyboard), with barcode for fast sales'}},
+            {label:{it:'Pagamenti',en:'Payments'},value:{it:'Fino a 20 modalità di gestione pagamento',en:'Up to 20 payment management modes'}},
+            {label:{it:'Aliquote IVA',en:'VAT rates'},value:{it:'Fino a 12 aliquote IVA prefissate, 6 codici natura',en:'Up to 12 preset VAT rates, 6 nature codes'}},
+            {label:{it:'Compatibilità POS',en:'POS compatibility'},value:{it:'Protocollo 17 per scambio importo con POS bancari certificati',en:'Protocol 17 for amount exchange with certified bank POS terminals'}}
+          ]},
+          {group:{it:'Porte I/O e alimentazione',en:'I/O ports and power'},items:[
+            {label:{it:'Porte',en:'Ports'},value:{it:'2x USB, 2 seriali, 1x Ethernet RJ45, 1x RJ11 cassetto',en:'2x USB, 2 serial, 1x Ethernet RJ45, 1x RJ11 cash drawer'}},
+            {label:{it:'Alimentatore',en:'Power supply'},value:{it:'AC 100-240V 50/60Hz, DC +12V 4A',en:'AC 100-240V 50/60Hz, DC +12V 4A'}}
+          ]},
+          {group:{it:'Certificazioni e dimensioni',en:'Certifications and dimensions'},items:[
+            {label:{it:'Certificazioni',en:'Certifications'},value:{it:'CE, ISO 9001',en:'CE, ISO 9001'}},
+            {label:{it:'Dimensioni',en:'Dimensions'},value:{it:'189 x 124 x 316 mm (L x P x H)',en:'189 x 124 x 316 mm (W x D x H)'}},
+            {label:{it:'Peso',en:'Weight'},value:{it:'1,3 kg',en:'1.3 kg'}},
+            {label:{it:'Colori disponibili',en:'Available colours'},value:{it:'Nero, Bianco',en:'Black, White'}}
+          ]}
+        ]
+      },
+      {n:{it:'SERIE HELIOS TOUCH RT',en:'HELIOS TOUCH RT SERIES'},i:'img/heliost.jpeg',d:{it:'Registratore Telematico touch screen in elegante struttura alluminio. Tastiera touch 7 pollici ad alta luminosità regolabile. 40 tasti su 80 completamente personalizzabili per funzione e colore.',en:'Touch-screen telematic register in an elegant aluminium body. 7" touch keyboard with adjustable high brightness. 40 of 80 keys fully customisable by function and colour.'},p:'pdf/heliostouch.pdf',
+        specs:[
+          {group:{it:'Scheda madre',en:'Motherboard'},items:[
+            {label:{it:'Processore',en:'Processor'},value:{it:'Advanced CPU ARM 32 bit Gen. 2',en:'Advanced CPU ARM 32-bit Gen. 2'}}
+          ]},
+          {group:{it:'Tastiera touch screen',en:'Touch screen keyboard'},items:[
+            {label:{it:'Tasti',en:'Keys'},value:{it:'80 tasti di cui 40 programmabili per funzione e colore',en:'80 keys, 40 of which programmable by function and colour'}},
+            {label:{it:'Tastiera QWERTY',en:'QWERTY keyboard'},value:{it:'Virtuale, automatica',en:'Virtual, automatic'}}
+          ]},
+          {group:{it:'Display',en:'Display'},items:[
+            {label:{it:'Operatore',en:'Operator'},value:{it:'LCD 7" touch screen integrato; TFT, IPS; 1024x600; 16,7M colori',en:'Built-in 7" LCD touch screen; TFT, IPS; 1024x600; 16.7M colours'}},
+            {label:{it:'Cliente',en:'Customer'},value:{it:'LCD 4" touch screen integrato; TFT, IPS; 400x960; 262k colori',en:'Built-in 4" LCD touch screen; TFT, IPS; 400x960; 262k colours'}},
+            {label:{it:'Lifetime',en:'Lifetime'},value:{it:'30.000 ore',en:'30,000 hours'}},
+            {label:{it:'Luminosità',en:'Brightness'},value:{it:'Regolabile fino a 300 cd/mq',en:'Adjustable up to 300 cd/m²'}}
+          ]},
+          {group:{it:'Stampante',en:'Printer'},items:[
+            {label:{it:'Tipo',en:'Type'},value:{it:'Grafica su carta termica ad alta definizione',en:'High-definition graphic printing on thermal paper'}},
+            {label:{it:'Velocità di stampa',en:'Print speed'},value:{it:'Fino a 90 mm/sec',en:'Up to 90 mm/sec'}},
+            {label:{it:'Larghezza di stampa',en:'Print width'},value:{it:'57 mm (32 caratteri per linea ad alta leggibilità)',en:'57 mm (32 highly legible characters per line)'}},
+            {label:{it:'Taglierina',en:'Cutter'},value:{it:'Manuale',en:'Manual'}},
+            {label:{it:'Caricamento carta',en:'Paper loading'},value:{it:'Automatico con tecnologia Easy loading super-fast',en:'Automatic, super-fast Easy Loading technology'}},
+            {label:{it:'Durata testina',en:'Print head life'},value:{it:'100 milioni di impulsi o 50 km di stampa',en:'100 million pulses or 50 km of printing'}},
+            {label:{it:'Specifiche rotolo',en:'Roll specs'},value:{it:'57 mm di larghezza per 50 mt di lunghezza',en:'57 mm wide, 50 m long'}}
+          ]},
+          {group:{it:'Memoria e funzioni',en:'Memory and features'},items:[
+            {label:{it:'Reparti',en:'Departments'},value:{it:'Fino a 60 reparti (8 diretti da tastiera)',en:'Up to 60 departments (8 direct from keyboard)'}},
+            {label:{it:'DGFE',en:'Electronic journal'},value:{it:'Giornale di Fondo Elettronico su memoria Micro SD',en:'Electronic journal on Micro SD memory'}},
+            {label:{it:'Pagamenti',en:'Payments'},value:{it:'Fino a 20 funzioni di pagamento',en:'Up to 20 payment functions'}},
+            {label:{it:'Aliquote IVA',en:'VAT rates'},value:{it:'Fino a 12 aliquote IVA / Codici Natura prefissate',en:'Up to 12 preset VAT rates / Nature codes'}},
+            {label:{it:'Scontrino elettronico',en:'Digital receipt'},value:{it:'Scaricabile da Cloud tramite QR code su customer display',en:'Downloadable from the Cloud via QR code on the customer display'}}
+          ]},
+          {group:{it:'Alimentazione e connettività',en:'Power and connectivity'},items:[
+            {label:{it:'Alimentatore',en:'Power supply'},value:{it:'AC 100-240V 50/60Hz, DC +12V 2.5A',en:'AC 100-240V 50/60Hz, DC +12V 2.5A'}},
+            {label:{it:'Porte',en:'Ports'},value:{it:'2x USB, 1x Ethernet RJ45, 1x RJ11 cassetto',en:'2x USB, 1x Ethernet RJ45, 1x RJ11 cash drawer'}},
+            {label:{it:'Batteria opzionale',en:'Optional battery'},value:{it:'Li-On 7,4V 2900mAh — fino a 120 scontrini senza ricarica',en:'Li-On 7.4V 2900mAh — up to 120 receipts without recharging'}}
+          ]},
+          {group:{it:'Certificazioni e dimensioni',en:'Certifications and dimensions'},items:[
+            {label:{it:'Certificazioni',en:'Certifications'},value:{it:'CE, ISO 9001',en:'CE, ISO 9001'}},
+            {label:{it:'Dimensioni',en:'Dimensions'},value:{it:'224 x 213 x 233 mm (L x P x H)',en:'224 x 213 x 233 mm (W x D x H)'}},
+            {label:{it:'Peso',en:'Weight'},value:{it:'1,4 kg',en:'1.4 kg'}},
+            {label:{it:'Colori disponibili',en:'Available colours'},value:{it:'Nero, Bianco',en:'Black, White'}}
+          ]}
+        ]
+      },
+      {n:{it:'SERIE DADO RT',en:'DADO RT SERIES'},i:'img/dado.PNG',d:{it:'Display cliente integrato, design compatto. La nuova forma dell\u2019innovazione.',en:'Built-in customer display, compact design. The new shape of innovation.'},p:'pdf/dado.pdf',
+        specs:[
+          {group:{it:'Sistema',en:'System'},items:[
+            {label:{it:'Processore',en:'Processor'},value:{it:'Advanced CPU ARM 32 bit',en:'Advanced CPU ARM 32-bit'}}
+          ]},
+          {group:{it:'Display',en:'Display'},items:[
+            {label:{it:'Visore cliente',en:'Customer display'},value:{it:'Integrato, riposizionabile, LCD 2x20 caratteri',en:'Built-in, repositionable, 2x20-character LCD'}}
+          ]},
+          {group:{it:'Stampante',en:'Printer'},items:[
+            {label:{it:'Tipo',en:'Type'},value:{it:'Carta termica ad alta definizione (203 dpi)',en:'High-definition thermal paper (203 dpi)'}},
+            {label:{it:'Velocità di stampa',en:'Print speed'},value:{it:'Fino a 250 mm/sec',en:'Up to 250 mm/sec'}},
+            {label:{it:'Larghezza di stampa',en:'Print width'},value:{it:'80 mm',en:'80 mm'}},
+            {label:{it:'Taglierina',en:'Cutter'},value:{it:'Automatica di lunga durata, con sistema anti-bloccaggio',en:'Long-life automatic cutter with anti-jam system'}},
+            {label:{it:'Durata testina',en:'Print head life'},value:{it:'100 milioni di impulsi o 150 km di stampa',en:'100 million pulses or 150 km of printing'}},
+            {label:{it:'Barcode/QR',en:'Barcode/QR'},value:{it:'Codici 1D / 2D',en:'1D / 2D codes'}}
+          ]},
+          {group:{it:'Memoria e funzioni',en:'Memory and features'},items:[
+            {label:{it:'Reparti',en:'Departments'},value:{it:'Fino a 60 reparti (10 da tastiera integrata opzionale)',en:'Up to 60 departments (10 from optional built-in keyboard)'}},
+            {label:{it:'Pagamenti',en:'Payments'},value:{it:'Fino a 20 modalità di gestione pagamento',en:'Up to 20 payment management modes'}},
+            {label:{it:'Aliquote IVA',en:'VAT rates'},value:{it:'Fino a 20 aliquote IVA prefissate, 6 codici natura',en:'Up to 20 preset VAT rates, 6 nature codes'}},
+            {label:{it:'Documenti fiscali',en:'Fiscal documents'},value:{it:'Scontrino elettronico, documento commerciale, documento di reso/annullo',en:'Digital receipt, commercial document, return/cancellation document'}}
+          ]},
+          {group:{it:'Porte I/O, protocolli e alimentazione',en:'I/O ports, protocols and power'},items:[
+            {label:{it:'Porte',en:'Ports'},value:{it:'1x USB, 2 seriali, 1x Ethernet RJ45, 1x RJ11 cassetto, Wi-Fi opzionale',en:'1x USB, 2 serial, 1x Ethernet RJ45, 1x RJ11 cash drawer, optional Wi-Fi'}},
+            {label:{it:'Protocolli',en:'Protocols'},value:{it:'Protocollo Fiscale SF20 / HYDRA / TCP / API Web',en:'SF20 fiscal protocol / HYDRA / TCP / Web API'}},
+            {label:{it:'Alimentatore',en:'Power supply'},value:{it:'AC 100-240V 50/60Hz, DC +24V 2.5A',en:'AC 100-240V 50/60Hz, DC +24V 2.5A'}}
+          ]},
+          {group:{it:'Certificazioni e dimensioni',en:'Certifications and dimensions'},items:[
+            {label:{it:'Certificazioni',en:'Certifications'},value:{it:'CE, ISO 9001',en:'CE, ISO 9001'}},
+            {label:{it:'Dimensioni',en:'Dimensions'},value:{it:'136 x 140 x 140 mm (L x P x H)',en:'136 x 140 x 140 mm (W x D x H)'}},
+            {label:{it:'Peso',en:'Weight'},value:{it:'1,5 kg',en:'1.5 kg'}}
+          ]}
+        ]
+      }
     ]
   },
   'bilance':{
@@ -849,40 +1373,337 @@ var db={
       {n:{it:'Sun Eco',en:'Sun Eco'},i:'img/suneco.jpg',d:{it:'Bilancia in acciaio inox ideale per ogni esigenza di pesatura commerciale. Affidabile, robusta, adatta a negozio e mercato ambulante.',en:'Stainless-steel scale ideal for any commercial weighing need. Reliable, robust, suited to shops and street markets.'},p:'pdf/suneco.pdf'},
       {n:{it:'Sun Eco Color Volo',en:'Sun Eco Color Volo'},i:'img/sunecolvol.jpg',d:{it:'Versione Volo con piatto ribaltabile. Acciaio inox, gestione immagini a colori e funzione pubblicità lato cliente.',en:'Volo version with tilting plate. Stainless steel, colour image management and customer-side advertising function.'},p:'pdf/sunecolvol.pdf'},
       {n:{it:'Sun Eco Volo',en:'Sun Eco Volo'},i:'img/sunecovolo.jpg',d:{it:'Versione Volo con piatto ribaltabile in acciaio inox. Pratica e versatile per negozio e mercato ambulante.',en:'Volo version with stainless-steel tilting plate. Practical and versatile for shops and street markets.'},p:'pdf/sunecovolo.pdf'},
-      {n:{it:'SERIE NINJA LCD',en:'NINJA LCD SERIES'},i:'img/ninja.PNG',d:{it:'Versioni: Bassa, Torre, Pensile Inox, Alta Light. Portate: 12 kg div.2g – 30 kg div.5g – 6/15 kg div.2/5g multirange.',en:'Versions: Low, Tower, Wall-mounted Stainless, High Light. Capacities: 12 kg div.2g – 30 kg div.5g – 6/15 kg div.2/5g multirange.'},p:'pdf/ninja.pdf'}
+      {n:{it:'SERIE NINJA LCD',en:'NINJA LCD SERIES'},i:'img/ninja.PNG',d:{it:'Versioni: Bassa, Torre, Pensile Inox, Alta Light. Portate: 12 kg div.2g – 30 kg div.5g – 6/15 kg div.2/5g multirange.',en:'Versions: Low, Tower, Wall-mounted Stainless, High Light. Capacities: 12 kg div.2g – 30 kg div.5g – 6/15 kg div.2/5g multirange.'},p:'pdf/ninja.pdf'},
+      {n:{it:'Alex Color Bassa',en:'Alex Color Bassa'},i:'img/alexcolorbassa.PNG',d:{it:'Versione bassa della bilancia Alex Color: gestisce le immagini a colori dei prodotti e la funzione pubblicità sul display lato cliente, in un formato più compatto per banchi con spazio ridotto in altezza.',en:'Low-profile version of the Alex Color scale: manages colour product images and the advertising function on the customer-side display, in a more compact format for counters with limited height.'},p:'',
+        specs:[
+          {group:{it:'Display e tastiera',en:'Display and keyboard'},items:[
+            {label:{it:'Visore',en:'Display'},value:{it:'7” a colori',en:'7" colour'}},
+            {label:{it:'Tastiera',en:'Keyboard'},value:{it:'Lavabile touchless o meccanica',en:'Washable touchless or mechanical'}}
+          ]},
+          {group:{it:'Stampa',en:'Printing'},items:[
+            {label:{it:'Stampante',en:'Printer'},value:{it:'Termica 8 dots/mm con Easy Loading, 70 mm/s',en:'8 dots/mm thermal with Easy Loading, 70 mm/s'}},
+            {label:{it:'Larghezza carta',en:'Paper width'},value:{it:'57 mm, opzione carta adesiva linerless',en:'57 mm, linerless adhesive paper option'}}
+          ]},
+          {group:{it:'Funzioni',en:'Features'},items:[
+            {label:{it:'PLU',en:'PLU'},value:{it:'999 programmabili',en:'999 programmable'}},
+            {label:{it:'Rete',en:'Network'},value:{it:'Fino a 6 bilance in rete LAN (via cavo o RF)',en:'Up to 6 scales networked via LAN (cable or RF)'}},
+            {label:{it:'Operatori',en:'Operators'},value:{it:'4-8-16',en:'4-8-16'}}
+          ]},
+          {group:{it:'Portate disponibili',en:'Available capacities'},items:[
+            {label:{it:'Portate',en:'Capacities'},value:{it:'30kg/5g; 12-30kg/2-5g; 12kg/2g; 6kg/1g',en:'30kg/5g; 12-30kg/2-5g; 12kg/2g; 6kg/1g'}}
+          ]}
+        ]
+      },
+      {n:{it:'Alex Bassa',en:'Alex Bassa'},i:'img/alexbassa.PNG',d:{it:'Versione bassa della bilancia Alex inox: stessa affidabilità per la pesatura commerciale in piccoli, medi e grandi negozi, in un formato compatto adatto a banchi con spazio ridotto in altezza.',en:'Low-profile version of the Alex stainless-steel scale: same reliable commercial weighing for small, medium and large shops, in a compact format suited to counters with limited height.'},p:'',
+        specs:[
+          {group:{it:'Struttura e display',en:'Body and display'},items:[
+            {label:{it:'Struttura',en:'Body'},value:{it:'ABS, colore bianco, blu o rosso',en:'ABS, white, blue or red'}},
+            {label:{it:'Visore',en:'Display'},value:{it:'Custom a cristalli liquidi retroilluminato',en:'Custom backlit LCD'}}
+          ]},
+          {group:{it:'Stampa',en:'Printing'},items:[
+            {label:{it:'Stampante',en:'Printer'},value:{it:'Termica 8 dots/mm con Easy Loading, 70 mm/s',en:'8 dots/mm thermal with Easy Loading, 70 mm/s'}},
+            {label:{it:'Larghezza carta',en:'Paper width'},value:{it:'57 mm, opzione carta adesiva linerless',en:'57 mm, linerless adhesive paper option'}}
+          ]},
+          {group:{it:'Funzioni',en:'Features'},items:[
+            {label:{it:'PLU',en:'PLU'},value:{it:'999 programmabili',en:'999 programmable'}},
+            {label:{it:'Rete',en:'Network'},value:{it:'Fino a 6 bilance in rete LAN (via cavo o RF)',en:'Up to 6 scales networked via LAN (cable or RF)'}},
+            {label:{it:'Batteria',en:'Battery'},value:{it:'Interna, autonomia circa 35/40 ore',en:'Built-in, approx. 35/40 hours of autonomy'}}
+          ]},
+          {group:{it:'Portate disponibili',en:'Available capacities'},items:[
+            {label:{it:'Portate',en:'Capacities'},value:{it:'30kg/5g; 12-30kg/2-5g; 12kg/2g; 6kg/1g',en:'30kg/5g; 12-30kg/2-5g; 12kg/2g; 6kg/1g'}}
+          ]}
+        ]
+      },
+      {n:{it:'Alex Mare Bassa',en:'Alex Mare Bassa'},i:'img/alexmarebassa.PNG',d:{it:'Versione bassa della bilancia Alex Mare: la soluzione più semplice ed economica per la gestione commerciale del piccolo negozio e del mercato ambulante, in formato compatto.',en:'Low-profile version of the Alex Mare scale: the simplest, most affordable solution for commercial management in small shops and street markets, in a compact format.'},p:'',
+        specs:[
+          {group:{it:'Display e funzioni base',en:'Display and basic features'},items:[
+            {label:{it:'Visore',en:'Display'},value:{it:'LCD Custom retroilluminato',en:'Custom backlit LCD'}},
+            {label:{it:'PLU',en:'PLU'},value:{it:'100 programmabili',en:'100 programmable'}},
+            {label:{it:'Operatori',en:'Operators'},value:{it:'2',en:'2'}}
+          ]},
+          {group:{it:'Stampa',en:'Printing'},items:[
+            {label:{it:'Stampante',en:'Printer'},value:{it:'Termica grafica 8 dots/mm, 70 mm/s',en:'8 dots/mm graphic thermal, 70 mm/s'}},
+            {label:{it:'Larghezza carta',en:'Paper width'},value:{it:'57 mm',en:'57 mm'}}
+          ]},
+          {group:{it:'Alimentazione',en:'Power'},items:[
+            {label:{it:'Batteria',en:'Battery'},value:{it:'6V 12Ah, autonomia circa 35/40 ore',en:'6V 12Ah, approx. 35/40 hours of autonomy'}}
+          ]},
+          {group:{it:'Portate disponibili',en:'Available capacities'},items:[
+            {label:{it:'Alex Mare Bassa multirange',en:'Alex Mare Bassa multirange'},value:{it:'15/30 kg – 5/10 g oppure 6/15 kg – 2/5 g',en:'15/30 kg – 5/10 g or 6/15 kg – 2/5 g'}}
+          ]}
+        ]
+      },
+      {n:{it:'Alex Label',en:'Alex Label'},i:'img/alexlabel.PNG',d:{it:'Bilancia in ABS pensata per la vendita con uso intensivo di scontrini adesivi o etichette. Batteria al litio ricaricabile inclusa, adatta anche al mercato ambulante.',en:'ABS scale designed for sales with intensive use of adhesive receipts or labels. Includes a rechargeable lithium battery, also suited to street markets.'},p:'',
+        specs:[
+          {group:{it:'Struttura e display',en:'Body and display'},items:[
+            {label:{it:'Struttura',en:'Body'},value:{it:'ABS, bianca o nera',en:'ABS, white or black'}},
+            {label:{it:'Visore',en:'Display'},value:{it:'Custom a cristalli liquidi retroilluminato',en:'Custom backlit LCD'}},
+            {label:{it:'Tastiera',en:'Keyboard'},value:{it:'Meccanica con tasti in gomma',en:'Mechanical with rubber keys'}}
+          ]},
+          {group:{it:'Stampa ed etichette',en:'Printing and labels'},items:[
+            {label:{it:'Stampante',en:'Printer'},value:{it:'Etichettatrice 2” con spellicolatore e riavvolgitore, 150 mm/s',en:'2" labeller with peeler and rewinder, 150 mm/s'}},
+            {label:{it:'Formati etichetta',en:'Label formats'},value:{it:'Fino a 8, precaricati e programmabili (60x65mm, 60x75mm)',en:'Up to 8, preloaded and programmable (60x65mm, 60x75mm)'}}
+          ]},
+          {group:{it:'Funzioni',en:'Features'},items:[
+            {label:{it:'PLU',en:'PLU'},value:{it:'999 programmabili, con gestione tracciabilità e lotti',en:'999 programmable, with traceability and batch management'}},
+            {label:{it:'Codici',en:'Codes'},value:{it:'EAN13 e QR Code per esplosione scontrino',en:'EAN13 and QR Code for itemised receipts'}},
+            {label:{it:'Batteria',en:'Battery'},value:{it:'Interna al litio, ricaricabile',en:'Built-in lithium, rechargeable'}}
+          ]},
+          {group:{it:'Portate disponibili',en:'Available capacities'},items:[
+            {label:{it:'Portate',en:'Capacities'},value:{it:'30kg/5g; 12-30kg/2-5g; 12kg/2g; 6kg/1g',en:'30kg/5g; 12-30kg/2-5g; 12kg/2g; 6kg/1g'}}
+          ]}
+        ]
+      },
+      {n:{it:'Alex Color Label',en:'Alex Color Label'},i:'img/alexcolorlabel.PNG',d:{it:'Bilancia in ABS con display a colori lato cliente, pensata per la vendita con uso intensivo di etichette adesive. Gestisce immagini prodotto e contenuti pubblicitari, con batteria al litio inclusa.',en:'ABS scale with a colour customer-side display, designed for sales with intensive use of adhesive labels. Manages product images and advertising content, with a lithium battery included.'},p:'',
+        specs:[
+          {group:{it:'Struttura e display',en:'Body and display'},items:[
+            {label:{it:'Struttura',en:'Body'},value:{it:'ABS, bianca o nera',en:'ABS, white or black'}},
+            {label:{it:'Visore',en:'Display'},value:{it:'7” a colori',en:'7" colour'}},
+            {label:{it:'Tastiera',en:'Keyboard'},value:{it:'Lavabile touchless o meccanica',en:'Washable touchless or mechanical'}}
+          ]},
+          {group:{it:'Stampa ed etichette',en:'Printing and labels'},items:[
+            {label:{it:'Stampante',en:'Printer'},value:{it:'Etichettatrice 2” con spellicolatore e riavvolgitore, 150 mm/s',en:'2" labeller with peeler and rewinder, 150 mm/s'}},
+            {label:{it:'Formati etichetta',en:'Label formats'},value:{it:'Fino a 8, precaricati e programmabili (60x65mm, 60x75mm)',en:'Up to 8, preloaded and programmable (60x65mm, 60x75mm)'}}
+          ]},
+          {group:{it:'Funzioni',en:'Features'},items:[
+            {label:{it:'PLU',en:'PLU'},value:{it:'999 programmabili, con gestione tracciabilità e lotti',en:'999 programmable, with traceability and batch management'}},
+            {label:{it:'Immagini',en:'Images'},value:{it:'Immagini grafiche a colori sul lato cliente',en:'Colour graphic images on the customer side'}},
+            {label:{it:'Batteria',en:'Battery'},value:{it:'Interna al litio, ricaricabile',en:'Built-in lithium, rechargeable'}}
+          ]},
+          {group:{it:'Portate disponibili',en:'Available capacities'},items:[
+            {label:{it:'Portate',en:'Capacities'},value:{it:'30kg/5g; 12-30kg/2-5g; 12kg/2g; 6kg/1g',en:'30kg/5g; 12-30kg/2-5g; 12kg/2g; 6kg/1g'}}
+          ]}
+        ]
+      },
+      {n:{it:'Stella Bassa',en:'Stella Bassa'},i:'img/stellabassa.PNG',d:{it:'Bilancia Eurobil Mini Stella senza stampante, pratica e resistente all\u2019acqua: la soluzione ideale per bar, gelaterie, pasticcerie, ambulanti, ristoranti e trattorie.',en:'Eurobil Mini Stella scale without printer, practical and water-resistant: the ideal solution for bars, ice cream parlours, pastry shops, street vendors, restaurants and trattorias.'},p:'',
+        specs:[
+          {group:{it:'Caratteristiche generali',en:'General features'},items:[
+            {label:{it:'Tipo',en:'Type'},value:{it:'Bilancia peso/prezzo/importo senza stampante',en:'Weight/price/amount scale without printer'}},
+            {label:{it:'Tastiera',en:'Keyboard'},value:{it:'Membrana impermeabile a 20 tasti',en:'Waterproof 20-key membrane'}},
+            {label:{it:'Visori',en:'Displays'},value:{it:'3 display anteriori e 3 posteriori LCD retroilluminati',en:'3 front and 3 rear backlit LCD displays'}}
+          ]},
+          {group:{it:'Dimensioni e alimentazione',en:'Dimensions and power'},items:[
+            {label:{it:'Peso',en:'Weight'},value:{it:'3,9 kg',en:'3.9 kg'}},
+            {label:{it:'Dimensioni',en:'Dimensions'},value:{it:'300 x 110 x 340 mm (L x A x P)',en:'300 x 110 x 340 mm (W x H x D)'}},
+            {label:{it:'Alimentazione',en:'Power'},value:{it:'220 VAC + batteria interna 4Ah/6V, autonomia 150 ore',en:'220 VAC + built-in 4Ah/6V battery, 150-hour autonomy'}}
+          ]},
+          {group:{it:'Certificazioni e portate',en:'Certifications and capacities'},items:[
+            {label:{it:'Omologazione',en:'Approval'},value:{it:'CE-M con libretto metrologico',en:'CE-M with metrology handbook'}},
+            {label:{it:'Portate',en:'Capacities'},value:{it:'3/6kg–1/2g; 6/15kg–2/5g; 15/30kg–5/10g',en:'3/6kg–1/2g; 6/15kg–2/5g; 15/30kg–5/10g'}}
+          ]}
+        ]
+      },
+      {n:{it:'Stella Alta',en:'Stella Alta'},i:'img/stellaalta.PNG',d:{it:'Bilancia Eurobil Mini Stella senza stampante in versione alta: stessa praticità e resistenza all\u2019acqua, pensata per banchi con esigenze di altezza diverse.',en:'Eurobil Mini Stella scale without printer, tall version: the same practicality and water resistance, designed for counters with different height needs.'},p:'',
+        specs:[
+          {group:{it:'Caratteristiche generali',en:'General features'},items:[
+            {label:{it:'Tipo',en:'Type'},value:{it:'Bilancia peso/prezzo/importo senza stampante',en:'Weight/price/amount scale without printer'}},
+            {label:{it:'Tastiera',en:'Keyboard'},value:{it:'Membrana impermeabile a 20 tasti',en:'Waterproof 20-key membrane'}},
+            {label:{it:'Visori',en:'Displays'},value:{it:'3 display anteriori e 3 posteriori LCD retroilluminati',en:'3 front and 3 rear backlit LCD displays'}}
+          ]},
+          {group:{it:'Dimensioni e alimentazione',en:'Dimensions and power'},items:[
+            {label:{it:'Peso',en:'Weight'},value:{it:'3,9 kg',en:'3.9 kg'}},
+            {label:{it:'Dimensioni',en:'Dimensions'},value:{it:'300 x 110 x 340 mm (L x A x P)',en:'300 x 110 x 340 mm (W x H x D)'}},
+            {label:{it:'Alimentazione',en:'Power'},value:{it:'220 VAC + batteria interna 4Ah/6V, autonomia 150 ore',en:'220 VAC + built-in 4Ah/6V battery, 150-hour autonomy'}}
+          ]},
+          {group:{it:'Certificazioni e portate',en:'Certifications and capacities'},items:[
+            {label:{it:'Omologazione',en:'Approval'},value:{it:'CE-M con libretto metrologico',en:'CE-M with metrology handbook'}},
+            {label:{it:'Portate',en:'Capacities'},value:{it:'3/6kg–1/2g; 6/15kg–2/5g; 15/30kg–5/10g',en:'3/6kg–1/2g; 6/15kg–2/5g; 15/30kg–5/10g'}}
+          ]}
+        ]
+      }
     ]
   },
   'affettatrici':{
     icon:'fa-slash',
     t:{it:'Affettatrici Professionali',en:'Professional Slicers'},
     m:[
-      {n:{it:'Sirman Leonardo 350 EVO BS2',en:'Sirman Leonardo 350 EVO BS2'},i:'img/affettatrici.jpg',d:{it:'Affettatrice professionale verticale per utilizzo intensivo e grande produzione. Struttura alluminio anodizzato priva di spigoli, minuterie e parafetta in acciaio inox. Ideale per macellerie, salumerie, GDO.',en:'Professional vertical slicer for heavy-duty use and high output. Anodised aluminium body with no sharp edges, stainless-steel fittings and slice deflector. Ideal for butchers, delicatessens and large retail.'},p:'pdf/affettatrici.pdf'},
-      {n:{it:'FIMAR K370',en:'FIMAR K370'},i:'img/fimar370.PNG',d:{it:'Affettatrice verticale per salumi, carne e formaggi. Struttura alluminio anodizzato, carrello fisso, spessore taglio 0-15 mm, paralama estraibile, affilatoio fisso a doppio smeriglio.',en:'Vertical slicer for cured meats, meat and cheese. Anodised aluminium body, fixed carriage, slice thickness 0–15 mm, removable blade guard, fixed double-grindstone sharpener.'},p:'pdf/fimar370.pdf'}
+      {n:{it:'Sirman Leonardo 350 EVO BS2',en:'Sirman Leonardo 350 EVO BS2'},i:'img/affettatrici.jpg',d:{it:'Affettatrice professionale verticale per utilizzo intensivo e grande produzione. Struttura alluminio anodizzato priva di spigoli, minuterie e parafetta in acciaio inox. Ideale per macellerie, salumerie, GDO.',en:'Professional vertical slicer for heavy-duty use and high output. Anodised aluminium body with no sharp edges, stainless-steel fittings and slice deflector. Ideal for butchers, delicatessens and large retail.'},p:'pdf/affettatrici.pdf',
+        specs:[
+          {group:{it:'Lama e taglio',en:'Blade and cutting'},items:[
+            {label:{it:'Diametro lama',en:'Blade diameter'},value:{it:'350 mm',en:'350 mm'}},
+            {label:{it:'Spessore taglio',en:'Slice thickness'},value:{it:'25 mm',en:'25 mm'}},
+            {label:{it:'Corsa carrello',en:'Carriage stroke'},value:{it:'370 mm',en:'370 mm'}},
+            {label:{it:'Piatto',en:'Plate'},value:{it:'350 x 330 mm',en:'350 x 330 mm'}}
+          ]},
+          {group:{it:'Motore e ingombri',en:'Motor and dimensions'},items:[
+            {label:{it:'Motore',en:'Motor'},value:{it:'380 W – 0,52 Hp',en:'380 W – 0.52 Hp'}},
+            {label:{it:'Peso netto',en:'Net weight'},value:{it:'59 kg',en:'59 kg'}},
+            {label:{it:'Peso lordo',en:'Gross weight'},value:{it:'75 kg',en:'75 kg'}},
+            {label:{it:'Dimensioni imballo',en:'Packaging dimensions'},value:{it:'870 x 840 x 830 mm',en:'870 x 840 x 830 mm'}}
+          ]}
+        ]
+      },
+      {n:{it:'FIMAR K370',en:'FIMAR K370'},i:'img/fimar370.PNG',d:{it:'Affettatrice verticale per salumi, carne e formaggi. Struttura alluminio anodizzato, carrello fisso, spessore taglio 0-15 mm, paralama estraibile, affilatoio fisso a doppio smeriglio.',en:'Vertical slicer for cured meats, meat and cheese. Anodised aluminium body, fixed carriage, slice thickness 0–15 mm, removable blade guard, fixed double-grindstone sharpener.'},p:'pdf/fimar370.pdf',
+        specs:[
+          {group:{it:'Lama e taglio',en:'Blade and cutting'},items:[
+            {label:{it:'Diametro lama',en:'Blade diameter'},value:{it:'370 mm',en:'370 mm'}},
+            {label:{it:'Spessore taglio',en:'Slice thickness'},value:{it:'0÷15 mm',en:'0-15 mm'}},
+            {label:{it:'Taglio utile',en:'Useful cutting size'},value:{it:'290 x 275(h) mm',en:'290 x 275(h) mm'}},
+            {label:{it:'Piano di appoggio',en:'Support plate'},value:{it:'660 x 540 mm',en:'660 x 540 mm'}}
+          ]},
+          {group:{it:'Motore e alimentazione',en:'Motor and power'},items:[
+            {label:{it:'Potenza',en:'Power'},value:{it:'0,37 kW (0,5 Hp)',en:'0.37 kW (0.5 Hp)'}},
+            {label:{it:'Alimentazione',en:'Power supply'},value:{it:'230V/1N/50Hz oppure 230-400V/3/50Hz',en:'230V/1N/50Hz or 230-400V/3/50Hz'}}
+          ]},
+          {group:{it:'Dimensioni e peso',en:'Dimensions and weight'},items:[
+            {label:{it:'Dimensioni macchina',en:'Machine dimensions'},value:{it:'820 x 650 x 640(h) mm',en:'820 x 650 x 640(h) mm'}},
+            {label:{it:'Peso netto',en:'Net weight'},value:{it:'46 kg',en:'46 kg'}},
+            {label:{it:'Peso lordo',en:'Gross weight'},value:{it:'58 kg',en:'58 kg'}},
+            {label:{it:'Dimensioni imballo',en:'Packaging dimensions'},value:{it:'820 x 720 x 760(h) mm',en:'820 x 720 x 760(h) mm'}}
+          ]}
+        ]
+      }
     ]
   },
   'casse':{
     icon:'fa-coins',
     t:{it:'Casse Automatiche',en:'Automatic Change Machines'},
     m:[
-      {n:{it:'Cashmatic SelfPay 460',en:'Cashmatic SelfPay 460'},i:'img/cashmatic460.PNG',d:{it:'Formato compatto e design innovativo. La cassa automatica rendiresto ideale per ogni tipologia di retailer che vuole ottimizzare i tempi e ridurre gli errori di cassa.',en:'Compact format and innovative design. The ideal automatic change machine for any retailer wanting to save time and reduce cash-handling errors.'},p:'pdf/cashmatic460.pdf'},
-      {n:{it:'PagAmico 3S',en:'PagAmico 3S'},i:'img/pagamico3s.PNG',d:{it:'PagAmico 3S (Smart): ultima generazione di casse rendiresto prodotte da PayPrint per il settore retail. Compatta, veloce, affidabile.',en:'PagAmico 3S (Smart): the latest generation of change machines made by PayPrint for the retail sector. Compact, fast and reliable.'},p:'pdf/pagamico3s.pdf'},
-      {n:{it:'VNE Virtuo 4',en:'VNE Virtuo 4'},i:'img/vnevirtuo4.PNG',d:{it:'Accetta tutte le banconote uno ad uno e dà resto con 4 tagli. Accetta tutte le monete simultaneamente in tagli misti e dà resto in tagli misti.',en:'Accepts all banknotes one by one and gives change in 4 denominations. Accepts all coins simultaneously in mixed denominations and gives change in mixed denominations.'},p:'pdf/vne.pdf'}
+      {n:{it:'Cashmatic SelfPay 460',en:'Cashmatic SelfPay 460'},i:'img/cashmatic460.PNG',d:{it:'Formato compatto e design innovativo. La cassa automatica rendiresto ideale per ogni tipologia di retailer che vuole ottimizzare i tempi e ridurre gli errori di cassa.',en:'Compact format and innovative design. The ideal automatic change machine for any retailer wanting to save time and reduce cash-handling errors.'},p:'pdf/cashmatic460.pdf',
+        specs:[
+          {group:{it:'Interfaccia e gestione contante',en:'Interface and cash handling'},items:[
+            {label:{it:'Display',en:'Display'},value:{it:'7” touch, guida l\u2019utente passo per passo',en:'7" touch screen, step-by-step user guidance'}},
+            {label:{it:'Gestione contante',en:'Cash handling'},value:{it:'Accettazione e restituzione resto automatiche',en:'Automatic cash acceptance and change return'}},
+            {label:{it:'Chiusura contabile',en:'Accounting closure'},value:{it:'Automatica',en:'Automatic'}}
+          ]},
+          {group:{it:'Sicurezza',en:'Security'},items:[
+            {label:{it:'Struttura',en:'Body'},value:{it:'Acciaio 2 mm, cassetto non apribile dall\u2019operatore',en:'2 mm steel, cash drawer not openable by the operator'}},
+            {label:{it:'Antifalso',en:'Counterfeit detection'},value:{it:'Rilevazione denaro falso secondo standard BCE',en:'Counterfeit detection to ECB standards'}},
+            {label:{it:'Monitoraggio',en:'Monitoring'},value:{it:'Da remoto via App MyCashmatic ed email',en:'Remote monitoring via the MyCashmatic app and email'}}
+          ]}
+        ]
+      },
+      {n:{it:'PagAmico 3S',en:'PagAmico 3S'},i:'img/pagamico3s.PNG',d:{it:'PagAmico 3S (Smart): ultima generazione di casse rendiresto prodotte da PayPrint per il settore retail. Compatta, veloce, affidabile.',en:'PagAmico 3S (Smart): the latest generation of change machines made by PayPrint for the retail sector. Compact, fast and reliable.'},p:'pdf/pagamico3s.pdf',
+        specs:[
+          {group:{it:'Interfaccia e capacità',en:'Interface and capacity'},items:[
+            {label:{it:'Display',en:'Display'},value:{it:'7” LCD touch interattivo',en:'7" interactive LCD touch screen'}},
+            {label:{it:'Banconote',en:'Banknotes'},value:{it:'Riciclatore 2/3/4 tagli (80 pezzi) + unità di cassa BTA fino a 500 pezzi',en:'2/3/4-denomination recycler (80 notes) + BTA cash unit up to 500 notes'}},
+            {label:{it:'Monete',en:'Coins'},value:{it:'Capienza circa 1200 pezzi, tagli da 5 cent a 2 euro',en:'Capacity of approx. 1,200 coins, from 5 cents to 2 euros'}}
+          ]},
+          {group:{it:'Pagamenti e sicurezza',en:'Payments and security'},items:[
+            {label:{it:'Pagamento con carte',en:'Card payments'},value:{it:'POS integrato, carte contactless e con inserimento, senza limiti di importo',en:'Built-in POS, contactless and chip cards, no amount limits'}},
+            {label:{it:'Connessione remota',en:'Remote connection'},value:{it:'Router con SIM, attivo H24, supporto remoto PayPrint',en:'Router with SIM card, active 24/7, PayPrint remote support'}},
+            {label:{it:'Anti-scasso',en:'Anti-tampering'},value:{it:'Accelerometro TILT, batterie interne per blackout',en:'TILT accelerometer, built-in batteries for power outages'}},
+            {label:{it:'Certificazioni',en:'Certifications'},value:{it:'CE, norme HACCP',en:'CE, HACCP standards'}}
+          ]},
+          {group:{it:'Dimensioni e alimentazione',en:'Dimensions and power'},items:[
+            {label:{it:'Alimentazione',en:'Power supply'},value:{it:'VCA 220, 2.0 Amp',en:'220 VAC, 2.0 Amp'}},
+            {label:{it:'Dimensioni',en:'Dimensions'},value:{it:'446 x 315 x 597 mm (H)',en:'446 x 315 x 597 mm (H)'}},
+            {label:{it:'Peso',en:'Weight'},value:{it:'Circa 39 kg, batterie incluse',en:'Approx. 39 kg, batteries included'}}
+          ]}
+        ]
+      },
+      {n:{it:'VNE Virtuo 4',en:'VNE Virtuo 4'},i:'img/vnevirtuo4.PNG',d:{it:'Accetta tutte le banconote uno ad uno e dà resto con 4 tagli. Accetta tutte le monete simultaneamente in tagli misti e dà resto in tagli misti.',en:'Accepts all banknotes one by one and gives change in 4 denominations. Accepts all coins simultaneously in mixed denominations and gives change in mixed denominations.'},p:'pdf/vne.pdf',
+        specs:[
+          {group:{it:'Banconote',en:'Banknotes'},items:[
+            {label:{it:'Riciclatore',en:'Recycler'},value:{it:'JCM UBA Pro, 4 tagli',en:'JCM UBA Pro, 4 denominations'}},
+            {label:{it:'Capacità',en:'Capacity'},value:{it:'400 pezzi in stacker + 120 in riciclo',en:'400 notes in the stacker + 120 in recycling'}},
+            {label:{it:'Velocità',en:'Speed'},value:{it:'1 banconota ogni 2 sec in accettazione, 1/sec in erogazione',en:'1 banknote every 2 sec accepted, 1/sec dispensed'}}
+          ]},
+          {group:{it:'Monete',en:'Coins'},items:[
+            {label:{it:'Hopper',en:'Hopper'},value:{it:'ITL Smart Coin System',en:'ITL Smart Coin System'}},
+            {label:{it:'Capacità',en:'Capacity'},value:{it:'Circa 1300 pezzi in gestione, fino a 2000 in cassa',en:'Approx. 1,300 coins managed, up to 2,000 in the till'}},
+            {label:{it:'Velocità',en:'Speed'},value:{it:'4 monete/sec in accettazione, 12/sec in erogazione',en:'4 coins/sec accepted, 12/sec dispensed'}}
+          ]},
+          {group:{it:'Struttura e dimensioni',en:'Body and dimensions'},items:[
+            {label:{it:'Scocca',en:'Body'},value:{it:'Blindata, acciaio 4 mm',en:'Armoured, 4 mm steel'}},
+            {label:{it:'Dimensioni',en:'Dimensions'},value:{it:'32,3 x 40,3 x 58,5 cm',en:'32.3 x 40.3 x 58.5 cm'}},
+            {label:{it:'Peso',en:'Weight'},value:{it:'60 kg',en:'60 kg'}}
+          ]}
+        ]
+      }
     ]
   },
   'kiosk':{
     icon:'fa-display',
     t:{it:'Kiosk Interattivi',en:'Interactive Kiosks'},
     m:[
-      {n:{it:'Wykiosk 1100',en:'Wykiosk 1100'},i:'img/wykiosk1100.PNG',d:{it:'Per paninoteche, fast food, gelaterie e bar. Soluzione ideale per velocizzare il servizio e aumentare le vendite permettendo ai clienti di ordinare e pagare in autonomia.',en:'For sandwich shops, fast food, ice cream parlours and bars. The ideal solution to speed up service and boost sales by letting customers order and pay independently.'},p:'pdf/wykiosk.pdf'},
-      {n:{it:'Smart Kiosk 21,5 pollici',en:'Smart Kiosk 21.5"'},i:'img/kiosk21.PNG',d:{it:'Totem multimediale Axon Micrelec: la soluzione self-service più versatile per gestione code, ordinazioni autonome e servizi al cliente direttamente nel punto vendita.',en:'Axon Micrelec multimedia totem: the most versatile self-service solution for queue management, independent ordering and customer services directly at the point of sale.'},p:'pdf/21kiosk.pdf'}
+      {n:{it:'Wykiosk 1100',en:'Wykiosk 1100'},i:'img/wykiosk1100.PNG',d:{it:'Per paninoteche, fast food, gelaterie e bar. Soluzione ideale per velocizzare il servizio e aumentare le vendite permettendo ai clienti di ordinare e pagare in autonomia.',en:'For sandwich shops, fast food, ice cream parlours and bars. The ideal solution to speed up service and boost sales by letting customers order and pay independently.'},p:'pdf/wykiosk.pdf',
+        specs:[
+          {group:{it:'Monitor e processore',en:'Monitor and processor'},items:[
+            {label:{it:'Display',en:'Display'},value:{it:'21,5” Full HD 1080x1920 multi-touch capacitivo ultrapiatto, alta luminosità',en:'21.5" Full HD 1080x1920 ultra-slim capacitive multi-touch, high brightness'}},
+            {label:{it:'Processore',en:'Processor'},value:{it:'Cortex Quad-Core',en:'Cortex Quad-Core'}}
+          ]},
+          {group:{it:'Stampante e scanner',en:'Printer and scanner'},items:[
+            {label:{it:'Stampante',en:'Printer'},value:{it:'Telematica 80 mm con taglierina automatica',en:'80 mm telematic printer with automatic cutter'}},
+            {label:{it:'Scanner',en:'Scanner'},value:{it:'Imager 2D integrato',en:'Built-in 2D imager'}},
+            {label:{it:'Pagamenti',en:'Payments'},value:{it:'Terminale bancario integrato',en:'Built-in bank terminal'}}
+          ]},
+          {group:{it:'Connettività e software',en:'Connectivity and software'},items:[
+            {label:{it:'Connessione',en:'Connectivity'},value:{it:'WiFi 2,4GHz, Bluetooth 4.2, Ethernet Gigabit',en:'2.4GHz WiFi, Bluetooth 4.2, Gigabit Ethernet'}},
+            {label:{it:'Software',en:'Software'},value:{it:'Applicazione Wykiosk inclusa',en:'Wykiosk app included'}}
+          ]}
+        ]
+      },
+      {n:{it:'Smart Kiosk 21,5 pollici',en:'Smart Kiosk 21.5"'},i:'img/kiosk21.PNG',d:{it:'Totem multimediale Axon Micrelec: la soluzione self-service più versatile per gestione code, ordinazioni autonome e servizi al cliente direttamente nel punto vendita.',en:'Axon Micrelec multimedia totem: the most versatile self-service solution for queue management, independent ordering and customer services directly at the point of sale.'},p:'pdf/21kiosk.pdf',
+        specs:[
+          {group:{it:'Sistema e display',en:'System and display'},items:[
+            {label:{it:'Processore',en:'Processor'},value:{it:'Intel di 11ª generazione',en:'11th-gen Intel'}},
+            {label:{it:'Display',en:'Display'},value:{it:'LED 21,5” capacitivo multi-touch',en:'21.5" LED capacitive multi-touch'}},
+            {label:{it:'Sistema operativo',en:'Operating system'},value:{it:'Windows 10 / Windows 10 Pro',en:'Windows 10 / Windows 10 Pro'}},
+            {label:{it:'Storage',en:'Storage'},value:{it:'SSD 2.5” da 256GB, 500GB o 1TB',en:'2.5" SSD, 256GB, 500GB or 1TB'}}
+          ]},
+          {group:{it:'Installazione e accessori',en:'Installation and accessories'},items:[
+            {label:{it:'Design',en:'Design'},value:{it:'Elegante, compatto e sottile; disponibile in bianco o nero',en:'Elegant, compact and slim; available in white or black'}},
+            {label:{it:'Installazione',en:'Installation'},value:{it:'Self standing, a parete (VESA) o da bancone',en:'Self-standing, wall-mounted (VESA) or countertop'}},
+            {label:{it:'Accessori',en:'Accessories'},value:{it:'Scanner, NFC, stampante, telecamera, altoparlanti, terminale di pagamento integrabile',en:'Scanner, NFC, printer, camera, speakers, integrable payment terminal'}}
+          ]},
+          {group:{it:'Stampante opzionale',en:'Optional printer'},items:[
+            {label:{it:'Stampante telematica',en:'Telematic printer'},value:{it:'80 mm x 80 m, 250 mm/sec, taglierina automatica',en:'80 mm x 80 m, 250 mm/sec, automatic cutter'}}
+          ]}
+        ]
+      }
     ]
   },
   'palmari-stampanti':{
     icon:'fa-print',
     t:{it:'Palmari & Stampanti',en:'Handhelds & Printers'},
     m:[
-      {n:{it:'Serie DT50X',en:'DT50X Series'},i:'img/palmareax.jpg',d:{it:'Palmare Hospitality Edition: display touch 5,7 pollici HD visibile anche con forte luce solare. Funziona con guanti o dita bagnate. Prestazioni top per la ristorazione.',en:'Hospitality Edition handheld: 5.7" HD touch display visible even in strong sunlight. Works with gloves or wet fingers. Top performance for the food-service sector.'},p:'pdf/palmareax.pdf'},
-      {n:{it:'Serie POS 80K',en:'POS 80K Series'},i:'img/com.jpg',d:{it:'Stampante per comande e ricevute termiche, la più versatile della famiglia. Forma compatta, installazione ovunque anche a parete. Veloce e silenzioso.',en:'Thermal order/receipt printer, the most versatile of the family. Compact shape, can be installed anywhere, even on a wall. Fast and quiet.'},p:'pdf/com.pdf'}
+      {n:{it:'Serie DT50X',en:'DT50X Series'},i:'img/palmareax.jpg',d:{it:'Palmare Hospitality Edition: display touch 5,7 pollici HD visibile anche con forte luce solare. Funziona con guanti o dita bagnate. Prestazioni top per la ristorazione.',en:'Hospitality Edition handheld: 5.7" HD touch display visible even in strong sunlight. Works with gloves or wet fingers. Top performance for the food-service sector.'},p:'pdf/palmareax.pdf',
+        specs:[
+          {group:{it:'Sistema',en:'System'},items:[
+            {label:{it:'Processore',en:'Processor'},value:{it:'Qualcomm Octa-Core 2,0 GHz 64 bit',en:'Qualcomm Octa-Core 2.0 GHz 64-bit'}},
+            {label:{it:'Sistema operativo',en:'Operating system'},value:{it:'Android 11',en:'Android 11'}},
+            {label:{it:'Memoria',en:'Memory'},value:{it:'RAM 4 GB, ROM 64 GB, Micro-SD fino a 256 GB',en:'4 GB RAM, 64 GB ROM, Micro-SD up to 256 GB'}}
+          ]},
+          {group:{it:'Display e resistenza',en:'Display and durability'},items:[
+            {label:{it:'Display',en:'Display'},value:{it:'5,7” 720x1440, touch PCAP ultra sensibile, funziona con guanti e dita bagnate',en:'5.7" 720x1440, ultra-sensitive PCAP touch, works with gloves and wet fingers'}},
+            {label:{it:'Resistenza',en:'Durability'},value:{it:'IP67, cadute multiple da 1,5 m',en:'IP67, multiple 1.5 m drops'}},
+            {label:{it:'Dimensioni e peso',en:'Dimensions and weight'},value:{it:'162,6 x 76 x 13,6 mm, 256 g con batteria',en:'162.6 x 76 x 13.6 mm, 256 g with battery'}}
+          ]},
+          {group:{it:'Batteria e connettività',en:'Battery and connectivity'},items:[
+            {label:{it:'Batteria',en:'Battery'},value:{it:'3,85V 5000 mAh, ricarica in meno di 4 ore (3 ore con Quick Charge)',en:'3.85V 5000 mAh, charges in under 4 hours (3 hours with Quick Charge)'}},
+            {label:{it:'Connettività',en:'Connectivity'},value:{it:'4G/3G/2G, WiFi 2,4G/5G, Bluetooth 5.0, NFC, GPS',en:'4G/3G/2G, 2.4G/5G WiFi, Bluetooth 5.0, NFC, GPS'}},
+            {label:{it:'Fotocamere',en:'Cameras'},value:{it:'Frontale 5MP, posteriore 13MP con flash e autofocus',en:'5MP front, 13MP rear with flash and autofocus'}}
+          ]}
+        ]
+      },
+      {n:{it:'Serie POS 80K',en:'POS 80K Series'},i:'img/com.jpg',d:{it:'Stampante per comande e ricevute termiche, la più versatile della famiglia. Forma compatta, installazione ovunque anche a parete. Veloce e silenzioso.',en:'Thermal order/receipt printer, the most versatile of the family. Compact shape, can be installed anywhere, even on a wall. Fast and quiet.'},p:'pdf/com.pdf',
+        specs:[
+          {group:{it:'Stampa',en:'Printing'},items:[
+            {label:{it:'Tecnologia',en:'Technology'},value:{it:'Termica diretta',en:'Direct thermal'}},
+            {label:{it:'Velocità',en:'Speed'},value:{it:'230 mm/sec',en:'230 mm/sec'}},
+            {label:{it:'Risoluzione',en:'Resolution'},value:{it:'203,2 dpi (8 dots/mm)',en:'203.2 dpi (8 dots/mm)'}},
+            {label:{it:'Larghezza di stampa',en:'Print width'},value:{it:'48/72 mm',en:'48/72 mm'}}
+          ]},
+          {group:{it:'Gestione carta e affidabilità',en:'Paper handling and reliability'},items:[
+            {label:{it:'Larghezza rotolo',en:'Roll width'},value:{it:'58/80 mm, diametro massimo 83 mm',en:'58/80 mm, max diameter 83 mm'}},
+            {label:{it:'Taglierina',en:'Cutter'},value:{it:'Doppia taglierina automatica brevettata, ritiro in caso di inceppamento',en:'Patented double automatic cutter, retracts in case of jamming'}},
+            {label:{it:'Durata',en:'Lifespan'},value:{it:'Testina 100 km, taglierina 1,5 milioni di tagli',en:'Print head 100 km, cutter 1.5 million cuts'}}
+          ]},
+          {group:{it:'Connettività e certificazioni',en:'Connectivity and certifications'},items:[
+            {label:{it:'Interfacce',en:'Interfaces'},value:{it:'USB 2.0, Ethernet, RS232, cassetto portadenaro',en:'USB 2.0, Ethernet, RS232, cash drawer'}},
+            {label:{it:'Sistemi operativi',en:'Operating systems'},value:{it:'Windows 7/8/10, Windows Server, Linux, MacOS, JavaPOS, OPOS',en:'Windows 7/8/10, Windows Server, Linux, MacOS, JavaPOS, OPOS'}},
+            {label:{it:'Certificazioni',en:'Certifications'},value:{it:'CE, FCC, RoHS',en:'CE, FCC, RoHS'}}
+          ]},
+          {group:{it:'Dimensioni e alimentazione',en:'Dimensions and power'},items:[
+            {label:{it:'Alimentatore',en:'Power supply'},value:{it:'24V, 1,5A',en:'24V, 1.5A'}},
+            {label:{it:'Dimensioni',en:'Dimensions'},value:{it:'179 x 140 x 117 mm (L x P x H)',en:'179 x 140 x 117 mm (W x D x H)'}},
+            {label:{it:'Peso',en:'Weight'},value:{it:'760 g',en:'760 g'}},
+            {label:{it:'Colori',en:'Colours'},value:{it:'Grigio antracite',en:'Anthracite grey'}}
+          ]}
+        ]
+      }
     ]
   },
   'prezzatrici-banconote':{
@@ -905,10 +1726,13 @@ var db={
 var catOrder=['registratori','bilance','sistemi-touch','casse','kiosk','affettatrici','palmari-stampanti','prezzatrici-banconote','rotoli'];
 
 /* flatten to a single searchable list, keeping category key on each item */
+function slugify(s){
+  return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
+}
 var allProducts=[];
 catOrder.forEach(function(k){
   db[k].m.forEach(function(m){
-    allProducts.push({cat:k,n:m.n,i:m.i,d:m.d,p:m.p,order:m.order,delivery:m.delivery,minOrder:m.minOrder,orderMsg:m.orderMsg,cod:m.cod});
+    allProducts.push({cat:k,n:m.n,i:m.i,d:m.d,p:m.p,order:m.order,delivery:m.delivery,minOrder:m.minOrder,orderMsg:m.orderMsg,cod:m.cod,specs:m.specs,slug:k+'-'+slugify(m.n.it)});
   });
 });
 
@@ -959,7 +1783,7 @@ function renderChips(){
     var btn=document.createElement('button');
     btn.type='button';
     btn.className='chip'+(k===activeCat?' active':'');
-    var iconHtml=previewImg?'<img src="'+previewImg+'" alt="" loading="lazy">':'<i class="fas '+c.icon+'"></i>';
+    var iconHtml=previewImg?'<img src="'+previewImg+'" alt="" loading="lazy" onerror="this.onerror=null;this.src=\''+IMG_FALLBACK+'\';">':'<i class="fas '+c.icon+'"></i>';
     btn.innerHTML='<span class="chip-icon">'+iconHtml+'</span>'+(c.t[currentLang]||c.t.it)+' <span class="chip-count">('+c.m.length+')</span>';
     btn.addEventListener('click',function(){activeCat=k;refreshAll();});
     chipRow.appendChild(btn);
@@ -1041,24 +1865,29 @@ function renderGrid(){
     var el=document.createElement('div');
     el.className='card';
     el.style.animationDelay=(Math.min(i,14)*45)+'ms';
+    var detailsBtnHtml='<button type="button" class="details-btn"><i class="fas fa-eye"></i> '+(currentLang==='it'?'Dettagli':'Details')+'</button>';
     var pdf=p.p?'<a href="'+p.p+'" class="pdf-btn" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i> '+t.pdf+'</a>':'';
     var waText=encodeURIComponent((currentLang==='it'?'Salve, sono interessato al modello: ':'Hello, I am interested in the model: ')+name);
     var actions;
     if(p.order){
       var orderMsgText=p.orderMsg?(p.orderMsg[currentLang]||p.orderMsg.it):((currentLang==='it'?'Salve, vorrei ordinare: ':'Hello, I would like to order: ')+name);
       var orderText=encodeURIComponent(orderMsgText);
-      actions='<a href="https://wa.me/393382247948?text='+orderText+'" class="order-btn" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> '+t.order+'</a>';
+      actions=detailsBtnHtml+'<a href="https://wa.me/393382247948?text='+orderText+'" class="order-btn" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> '+t.order+'</a>';
     }else{
       var info='<a href="https://wa.me/393382247948?text='+waText+'" class="info-btn" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> '+t.info+'</a>';
-      actions=pdf+info;
+      actions=detailsBtnHtml+pdf+info;
     }
     var infoRows='';
     if(p.delivery)infoRows+='<div class="info-row"><i class="fas fa-truck"></i><span>'+(p.delivery[currentLang]||p.delivery.it)+'</span></div>';
     if(p.cod)infoRows+='<div class="info-row cod-row"><i class="fas fa-hand-holding-dollar"></i><span>'+(p.cod[currentLang]||p.cod.it)+'</span></div>';
     if(p.minOrder)infoRows+='<div class="info-row minorder-row"><i class="fas fa-box"></i><span>'+(p.minOrder[currentLang]||p.minOrder.it)+'</span></div>';
     var badges=infoRows?'<div class="product-info-list">'+infoRows+'</div>':'';
-    el.innerHTML='<div class="card-img"><img src="'+p.i+'" alt="'+name+'" loading="lazy" data-lightbox-name="'+name.replace(/"/g,'&quot;')+'"><span class="card-zoom-hint"><i class="fas fa-magnifying-glass-plus"></i></span></div><div class="card-body"><span class="card-cat">'+catName+'</span><h2>'+name+'</h2><p>'+desc+'</p>'+badges+'<div class="card-actions">'+actions+'</div></div>';
+    el.innerHTML='<div class="card-img"><img src="'+p.i+'" alt="'+name+'" loading="lazy" onerror="this.onerror=null;this.src=\''+IMG_FALLBACK+'\';" data-lightbox-name="'+name.replace(/"/g,'&quot;')+'"><span class="card-zoom-hint"><i class="fas fa-magnifying-glass-plus"></i></span></div><div class="card-body"><span class="card-cat">'+catName+'</span><h2>'+name+'</h2><p>'+desc+'</p>'+badges+'<div class="card-actions">'+actions+'</div></div>';
     grid.appendChild(el);
+    var detailsBtn=el.querySelector('.details-btn');
+    if(detailsBtn)detailsBtn.addEventListener('click',function(){showProductPage(p);});
+    var h2El=el.querySelector('.card-body h2');
+    if(h2El)h2El.addEventListener('click',function(){showProductPage(p);});
   });
 }
 
@@ -1085,6 +1914,15 @@ if(activeFilterClearBtn)activeFilterClearBtn.addEventListener('click',function()
 
 /* Init */
 applyModLang(currentLang);
+
+/* Se l'URL contiene già ?scheda=..., apri direttamente quella pagina prodotto (link condivisibili, refresh incluso) */
+(function(){
+  var schedaParam=new URLSearchParams(window.location.search).get('scheda');
+  if(schedaParam){
+    var found=allProducts.filter(function(p){return p.slug===schedaParam;})[0];
+    if(found)showProductPage(found,false);
+  }
+})();
 
 document.getElementById('langBtn').addEventListener('click',function(){
   applyModLang(currentLang==='it'?'en':'it');
