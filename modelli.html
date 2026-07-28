@@ -599,6 +599,29 @@ a:focus-visible,button:focus-visible,.chip:focus-visible,input:focus-visible,sel
 .order-btn:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 14px 30px rgba(37,211,102,.42)}
 .order-btn:hover::after{opacity:1}
 .order-btn i{font-size:1.1em}
+
+/* ── BOTTONE PREMIUM CONDIVISO CON LA HOMEPAGE — pillola + freccia circolare ── */
+.btn-adv{
+  display:inline-flex;align-items:center;gap:14px;
+  padding:6px 6px 6px 22px;
+  background:var(--dk);
+  color:#fff;text-decoration:none;border-radius:50px;border:none;cursor:pointer;
+  font-weight:700;font-size:.76em;letter-spacing:.6px;text-transform:uppercase;
+  font-family:'Inter',sans-serif;
+  box-shadow:0 8px 20px rgba(10,10,10,.2);
+  transition:transform var(--spring),box-shadow var(--ease);
+  position:relative;
+}
+.btn-adv-arrow{
+  width:34px;height:34px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,var(--or),var(--or2));
+  display:flex;align-items:center;justify-content:center;color:#fff;font-size:.8em;
+  transition:transform var(--spring);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.25);
+}
+.btn-adv:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(10,10,10,.28);color:#fff}
+.btn-adv:hover .btn-adv-arrow{transform:rotate(45deg) scale(1.1)}
+.card-actions .btn-adv{width:100%;justify-content:space-between}
 .product-info-list{
   display:flex;flex-direction:column;
   border:1px solid var(--lt2);border-radius:14px;overflow:hidden;
@@ -826,7 +849,6 @@ footer a:hover{color:var(--or)}
     </div>
     <div id="ppSpecsSection">
       <h2 class="pp-specs-heading" id="ppSpecsHeading">Caratteristiche tecniche</h2>
-      <p class="pp-specs-note" id="ppSpecsNote" style="display:none"></p>
       <div class="pp-specs-grid" id="ppSpecsGrid"></div>
     </div>
     <div class="pp-related" id="ppRelated" style="display:none">
@@ -1068,11 +1090,11 @@ function renderProductPage(p){
     });
   }
 
+  var specsSection=document.getElementById('ppSpecsSection');
   var specsGrid=document.getElementById('ppSpecsGrid');
-  var specsNote=document.getElementById('ppSpecsNote');
   specsGrid.innerHTML='';
   if(p.specs&&p.specs.length){
-    specsNote.style.display='none';
+    specsSection.style.display='';
     p.specs.forEach(function(group){
       var groupEl=document.createElement('div');
       groupEl.className='pp-specs-group';
@@ -1084,19 +1106,8 @@ function renderProductPage(p){
       specsGrid.appendChild(groupEl);
     });
   }else{
-    /* finché non riceviamo la scheda tecnica reale, mostriamo la descrizione spezzata in punti */
-    specsNote.style.display='block';
-    specsNote.textContent=currentLang==='it'?'Scheda tecnica dettagliata in arrivo — nel frattempo, ecco i punti principali:':'Detailed technical sheet coming soon — in the meantime, here are the key points:';
-    var groupEl=document.createElement('div');
-    groupEl.className='pp-specs-group';
-    var sentences=desc.split(/\.\s+/).map(function(s){return s.trim();}).filter(function(s){return s.length>3;});
-    var rowsHtml='';
-    sentences.forEach(function(s){
-      var clean=s.replace(/\.$/,'')+'.';
-      rowsHtml+='<div class="pp-specs-row"><span>'+clean+'</span></div>';
-    });
-    groupEl.innerHTML='<div class="pp-specs-group-title">'+(currentLang==='it'?'In breve':'At a glance')+'</div>'+rowsHtml;
-    specsGrid.appendChild(groupEl);
+    /* nessuna scheda tecnica reale disponibile per questo prodotto: niente sezione, niente messaggi — la descrizione sopra è già completa */
+    specsSection.style.display='none';
   }
 
   var actionsWrap=document.getElementById('ppActions');
@@ -1544,15 +1555,198 @@ var db={
     icon:'fa-weight-hanging',
     t:{it:'Bilance Elettroniche',en:'Electronic Scales'},
     m:[
-      {n:{it:'Linea',en:'Linea'},i:'img/IMG_0436.jpeg',d:{it:'Eurobil ridefinisce il concetto di bilancia da banco: prodotto esclusivo che unisce innovazione, efficienza e semplicità d\u2019uso.',en:'Eurobil redefines the concept of a counter scale: an exclusive product combining innovation, efficiency and ease of use.'},p:'pdf/linea.pdf'},
-      {n:{it:'Alex Color',en:'Alex Color'},i:'img/alexcolor.jpeg',d:{it:'Gestione immagini a colori dei prodotti e funzione pubblicità sul display lato cliente. Ideale per valorizzare il punto vendita.',en:'Colour product image management and advertising function on the customer-side display. Ideal for enhancing the point of sale.'},p:'pdf/alexcolor.pdf'},
-      {n:{it:'Alex',en:'Alex'},i:'img/alex.jpg',d:{it:'Bilancia Alex inox: soluzione ideale per pesatura commerciale in piccoli, medi e grandi negozi e per il mercato ambulante.',en:'Alex stainless-steel scale: the ideal solution for commercial weighing in small, medium and large shops and for street markets.'},p:'pdf/alex.pdf'},
-      {n:{it:'Alex Mare',en:'Alex Mare'},i:'img/alexmare.jpeg',d:{it:'Soluzione semplice e affidabile per la gestione commerciale del piccolo negozio e del mercato ambulante. Robusta e pratica.',en:'A simple, reliable solution for the commercial management of small shops and street markets. Robust and practical.'},p:'pdf/alexmare.pdf'},
-      {n:{it:'Sun Eco Color',en:'Sun Eco Color'},i:'img/sunecol.jpg',d:{it:'Acciaio inox con gestione immagini a colori dei prodotti e funzione pubblicità lato cliente per un display sempre aggiornato.',en:'Stainless steel with colour product image management and customer-side advertising function for an always up-to-date display.'},p:'pdf/sunecol.pdf'},
-      {n:{it:'Sun Eco',en:'Sun Eco'},i:'img/suneco.jpg',d:{it:'Bilancia in acciaio inox ideale per ogni esigenza di pesatura commerciale. Affidabile, robusta, adatta a negozio e mercato ambulante.',en:'Stainless-steel scale ideal for any commercial weighing need. Reliable, robust, suited to shops and street markets.'},p:'pdf/suneco.pdf'},
-      {n:{it:'Sun Eco Color Volo',en:'Sun Eco Color Volo'},i:'img/sunecolvol.jpg',d:{it:'Versione Volo con piatto ribaltabile. Acciaio inox, gestione immagini a colori e funzione pubblicità lato cliente.',en:'Volo version with tilting plate. Stainless steel, colour image management and customer-side advertising function.'},p:'pdf/sunecolvol.pdf'},
-      {n:{it:'Sun Eco Volo',en:'Sun Eco Volo'},i:'img/sunecovolo.jpg',d:{it:'Versione Volo con piatto ribaltabile in acciaio inox. Pratica e versatile per negozio e mercato ambulante.',en:'Volo version with stainless-steel tilting plate. Practical and versatile for shops and street markets.'},p:'pdf/sunecovolo.pdf'},
-      {n:{it:'SERIE NINJA LCD',en:'NINJA LCD SERIES'},i:'img/ninja.PNG',d:{it:'Versioni: Bassa, Torre, Pensile Inox, Alta Light. Portate: 12 kg div.2g – 30 kg div.5g – 6/15 kg div.2/5g multirange.',en:'Versions: Low, Tower, Wall-mounted Stainless, High Light. Capacities: 12 kg div.2g – 30 kg div.5g – 6/15 kg div.2/5g multirange.'},p:'pdf/ninja.pdf'},
+      {n:{it:'Linea',en:'Linea'},i:'img/IMG_0436.jpeg',d:{it:'Eurobil ridefinisce il concetto di bilancia da banco: prodotto esclusivo che unisce innovazione, efficienza e semplicità d\u2019uso.',en:'Eurobil redefines the concept of a counter scale: an exclusive product combining innovation, efficiency and ease of use.'},p:'pdf/linea.pdf',
+        specs:[
+          {group:{it:'Display',en:'Display'},items:[
+            {label:{it:'Operatore e cliente',en:'Operator and customer'},value:{it:'15,6” Full HD (1920x1080), doppio schermo antisfondamento a colori',en:'15.6" Full HD (1920x1080), dual shatterproof colour screen'}},
+            {label:{it:'Touch screen',en:'Touch screen'},value:{it:'Capacitivo, antifingerprint, utilizzabile con dita bagnate e guanti in lattice',en:'Capacitive, anti-fingerprint, usable with wet fingers and latex gloves'}}
+          ]},
+          {group:{it:'Stampante',en:'Printer'},items:[
+            {label:{it:'Tipo',en:'Type'},value:{it:'Termica 3” con spellicolatore, 8 dots/mm, fino a 150 mm/sec',en:'3" thermal with peeler, 8 dots/mm, up to 150 mm/sec'}},
+            {label:{it:'Supporti',en:'Media'},value:{it:'Carta termica, modulo continuo adesivo, etichette; larghezza 60-80 mm',en:'Thermal paper, continuous adhesive roll, labels; 60-80 mm width'}}
+          ]},
+          {group:{it:'Connettività',en:'Connectivity'},items:[
+            {label:{it:'Porte',en:'Ports'},value:{it:'1x USB 3.0, 3x USB 2.0, 1x RS232C, 2x Ethernet',en:'1x USB 3.0, 3x USB 2.0, 1x RS232C, 2x Ethernet'}},
+            {label:{it:'Rete',en:'Network'},value:{it:'Fino a 25 bilance in rete; WiFi e Bluetooth opzionali',en:'Up to 25 networked scales; optional WiFi and Bluetooth'}},
+            {label:{it:'Piattaforma',en:'Platform'},value:{it:'Gestionale cloud proprietario per configurazione e assistenza da remoto',en:'Proprietary cloud management platform for remote configuration and support'}}
+          ]},
+          {group:{it:'Funzioni e dimensioni',en:'Features and dimensions'},items:[
+            {label:{it:'PLU',en:'PLU'},value:{it:'Illimitati, con gestione tracciabilità, ricette e valori nutrizionali',en:'Unlimited, with traceability, recipe and nutritional value management'}},
+            {label:{it:'Operatori',en:'Operators'},value:{it:'16, con permessi di accesso personalizzabili',en:'16, with customisable access permissions'}},
+            {label:{it:'Dimensioni',en:'Dimensions'},value:{it:'360 x 470 x 654 mm (L x P x H)',en:'360 x 470 x 654 mm (W x D x H)'}},
+            {label:{it:'Portate disponibili',en:'Available capacities'},value:{it:'12/30kg-2/5g; 30kg-5g; 12kg-2g; 6kg-1g',en:'12/30kg-2/5g; 30kg-5g; 12kg-2g; 6kg-1g'}}
+          ]}
+        ]
+      },
+      {n:{it:'Alex Color',en:'Alex Color'},i:'img/alexcolor.jpeg',d:{it:'Gestione immagini a colori dei prodotti e funzione pubblicità sul display lato cliente. Ideale per valorizzare il punto vendita.',en:'Colour product image management and advertising function on the customer-side display. Ideal for enhancing the point of sale.'},p:'pdf/alexcolor.pdf',
+        specs:[
+          {group:{it:'Display e tastiera',en:'Display and keyboard'},items:[
+            {label:{it:'Visore',en:'Display'},value:{it:'7” a colori',en:'7" colour'}},
+            {label:{it:'Tastiera',en:'Keyboard'},value:{it:'Lavabile touchless ad alta velocità o meccanica',en:'High-speed washable touchless or mechanical'}}
+          ]},
+          {group:{it:'Stampa',en:'Printing'},items:[
+            {label:{it:'Stampante',en:'Printer'},value:{it:'Termica 8 dots/mm con Easy Loading, 70 mm/s',en:'8 dots/mm thermal with Easy Loading, 70 mm/s'}},
+            {label:{it:'Larghezza carta',en:'Paper width'},value:{it:'57 mm, opzione carta adesiva linerless',en:'57 mm, linerless adhesive paper option'}}
+          ]},
+          {group:{it:'Funzioni',en:'Features'},items:[
+            {label:{it:'PLU',en:'PLU'},value:{it:'999 programmabili, con tracciabilità e stampa lotto',en:'999 programmable, with traceability and batch printing'}},
+            {label:{it:'Rete',en:'Network'},value:{it:'Fino a 6 bilance in rete LAN (via cavo o RF)',en:'Up to 6 scales networked via LAN (cable or RF)'}},
+            {label:{it:'Operatori',en:'Operators'},value:{it:'4-8-16',en:'4-8-16'}},
+            {label:{it:'Batteria',en:'Battery'},value:{it:'Interna ricaricabile',en:'Built-in rechargeable'}}
+          ]},
+          {group:{it:'Portate disponibili',en:'Available capacities'},items:[
+            {label:{it:'Portate',en:'Capacities'},value:{it:'30kg/5g; 12-30kg/2-5g; 12kg/2g; 6kg/1g',en:'30kg/5g; 12-30kg/2-5g; 12kg/2g; 6kg/1g'}}
+          ]}
+        ]
+      },
+      {n:{it:'Alex',en:'Alex'},i:'img/alex.jpg',d:{it:'Bilancia Alex inox: soluzione ideale per pesatura commerciale in piccoli, medi e grandi negozi e per il mercato ambulante.',en:'Alex stainless-steel scale: the ideal solution for commercial weighing in small, medium and large shops and for street markets.'},p:'pdf/alex.pdf',
+        specs:[
+          {group:{it:'Struttura e display',en:'Body and display'},items:[
+            {label:{it:'Struttura',en:'Body'},value:{it:'ABS, colore bianco, blu o rosso',en:'ABS, white, blue or red'}},
+            {label:{it:'Visore',en:'Display'},value:{it:'Custom a cristalli liquidi retroilluminato',en:'Custom backlit LCD'}}
+          ]},
+          {group:{it:'Stampa',en:'Printing'},items:[
+            {label:{it:'Stampante',en:'Printer'},value:{it:'Termica 8 dots/mm con Easy Loading, 70 mm/s',en:'8 dots/mm thermal with Easy Loading, 70 mm/s'}},
+            {label:{it:'Larghezza carta',en:'Paper width'},value:{it:'57 mm, opzione carta adesiva linerless',en:'57 mm, linerless adhesive paper option'}}
+          ]},
+          {group:{it:'Funzioni',en:'Features'},items:[
+            {label:{it:'PLU',en:'PLU'},value:{it:'999 programmabili',en:'999 programmable'}},
+            {label:{it:'Rete',en:'Network'},value:{it:'Fino a 6 bilance in rete LAN (via cavo o RF)',en:'Up to 6 scales networked via LAN (cable or RF)'}},
+            {label:{it:'Batteria',en:'Battery'},value:{it:'Interna, autonomia circa 35/40 ore',en:'Built-in, approx. 35/40 hours of autonomy'}}
+          ]},
+          {group:{it:'Portate disponibili',en:'Available capacities'},items:[
+            {label:{it:'Portate',en:'Capacities'},value:{it:'30kg/5g; 12-30kg/2-5g; 12kg/2g; 6kg/1g',en:'30kg/5g; 12-30kg/2-5g; 12kg/2g; 6kg/1g'}}
+          ]}
+        ]
+      },
+      {n:{it:'Alex Mare',en:'Alex Mare'},i:'img/alexmare.jpeg',d:{it:'Soluzione semplice e affidabile per la gestione commerciale del piccolo negozio e del mercato ambulante. Robusta e pratica.',en:'A simple, reliable solution for the commercial management of small shops and street markets. Robust and practical.'},p:'pdf/alexmare.pdf',
+        specs:[
+          {group:{it:'Display e funzioni base',en:'Display and basic features'},items:[
+            {label:{it:'Visore',en:'Display'},value:{it:'LCD Custom retroilluminato',en:'Custom backlit LCD'}},
+            {label:{it:'PLU',en:'PLU'},value:{it:'100 programmabili',en:'100 programmable'}},
+            {label:{it:'Operatori',en:'Operators'},value:{it:'2',en:'2'}}
+          ]},
+          {group:{it:'Stampa',en:'Printing'},items:[
+            {label:{it:'Stampante',en:'Printer'},value:{it:'Termica grafica 8 dots/mm, 70 mm/s',en:'8 dots/mm graphic thermal, 70 mm/s'}},
+            {label:{it:'Larghezza carta',en:'Paper width'},value:{it:'57 mm',en:'57 mm'}}
+          ]},
+          {group:{it:'Alimentazione',en:'Power'},items:[
+            {label:{it:'Batteria',en:'Battery'},value:{it:'6V 12Ah, autonomia circa 35/40 ore',en:'6V 12Ah, approx. 35/40 hours of autonomy'}}
+          ]},
+          {group:{it:'Portate disponibili',en:'Available capacities'},items:[
+            {label:{it:'Alex Mare multirange',en:'Alex Mare multirange'},value:{it:'15/30 kg – 5/10 g oppure 6/15 kg – 2/5 g',en:'15/30 kg – 5/10 g or 6/15 kg – 2/5 g'}}
+          ]}
+        ]
+      },
+      {n:{it:'Sun Eco Color',en:'Sun Eco Color'},i:'img/sunecol.jpg',d:{it:'Acciaio inox con gestione immagini a colori dei prodotti e funzione pubblicità lato cliente per un display sempre aggiornato.',en:'Stainless steel with colour product image management and customer-side advertising function for an always up-to-date display.'},p:'pdf/sunecol.pdf',
+        specs:[
+          {group:{it:'Struttura e display',en:'Body and display'},items:[
+            {label:{it:'Struttura',en:'Body'},value:{it:'Acciaio inox',en:'Stainless steel'}},
+            {label:{it:'Visore',en:'Display'},value:{it:'7” a colori',en:'7" colour'}},
+            {label:{it:'Tastiera',en:'Keyboard'},value:{it:'Lavabile touchless ad alta velocità o meccanica',en:'High-speed washable touchless or mechanical'}}
+          ]},
+          {group:{it:'Stampa',en:'Printing'},items:[
+            {label:{it:'Stampante',en:'Printer'},value:{it:'Termica 8 dots/mm con Easy Loading, 70 mm/s',en:'8 dots/mm thermal with Easy Loading, 70 mm/s'}},
+            {label:{it:'Larghezza carta',en:'Paper width'},value:{it:'57 mm, opzione carta adesiva linerless',en:'57 mm, linerless adhesive paper option'}}
+          ]},
+          {group:{it:'Funzioni',en:'Features'},items:[
+            {label:{it:'PLU',en:'PLU'},value:{it:'999 programmabili',en:'999 programmable'}},
+            {label:{it:'Rete',en:'Network'},value:{it:'Fino a 6 bilance in rete LAN (via cavo o RF)',en:'Up to 6 scales networked via LAN (cable or RF)'}},
+            {label:{it:'Operatori',en:'Operators'},value:{it:'4-8-16',en:'4-8-16'}}
+          ]},
+          {group:{it:'Portate disponibili',en:'Available capacities'},items:[
+            {label:{it:'Portate',en:'Capacities'},value:{it:'30kg/5g; 12-30kg/2-5g; 12kg/2g; 6kg/1g',en:'30kg/5g; 12-30kg/2-5g; 12kg/2g; 6kg/1g'}}
+          ]}
+        ]
+      },
+      {n:{it:'Sun Eco',en:'Sun Eco'},i:'img/suneco.jpg',d:{it:'Bilancia in acciaio inox ideale per ogni esigenza di pesatura commerciale. Affidabile, robusta, adatta a negozio e mercato ambulante.',en:'Stainless-steel scale ideal for any commercial weighing need. Reliable, robust, suited to shops and street markets.'},p:'pdf/suneco.pdf',
+        specs:[
+          {group:{it:'Struttura e display',en:'Body and display'},items:[
+            {label:{it:'Struttura',en:'Body'},value:{it:'Acciaio inox',en:'Stainless steel'}},
+            {label:{it:'Visore',en:'Display'},value:{it:'Custom a cristalli liquidi retroilluminato',en:'Custom backlit LCD'}},
+            {label:{it:'Tastiera',en:'Keyboard'},value:{it:'Meccanica con tasti in gomma',en:'Mechanical with rubber keys'}}
+          ]},
+          {group:{it:'Stampa',en:'Printing'},items:[
+            {label:{it:'Stampante',en:'Printer'},value:{it:'Termica 8 dots/mm con Easy Loading, 70 mm/s',en:'8 dots/mm thermal with Easy Loading, 70 mm/s'}},
+            {label:{it:'Larghezza carta',en:'Paper width'},value:{it:'57 mm, opzione carta adesiva linerless',en:'57 mm, linerless adhesive paper option'}}
+          ]},
+          {group:{it:'Funzioni',en:'Features'},items:[
+            {label:{it:'PLU',en:'PLU'},value:{it:'999 programmabili',en:'999 programmable'}},
+            {label:{it:'Rete',en:'Network'},value:{it:'Fino a 6 bilance in rete LAN (via cavo o RF)',en:'Up to 6 scales networked via LAN (cable or RF)'}},
+            {label:{it:'Batteria',en:'Battery'},value:{it:'Interna ricaricabile',en:'Built-in rechargeable'}}
+          ]},
+          {group:{it:'Portate disponibili',en:'Available capacities'},items:[
+            {label:{it:'Portate',en:'Capacities'},value:{it:'30kg/5g; 12-30kg/2-5g; 12kg/2g; 6kg/1g',en:'30kg/5g; 12-30kg/2-5g; 12kg/2g; 6kg/1g'}}
+          ]}
+        ]
+      },
+      {n:{it:'Sun Eco Color Volo',en:'Sun Eco Color Volo'},i:'img/sunecolvol.jpg',d:{it:'Versione Volo con piatto ribaltabile. Acciaio inox, gestione immagini a colori e funzione pubblicità lato cliente.',en:'Volo version with tilting plate. Stainless steel, colour image management and customer-side advertising function.'},p:'pdf/sunecolvol.pdf',
+        specs:[
+          {group:{it:'Struttura e display',en:'Body and display'},items:[
+            {label:{it:'Struttura',en:'Body'},value:{it:'Acciaio inox, piatto ribaltabile (Volo)',en:'Stainless steel, tilting plate (Volo)'}},
+            {label:{it:'Visore',en:'Display'},value:{it:'7” a colori',en:'7" colour'}},
+            {label:{it:'Tastiera',en:'Keyboard'},value:{it:'Lavabile touchless ad alta velocità o meccanica',en:'High-speed washable touchless or mechanical'}}
+          ]},
+          {group:{it:'Stampa',en:'Printing'},items:[
+            {label:{it:'Stampante',en:'Printer'},value:{it:'Termica 8 dots/mm con Easy Loading, 70 mm/s',en:'8 dots/mm thermal with Easy Loading, 70 mm/s'}},
+            {label:{it:'Larghezza carta',en:'Paper width'},value:{it:'57 mm, opzione carta adesiva linerless',en:'57 mm, linerless adhesive paper option'}}
+          ]},
+          {group:{it:'Funzioni',en:'Features'},items:[
+            {label:{it:'PLU',en:'PLU'},value:{it:'999 programmabili',en:'999 programmable'}},
+            {label:{it:'Rete',en:'Network'},value:{it:'Fino a 6 bilance in rete LAN (via cavo o RF)',en:'Up to 6 scales networked via LAN (cable or RF)'}},
+            {label:{it:'Operatori',en:'Operators'},value:{it:'4-8-16',en:'4-8-16'}}
+          ]},
+          {group:{it:'Portate disponibili',en:'Available capacities'},items:[
+            {label:{it:'Portate',en:'Capacities'},value:{it:'30kg/5g; 12-30kg/2-5g; 12kg/2g; 6kg/1g',en:'30kg/5g; 12-30kg/2-5g; 12kg/2g; 6kg/1g'}}
+          ]}
+        ]
+      },
+      {n:{it:'Sun Eco Volo',en:'Sun Eco Volo'},i:'img/sunecovolo.jpg',d:{it:'Versione Volo con piatto ribaltabile in acciaio inox. Pratica e versatile per negozio e mercato ambulante.',en:'Volo version with stainless-steel tilting plate. Practical and versatile for shops and street markets.'},p:'pdf/sunecovolo.pdf',
+        specs:[
+          {group:{it:'Struttura e display',en:'Body and display'},items:[
+            {label:{it:'Struttura',en:'Body'},value:{it:'Acciaio inox, piatto ribaltabile (Volo)',en:'Stainless steel, tilting plate (Volo)'}},
+            {label:{it:'Visore',en:'Display'},value:{it:'Custom a cristalli liquidi retroilluminato',en:'Custom backlit LCD'}},
+            {label:{it:'Tastiera',en:'Keyboard'},value:{it:'Meccanica con tasti in gomma',en:'Mechanical with rubber keys'}}
+          ]},
+          {group:{it:'Stampa',en:'Printing'},items:[
+            {label:{it:'Stampante',en:'Printer'},value:{it:'Termica 8 dots/mm con Easy Loading, 70 mm/s',en:'8 dots/mm thermal with Easy Loading, 70 mm/s'}},
+            {label:{it:'Larghezza carta',en:'Paper width'},value:{it:'57 mm, opzione carta adesiva linerless',en:'57 mm, linerless adhesive paper option'}}
+          ]},
+          {group:{it:'Funzioni',en:'Features'},items:[
+            {label:{it:'PLU',en:'PLU'},value:{it:'999 programmabili',en:'999 programmable'}},
+            {label:{it:'Rete',en:'Network'},value:{it:'Fino a 6 bilance in rete LAN (via cavo o RF)',en:'Up to 6 scales networked via LAN (cable or RF)'}},
+            {label:{it:'Operatori',en:'Operators'},value:{it:'4-8-16',en:'4-8-16'}}
+          ]},
+          {group:{it:'Portate disponibili',en:'Available capacities'},items:[
+            {label:{it:'Portate',en:'Capacities'},value:{it:'30kg/5g; 12-30kg/2-5g; 12kg/2g; 6kg/1g',en:'30kg/5g; 12-30kg/2-5g; 12kg/2g; 6kg/1g'}}
+          ]}
+        ]
+      },
+      {n:{it:'SERIE NINJA LCD',en:'NINJA LCD SERIES'},i:'img/ninja.PNG',d:{it:'Versioni: Bassa, Torre, Pensile Inox, Alta Light. Portate: 12 kg div.2g – 30 kg div.5g – 6/15 kg div.2/5g multirange.',en:'Versions: Low, Tower, Wall-mounted Stainless, High Light. Capacities: 12 kg div.2g – 30 kg div.5g – 6/15 kg div.2/5g multirange.'},p:'pdf/ninja.pdf',
+        specs:[
+          {group:{it:'Versioni e display',en:'Versions and display'},items:[
+            {label:{it:'Versioni',en:'Versions'},value:{it:'Bassa, Torre, Pensile Inox, Alta Light',en:'Low, Tower, Wall-mounted Stainless, High Light'}},
+            {label:{it:'Display',en:'Display'},value:{it:'2 LCD retroilluminati bianchi: peso, prezzo, importo, tara, nome articolo',en:'2 white backlit LCDs: weight, price, amount, tare, item name'}}
+          ]},
+          {group:{it:'Stampa e scontrino',en:'Printing and receipt'},items:[
+            {label:{it:'Stampante',en:'Printer'},value:{it:'Termica alfanumerica alta risoluzione (Easy Loading nella versione Alta)',en:'High-resolution alphanumeric thermal (Easy Loading on the High version)'}},
+            {label:{it:'Scontrino',en:'Receipt'},value:{it:'2 formati fissi e 2 configurabili, riapertura scontrino, stampa di 4 loghi',en:'2 fixed formats and 2 configurable, receipt reopening, 4-logo printing'}},
+            {label:{it:'Tracciabilità',en:'Traceability'},value:{it:'Fino a 10 classi e 99 lotti',en:'Up to 10 classes and 99 batches'}}
+          ]},
+          {group:{it:'Funzioni e memoria',en:'Features and memory'},items:[
+            {label:{it:'PLU',en:'PLU'},value:{it:'10.000 alfanumerici richiamabili da codice, 999 diretti',en:'10,000 alphanumeric, callable by code, 999 direct'}},
+            {label:{it:'Operatori',en:'Operators'},value:{it:'10, con indicazione memoria occupata',en:'10, with memory usage indicator'}},
+            {label:{it:'Reparti',en:'Departments'},value:{it:'99 sezioni, 99 reparti con 10 codici a barre specifici',en:'99 sections, 99 departments with 10 dedicated barcodes'}},
+            {label:{it:'Codici a barre',en:'Barcodes'},value:{it:'EAN13, EAN128, QR Code',en:'EAN13, EAN128, QR Code'}}
+          ]},
+          {group:{it:'Alimentazione e connettività',en:'Power and connectivity'},items:[
+            {label:{it:'Batteria',en:'Battery'},value:{it:'Interna a lunga durata (versioni Bassa, Torre, Alta)',en:'Built-in long-life battery (Low, Tower, High versions)'}},
+            {label:{it:'Alimentazione',en:'Power supply'},value:{it:'220V, con batterie a lunga durata',en:'220V, with long-life batteries'}},
+            {label:{it:'Connessioni',en:'Connections'},value:{it:'Ethernet, batterie esterne 12V; opzionali WiFi, USB',en:'Ethernet, external 12V batteries; optional WiFi, USB'}},
+            {label:{it:'Rete bilance',en:'Scale network'},value:{it:'Fino a 10 bilance per reparto',en:'Up to 10 scales per department'}}
+          ]}
+        ]
+      },
       {n:{it:'Alex Color Bassa',en:'Alex Color Bassa'},i:'img/alexcolorbassa.PNG',d:{it:'Versione bassa della bilancia Alex Color: gestisce le immagini a colori dei prodotti e la funzione pubblicità sul display lato cliente, in un formato più compatto per banchi con spazio ridotto in altezza.',en:'Low-profile version of the Alex Color scale: manages colour product images and the advertising function on the customer-side display, in a more compact format for counters with limited height.'},p:'',
         specs:[
           {group:{it:'Display e tastiera',en:'Display and keyboard'},items:[
@@ -1693,7 +1887,7 @@ var db={
     ]
   },
   'affettatrici':{
-    icon:'fa-slash',
+    icon:'fa-record-vinyl',
     t:{it:'Affettatrici Professionali',en:'Professional Slicers'},
     m:[
       {n:{it:'Sirman Leonardo 350 EVO BS2',en:'Sirman Leonardo 350 EVO BS2'},i:'img/affettatrici.jpg',d:{it:'Affettatrice professionale verticale per utilizzo intensivo e grande produzione. Struttura alluminio anodizzato priva di spigoli, minuterie e parafetta in acciaio inox. Ideale per macellerie, salumerie, GDO.',en:'Professional vertical slicer for heavy-duty use and high output. Anodised aluminium body with no sharp edges, stainless-steel fittings and slice deflector. Ideal for butchers, delicatessens and large retail.'},p:'pdf/affettatrici.pdf',
@@ -1958,12 +2152,10 @@ function renderChips(){
   chipRow.appendChild(allChip);
   catOrder.forEach(function(k){
     var c=db[k];
-    var previewImg=c.m[0]?c.m[0].i:'';
     var btn=document.createElement('button');
     btn.type='button';
     btn.className='chip'+(k===activeCat?' active':'');
-    var iconHtml=previewImg?'<img src="'+previewImg+'" alt="" loading="lazy" onerror="this.onerror=null;this.src=\''+IMG_FALLBACK+'\';">':'<i class="fas '+c.icon+'"></i>';
-    btn.innerHTML='<span class="chip-icon">'+iconHtml+'</span>'+(c.t[currentLang]||c.t.it)+' <span class="chip-count">('+c.m.length+')</span>';
+    btn.innerHTML='<span class="chip-icon"><i class="fas '+c.icon+'"></i></span>'+(c.t[currentLang]||c.t.it)+' <span class="chip-count">('+c.m.length+')</span>';
     btn.addEventListener('click',function(){activeCat=k;refreshAll();});
     chipRow.appendChild(btn);
   });
@@ -2044,18 +2236,8 @@ function renderGrid(){
     var el=document.createElement('div');
     el.className='card';
     el.style.animationDelay=(Math.min(i,14)*45)+'ms';
-    var detailsBtnHtml='<button type="button" class="details-btn"><i class="fas fa-eye"></i> '+(currentLang==='it'?'Dettagli':'Details')+'</button>';
-    var pdf=p.p?'<a href="'+p.p+'" class="pdf-btn" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i> '+t.pdf+'</a>':'';
-    var waText=encodeURIComponent((currentLang==='it'?'Salve, sono interessato al modello: ':'Hello, I am interested in the model: ')+name);
-    var actions;
-    if(p.order){
-      var orderMsgText=p.orderMsg?(p.orderMsg[currentLang]||p.orderMsg.it):((currentLang==='it'?'Salve, vorrei ordinare: ':'Hello, I would like to order: ')+name);
-      var orderText=encodeURIComponent(orderMsgText);
-      actions=detailsBtnHtml+'<a href="https://wa.me/393382247948?text='+orderText+'" class="order-btn" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> '+t.order+'</a>';
-    }else{
-      var info='<a href="https://wa.me/393382247948?text='+waText+'" class="info-btn" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> '+t.info+'</a>';
-      actions=detailsBtnHtml+pdf+info;
-    }
+    var ctaLabel=currentLang==='it'?'Scopri di più':'Discover more';
+    var actions='<button type="button" class="btn-adv card-cta"><span>'+ctaLabel+'</span><span class="btn-adv-arrow"><i class="fas fa-arrow-right"></i></span></button>';
     var infoRows='';
     if(p.delivery)infoRows+='<div class="info-row"><i class="fas fa-truck"></i><span>'+(p.delivery[currentLang]||p.delivery.it)+'</span></div>';
     if(p.cod)infoRows+='<div class="info-row cod-row"><i class="fas fa-hand-holding-dollar"></i><span>'+(p.cod[currentLang]||p.cod.it)+'</span></div>';
@@ -2063,8 +2245,8 @@ function renderGrid(){
     var badges=infoRows?'<div class="product-info-list">'+infoRows+'</div>':'';
     el.innerHTML='<div class="card-img"><img src="'+p.i+'" alt="'+name+'" loading="lazy" onerror="this.onerror=null;this.src=\''+IMG_FALLBACK+'\';" data-lightbox-name="'+name.replace(/"/g,'&quot;')+'"><span class="card-zoom-hint"><i class="fas fa-magnifying-glass-plus"></i></span></div><div class="card-body"><span class="card-cat">'+catName+'</span><h2>'+name+'</h2><p>'+desc+'</p>'+badges+'<div class="card-actions">'+actions+'</div></div>';
     grid.appendChild(el);
-    var detailsBtn=el.querySelector('.details-btn');
-    if(detailsBtn)detailsBtn.addEventListener('click',function(){showProductPage(p);});
+    var ctaBtn=el.querySelector('.card-cta');
+    if(ctaBtn)ctaBtn.addEventListener('click',function(){showProductPage(p);});
     var h2El=el.querySelector('.card-body h2');
     if(h2El)h2El.addEventListener('click',function(){showProductPage(p);});
   });
