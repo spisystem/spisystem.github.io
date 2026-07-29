@@ -236,9 +236,22 @@ a:focus-visible,button:focus-visible,.chip:focus-visible,input:focus-visible,sel
   padding:9px 14px 9px 9px;border-radius:15px;
   font-size:.83em;font-weight:600;letter-spacing:.1px;
   color:var(--txm);background:transparent;border:1px solid transparent;
-  cursor:pointer;transition:background .28s cubic-bezier(.4,0,.2,1),color .28s ease,transform .2s ease,box-shadow .3s ease;
-  white-space:nowrap;text-align:left;position:relative;
+  cursor:pointer;transition:color .28s ease,transform .2s ease,box-shadow .3s ease,border-color .28s ease;
+  white-space:nowrap;text-align:left;position:relative;isolation:isolate;overflow:hidden;
 }
+.chip::before{
+  content:'';position:absolute;inset:0;z-index:-1;border-radius:inherit;
+  background:rgba(240,112,32,.065);opacity:0;
+  transition:opacity .28s cubic-bezier(.4,0,.2,1);
+}
+.chip::after{
+  content:'';position:absolute;inset:0;z-index:-1;border-radius:inherit;
+  background:linear-gradient(135deg,var(--or),var(--or2));opacity:0;
+  transition:opacity .32s cubic-bezier(.4,0,.2,1);
+}
+.chip:hover::before{opacity:1}
+.chip.active::before{opacity:0}
+.chip.active::after{opacity:1}
 .chip-icon{
   width:36px;height:36px;border-radius:11px;flex-shrink:0;overflow:hidden;
   display:flex;align-items:center;justify-content:center;
@@ -249,9 +262,9 @@ a:focus-visible,button:focus-visible,.chip:focus-visible,input:focus-visible,sel
 .chip:hover .chip-icon{background:rgba(240,112,32,.15);transform:scale(1.06)}
 .chip.active .chip-icon{background:rgba(255,255,255,.22);color:#fff;transform:scale(1.04)}
 .chip.active .chip-icon img{background:rgba(255,255,255,.18)}
-.chip:hover{color:var(--tx);background:rgba(240,112,32,.065);transform:translateX(2px)}
+.chip:hover{color:var(--tx);transform:translateX(2px)}
 .chip.active{
-  color:#fff;background:linear-gradient(135deg,var(--or),var(--or2));
+  color:#fff;
   box-shadow:0 8px 22px -4px var(--glow);transform:translateX(0);
 }
 .chip.active:hover{transform:translateX(0) scale(1.01)}
@@ -347,18 +360,18 @@ a:focus-visible,button:focus-visible,.chip:focus-visible,input:focus-visible,sel
 .card-img{
   background:radial-gradient(circle at 50% 38%,#ffffff 0%,var(--lt) 65%,var(--lt2) 100%);
   display:flex;align-items:center;justify-content:center;
-  padding:30px;border-bottom:1px solid var(--lt2);height:206px;
-  transition:background .4s ease;position:relative;overflow:hidden;
+  padding:34px;border-bottom:1px solid var(--lt2);height:238px;
+  transition:background .45s ease;position:relative;overflow:hidden;
 }
-.card:hover .card-img{background:radial-gradient(circle at 50% 38%,#fff 0%,rgba(240,112,32,.055) 70%,rgba(240,112,32,.09) 100%)}
+.card:hover .card-img{background:radial-gradient(circle at 50% 38%,#fff 0%,rgba(240,112,32,.05) 70%,rgba(240,112,32,.08) 100%)}
 .card-img img{
   max-width:100%;max-height:100%;width:auto;height:auto;
   object-fit:contain;border-radius:8px;cursor:zoom-in;
   pointer-events:auto;
-  transition:transform .5s cubic-bezier(.16,1,.3,1),filter .4s ease;
+  transition:transform .6s cubic-bezier(.16,1,.3,1),filter .45s ease;
   filter:drop-shadow(0 10px 18px rgba(20,20,20,.06));
 }
-.card:hover .card-img img{transform:scale(1.1);filter:drop-shadow(0 18px 26px rgba(20,20,20,.1))}
+.card:hover .card-img img{transform:scale(1.055);filter:drop-shadow(0 20px 30px rgba(20,20,20,.1))}
 .card-zoom-hint{
   position:absolute;bottom:10px;right:10px;
   width:30px;height:30px;border-radius:50%;
@@ -536,15 +549,15 @@ a:focus-visible,button:focus-visible,.chip:focus-visible,input:focus-visible,sel
   border:1px solid rgba(240,112,32,.18);border-radius:20px;
   padding:5px 12px;
 }
-.card-body{padding:22px 24px 24px;display:flex;flex-direction:column;gap:9px;flex:1}
+.card-body{padding:26px 26px 26px;display:flex;flex-direction:column;gap:10px;flex:1}
 .card-body h2{
   font-family:'Cormorant Garamond',serif;
-  font-size:1.32em;font-weight:700;color:var(--tx);line-height:1.22;
+  font-size:1.42em;font-weight:700;color:var(--tx);line-height:1.2;letter-spacing:-.2px;
   cursor:pointer;transition:color .25s ease;
 }
 .card-body h2:hover{color:var(--or)}
-.card-body p{font-size:.87em;color:var(--txm);line-height:1.68;flex:1}
-.card-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:10px}
+.card-body p{font-size:.87em;color:var(--txm);line-height:1.7;flex:1}
+.card-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:12px}
 .pdf-btn{
   display:inline-flex;align-items:center;gap:8px;
   padding:11px 19px;border-radius:50px;
@@ -2088,7 +2101,21 @@ var db={
     t:{it:'Prezzatrici & Verificabanconote',en:'Labellers & Bill Validators'},
     m:[
       {n:{it:'Prezzatrici professionali',en:'Professional price labellers'},i:'img/prezzatrici.PNG',d:{it:'Etichettatrici manuali robuste e precise per il negozio e il mercato ambulante. Rapide da usare, con nastri intercambiabili per ogni esigenza di prezzatura.',en:'Robust, precise manual labellers for shops and street markets. Fast to use, with interchangeable rolls for every pricing need.'},p:''},
-      {n:{it:'Verificabanconote professionali',en:'Professional bill validators'},i:'img/banconote.PNG',d:{it:'Rilevazione rapida e affidabile di banconote false tramite luce UV, infrarossi e magnetica. Indispensabili per la sicurezza del cassetto.',en:'Fast, reliable detection of counterfeit banknotes using UV, infrared and magnetic sensors. Essential for cash-drawer security.'},p:''}
+      {n:{it:'HT 7.0',en:'HT 7.0'},i:'img/banconote.PNG',d:{it:'Il HT 7.0 è un verifica banconote di ultima generazione, progettato per offrire massima affidabilità, velocità e facilità d\u2019uso. Il design compatto ed essenziale lo rende ideale per qualsiasi postazione di lavoro, mentre il display retroilluminato blu garantisce una lettura chiara anche in ambienti poco illuminati. Grazie all\u2019elettronica di ultima generazione, il dispositivo offre prestazioni elevate con un numero ridotto di componenti soggetti a usura, assicurando maggiore durata, minori costi di manutenzione e consumi ridotti. La fessura esterna per schede microSD permette aggiornamenti rapidi e una semplice raccolta dei dati, mentre la nuova tecnologia consente una velocità di aggiornamento via cavo superiore rispetto ai modelli precedenti.',en:'The HT 7.0 is a latest-generation banknote validator, designed to offer maximum reliability, speed and ease of use. Its compact, essential design makes it ideal for any workstation, while the blue backlit display ensures clear reading even in poorly lit environments. Thanks to its latest-generation electronics, the device delivers high performance with fewer components subject to wear, ensuring greater durability, lower maintenance costs and reduced consumption. The external microSD card slot allows quick updates and easy data collection, while the new technology enables faster cable updates than previous models.'},p:'',
+        specs:[
+          {group:{it:'Design e funzionalità',en:'Design and features'},items:[
+            {label:{it:'Design',en:'Design'},value:{it:'Compatto ed elegante',en:'Compact and elegant'}},
+            {label:{it:'Display',en:'Display'},value:{it:'Retroilluminato blu ad alta leggibilità',en:'Blue backlit, highly legible'}},
+            {label:{it:'Elettronica',en:'Electronics'},value:{it:'Ultima generazione, elevata affidabilità e lunga durata',en:'Latest generation, high reliability and long lifespan'}},
+            {label:{it:'Manutenzione',en:'Maintenance'},value:{it:'Ridotti consumi e minore manutenzione',en:'Reduced consumption and lower maintenance'}},
+            {label:{it:'Aggiornamenti',en:'Updates'},value:{it:'Slot esterno per scheda microSD, aggiornamenti rapidi via cavo',en:'External microSD card slot, fast cable updates'}}
+          ]},
+          {group:{it:'Dimensioni',en:'Dimensions'},items:[
+            {label:{it:'Misure imballaggio',en:'Packaging dimensions'},value:{it:'8,5 x 18,5 x 22 cm (A x L x P)',en:'8.5 x 18.5 x 22 cm (H x W x D)'}},
+            {label:{it:'Peso con imballaggio',en:'Weight with packaging'},value:{it:'0,782 kg',en:'0.782 kg'}}
+          ]}
+        ]
+      }
     ]
   },
   'rotoli':{
@@ -2143,25 +2170,50 @@ if(catSidebar)catSidebar.addEventListener('wheel',function(e){
 },{passive:false});
 window.addEventListener('resize',updateChipScrollState);
 
+var chipsBuilt=false;
+
 function renderChips(){
   var t=modT[currentLang];
-  chipRow.innerHTML='';
   var sub=document.getElementById('catSidebarSub');
   if(sub)sub.textContent=allProducts.length+' '+(currentLang==='it'?'prodotti in':'products across')+' '+catOrder.length+' '+(currentLang==='it'?'categorie':'categories');
-  var allChip=document.createElement('button');
-  allChip.type='button';
-  allChip.className='chip'+(activeCat==='all'?' active':'');
-  allChip.innerHTML='<span class="chip-icon"><i class="fas fa-layer-group"></i></span>'+t.all+' <span class="chip-count">('+allProducts.length+')</span>';
-  allChip.addEventListener('click',function(){activeCat='all';refreshAll();});
-  chipRow.appendChild(allChip);
+
+  if(!chipsBuilt){
+    /* I pulsanti categoria vengono creati UNA SOLA VOLTA. Cambiare categoria in seguito
+       aggiorna solo la classe "active" sugli stessi elementi (vedi syncChipsActiveState),
+       invece di distruggerli e ricrearli: questo elimina qualunque flash/sfarfallio,
+       perché il browser anima una vera transizione di stato su un nodo persistente. */
+    chipRow.innerHTML='';
+    var allChip=document.createElement('button');
+    allChip.type='button';
+    allChip.dataset.cat='all';
+    allChip.addEventListener('click',function(){activeCat='all';refreshAll();});
+    chipRow.appendChild(allChip);
+    catOrder.forEach(function(k){
+      var btn=document.createElement('button');
+      btn.type='button';
+      btn.dataset.cat=k;
+      btn.addEventListener('click',function(){activeCat=k;refreshAll();});
+      chipRow.appendChild(btn);
+    });
+    chipsBuilt=true;
+  }
+
+  /* Testo e icone si aggiornano sempre (necessario per il cambio lingua),
+     senza mai toccare/ricreare i nodi dei pulsanti. */
+  var allChipEl=chipRow.querySelector('[data-cat="all"]');
+  if(allChipEl)allChipEl.innerHTML='<span class="chip-icon"><i class="fas fa-layer-group"></i></span>'+t.all+' <span class="chip-count">('+allProducts.length+')</span>';
   catOrder.forEach(function(k){
     var c=db[k];
-    var btn=document.createElement('button');
-    btn.type='button';
-    btn.className='chip'+(k===activeCat?' active':'');
-    btn.innerHTML='<span class="chip-icon"><i class="fas '+c.icon+'"></i></span>'+(c.t[currentLang]||c.t.it)+' <span class="chip-count">('+c.m.length+')</span>';
-    btn.addEventListener('click',function(){activeCat=k;refreshAll();});
-    chipRow.appendChild(btn);
+    var el=chipRow.querySelector('[data-cat="'+k+'"]');
+    if(el)el.innerHTML='<span class="chip-icon"><i class="fas '+c.icon+'"></i></span>'+(c.t[currentLang]||c.t.it)+' <span class="chip-count">('+c.m.length+')</span>';
+  });
+
+  syncChipsActiveState();
+}
+
+function syncChipsActiveState(){
+  chipRow.querySelectorAll('.chip').forEach(function(el){
+    el.classList.toggle('active',el.dataset.cat===activeCat);
   });
   requestAnimationFrame(function(){
     updateChipScrollState();
@@ -2200,7 +2252,7 @@ function renderActiveFilter(){
 }
 
 function refreshAll(){
-  renderChips();
+  syncChipsActiveState();
   renderGrid();
   renderActiveFilter();
 }
