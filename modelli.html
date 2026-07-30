@@ -213,17 +213,18 @@ a:focus-visible,button:focus-visible,.chip:focus-visible,input:focus-visible,sel
   .cat-sidebar{
     position:sticky;top:74px;z-index:600;
     flex-direction:row;overflow-x:auto;overflow-y:visible;
-    max-height:none;padding:9px;gap:8px;border-radius:20px;
+    max-height:none;padding:6px 2px;gap:9px;
+    background:transparent;border:none;box-shadow:none;border-radius:0;
     scrollbar-width:none;-ms-overflow-style:none;
   }
   .cat-sidebar::-webkit-scrollbar{display:none}
   .cat-sidebar-title,.cat-sidebar-sub{display:none}
   .cat-sidebar::before,.cat-sidebar::after{
     content:'';position:absolute;top:0;bottom:0;width:28px;z-index:5;pointer-events:none;
-    transition:opacity .25s ease;border-radius:inherit;
+    transition:opacity .25s ease;
   }
-  .cat-sidebar::before{left:0;background:linear-gradient(90deg,#fff,transparent)}
-  .cat-sidebar::after{right:0;background:linear-gradient(270deg,#fff,transparent)}
+  .cat-sidebar::before{left:0;background:linear-gradient(90deg,var(--lt),transparent)}
+  .cat-sidebar::after{right:0;background:linear-gradient(270deg,var(--lt),transparent)}
   .cat-sidebar.at-start::before{opacity:0}
   .cat-sidebar.at-end::after{opacity:0}
 }
@@ -239,18 +240,15 @@ a:focus-visible,button:focus-visible,.chip:focus-visible,input:focus-visible,sel
   cursor:pointer;transition:color .28s ease,transform .2s ease,box-shadow .3s ease,border-color .28s ease;
   white-space:nowrap;text-align:left;position:relative;isolation:isolate;overflow:hidden;
 }
-.chip::before{
+.chip::before,.chip::after{
   content:'';position:absolute;inset:0;z-index:-1;border-radius:inherit;
-  background:rgba(240,112,32,.065);opacity:0;
-  transition:opacity .28s cubic-bezier(.4,0,.2,1);
+  opacity:0;transition:opacity .3s ease;will-change:opacity;transform:translateZ(0);
 }
-.chip::after{
-  content:'';position:absolute;inset:0;z-index:-1;border-radius:inherit;
-  background:linear-gradient(135deg,var(--or),var(--or2));opacity:0;
-  transition:opacity .32s cubic-bezier(.4,0,.2,1);
-}
-.chip:hover::before{opacity:1}
-.chip.active::before{opacity:0}
+.chip::before{background:rgba(240,112,32,.065)}
+.chip::after{background:linear-gradient(135deg,var(--or),var(--or2))}
+/* L'hover si disattiva del tutto quando il chip è già attivo: niente più due animazioni
+   (dissolvenza hover + comparsa gradiente) sovrapposte nello stesso istante del click. */
+.chip:not(.active):hover::before{opacity:1}
 .chip.active::after{opacity:1}
 .chip-icon{
   width:36px;height:36px;border-radius:11px;flex-shrink:0;overflow:hidden;
@@ -259,10 +257,10 @@ a:focus-visible,button:focus-visible,.chip:focus-visible,input:focus-visible,sel
   transition:background .28s ease,transform .3s cubic-bezier(.34,1.56,.64,1);
 }
 .chip-icon img{width:100%;height:100%;object-fit:contain;padding:5px;background:var(--wh);transition:transform .35s ease}
-.chip:hover .chip-icon{background:rgba(240,112,32,.15);transform:scale(1.06)}
+.chip:not(.active):hover .chip-icon{background:rgba(240,112,32,.15);transform:scale(1.06)}
 .chip.active .chip-icon{background:rgba(255,255,255,.22);color:#fff;transform:scale(1.04)}
 .chip.active .chip-icon img{background:rgba(255,255,255,.18)}
-.chip:hover{color:var(--tx);transform:translateX(2px)}
+.chip:not(.active):hover{color:var(--tx);transform:translateX(2px)}
 .chip.active{
   color:#fff;
   box-shadow:0 8px 22px -4px var(--glow);transform:translateX(0);
@@ -271,7 +269,9 @@ a:focus-visible,button:focus-visible,.chip:focus-visible,input:focus-visible,sel
 .chip .chip-count{margin-left:auto;font-size:.84em;opacity:.6;font-weight:600;transition:opacity .25s ease}
 .chip.active .chip-count{opacity:.85}
 @media(max-width:900px){
-  .chip{padding:7px 15px 7px 7px;border-radius:40px;background:var(--wh);border-color:var(--lt2)}
+  .chip{padding:8px 18px 8px 8px;border-radius:999px;background:var(--wh);border-color:var(--lt2);gap:10px;box-shadow:0 1px 2px rgba(20,20,20,.03),0 6px 16px -4px rgba(20,20,20,.08)}
+  .chip.active{box-shadow:0 6px 18px -4px var(--glow)}
+  .chip .chip-icon{width:36px;height:36px;border-radius:11px}
   .chip:hover{transform:none}
   .chip .chip-count{margin-left:0}
 }
@@ -342,20 +342,20 @@ a:focus-visible,button:focus-visible,.chip:focus-visible,input:focus-visible,sel
 }
 @keyframes cardIn{from{opacity:0;transform:translateY(22px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
 .card{
-  background:var(--wh);border-radius:22px;overflow:hidden;
+  background:var(--wh);border-radius:24px;overflow:hidden;
   display:flex;flex-direction:column;
-  box-shadow:0 1px 2px rgba(20,20,20,.03),0 10px 24px rgba(20,20,20,.045),0 28px 56px -26px rgba(20,20,20,.1);
+  box-shadow:0 1px 2px rgba(20,20,20,.025),0 8px 22px rgba(20,20,20,.04),0 30px 60px -30px rgba(20,20,20,.1);
   border:1px solid var(--lt2);
   position:relative;
   animation:cardIn .5s cubic-bezier(.16,1,.3,1) both;
-  transition:transform .45s cubic-bezier(.16,1,.3,1),box-shadow .4s cubic-bezier(.16,1,.3,1),border-color .3s ease;
+  transition:transform .45s cubic-bezier(.16,1,.3,1),box-shadow .45s cubic-bezier(.16,1,.3,1),border-color .35s ease;
 }
 .card::before{
   content:'';position:absolute;left:0;top:0;right:0;height:3px;z-index:2;
   background:linear-gradient(90deg,var(--or),var(--or2));
   transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.16,1,.3,1);
 }
-.card:hover{transform:translateY(-9px);box-shadow:0 2px 4px rgba(20,20,20,.05),0 24px 44px rgba(20,20,20,.09),0 44px 88px -28px rgba(240,112,32,.24);border-color:rgba(240,112,32,.18)}
+.card:hover{transform:translateY(-7px);box-shadow:0 2px 4px rgba(20,20,20,.05),0 20px 38px rgba(20,20,20,.08),0 38px 70px -30px rgba(240,112,32,.16);border-color:rgba(240,112,32,.14)}
 .card:hover::before{transform:scaleX(1)}
 .card-img{
   background:radial-gradient(circle at 50% 38%,#ffffff 0%,var(--lt) 65%,var(--lt2) 100%);
@@ -543,12 +543,13 @@ a:focus-visible,button:focus-visible,.chip:focus-visible,input:focus-visible,sel
 .pp-rcard-body{padding:14px 16px 16px}
 .pp-rcard-body h3{font-family:'Cormorant Garamond',serif;font-size:1.05em;font-weight:700;color:var(--tx);line-height:1.25}
 .card-cat{
-  display:inline-flex;align-items:center;gap:6px;width:fit-content;
-  font-size:.63em;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;
-  color:var(--or3,#E85C00);background:rgba(240,112,32,.09);
-  border:1px solid rgba(240,112,32,.18);border-radius:20px;
-  padding:5px 12px;
+  display:inline-flex;align-items:center;gap:7px;width:fit-content;
+  font-size:.63em;font-weight:700;letter-spacing:1.1px;text-transform:uppercase;
+  color:var(--or3,#E85C00);background:rgba(240,112,32,.08);
+  border:1px solid rgba(240,112,32,.16);border-radius:20px;
+  padding:5px 13px 5px 10px;
 }
+.card-cat::before{content:'';width:5px;height:5px;border-radius:50%;background:currentColor;flex-shrink:0}
 .card-body{padding:26px 26px 26px;display:flex;flex-direction:column;gap:10px;flex:1}
 .card-body h2{
   font-family:'Cormorant Garamond',serif;
@@ -1532,7 +1533,7 @@ var db={
           ]}
         ]
       },
-      {n:{it:'SERIE DADO RT',en:'DADO RT SERIES'},i:'img/dado.PNG',d:{it:'Display cliente integrato, design compatto. La nuova forma dell\u2019innovazione.',en:'Built-in customer display, compact design. The new shape of innovation.'},p:'pdf/dado.pdf',
+      {n:{it:'SERIE DADO RT',en:'DADO RT SERIES'},i:'img/dado.PNG',d:{it:'Design, versatilità, innovazione, affidabilità, efficienza e performance da oggi hanno una nuova forma. Dado RT è la nuova stampante telematica progettata da Axon Micrelec, esclusiva e originale, omologata per rispondere alle ultime normative e pronta per l\u2019emissione e l\u2019invio dello scontrino digitale. Può essere collegata al POS bancario e configurata da remoto tramite i servizi di monitoraggio e aggiornamento RT disponibili in Cloud. Il suo design elegante ed ergonomico integra un display cliente riposizionabile, personalizzabile su entrambi i lati con colori, decorazioni e loghi, e può essere collocata sul banco cassa o fissata a parete.',en:'Design, versatility, innovation, reliability, efficiency and performance now have a new shape. Dado RT is the new telematic printer designed by Axon Micrelec, exclusive and original, approved to meet the latest regulations and ready to issue and send the digital receipt. It can be connected to a bank POS terminal and configured remotely via the RT monitoring and update services available in the Cloud. Its elegant, ergonomic design features a repositionable customer display, customisable on both sides with colours, decorations and logos, and can be placed on the counter or wall-mounted.'},p:'pdf/dado.pdf',
         specs:[
           {group:{it:'Sistema',en:'System'},items:[
             {label:{it:'Processore',en:'Processor'},value:{it:'Advanced CPU ARM 32 bit',en:'Advanced CPU ARM 32-bit'}}
