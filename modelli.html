@@ -233,7 +233,8 @@ a:focus-visible,button:focus-visible,.chip:focus-visible,input:focus-visible,sel
 @media(max-width:900px){.chip-row{flex-direction:row;gap:8px}}
 
 .chip{
-  display:flex;align-items:center;gap:12px;flex-shrink:0;
+  display:inline-flex;flex-direction:row;flex-wrap:nowrap;align-items:center;justify-content:flex-start;
+  gap:12px;flex-shrink:0;width:auto;
   padding:9px 14px 9px 9px;border-radius:15px;
   font-size:.83em;font-weight:600;letter-spacing:.1px;
   color:var(--txm);background:transparent;border:1px solid transparent;
@@ -252,7 +253,7 @@ a:focus-visible,button:focus-visible,.chip:focus-visible,input:focus-visible,sel
 .chip.active::after{opacity:1}
 .chip-icon{
   width:36px;height:36px;border-radius:11px;flex-shrink:0;overflow:hidden;
-  display:flex;align-items:center;justify-content:center;
+  display:inline-flex;flex-direction:row;align-items:center;justify-content:center;
   background:rgba(240,112,32,.08);color:var(--or);font-size:.86em;
   transition:background .28s ease,transform .3s cubic-bezier(.34,1.56,.64,1);
 }
@@ -266,14 +267,16 @@ a:focus-visible,button:focus-visible,.chip:focus-visible,input:focus-visible,sel
   box-shadow:0 8px 22px -4px var(--glow);transform:translateX(0);
 }
 .chip.active:hover{transform:translateX(0) scale(1.01)}
-.chip .chip-count{margin-left:auto;font-size:.84em;opacity:.6;font-weight:600;transition:opacity .25s ease}
-.chip.active .chip-count{opacity:.85}
+.chip-name{display:inline-block}
 @media(max-width:900px){
-  .chip{padding:8px 18px 8px 8px;border-radius:999px;background:var(--wh);border-color:var(--lt2);gap:10px;box-shadow:0 1px 2px rgba(20,20,20,.03),0 6px 16px -4px rgba(20,20,20,.08)}
+  .chip{
+    display:inline-flex!important;flex-direction:row!important;align-items:center!important;
+    padding:9px 20px 9px 9px;border-radius:999px;background:var(--wh);border-color:var(--lt2);gap:10px;
+    box-shadow:0 1px 2px rgba(20,20,20,.03),0 6px 16px -4px rgba(20,20,20,.08);
+  }
   .chip.active{box-shadow:0 6px 18px -4px var(--glow)}
-  .chip .chip-icon{width:36px;height:36px;border-radius:11px}
+  .chip .chip-icon{width:34px;height:34px;border-radius:10px}
   .chip:hover{transform:none}
-  .chip .chip-count{margin-left:0}
 }
 
 .cat-main{min-width:0}
@@ -2202,11 +2205,11 @@ function renderChips(){
   /* Testo e icone si aggiornano sempre (necessario per il cambio lingua),
      senza mai toccare/ricreare i nodi dei pulsanti. */
   var allChipEl=chipRow.querySelector('[data-cat="all"]');
-  if(allChipEl)allChipEl.innerHTML='<span class="chip-icon"><i class="fas fa-layer-group"></i></span>'+t.all+' <span class="chip-count">('+allProducts.length+')</span>';
+  if(allChipEl)allChipEl.innerHTML='<span class="chip-icon"><i class="fas fa-layer-group"></i></span><span class="chip-name">'+t.all+'</span>';
   catOrder.forEach(function(k){
     var c=db[k];
     var el=chipRow.querySelector('[data-cat="'+k+'"]');
-    if(el)el.innerHTML='<span class="chip-icon"><i class="fas '+c.icon+'"></i></span>'+(c.t[currentLang]||c.t.it)+' <span class="chip-count">('+c.m.length+')</span>';
+    if(el)el.innerHTML='<span class="chip-icon"><i class="fas '+c.icon+'"></i></span><span class="chip-name">'+(c.t[currentLang]||c.t.it)+'</span>';
   });
 
   syncChipsActiveState();
