@@ -1,271 +1,306 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cookie Policy – Spizzicotecnica & SPI System</title>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Cookie Policy | Spizzicotecnica & SPI System</title>
   <meta name="description" content="Cookie Policy di Spizzicotecnica & SPI System, Palo del Colle (BA): quali cookie tecnici e analitici utilizziamo e come gestire le tue preferenze.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.spisystem.it/cookie.html">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --orange: #F07020; --orange-lt: #FF9448;
-      --orange-glow: rgba(240,112,32,0.25);
-      --dark: #0D0D0D; --dark-mid: #1A1A1A;
-      --light: #F5F3EF; --light-2: #EDEAE4;
-      --text: #1C1C1C; --text-muted: #5A5A5A;
-      --white: #FFFFFF; --radius-md: 14px;
-      --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
-    }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; background: var(--light); color: var(--text); line-height: 1.75; }
-    img { pointer-events: none; user-select: none; -webkit-user-drag: none; }
-    ::-webkit-scrollbar { width: 5px; }
-    ::-webkit-scrollbar-track { background: var(--dark); }
-    ::-webkit-scrollbar-thumb { background: var(--orange); border-radius: 10px; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --or:#F07020;--or2:#FF9448;--or3:#E85C00;
+  --glow:rgba(240,112,32,.32);--glow2:rgba(240,112,32,.15);
+  --dk:#0A0A0A;--dk2:#111111;
+  --lt:#F5F3EF;--lt2:#EAE7E0;--lt3:#DEDAD0;
+  --tx:#141414;--txm:#6B6B6B;--txs:#9A9A9A;
+  --wh:#fff;
+  --r14:14px;--r20:20px;
+  --ease:.38s cubic-bezier(.4,0,.2,1);
+  --spring:.52s cubic-bezier(.34,1.56,.64,1);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--lt);color:var(--tx);line-height:1.75}
+img{pointer-events:none;user-select:none;-webkit-user-drag:none}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--dk)}
+::-webkit-scrollbar-thumb{background:var(--or);border-radius:3px}
 
-    .top-bar {
-      position: fixed; top: 0; left: 0;
-      width: 100%; height: 68px;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 28px;
-      background: rgba(13,13,13,0.92);
-      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(240,112,32,0.15);
-      box-shadow: 0 2px 20px rgba(0,0,0,0.4);
-      z-index: 9999;
-    }
-    .top-bar-left { display: flex; align-items: center; gap: 12px; text-decoration: none; color: white; }
-    .top-bar-logo { height: 44px; width: auto; }
-    .top-bar-text {
-      font-family: 'Cormorant Garamond', serif;
-      display: flex; flex-direction: column;
-      align-items: center; text-align: center;
-      line-height: 1.05; color: white; letter-spacing: 1.5px;
-    }
-    .top-bar-text .word { display: block; font-size: 1.0em; font-weight: 700; text-transform: uppercase; letter-spacing: 2.5px; }
-    .top-bar-text .amp { display: block; font-size: 0.85em; color: var(--orange); font-weight: 600; line-height: 1.2; }
-    .top-bar-right { display: flex; align-items: center; gap: 10px; }
-    .back-home {
-      display: inline-flex; align-items: center; gap: 8px;
-      color: rgba(255,255,255,0.7); text-decoration: none;
-      font-size: 0.85em; font-weight: 600; letter-spacing: 0.5px;
-      transition: color var(--transition); white-space: nowrap;
-    }
-    .back-home:hover { color: var(--orange); }
+/* ── TOP BAR — identica a modelli.html ── */
+.bar{
+  position:fixed;top:0;left:0;width:100%;height:68px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 28px;
+  background:rgba(8,8,8,.92);
+  backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);
+  border-bottom:1px solid rgba(240,112,32,.12);
+  box-shadow:0 2px 20px rgba(0,0,0,.45);
+  z-index:9000;
+}
+.bar-brand{display:flex;align-items:center;gap:13px;text-decoration:none}
+.bar-logo{height:44px;width:auto;transition:filter .3s}
+.bar-logo:hover{filter:drop-shadow(0 0 10px rgba(240,112,32,.45))}
+.bar-name{
+  font-family:'Cormorant Garamond',serif;
+  display:flex;flex-direction:column;align-items:center;
+  line-height:1.0;color:var(--wh);
+}
+.bar-name b{font-size:.9em;font-weight:700;text-transform:uppercase;letter-spacing:3px;display:block}
+.bar-name s{font-size:.75em;font-weight:600;color:var(--or);display:block;text-decoration:none;line-height:1.3}
+.back{
+  display:inline-flex;align-items:center;gap:8px;
+  color:rgba(255,255,255,.55);text-decoration:none;
+  font-size:.78em;font-weight:600;letter-spacing:1px;text-transform:uppercase;
+  border:1px solid rgba(255,255,255,.08);border-radius:50px;
+  padding:9px 18px;background:rgba(255,255,255,.04);
+  transition:all .3s ease;
+}
+.back:hover{color:var(--or);border-color:rgba(240,112,32,.3);background:rgba(240,112,32,.07)}
+.back i{font-size:12px}
 
-    .lang-switch{
-      position:relative;display:flex;align-items:center;
-      width:72px;height:30px;padding:3px;
-      background:rgba(255,255,255,.05);
-      border:1px solid rgba(255,255,255,.14);border-radius:50px;
-      cursor:pointer;font-family:'Inter',sans-serif;user-select:none;
-      transition:border-color .3s ease;
-    }
-    .lang-switch:hover{border-color:rgba(240,112,32,.4)}
-    .lang-switch-thumb{
-      position:absolute;top:3px;left:3px;
-      width:33px;height:22px;border-radius:40px;
-      background:linear-gradient(135deg,var(--orange),var(--orange-lt));
-      box-shadow:0 2px 10px rgba(240,112,32,.4);
-      transition:transform .32s cubic-bezier(.4,0,.2,1);
-    }
-    .lang-switch.is-en .lang-switch-thumb{transform:translateX(33px)}
-    .lang-opt{
-      position:relative;z-index:1;flex:1;text-align:center;
-      font-size:.68em;font-weight:700;letter-spacing:.6px;
-      color:rgba(255,255,255,.42);
-      transition:color .32s ease;
-    }
-    .lang-switch:not(.is-en) .lang-opt:first-child{color:#fff}
-    .lang-switch.is-en .lang-opt:last-child{color:#fff}
+.lang-switch{
+  position:relative;display:flex;align-items:center;
+  width:72px;height:30px;padding:3px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.14);border-radius:50px;
+  cursor:pointer;font-family:'Inter',sans-serif;user-select:none;
+  transition:border-color .3s ease;
+}
+.lang-switch:hover{border-color:rgba(240,112,32,.4)}
+.lang-switch-thumb{
+  position:absolute;top:3px;left:3px;
+  width:33px;height:22px;border-radius:40px;
+  background:linear-gradient(135deg,var(--or),var(--or2));
+  box-shadow:0 2px 10px rgba(240,112,32,.4);
+  transition:transform .32s cubic-bezier(.4,0,.2,1);
+}
+.lang-switch.is-en .lang-switch-thumb{transform:translateX(33px)}
+.lang-opt{
+  position:relative;z-index:1;flex:1;text-align:center;
+  font-size:.68em;font-weight:700;letter-spacing:.6px;
+  color:rgba(255,255,255,.42);transition:color .32s ease;
+}
+.lang-switch:not(.is-en) .lang-opt:first-child{color:#fff}
+.lang-switch.is-en .lang-opt:last-child{color:#fff}
 
-    .page-hero { padding-top: 68px; background: var(--dark); text-align: center; position: relative; overflow: hidden; }
-    .page-hero::before {
-      content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse 70% 60% at 50% 110%, rgba(240,112,32,0.18) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .page-hero-inner { position: relative; z-index: 1; padding: 48px 24px 44px; }
-    .page-hero-eyebrow {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.7em; font-weight: 700; letter-spacing: 4px; text-transform: uppercase;
-      color: var(--orange); background: rgba(240,112,32,0.1); border: 1px solid rgba(240,112,32,0.25);
-      border-radius: 40px; padding: 6px 18px; display: inline-block; margin-bottom: 16px;
-    }
-    .page-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2em, 5vw, 3.2em); font-weight: 700; color: var(--white); line-height: 1.15; }
-    .page-hero h1 em { font-style: normal; color: var(--orange-lt); }
-    .page-hero-stripe { width: 52px; height: 3px; background: linear-gradient(90deg, var(--orange), var(--orange-lt)); border-radius: 2px; margin: 18px auto 0; }
+/* ── PAGE HERO — pannello scuro fluttuante, coerente col resto del sito ── */
+.pg-hero{
+  margin:88px auto 0;
+  max-width:1180px;width:calc(100% - 32px);
+  border-radius:28px;
+  background:
+    radial-gradient(circle at 50% 130%, rgba(240,112,32,.20) 0%, transparent 60%),
+    radial-gradient(circle at 90% -10%, rgba(255,148,72,.10) 0%, transparent 45%),
+    linear-gradient(160deg,#1c140d 0%,#120d09 55%,#0a0807 100%);
+  text-align:center;position:relative;overflow:hidden;
+  box-shadow:0 30px 70px -24px rgba(0,0,0,.35);
+}
+.pg-hero::before{
+  content:'';position:absolute;inset:0;opacity:.045;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:180px;pointer-events:none;
+}
+.pg-hero-in{position:relative;z-index:1;padding:44px 24px}
+.pg-crumb{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  font-size:.7em;font-weight:600;letter-spacing:.5px;
+  color:rgba(255,255,255,.38);margin-bottom:16px;
+}
+.pg-crumb a{color:rgba(255,255,255,.5);text-decoration:none;transition:color .25s}
+.pg-crumb a:hover{color:var(--or2)}
+.pg-crumb i{font-size:.65em;color:rgba(255,255,255,.25)}
+.pg-pill{
+  font-size:.62em;font-weight:700;letter-spacing:4px;text-transform:uppercase;
+  color:var(--or);background:rgba(240,112,32,.08);border:1px solid rgba(240,112,32,.22);
+  border-radius:40px;padding:7px 18px;display:inline-block;margin-bottom:16px;
+}
+.pg-hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2em,5vw,3.2em);font-weight:700;color:var(--wh);line-height:1.15;
+}
+.pg-hero h1 em{font-style:italic;color:var(--or2);font-weight:300}
+.pg-line{width:48px;height:2px;background:linear-gradient(90deg,var(--or),var(--or2));border-radius:2px;margin:18px auto 0}
 
-    .content-wrap { max-width: 860px; margin: 0 auto; padding: 56px 24px 80px; }
-    .policy-section {
-      background: var(--white); border-radius: var(--radius-md); padding: 32px 36px;
-      margin-bottom: 20px; border: 1px solid var(--light-2);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05); transition: box-shadow var(--transition);
-    }
-    .policy-section:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
-    .policy-section h2 {
-      font-family: 'Cormorant Garamond', serif; font-size: 1.4em; font-weight: 700;
-      color: var(--text); margin-bottom: 14px; display: flex; align-items: center; gap: 12px;
-    }
-    .policy-section h2 .sec-icon {
-      width: 36px; height: 36px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--orange), var(--orange-lt));
-      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-      box-shadow: 0 3px 10px var(--orange-glow);
-    }
-    .policy-section h2 .sec-icon i { font-size: 14px; color: white; }
-    .policy-section p { font-size: 0.96em; color: var(--text-muted); line-height: 1.8; margin-bottom: 12px; }
-    .policy-section p:last-child { margin-bottom: 0; }
-    .policy-section ul { list-style: none; padding: 0; margin-top: 8px; display: flex; flex-direction: column; gap: 10px; }
-    .policy-section ul li { display: flex; gap: 12px; font-size: 0.95em; color: var(--text-muted); line-height: 1.7; }
-    .policy-section ul li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--orange); flex-shrink: 0; margin-top: 10px; }
-    .policy-section a { color: var(--orange); text-decoration: none; transition: color var(--transition); }
-    .policy-section a:hover { color: var(--orange-lt); text-decoration: underline; }
+/* ── CONTENUTO ── */
+.wrap{max-width:860px;margin:0 auto;padding:48px 20px 90px}
 
-    .cookie-table-wrap { overflow-x: auto; margin-top: 16px; border-radius: 10px; border: 1px solid var(--light-2); }
-    table { width: 100%; border-collapse: collapse; font-size: 0.9em; }
-    thead tr { background: linear-gradient(135deg, var(--orange), var(--orange-lt)); }
-    thead th { color: white; padding: 12px 16px; text-align: left; font-family: 'Space Grotesk', sans-serif; font-weight: 700; letter-spacing: 0.5px; font-size: 0.8em; text-transform: uppercase; white-space: nowrap; }
-    tbody tr { border-bottom: 1px solid var(--light-2); }
-    tbody tr:last-child { border-bottom: none; }
-    tbody tr:hover { background: var(--light); }
-    tbody td { padding: 12px 16px; color: var(--text-muted); line-height: 1.5; vertical-align: top; }
-    tbody td:first-child { font-family: 'Space Grotesk', sans-serif; font-weight: 600; color: var(--text); font-size: 0.9em; }
-    .badge { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 0.8em; font-weight: 700; font-family: 'Space Grotesk', sans-serif; }
-    .badge-tecnico { background: rgba(59,130,246,0.1); color: #2563eb; }
-    .badge-analitico { background: rgba(240,112,32,0.1); color: var(--orange); }
+.legal-section{
+  background:var(--wh);border:1px solid var(--lt2);border-radius:var(--r20);
+  padding:32px 34px;margin-bottom:18px;
+  box-shadow:0 1px 2px rgba(20,20,20,.03),0 10px 24px rgba(20,20,20,.045);
+  transition:box-shadow .35s ease,transform .35s ease;
+}
+.legal-section:hover{box-shadow:0 18px 36px -10px rgba(20,20,20,.1);transform:translateY(-2px)}
+.legal-section h2{
+  font-family:'Cormorant Garamond',serif;font-size:1.5em;font-weight:700;color:var(--tx);
+  display:flex;align-items:center;gap:13px;margin-bottom:14px;line-height:1.3;
+}
+.legal-icon{
+  width:38px;height:38px;border-radius:12px;flex-shrink:0;
+  background:linear-gradient(145deg,rgba(240,112,32,.12),rgba(255,148,72,.05));
+  border:1.5px solid rgba(240,112,32,.22);
+  display:flex;align-items:center;justify-content:center;color:var(--or);font-size:.9em;
+}
+.legal-section p{font-size:.95em;color:var(--txm);line-height:1.85;margin-bottom:12px}
+.legal-section p:last-child{margin-bottom:0}
+.legal-section ul{list-style:none;margin-top:8px;display:flex;flex-direction:column;gap:10px}
+.legal-section ul li{display:flex;gap:12px;font-size:.94em;color:var(--txm);line-height:1.7}
+.legal-section ul li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--or);flex-shrink:0;margin-top:9px}
+.legal-section a{color:var(--or);text-decoration:none;font-weight:600;transition:color .25s ease}
+.legal-section a:hover{color:var(--or2);text-decoration:underline}
 
-    .browser-links { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; margin-top: 16px; }
-    .browser-link {
-      display: flex; align-items: center; gap: 10px; padding: 12px 16px;
-      background: var(--light); border: 1px solid var(--light-2); border-radius: 10px;
-      text-decoration: none; color: var(--text); font-size: 0.9em; font-weight: 600;
-      transition: all var(--transition);
-    }
-    .browser-link:hover { border-color: var(--orange); background: rgba(240,112,32,0.05); color: var(--orange); transform: translateY(-2px); }
-    .browser-link i { color: var(--orange); font-size: 1.1em; }
+.cookie-table-wrap{overflow-x:auto;margin-top:16px;border-radius:14px;border:1px solid var(--lt2)}
+table{width:100%;border-collapse:collapse;font-size:.9em}
+thead tr{background:linear-gradient(135deg,var(--or),var(--or2))}
+thead th{color:#fff;padding:12px 16px;text-align:left;font-weight:700;letter-spacing:.4px;font-size:.78em;text-transform:uppercase;white-space:nowrap}
+tbody tr{border-bottom:1px solid var(--lt2)}
+tbody tr:last-child{border-bottom:none}
+tbody tr:hover{background:var(--lt)}
+tbody td{padding:12px 16px;color:var(--txm);line-height:1.5;vertical-align:top}
+tbody td:first-child{font-weight:700;color:var(--tx);font-size:.9em}
+.badge{display:inline-block;padding:3px 11px;border-radius:20px;font-size:.78em;font-weight:700}
+.badge-tecnico{background:rgba(59,130,246,.1);color:#2563eb}
+.badge-analitico{background:rgba(240,112,32,.1);color:var(--or3)}
 
-    /* FOOTER — coerente con index.html: 3 colonne */
-    footer{
-      background: var(--dark-mid, #1A1A1A); color: rgba(255,255,255,0.38);
-      padding: 64px 24px 0; font-size: 0.86em;
-      border-top: 1px solid rgba(240,112,32,0.18);
-      position: relative;
-    }
-    footer::before{
-      content:'';position:absolute;top:0;left:0;right:0;height:1px;
-      background:linear-gradient(90deg,transparent,rgba(240,112,32,.4),transparent);
-    }
-    .foot-brand-solo{
-      max-width:600px;margin:0 auto;text-align:center;
-      padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,.07);
-    }
-    .foot-brand-name{
-      font-family:'Cormorant Garamond',serif;color:#fff;
-      font-size:1.15em;font-weight:700;letter-spacing:.5px;margin-bottom:14px;
-    }
-    .foot-brand-name span{color:var(--orange-lt);font-weight:400;margin:0 5px}
-    .foot-tag{font-size:.92em;line-height:1.7;color:rgba(255,255,255,.42);margin:0 auto 14px}
-    .foot-piva{font-size:.82em;line-height:1.8;color:rgba(255,255,255,.3)}
-    .foot-bottom{
-      max-width:1080px;margin:0 auto;padding:22px 0;
-      display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;
-    }
-    .foot-bottom p{margin:0;line-height:1.6;font-size:.86em}
-    footer a{color:rgba(255,255,255,.5);text-decoration:none;transition:color .25s}
-    footer a:hover{color:var(--orange)}
-    .foot-credit{
-      text-align:center;padding:14px 0 20px;font-size:.78em;
-      color:rgba(255,255,255,.18);letter-spacing:.5px;
-    }
-    @media(max-width:540px){
-      footer{padding:36px 20px 0}
-      .foot-brand-solo{padding-bottom:24px}
-      .foot-piva{font-size:.78em}
-      .foot-bottom{flex-direction:column;text-align:center;padding:16px 0}
-      .foot-credit{padding:10px 0 16px}
-    }
+.browser-links{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-top:16px}
+.browser-link{
+  display:flex;align-items:center;gap:10px;padding:12px 16px;
+  background:var(--lt);border:1px solid var(--lt2);border-radius:12px;
+  text-decoration:none;color:var(--tx);font-size:.9em;font-weight:600;
+  transition:all .3s cubic-bezier(.16,1,.3,1);
+}
+.browser-link:hover{border-color:rgba(240,112,32,.35);background:rgba(240,112,32,.05);color:var(--or);transform:translateY(-2px)}
+.browser-link i{color:var(--or);font-size:1.1em}
 
-    @media (max-width: 600px) {
-      .top-bar { padding: 0 16px; }
-      .top-bar-text .word { font-size: 0.72em; letter-spacing: 1px; }
-      .top-bar-text .amp { font-size: 0.65em; }
-      .back-home span { display: none; }
-      .policy-section { padding: 24px 20px; }
-      .content-wrap { padding: 40px 16px 60px; }
-    }
-    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: 0.01ms !important; } }
+/* ── FOOTER — coerente con index.html ── */
+footer{
+  background:var(--dk2);color:rgba(255,255,255,.38);
+  padding:64px 22px 0;font-size:.86em;
+  border-top:1px solid rgba(240,112,32,.12);position:relative;
+}
+footer::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(240,112,32,.4),transparent);
+}
+.foot-brand-solo{
+  max-width:600px;margin:0 auto;text-align:center;
+  padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,.07);
+}
+.foot-brand-name{
+  font-family:'Cormorant Garamond',serif;color:#fff;
+  font-size:1.15em;font-weight:700;letter-spacing:.5px;margin-bottom:14px;
+}
+.foot-brand-name span{color:var(--or2);font-weight:400;margin:0 5px}
+.foot-tag{font-size:.92em;line-height:1.7;color:rgba(255,255,255,.42);margin:0 auto 14px}
+.foot-piva{font-size:.82em;line-height:1.8;color:rgba(255,255,255,.3)}
+.foot-bottom{
+  max-width:1080px;margin:0 auto;padding:22px 0;
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;
+}
+.foot-bottom p{margin:0;line-height:1.6;font-size:.86em}
+footer a{color:rgba(255,255,255,.5);text-decoration:none;transition:color .25s}
+footer a:hover{color:var(--or)}
+.foot-credit{text-align:center;padding:14px 0 20px;font-size:.78em;color:rgba(255,255,255,.18);letter-spacing:.5px}
+@media(max-width:540px){
+  footer{padding:36px 20px 0}
+  .foot-brand-solo{padding-bottom:24px}
+  .foot-piva{font-size:.78em}
+  .foot-bottom{flex-direction:column;text-align:center;padding:16px 0}
+  .foot-credit{padding:10px 0 16px}
+}
+
+a:focus-visible,button:focus-visible{outline:2px solid var(--or2);outline-offset:3px;border-radius:6px}
+
+@media(max-width:640px){
+  .bar{padding:0 16px}
+  .bar-name b{font-size:.74em;letter-spacing:1.5px}
+  .bar-name s{font-size:.64em}
+  .bar-logo{height:38px}
+  .back .back-txt{display:none}
+  .pg-hero{margin-top:80px;border-radius:22px}
+  .pg-hero-in{padding:32px 18px}
+  .pg-crumb{display:none}
+  .legal-section{padding:24px 20px}
+  .legal-section h2{font-size:1.28em}
+  .wrap{padding-top:32px}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important}}
   </style>
 </head>
 <body>
 
-<div class="top-bar">
-  <a href="index.html" class="top-bar-left">
-    <img src="img/B0F190C1-ED18-45F3-B492-572A76ED7803.png" class="top-bar-logo" alt="Logo" width="44" height="44" loading="eager" onerror="this.style.display='none'">
-    <div class="top-bar-text">
-      <span class="word">Spizzicotecnica</span>
-      <span class="amp">&</span>
-      <span class="word">SPI System</span>
+<div class="bar">
+  <a href="index.html" class="bar-brand">
+    <img src="img/B0F190C1-ED18-45F3-B492-572A76ED7803.png" class="bar-logo" alt="Logo" width="44" height="44" loading="eager" decoding="async" fetchpriority="high" onerror="this.style.display='none'">
+    <div class="bar-name">
+      <b>Spizzicotecnica</b>
+      <s>&</s>
+      <b>SPI System</b>
     </div>
   </a>
-  <div class="top-bar-right">
+  <div style="display:flex;align-items:center;gap:10px">
     <button class="lang-switch" id="langBtn" aria-label="Cambia lingua" type="button">
       <span class="lang-switch-thumb"></span>
       <span class="lang-opt">IT</span>
       <span class="lang-opt">EN</span>
     </button>
-    <a href="index.html" class="back-home">
-      <i class="fas fa-arrow-left"></i> <span id="backTxt">Torna al sito</span>
+    <a href="index.html" class="back">
+      <i class="fas fa-arrow-left"></i> <span class="back-txt" id="backTxt">Torna al sito</span>
     </a>
   </div>
 </div>
 
-<div class="page-hero">
-  <div class="page-hero-inner">
-    <div class="page-hero-eyebrow" id="heroEyebrow">Informativa legale</div>
+<div class="pg-hero">
+  <div class="pg-hero-in">
+    <div class="pg-crumb"><a href="index.html">Home</a> <i class="fas fa-chevron-right"></i> <span id="crumbCurrent">Cookie Policy</span></div>
+    <div class="pg-pill" id="heroEyebrow">Informativa legale</div>
     <h1 id="heroTitle">Cookie <em>Policy</em></h1>
-    <div class="page-hero-stripe"></div>
+    <div class="pg-line"></div>
   </div>
 </div>
 
-<div class="content-wrap">
-  <div class="policy-section">
-    <h2><span class="sec-icon"><i class="fas fa-cookie-bite"></i></span><span id="t-h1">Cosa sono i cookie?</span></h2>
+<div class="wrap">
+  <div class="legal-section">
+    <h2><span class="legal-icon"><i class="fas fa-cookie-bite"></i></span><span id="t-h1">Cosa sono i cookie?</span></h2>
     <p id="t-p1">I cookie sono piccoli file di testo memorizzati sul tuo dispositivo quando visiti un sito web. Servono a migliorare la tua esperienza di navigazione, ricordare le tue preferenze e fornire servizi personalizzati.</p>
     <p id="t-p2">Questa pagina descrive l'uso dei cookie su <strong>Spizzicotecnica & SPI System</strong> e spiega come gestirli.</p>
   </div>
-  <div class="policy-section">
-    <h2><span class="sec-icon"><i class="fas fa-layer-group"></i></span><span id="t-h2">Tipologie di cookie utilizzati</span></h2>
+
+  <div class="legal-section">
+    <h2><span class="legal-icon"><i class="fas fa-layer-group"></i></span><span id="t-h2">Tipologie di cookie utilizzati</span></h2>
     <ul>
       <li id="t-li1"><strong>Cookie tecnici (necessari):</strong> indispensabili per il corretto funzionamento del sito, come la navigazione, la sicurezza e la gestione delle preferenze. Non richiedono consenso.</li>
       <li id="t-li2"><strong>Cookie analitici:</strong> raccolgono dati aggregati e anonimi sull'utilizzo del sito per migliorare contenuti e performance (es. Google Analytics). Installati solo con il tuo consenso.</li>
       <li id="t-li3"><strong>Cookie di marketing:</strong> servono a tracciare la navigazione per pubblicità personalizzata. <strong>Questo sito non utilizza cookie di marketing.</strong></li>
-      <li id="t-li4"><strong>Cookie di terze parti:</strong> possono essere impostati da servizi esterni come WhatsApp. Consulta le loro rispettive policy per i dettagli.</li>
+      <li id="t-li4"><strong>Cookie di terze parti:</strong> possono essere impostati da servizi esterni richiamati dal sito, come WhatsApp per il contatto diretto. Consulta le loro rispettive policy per i dettagli.</li>
     </ul>
   </div>
-  <div class="policy-section">
-    <h2><span class="sec-icon"><i class="fas fa-list-ul"></i></span><span id="t-h3">Elenco dei cookie utilizzati</span></h2>
+
+  <div class="legal-section">
+    <h2><span class="legal-icon"><i class="fas fa-list-ul"></i></span><span id="t-h3">Elenco dei cookie utilizzati</span></h2>
     <p id="t-p3">Di seguito l'elenco indicativo dei cookie attivi sul sito:</p>
     <div class="cookie-table-wrap">
       <table>
         <thead><tr><th id="t-th1">Nome</th><th id="t-th2">Finalità</th><th id="t-th3">Durata</th><th id="t-th4">Tipologia</th><th id="t-th5">Fornitore</th></tr></thead>
         <tbody>
           <tr><td>cookieConsent</td><td id="t-td1">Salva le preferenze dell'utente sui cookie</td><td>6 <span id="t-mesi1">mesi</span></td><td><span class="badge badge-tecnico" id="t-badge1">Tecnico</span></td><td id="t-prov1">Questo sito</td></tr>
+          <tr><td>lang</td><td id="t-td3">Salva la lingua di navigazione scelta (IT/EN)</td><td>Permanente</td><td><span class="badge badge-tecnico" id="t-badge3">Tecnico</span></td><td id="t-prov3">Questo sito</td></tr>
           <tr><td>_ga, _ga_*</td><td id="t-td2">Statistiche anonime su traffico e comportamento</td><td>2 <span id="t-anni1">anni</span></td><td><span class="badge badge-analitico" id="t-badge2">Analitico</span></td><td>Google</td></tr>
         </tbody>
       </table>
     </div>
   </div>
-  <div class="policy-section">
-    <h2><span class="sec-icon"><i class="fas fa-sliders-h"></i></span><span id="t-h4">Gestione delle preferenze</span></h2>
-    <p id="t-p4">Al primo accesso al sito viene mostrato un banner che ti permette di accettare, rifiutare o personalizzare i cookie non tecnici. Le preferenze possono essere modificate in qualsiasi momento tramite il pulsante <strong id="t-managebtn">"Gestisci preferenze"</strong> presente nel banner.</p>
+
+  <div class="legal-section">
+    <h2><span class="legal-icon"><i class="fas fa-sliders-h"></i></span><span id="t-h4">Gestione delle preferenze</span></h2>
+    <p id="t-p4">Al primo accesso al sito viene mostrato un banner che ti permette di accettare, rifiutare o personalizzare i cookie non tecnici. Le preferenze possono essere modificate in qualsiasi momento tramite il pulsante <strong id="t-managebtn">"Preferenze"</strong> presente nel banner.</p>
   </div>
-  <div class="policy-section">
-    <h2><span class="sec-icon"><i class="fas fa-globe"></i></span><span id="t-h5">Gestione tramite browser</span></h2>
+
+  <div class="legal-section">
+    <h2><span class="legal-icon"><i class="fas fa-globe"></i></span><span id="t-h5">Gestione tramite browser</span></h2>
     <p id="t-p5">Puoi gestire o disattivare i cookie anche direttamente dalle impostazioni del tuo browser:</p>
     <div class="browser-links">
       <a class="browser-link" href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener"><i class="fab fa-chrome"></i> Google Chrome</a>
@@ -274,18 +309,19 @@
       <a class="browser-link" href="https://support.microsoft.com/it-it/help/17442" target="_blank" rel="noopener"><i class="fab fa-edge"></i> Microsoft Edge</a>
     </div>
   </div>
-  <div class="policy-section">
-    <h2><span class="sec-icon"><i class="fas fa-sync-alt"></i></span><span id="t-h6">Modifiche alla Cookie Policy</span></h2>
+
+  <div class="legal-section">
+    <h2><span class="legal-icon"><i class="fas fa-sync-alt"></i></span><span id="t-h6">Modifiche alla Cookie Policy</span></h2>
     <p id="t-p6">La presente Cookie Policy può essere aggiornata in qualsiasi momento in base a modifiche normative o tecniche. Ti invitiamo a consultarla periodicamente.</p>
   </div>
-  <div class="policy-section">
-    <h2><span class="sec-icon"><i class="fas fa-envelope"></i></span><span id="t-h7">Contatti</span></h2>
+
+  <div class="legal-section">
+    <h2><span class="legal-icon"><i class="fas fa-envelope"></i></span><span id="t-h7">Contatti</span></h2>
     <p id="t-p7">Per qualsiasi informazione riguardante i cookie puoi scrivere a: <a href="mailto:spisystem@libero.it">spisystem@libero.it</a></p>
     <p id="t-p8">Consulta anche la nostra <a href="privacy.html" id="t-privacylink">Privacy Policy</a>.</p>
   </div>
 </div>
 
-<!-- FOOTER — coerente con index.html -->
 <footer>
   <div class="foot-brand-solo">
     <div class="foot-brand-name">Spizzicotecnica <span>&</span> SPI System</div>
@@ -293,7 +329,7 @@
     <p class="foot-piva">P. IVA Spizzicotecnica di Spizzico Antonio: <span>05857040728</span><br>P. IVA SPI System di Spizzico Giuseppe: <span>08791580726</span></p>
   </div>
   <div class="foot-bottom">
-    <p id="footerCopy">&copy; 2026 Spizzicotecnica & SPI System – Tutti i diritti riservati</p>
+    <p id="footerCopy">&copy; 2026 SpizzicoTecnica & SPI System — Tutti i diritti riservati.</p>
     <p><a href="privacy.html">Privacy Policy</a> &nbsp;|&nbsp; <a href="cookie.html">Cookie Policy</a> &nbsp;|&nbsp; <a href="index.html" id="footerHome">Home</a></p>
   </div>
   <p class="foot-credit"><span id="footCreditLabel">Sito realizzato da</span> <span style="color:rgba(240,112,32,.5);font-weight:600">SPI System</span></p>
@@ -326,143 +362,115 @@ window.addEventListener('load',function(){
   }
 });
 
-var currentLang = lsGet('lang') || 'it';
+var currentLang=lsGet('lang')||'it';
 
-var ckT = {
-  it: {
-    eyebrow:'Informativa legale', back:'Torna al sito', heroTitle:'Cookie <em>Policy</em>',
-    'h1':'Cosa sono i cookie?',
-    'p1':'I cookie sono piccoli file di testo memorizzati sul tuo dispositivo quando visiti un sito web. Servono a migliorare la tua esperienza di navigazione, ricordare le tue preferenze e fornire servizi personalizzati.',
-    'p2-pre':'Questa pagina descrive l\u2019uso dei cookie su ',
-    'p2-suf':' e spiega come gestirli.',
-    'h2':'Tipologie di cookie utilizzati',
-    'li1':'<strong>Cookie tecnici (necessari):</strong> indispensabili per il corretto funzionamento del sito, come la navigazione, la sicurezza e la gestione delle preferenze. Non richiedono consenso.',
-    'li2':'<strong>Cookie analitici:</strong> raccolgono dati aggregati e anonimi sull\u2019utilizzo del sito per migliorare contenuti e performance (es. Google Analytics). Installati solo con il tuo consenso.',
-    'li3':'<strong>Cookie di marketing:</strong> servono a tracciare la navigazione per pubblicità personalizzata. <strong>Questo sito non utilizza cookie di marketing.</strong>',
-    'li4':'<strong>Cookie di terze parti:</strong> possono essere impostati da servizi esterni come WhatsApp. Consulta le loro rispettive policy per i dettagli.',
-    'h3':'Elenco dei cookie utilizzati',
-    'p3':'Di seguito l\u2019elenco indicativo dei cookie attivi sul sito:',
-    'th1':'Nome','th2':'Finalità','th3':'Durata','th4':'Tipologia','th5':'Fornitore',
-    'mesi1':'mesi','anni1':'anni','badge1':'Tecnico','badge2':'Analitico','prov1':'Questo sito',
-    'h4':'Gestione delle preferenze',
-    'p4':'Al primo accesso al sito viene mostrato un banner che ti permette di accettare, rifiutare o personalizzare i cookie non tecnici. Le preferenze possono essere modificate in qualsiasi momento tramite il pulsante "Gestisci preferenze" presente nel banner.',
-    'managebtn':'"Gestisci preferenze"',
-    'h5':'Gestione tramite browser',
-    'p5':'Puoi gestire o disattivare i cookie anche direttamente dalle impostazioni del tuo browser:',
-    'h6':'Modifiche alla Cookie Policy',
-    'p6':'La presente Cookie Policy può essere aggiornata in qualsiasi momento in base a modifiche normative o tecniche. Ti invitiamo a consultarla periodicamente.',
-    'h7':'Contatti',
-    'p7':'Per qualsiasi informazione riguardante i cookie puoi scrivere a:',
-    'p8':'Consulta anche la nostra ',
-    'privacylink':'Privacy Policy',
-    'td1':'Salva le preferenze dell\u2019utente sui cookie',
-    'td2':'Statistiche anonime su traffico e comportamento',
-    footer:'© 2026 Spizzicotecnica & SPI System – Tutti i diritti riservati',
-    home:'Home',
+var ckT={
+  it:{
+    eyebrow:'Informativa legale', back:'Torna al sito', crumb:'Cookie Policy', heroTitle:'Cookie <em>Policy</em>',
+    h1:'Cosa sono i cookie?',
+    p1:'I cookie sono piccoli file di testo memorizzati sul tuo dispositivo quando visiti un sito web. Servono a migliorare la tua esperienza di navigazione, ricordare le tue preferenze e fornire servizi personalizzati.',
+    'p2-pre':'Questa pagina descrive l\u2019uso dei cookie su ', 'p2-suf':' e spiega come gestirli.',
+    h2:'Tipologie di cookie utilizzati',
+    li1:'<strong>Cookie tecnici (necessari):</strong> indispensabili per il corretto funzionamento del sito, come la navigazione, la sicurezza e la gestione delle preferenze. Non richiedono consenso.',
+    li2:'<strong>Cookie analitici:</strong> raccolgono dati aggregati e anonimi sull\u2019utilizzo del sito per migliorare contenuti e performance (es. Google Analytics). Installati solo con il tuo consenso.',
+    li3:'<strong>Cookie di marketing:</strong> servono a tracciare la navigazione per pubblicità personalizzata. <strong>Questo sito non utilizza cookie di marketing.</strong>',
+    li4:'<strong>Cookie di terze parti:</strong> possono essere impostati da servizi esterni richiamati dal sito, come WhatsApp per il contatto diretto. Consulta le loro rispettive policy per i dettagli.',
+    h3:'Elenco dei cookie utilizzati', p3:'Di seguito l\u2019elenco indicativo dei cookie attivi sul sito:',
+    th1:'Nome',th2:'Finalità',th3:'Durata',th4:'Tipologia',th5:'Fornitore',
+    mesi1:'mesi',anni1:'anni',badge1:'Tecnico',badge2:'Analitico',badge3:'Tecnico',prov1:'Questo sito',prov3:'Questo sito',
+    h4:'Gestione delle preferenze',
+    p4:'Al primo accesso al sito viene mostrato un banner che ti permette di accettare, rifiutare o personalizzare i cookie non tecnici. Le preferenze possono essere modificate in qualsiasi momento tramite il pulsante "Preferenze" presente nel banner.',
+    managebtn:'"Preferenze"',
+    h5:'Gestione tramite browser', p5:'Puoi gestire o disattivare i cookie anche direttamente dalle impostazioni del tuo browser:',
+    h6:'Modifiche alla Cookie Policy',
+    p6:'La presente Cookie Policy può essere aggiornata in qualsiasi momento in base a modifiche normative o tecniche. Ti invitiamo a consultarla periodicamente.',
+    h7:'Contatti', p7:'Per qualsiasi informazione riguardante i cookie puoi scrivere a:',
+    p8:'Consulta anche la nostra ', privacylink:'Privacy Policy',
+    td1:'Salva le preferenze dell\u2019utente sui cookie',
+    td3:'Salva la lingua di navigazione scelta (IT/EN)',
+    td2:'Statistiche anonime su traffico e comportamento',
+    footer:'© 2026 SpizzicoTecnica & SPI System — Tutti i diritti riservati.', home:'Home',
     footTag:'Soluzioni professionali di cassa, pesatura e gestione per il tuo punto vendita, da oltre 35 anni.',
-    footLinksTitle:'Link utili',
-    footContactTitle:'Contatti',
-    footCredit:'Sito realizzato da',
-    navChi:'Chi Siamo', navProd:'Prodotti', navCont:'Contatti', navPrev:'Preventivo'
+    footCredit:'Sito realizzato da'
   },
-  en: {
-    eyebrow:'Legal notice', back:'Back to site', heroTitle:'Cookie <em>Policy</em>',
-    'h1':'What are cookies?',
-    'p1':'Cookies are small text files stored on your device when you visit a website. They help improve your browsing experience, remember your preferences, and provide personalised services.',
-    'p2-pre':'This page describes the use of cookies on ',
-    'p2-suf':' and explains how to manage them.',
-    'h2':'Types of cookies used',
-    'li1':'<strong>Technical (necessary) cookies:</strong> essential for the site to function correctly, such as navigation, security and preference management. They do not require consent.',
-    'li2':'<strong>Analytics cookies:</strong> collect aggregated, anonymous data on site usage to improve content and performance (e.g. Google Analytics). Installed only with your consent.',
-    'li3':'<strong>Marketing cookies:</strong> used to track browsing for personalised advertising. <strong>This site does not use marketing cookies.</strong>',
-    'li4':'<strong>Third-party cookies:</strong> may be set by external services such as WhatsApp. See their respective policies for details.',
-    'h3':'List of cookies in use',
-    'p3':'Below is an indicative list of cookies active on the site:',
-    'th1':'Name','th2':'Purpose','th3':'Duration','th4':'Type','th5':'Provider',
-    'mesi1':'months','anni1':'years','badge1':'Technical','badge2':'Analytics','prov1':'This site',
-    'h4':'Managing your preferences',
-    'p4':'On your first visit a banner lets you accept, reject, or customise non-technical cookies. Preferences can be changed at any time via the "Manage preferences" button in the banner.',
-    'managebtn':'"Manage preferences"',
-    'h5':'Browser-level management',
-    'p5':'You can also manage or disable cookies directly through your browser settings:',
-    'h6':'Changes to the Cookie Policy',
-    'p6':'This Cookie Policy may be updated at any time due to regulatory or technical changes. We invite you to check it periodically.',
-    'h7':'Contact',
-    'p7':'For any information about cookies you can write to:',
-    'p8':'Also read our ',
-    'privacylink':'Privacy Policy',
-    'td1':'Saves the user\u2019s cookie preferences',
-    'td2':'Anonymous aggregate traffic and behaviour statistics',
-    footer:'© 2026 Spizzicotecnica & SPI System – All rights reserved',
-    home:'Home',
+  en:{
+    eyebrow:'Legal notice', back:'Back to site', crumb:'Cookie Policy', heroTitle:'Cookie <em>Policy</em>',
+    h1:'What are cookies?',
+    p1:'Cookies are small text files stored on your device when you visit a website. They help improve your browsing experience, remember your preferences, and provide personalised services.',
+    'p2-pre':'This page describes the use of cookies on ', 'p2-suf':' and explains how to manage them.',
+    h2:'Types of cookies used',
+    li1:'<strong>Technical (necessary) cookies:</strong> essential for the site to function correctly, such as navigation, security and preference management. They do not require consent.',
+    li2:'<strong>Analytics cookies:</strong> collect aggregated, anonymous data on site usage to improve content and performance (e.g. Google Analytics). Installed only with your consent.',
+    li3:'<strong>Marketing cookies:</strong> used to track browsing for personalised advertising. <strong>This site does not use marketing cookies.</strong>',
+    li4:'<strong>Third-party cookies:</strong> may be set by external services called by the site, such as WhatsApp for direct contact. See their respective policies for details.',
+    h3:'List of cookies in use', p3:'Below is an indicative list of cookies active on the site:',
+    th1:'Name',th2:'Purpose',th3:'Duration',th4:'Type',th5:'Provider',
+    mesi1:'months',anni1:'years',badge1:'Technical',badge2:'Analytics',badge3:'Technical',prov1:'This site',prov3:'This site',
+    h4:'Managing your preferences',
+    p4:'On your first visit a banner lets you accept, reject, or customise non-technical cookies. Preferences can be changed at any time via the "Preferences" button in the banner.',
+    managebtn:'"Preferences"',
+    h5:'Browser-level management', p5:'You can also manage or disable cookies directly through your browser settings:',
+    h6:'Changes to the Cookie Policy',
+    p6:'This Cookie Policy may be updated at any time due to regulatory or technical changes. We invite you to check it periodically.',
+    h7:'Contact', p7:'For any information about cookies you can write to:',
+    p8:'Also read our ', privacylink:'Privacy Policy',
+    td1:'Saves the user\u2019s cookie preferences',
+    td3:'Saves the chosen browsing language (IT/EN)',
+    td2:'Anonymous aggregate traffic and behaviour statistics',
+    footer:'© 2026 SpizzicoTecnica & SPI System — All rights reserved.', home:'Home',
     footTag:'Professional cash, weighing and management solutions for your business, for over 35 years.',
-    footLinksTitle:'Quick links',
-    footContactTitle:'Contacts',
-    footCredit:'Website by',
-    navChi:'About Us', navProd:'Products', navCont:'Contacts', navPrev:'Quote'
+    footCredit:'Website by'
   }
 };
 
-function updateLangBtn(lang) {
-  var btn = document.getElementById('langBtn');
-  if (!btn) return;
-  btn.classList.toggle('is-en', lang === 'en');
-}
+function updateLangBtn(lang){var btn=document.getElementById('langBtn');if(!btn)return;btn.classList.toggle('is-en',lang==='en');}
 
-function applyCkLang(lang) {
-  currentLang = lang;
-  lsSet('lang', lang);
-  document.documentElement.lang = lang;
-  var t = ckT[lang];
+function applyCkLang(lang){
+  currentLang=lang;lsSet('lang',lang);document.documentElement.lang=lang;
+  var t=ckT[lang];
   updateLangBtn(lang);
-  var ey = document.getElementById('heroEyebrow'); if(ey) ey.textContent = t.eyebrow;
-  var bk = document.getElementById('backTxt'); if(bk) bk.textContent = t.back;
-  var ht = document.getElementById('heroTitle'); if(ht) ht.innerHTML = t.heroTitle;
-  ['h1','h2','h3','h4','h5','h6','h7'].forEach(function(k){
-    var el=document.getElementById('t-'+k); if(el) el.textContent=t[k];
-  });
-  ['li1','li2','li3','li4'].forEach(function(k){
-    var el=document.getElementById('t-'+k); if(el) el.innerHTML=t[k];
-  });
-  ['th1','th2','th3','th4','th5'].forEach(function(k){
-    var el=document.getElementById('t-'+k); if(el) el.textContent=t[k];
-  });
-  var mesi=document.getElementById('t-mesi1'); if(mesi) mesi.textContent=t.mesi1;
-  var anni=document.getElementById('t-anni1'); if(anni) anni.textContent=t.anni1;
-  var badge1=document.getElementById('t-badge1'); if(badge1) badge1.textContent=t.badge1;
-  var badge2=document.getElementById('t-badge2'); if(badge2) badge2.textContent=t.badge2;
-  var prov1=document.getElementById('t-prov1'); if(prov1) prov1.textContent=t.prov1;
-  var managebtn=document.getElementById('t-managebtn'); if(managebtn) managebtn.textContent=t.managebtn;
+  var ey=document.getElementById('heroEyebrow');if(ey)ey.textContent=t.eyebrow;
+  var bk=document.getElementById('backTxt');if(bk)bk.textContent=t.back;
+  var cr=document.getElementById('crumbCurrent');if(cr)cr.textContent=t.crumb;
+  var ht=document.getElementById('heroTitle');if(ht)ht.innerHTML=t.heroTitle;
+  ['h1','h2','h3','h4','h5','h6','h7'].forEach(function(k){var el=document.getElementById('t-'+k);if(el)el.textContent=t[k];});
+  ['li1','li2','li3','li4'].forEach(function(k){var el=document.getElementById('t-'+k);if(el)el.innerHTML=t[k];});
+  ['th1','th2','th3','th4','th5'].forEach(function(k){var el=document.getElementById('t-'+k);if(el)el.textContent=t[k];});
+  var mesi=document.getElementById('t-mesi1');if(mesi)mesi.textContent=t.mesi1;
+  var anni=document.getElementById('t-anni1');if(anni)anni.textContent=t.anni1;
+  var badge1=document.getElementById('t-badge1');if(badge1)badge1.textContent=t.badge1;
+  var badge2=document.getElementById('t-badge2');if(badge2)badge2.textContent=t.badge2;
+  var badge3=document.getElementById('t-badge3');if(badge3)badge3.textContent=t.badge3;
+  var prov1=document.getElementById('t-prov1');if(prov1)prov1.textContent=t.prov1;
+  var prov3=document.getElementById('t-prov3');if(prov3)prov3.textContent=t.prov3;
+  var managebtn=document.getElementById('t-managebtn');if(managebtn)managebtn.textContent=t.managebtn;
 
-  var p1=document.getElementById('t-p1'); if(p1) p1.textContent=t['p1'];
-  var p2=document.getElementById('t-p2'); if(p2) p2.innerHTML=t['p2-pre']+'<strong>Spizzicotecnica & SPI System</strong>'+t['p2-suf'];
-  var p3=document.getElementById('t-p3'); if(p3) p3.textContent=t['p3'];
-  var p4=document.getElementById('t-p4'); if(p4) p4.innerHTML=t['p4'];
-  var p5=document.getElementById('t-p5'); if(p5) p5.textContent=t['p5'];
-  var p6=document.getElementById('t-p6'); if(p6) p6.textContent=t['p6'];
-  var p7=document.getElementById('t-p7'); if(p7) p7.innerHTML=t['p7']+' <a href="mailto:spisystem@libero.it">spisystem@libero.it</a>';
-  var privacylink=document.getElementById('t-privacylink'); if(privacylink) privacylink.textContent=t.privacylink;
-  var p8=document.getElementById('t-p8'); if(p8){var pl=p8.querySelector('a');p8.innerHTML='';p8.appendChild(document.createTextNode(t['p8']));if(pl)p8.appendChild(pl);p8.appendChild(document.createTextNode('.'));}
-  var td1=document.getElementById('t-td1'); if(td1) td1.textContent=t['td1'];
-  var td2=document.getElementById('t-td2'); if(td2) td2.textContent=t['td2'];
-  var fc=document.getElementById('footerCopy'); if(fc) fc.textContent=t.footer;
-  var fh=document.getElementById('footerHome'); if(fh) fh.textContent=t.home;
-  var ftag=document.getElementById('footTag'); if(ftag) ftag.textContent=t.footTag;
-  var fcl=document.getElementById('footCreditLabel'); if(fcl) fcl.textContent=t.footCredit;
+  var p1=document.getElementById('t-p1');if(p1)p1.textContent=t.p1;
+  var p2=document.getElementById('t-p2');if(p2)p2.innerHTML=t['p2-pre']+'<strong>Spizzicotecnica & SPI System</strong>'+t['p2-suf'];
+  var p3=document.getElementById('t-p3');if(p3)p3.textContent=t.p3;
+  var p4=document.getElementById('t-p4');if(p4)p4.innerHTML=t.p4;
+  var p5=document.getElementById('t-p5');if(p5)p5.textContent=t.p5;
+  var p6=document.getElementById('t-p6');if(p6)p6.textContent=t.p6;
+  var p7=document.getElementById('t-p7');if(p7)p7.innerHTML=t.p7+' <a href="mailto:spisystem@libero.it">spisystem@libero.it</a>';
+  var privacylink=document.getElementById('t-privacylink');if(privacylink)privacylink.textContent=t.privacylink;
+  var p8=document.getElementById('t-p8');
+  if(p8){var pl=p8.querySelector('a');p8.innerHTML='';p8.appendChild(document.createTextNode(t.p8));if(pl)p8.appendChild(pl);p8.appendChild(document.createTextNode('.'));}
+  var td1=document.getElementById('t-td1');if(td1)td1.textContent=t.td1;
+  var td3=document.getElementById('t-td3');if(td3)td3.textContent=t.td3;
+  var td2=document.getElementById('t-td2');if(td2)td2.textContent=t.td2;
+  var fc=document.getElementById('footerCopy');if(fc)fc.textContent=t.footer;
+  var fh=document.getElementById('footerHome');if(fh)fh.textContent=t.home;
+  var ftag=document.getElementById('footTag');if(ftag)ftag.textContent=t.footTag;
+  var fcl=document.getElementById('footCreditLabel');if(fcl)fcl.textContent=t.footCredit;
 }
 
 updateLangBtn(currentLang);
-if (currentLang !== 'it') applyCkLang(currentLang);
+if(currentLang!=='it')applyCkLang(currentLang);
 
-document.getElementById('langBtn').addEventListener('click', function(){
-  applyCkLang(currentLang === 'it' ? 'en' : 'it');
-});
+document.getElementById('langBtn').addEventListener('click',function(){applyCkLang(currentLang==='it'?'en':'it');});
 
-window.addEventListener('pageshow', function(e){
-  if(e.persisted){
-    var l=lsGet('lang')||'it';
-    if(l!==currentLang)applyCkLang(l);
-  }
+window.addEventListener('pageshow',function(e){
+  if(e.persisted){var l=lsGet('lang')||'it';if(l!==currentLang)applyCkLang(l);}
 });
 </script>
 </body>
