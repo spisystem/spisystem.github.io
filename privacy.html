@@ -1,396 +1,291 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Privacy Policy – Spizzicotecnica & SPI System</title>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Privacy Policy | Spizzicotecnica & SPI System</title>
   <meta name="description" content="Informativa sulla privacy di Spizzicotecnica & SPI System, Palo del Colle (BA): come trattiamo i dati personali raccolti tramite il modulo di richiesta preventivo, in conformità al GDPR.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.spisystem.it/privacy.html">
-
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --or:#F07020;--or2:#FF9448;--or3:#E85C00;
+  --glow:rgba(240,112,32,.32);--glow2:rgba(240,112,32,.15);
+  --dk:#0A0A0A;--dk2:#111111;
+  --lt:#F5F3EF;--lt2:#EAE7E0;--lt3:#DEDAD0;
+  --tx:#141414;--txm:#6B6B6B;--txs:#9A9A9A;
+  --wh:#fff;
+  --r14:14px;--r20:20px;
+  --ease:.38s cubic-bezier(.4,0,.2,1);
+  --spring:.52s cubic-bezier(.34,1.56,.64,1);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--lt);color:var(--tx);line-height:1.75}
+img{pointer-events:none;user-select:none;-webkit-user-drag:none}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--dk)}
+::-webkit-scrollbar-thumb{background:var(--or);border-radius:3px}
 
-    :root {
-      --orange:    #F07020;
-      --orange-lt: #FF9448;
-      --orange-glow: rgba(240,112,32,0.25);
-      --dark:      #0D0D0D;
-      --dark-mid:  #1A1A1A;
-      --light:     #F5F3EF;
-      --light-2:   #EDEAE4;
-      --text:      #1C1C1C;
-      --text-muted:#5A5A5A;
-      --white:     #FFFFFF;
-      --radius-md: 14px;
-      --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
-    }
+/* ── TOP BAR — identica a modelli.html ── */
+.bar{
+  position:fixed;top:0;left:0;width:100%;height:68px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 28px;
+  background:rgba(8,8,8,.92);
+  backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);
+  border-bottom:1px solid rgba(240,112,32,.12);
+  box-shadow:0 2px 20px rgba(0,0,0,.45);
+  z-index:9000;
+}
+.bar-brand{display:flex;align-items:center;gap:13px;text-decoration:none}
+.bar-logo{height:44px;width:auto;transition:filter .3s}
+.bar-logo:hover{filter:drop-shadow(0 0 10px rgba(240,112,32,.45))}
+.bar-name{
+  font-family:'Cormorant Garamond',serif;
+  display:flex;flex-direction:column;align-items:center;
+  line-height:1.0;color:var(--wh);
+}
+.bar-name b{font-size:.9em;font-weight:700;text-transform:uppercase;letter-spacing:3px;display:block}
+.bar-name s{font-size:.75em;font-weight:600;color:var(--or);display:block;text-decoration:none;line-height:1.3}
+.back{
+  display:inline-flex;align-items:center;gap:8px;
+  color:rgba(255,255,255,.55);text-decoration:none;
+  font-size:.78em;font-weight:600;letter-spacing:1px;text-transform:uppercase;
+  border:1px solid rgba(255,255,255,.08);border-radius:50px;
+  padding:9px 18px;background:rgba(255,255,255,.04);
+  transition:all .3s ease;
+}
+.back:hover{color:var(--or);border-color:rgba(240,112,32,.3);background:rgba(240,112,32,.07)}
+.back i{font-size:12px}
 
-    html { scroll-behavior: smooth; }
+.lang-switch{
+  position:relative;display:flex;align-items:center;
+  width:72px;height:30px;padding:3px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.14);border-radius:50px;
+  cursor:pointer;font-family:'Inter',sans-serif;user-select:none;
+  transition:border-color .3s ease;
+}
+.lang-switch:hover{border-color:rgba(240,112,32,.4)}
+.lang-switch-thumb{
+  position:absolute;top:3px;left:3px;
+  width:33px;height:22px;border-radius:40px;
+  background:linear-gradient(135deg,var(--or),var(--or2));
+  box-shadow:0 2px 10px rgba(240,112,32,.4);
+  transition:transform .32s cubic-bezier(.4,0,.2,1);
+}
+.lang-switch.is-en .lang-switch-thumb{transform:translateX(33px)}
+.lang-opt{
+  position:relative;z-index:1;flex:1;text-align:center;
+  font-size:.68em;font-weight:700;letter-spacing:.6px;
+  color:rgba(255,255,255,.42);transition:color .32s ease;
+}
+.lang-switch:not(.is-en) .lang-opt:first-child{color:#fff}
+.lang-switch.is-en .lang-opt:last-child{color:#fff}
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--light);
-      color: var(--text);
-      line-height: 1.75;
-    }
+/* ── PAGE HERO — pannello scuro fluttuante, coerente col resto del sito ── */
+.pg-hero{
+  margin:88px auto 0;
+  max-width:1180px;width:calc(100% - 32px);
+  border-radius:28px;
+  background:
+    radial-gradient(circle at 50% 130%, rgba(240,112,32,.20) 0%, transparent 60%),
+    radial-gradient(circle at 90% -10%, rgba(255,148,72,.10) 0%, transparent 45%),
+    linear-gradient(160deg,#1c140d 0%,#120d09 55%,#0a0807 100%);
+  text-align:center;position:relative;overflow:hidden;
+  box-shadow:0 30px 70px -24px rgba(0,0,0,.35);
+}
+.pg-hero::before{
+  content:'';position:absolute;inset:0;opacity:.045;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:180px;pointer-events:none;
+}
+.pg-hero-in{position:relative;z-index:1;padding:44px 24px}
+.pg-crumb{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  font-size:.7em;font-weight:600;letter-spacing:.5px;
+  color:rgba(255,255,255,.38);margin-bottom:16px;
+}
+.pg-crumb a{color:rgba(255,255,255,.5);text-decoration:none;transition:color .25s}
+.pg-crumb a:hover{color:var(--or2)}
+.pg-crumb i{font-size:.65em;color:rgba(255,255,255,.25)}
+.pg-pill{
+  font-size:.62em;font-weight:700;letter-spacing:4px;text-transform:uppercase;
+  color:var(--or);background:rgba(240,112,32,.08);border:1px solid rgba(240,112,32,.22);
+  border-radius:40px;padding:7px 18px;display:inline-block;margin-bottom:16px;
+}
+.pg-hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2em,5vw,3.2em);font-weight:700;color:var(--wh);line-height:1.15;
+}
+.pg-hero h1 em{font-style:italic;color:var(--or2);font-weight:300}
+.pg-line{width:48px;height:2px;background:linear-gradient(90deg,var(--or),var(--or2));border-radius:2px;margin:18px auto 0}
 
-    img { pointer-events: none; user-select: none; -webkit-user-drag: none; }
+/* ── CONTENUTO ── */
+.wrap{max-width:860px;margin:0 auto;padding:48px 20px 90px}
 
-    ::-webkit-scrollbar { width: 5px; }
-    ::-webkit-scrollbar-track { background: var(--dark); }
-    ::-webkit-scrollbar-thumb { background: var(--orange); border-radius: 10px; }
+.legal-section{
+  background:var(--wh);border:1px solid var(--lt2);border-radius:var(--r20);
+  padding:32px 34px;margin-bottom:18px;
+  box-shadow:0 1px 2px rgba(20,20,20,.03),0 10px 24px rgba(20,20,20,.045);
+  transition:box-shadow .35s ease,transform .35s ease;
+}
+.legal-section:hover{box-shadow:0 18px 36px -10px rgba(20,20,20,.1);transform:translateY(-2px)}
+.legal-section h2{
+  font-family:'Cormorant Garamond',serif;font-size:1.5em;font-weight:700;color:var(--tx);
+  display:flex;align-items:center;gap:13px;margin-bottom:14px;line-height:1.3;
+}
+.legal-icon{
+  width:38px;height:38px;border-radius:12px;flex-shrink:0;
+  background:linear-gradient(145deg,rgba(240,112,32,.12),rgba(255,148,72,.05));
+  border:1.5px solid rgba(240,112,32,.22);
+  display:flex;align-items:center;justify-content:center;color:var(--or);font-size:.9em;
+}
+.legal-section p{font-size:.95em;color:var(--txm);line-height:1.85;margin-bottom:12px}
+.legal-section p:last-child{margin-bottom:0}
+.legal-section ul{list-style:none;margin-top:8px;display:flex;flex-direction:column;gap:10px}
+.legal-section ul li{display:flex;gap:12px;font-size:.94em;color:var(--txm);line-height:1.7}
+.legal-section ul li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--or);flex-shrink:0;margin-top:9px}
+.legal-section a{color:var(--or);text-decoration:none;font-weight:600;transition:color .25s ease}
+.legal-section a:hover{color:var(--or2);text-decoration:underline}
 
-    .top-bar {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 68px;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 28px;
-      background: rgba(13,13,13,0.92);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(240,112,32,0.15);
-      box-shadow: 0 2px 20px rgba(0,0,0,0.4);
-      z-index: 9999;
-    }
+.titolari-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+@media(max-width:560px){.titolari-grid{grid-template-columns:1fr}}
+.titolare-card{
+  background:var(--lt);border:1px solid var(--lt2);border-radius:14px;
+  padding:20px 22px;border-left:4px solid var(--or);
+}
+.titolare-card strong{display:block;font-size:.98em;font-weight:700;color:var(--tx);margin-bottom:8px}
+.titolare-card p{font-size:.9em;color:var(--txm);line-height:1.7;margin:0}
+.titolare-card a{color:var(--or)}
 
-    .top-bar-left {
-      display: flex; align-items: center; gap: 12px;
-      text-decoration: none; color: white;
-    }
+.diritti-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-top:16px}
+.diritto-item{
+  display:flex;align-items:flex-start;gap:10px;
+  background:var(--lt);border:1px solid var(--lt2);border-radius:12px;
+  padding:14px 16px;font-size:.9em;color:var(--txm);line-height:1.5;
+}
+.diritto-item i{color:var(--or);margin-top:2px;flex-shrink:0}
 
-    .top-bar-logo { height: 44px; width: auto; }
+/* ── FOOTER — coerente con index.html ── */
+footer{
+  background:var(--dk2);color:rgba(255,255,255,.38);
+  padding:64px 22px 0;font-size:.86em;
+  border-top:1px solid rgba(240,112,32,.12);position:relative;
+}
+footer::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(240,112,32,.4),transparent);
+}
+.foot-brand-solo{
+  max-width:600px;margin:0 auto;text-align:center;
+  padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,.07);
+}
+.foot-brand-name{
+  font-family:'Cormorant Garamond',serif;color:#fff;
+  font-size:1.15em;font-weight:700;letter-spacing:.5px;margin-bottom:14px;
+}
+.foot-brand-name span{color:var(--or2);font-weight:400;margin:0 5px}
+.foot-tag{font-size:.92em;line-height:1.7;color:rgba(255,255,255,.42);margin:0 auto 14px}
+.foot-piva{font-size:.82em;line-height:1.8;color:rgba(255,255,255,.3)}
+.foot-bottom{
+  max-width:1080px;margin:0 auto;padding:22px 0;
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;
+}
+.foot-bottom p{margin:0;line-height:1.6;font-size:.86em}
+footer a{color:rgba(255,255,255,.5);text-decoration:none;transition:color .25s}
+footer a:hover{color:var(--or)}
+.foot-credit{text-align:center;padding:14px 0 20px;font-size:.78em;color:rgba(255,255,255,.18);letter-spacing:.5px}
+@media(max-width:540px){
+  footer{padding:36px 20px 0}
+  .foot-brand-solo{padding-bottom:24px}
+  .foot-piva{font-size:.78em}
+  .foot-bottom{flex-direction:column;text-align:center;padding:16px 0}
+  .foot-credit{padding:10px 0 16px}
+}
 
-    .top-bar-text {
-      font-family: 'Cormorant Garamond', serif;
-      display: flex; flex-direction: column;
-      align-items: center; text-align: center;
-      line-height: 1.05; color: white; letter-spacing: 1.5px;
-    }
-    .top-bar-text .word { display: block; font-size: 1.0em; font-weight: 700; text-transform: uppercase; letter-spacing: 2.5px; }
-    .top-bar-text .amp  { display: block; font-size: 0.85em; color: var(--orange); font-weight: 600; line-height: 1.2; }
+a:focus-visible,button:focus-visible{outline:2px solid var(--or2);outline-offset:3px;border-radius:6px}
 
-    .top-bar-right { display: flex; align-items: center; gap: 10px; }
-
-    .back-home {
-      display: inline-flex; align-items: center; gap: 8px;
-      color: rgba(255,255,255,0.7); text-decoration: none;
-      font-size: 0.85em; font-weight: 600; letter-spacing: 0.5px;
-      transition: color var(--transition); white-space: nowrap;
-    }
-    .back-home:hover { color: var(--orange); }
-
-    .lang-switch{
-      position:relative;display:flex;align-items:center;
-      width:72px;height:30px;padding:3px;
-      background:rgba(255,255,255,.05);
-      border:1px solid rgba(255,255,255,.14);border-radius:50px;
-      cursor:pointer;font-family:'Inter',sans-serif;user-select:none;
-      transition:border-color .3s ease;
-    }
-    .lang-switch:hover{border-color:rgba(240,112,32,.4)}
-    .lang-switch-thumb{
-      position:absolute;top:3px;left:3px;
-      width:33px;height:22px;border-radius:40px;
-      background:linear-gradient(135deg,var(--orange),var(--orange-lt));
-      box-shadow:0 2px 10px rgba(240,112,32,.4);
-      transition:transform .32s cubic-bezier(.4,0,.2,1);
-    }
-    .lang-switch.is-en .lang-switch-thumb{transform:translateX(33px)}
-    .lang-opt{
-      position:relative;z-index:1;flex:1;text-align:center;
-      font-size:.68em;font-weight:700;letter-spacing:.6px;
-      color:rgba(255,255,255,.42);
-      transition:color .32s ease;
-    }
-    .lang-switch:not(.is-en) .lang-opt:first-child{color:#fff}
-    .lang-switch.is-en .lang-opt:last-child{color:#fff}
-
-    .page-hero {
-      padding-top: 68px;
-      background: var(--dark);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .page-hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse 70% 60% at 50% 110%, rgba(240,112,32,0.18) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .page-hero-inner {
-      position: relative; z-index: 1;
-      padding: 48px 24px 44px;
-    }
-    .page-hero-eyebrow {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.7em; font-weight: 700;
-      letter-spacing: 4px; text-transform: uppercase;
-      color: var(--orange);
-      background: rgba(240,112,32,0.1);
-      border: 1px solid rgba(240,112,32,0.25);
-      border-radius: 40px; padding: 6px 18px;
-      display: inline-block; margin-bottom: 16px;
-    }
-    .page-hero h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2em, 5vw, 3.2em);
-      font-weight: 700; color: var(--white); line-height: 1.15;
-    }
-    .page-hero h1 em { font-style: normal; color: var(--orange-lt); }
-    .page-hero-stripe {
-      width: 52px; height: 3px;
-      background: linear-gradient(90deg, var(--orange), var(--orange-lt));
-      border-radius: 2px; margin: 18px auto 0;
-    }
-
-    .content-wrap {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 56px 24px 80px;
-    }
-
-    .policy-section {
-      background: var(--white);
-      border-radius: var(--radius-md);
-      padding: 32px 36px;
-      margin-bottom: 20px;
-      border: 1px solid var(--light-2);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-      transition: box-shadow var(--transition);
-    }
-    .policy-section:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
-
-    .policy-section h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.4em; font-weight: 700;
-      color: var(--text);
-      margin-bottom: 14px;
-      display: flex; align-items: center; gap: 12px;
-    }
-    .policy-section h2 .sec-icon {
-      width: 36px; height: 36px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--orange), var(--orange-lt));
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-      box-shadow: 0 3px 10px var(--orange-glow);
-    }
-    .policy-section h2 .sec-icon i { font-size: 14px; color: white; }
-
-    .policy-section p {
-      font-size: 0.96em; color: var(--text-muted); line-height: 1.8;
-      margin-bottom: 12px;
-    }
-    .policy-section p:last-child { margin-bottom: 0; }
-
-    .policy-section ul {
-      list-style: none; padding: 0; margin-top: 8px;
-      display: flex; flex-direction: column; gap: 10px;
-    }
-    .policy-section ul li {
-      display: flex; gap: 12px;
-      font-size: 0.95em; color: var(--text-muted); line-height: 1.7;
-    }
-    .policy-section ul li::before {
-      content: '';
-      width: 6px; height: 6px; border-radius: 50%;
-      background: var(--orange);
-      flex-shrink: 0;
-      margin-top: 10px;
-    }
-
-    .policy-section a { color: var(--orange); text-decoration: none; transition: color var(--transition); }
-    .policy-section a:hover { color: var(--orange-lt); text-decoration: underline; }
-
-    .titolari-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-top: 16px;
-    }
-    @media (max-width: 560px) { .titolari-grid { grid-template-columns: 1fr; } }
-
-    .titolare-card {
-      background: var(--light);
-      border: 1px solid var(--light-2);
-      border-radius: 10px;
-      padding: 20px 22px;
-      border-left: 4px solid var(--orange);
-    }
-    .titolare-card strong {
-      display: block;
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.95em;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 8px;
-    }
-    .titolare-card p {
-      font-size: 0.9em;
-      color: var(--text-muted);
-      line-height: 1.7;
-      margin: 0;
-    }
-    .titolare-card a { color: var(--orange); }
-
-    .diritti-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 12px;
-      margin-top: 16px;
-    }
-    .diritto-item {
-      display: flex; align-items: flex-start; gap: 10px;
-      background: var(--light);
-      border: 1px solid var(--light-2);
-      border-radius: 10px;
-      padding: 14px 16px;
-      font-size: 0.9em;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-    .diritto-item i { color: var(--orange); margin-top: 2px; flex-shrink: 0; }
-
-    /* FOOTER — coerente con index.html: 3 colonne */
-    footer{
-      background: var(--dark-mid, #1A1A1A); color: rgba(255,255,255,0.38);
-      padding: 64px 24px 0; font-size: 0.86em;
-      border-top: 1px solid rgba(240,112,32,0.18);
-      position: relative;
-    }
-    footer::before{
-      content:'';position:absolute;top:0;left:0;right:0;height:1px;
-      background:linear-gradient(90deg,transparent,rgba(240,112,32,.4),transparent);
-    }
-    .foot-brand-solo{
-      max-width:600px;margin:0 auto;text-align:center;
-      padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,.07);
-    }
-    .foot-brand-name{
-      font-family:'Cormorant Garamond',serif;color:#fff;
-      font-size:1.15em;font-weight:700;letter-spacing:.5px;margin-bottom:14px;
-    }
-    .foot-brand-name span{color:var(--orange-lt);font-weight:400;margin:0 5px}
-    .foot-tag{font-size:.92em;line-height:1.7;color:rgba(255,255,255,.42);margin:0 auto 14px}
-    .foot-piva{font-size:.82em;line-height:1.8;color:rgba(255,255,255,.3)}
-    .foot-bottom{
-      max-width:1080px;margin:0 auto;padding:22px 0;
-      display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;
-    }
-    .foot-bottom p{margin:0;line-height:1.6;font-size:.86em}
-    footer a{color:rgba(255,255,255,.5);text-decoration:none;transition:color .25s}
-    footer a:hover{color:var(--orange)}
-    .foot-credit{
-      text-align:center;padding:14px 0 20px;font-size:.78em;
-      color:rgba(255,255,255,.18);letter-spacing:.5px;
-    }
-    @media(max-width:540px){
-      footer{padding:36px 20px 0}
-      .foot-brand-solo{padding-bottom:24px}
-      .foot-piva{font-size:.78em}
-      .foot-bottom{flex-direction:column;text-align:center;padding:16px 0}
-      .foot-credit{padding:10px 0 16px}
-    }
-
-    @media (max-width: 600px) {
-      .top-bar { padding: 0 16px; }
-      .top-bar-text .word { font-size: 0.72em; letter-spacing: 1px; }
-      .top-bar-text .amp  { font-size: 0.65em; }
-      .back-home span { display: none; }
-      .policy-section { padding: 24px 20px; }
-      .content-wrap { padding: 40px 16px 60px; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { transition-duration: 0.01ms !important; }
-    }
+@media(max-width:640px){
+  .bar{padding:0 16px}
+  .bar-name b{font-size:.74em;letter-spacing:1.5px}
+  .bar-name s{font-size:.64em}
+  .bar-logo{height:38px}
+  .back .back-txt{display:none}
+  .pg-hero{margin-top:80px;border-radius:22px}
+  .pg-hero-in{padding:32px 18px}
+  .pg-crumb{display:none}
+  .legal-section{padding:24px 20px}
+  .legal-section h2{font-size:1.28em}
+  .wrap{padding-top:32px}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important}}
   </style>
 </head>
 <body>
 
-<div class="top-bar">
-  <a href="index.html" class="top-bar-left">
-    <img src="img/B0F190C1-ED18-45F3-B492-572A76ED7803.png" class="top-bar-logo" alt="Logo" width="44" height="44" loading="eager" decoding="async" fetchpriority="high" onerror="this.style.display='none'">
-    <div class="top-bar-text">
-      <span class="word">Spizzicotecnica</span>
-      <span class="amp">&</span>
-      <span class="word">SPI System</span>
+<div class="bar">
+  <a href="index.html" class="bar-brand">
+    <img src="img/B0F190C1-ED18-45F3-B492-572A76ED7803.png" class="bar-logo" alt="Logo" width="44" height="44" loading="eager" decoding="async" fetchpriority="high" onerror="this.style.display='none'">
+    <div class="bar-name">
+      <b>Spizzicotecnica</b>
+      <s>&</s>
+      <b>SPI System</b>
     </div>
   </a>
-  <div class="top-bar-right">
+  <div style="display:flex;align-items:center;gap:10px">
     <button class="lang-switch" id="langBtn" aria-label="Cambia lingua" type="button">
       <span class="lang-switch-thumb"></span>
       <span class="lang-opt">IT</span>
       <span class="lang-opt">EN</span>
     </button>
-    <a href="index.html" class="back-home">
-      <i class="fas fa-arrow-left"></i> <span id="backTxt">Torna al sito</span>
+    <a href="index.html" class="back">
+      <i class="fas fa-arrow-left"></i> <span class="back-txt" id="backTxt">Torna al sito</span>
     </a>
   </div>
 </div>
 
-<div class="page-hero">
-  <div class="page-hero-inner">
-    <div class="page-hero-eyebrow" id="heroEyebrow">Informativa legale</div>
+<div class="pg-hero">
+  <div class="pg-hero-in">
+    <div class="pg-crumb"><a href="index.html">Home</a> <i class="fas fa-chevron-right"></i> <span id="crumbCurrent">Privacy Policy</span></div>
+    <div class="pg-pill" id="heroEyebrow">Informativa legale</div>
     <h1 id="heroTitle">Informativa <em>Privacy</em></h1>
-    <div class="page-hero-stripe"></div>
+    <div class="pg-line"></div>
   </div>
 </div>
 
-<div class="content-wrap">
+<div class="wrap">
 
-  <div class="policy-section">
-    <h2>
-      <span class="sec-icon"><i class="fas fa-shield-alt"></i></span>
-      <span id="t-h1">Il nostro impegno</span>
-    </h2>
+  <div class="legal-section">
+    <h2><span class="legal-icon"><i class="fas fa-shield-alt"></i></span><span id="t-h1">Il nostro impegno</span></h2>
     <p id="t-p1">Spizzicotecnica e SPI System, in qualità di titolari del trattamento, sono impegnati a proteggere la tua privacy e a trattare i tuoi dati personali nel pieno rispetto del Regolamento UE 2016/679 (GDPR).</p>
   </div>
 
-  <div class="policy-section">
-    <h2>
-      <span class="sec-icon"><i class="fas fa-user-tie"></i></span>
-      <span id="t-h2">Titolari del trattamento</span>
-    </h2>
+  <div class="legal-section">
+    <h2><span class="legal-icon"><i class="fas fa-user-tie"></i></span><span id="t-h2">Titolari del trattamento</span></h2>
     <div class="titolari-grid">
       <div class="titolare-card">
         <strong>Spizzicotecnica</strong>
-        <p>
-          <span id="t-tit1">Titolare</span>: Antonio Spizzico<br>
-          P. IVA: 05857040728<br>
-          <a href="mailto:spizzicotecnica@libero.it">spizzicotecnica@libero.it</a>
-        </p>
+        <p><span id="t-tit1">Titolare</span>: Antonio Spizzico<br>P. IVA: 05857040728<br><a href="mailto:spizzicotecnica@libero.it">spizzicotecnica@libero.it</a></p>
       </div>
       <div class="titolare-card">
         <strong>SPI System</strong>
-        <p>
-          <span id="t-tit2">Titolare</span>: Giuseppe Spizzico<br>
-          P. IVA: 08791580726<br>
-          <a href="mailto:spisystem@libero.it">spisystem@libero.it</a>
-        </p>
+        <p><span id="t-tit2">Titolare</span>: Giuseppe Spizzico<br>P. IVA: 08791580726<br><a href="mailto:spisystem@libero.it">spisystem@libero.it</a></p>
       </div>
     </div>
   </div>
 
-  <div class="policy-section">
-    <h2>
-      <span class="sec-icon"><i class="fas fa-bullseye"></i></span>
-      <span id="t-h3">Finalità e base giuridica</span>
-    </h2>
+  <div class="legal-section">
+    <h2><span class="legal-icon"><i class="fas fa-bullseye"></i></span><span id="t-h3">Finalità e base giuridica</span></h2>
     <p id="t-p2">I dati personali forniti tramite il modulo di richiesta preventivo vengono trattati esclusivamente per rispondere alla tua richiesta e fornirti informazioni sui nostri prodotti e servizi.</p>
     <p id="t-p3">Il trattamento avviene sulla base del consenso esplicito da te fornito spuntando l'apposita casella (art. 6, comma 1, lett. a GDPR).</p>
   </div>
 
-  <div class="policy-section">
-    <h2>
-      <span class="sec-icon"><i class="fas fa-database"></i></span>
-      <span id="t-h4">Dati raccolti</span>
-    </h2>
+  <div class="legal-section">
+    <h2><span class="legal-icon"><i class="fas fa-database"></i></span><span id="t-h4">Dati raccolti</span></h2>
     <p id="t-p4">Raccogliamo i seguenti dati personali attraverso il modulo di contatto:</p>
     <ul>
       <li id="t-li1">Nome e cognome</li>
@@ -401,27 +296,18 @@
     </ul>
   </div>
 
-  <div class="policy-section">
-    <h2>
-      <span class="sec-icon"><i class="fas fa-lock"></i></span>
-      <span id="t-h5">Modalità di trattamento e sicurezza</span>
-    </h2>
+  <div class="legal-section">
+    <h2><span class="legal-icon"><i class="fas fa-lock"></i></span><span id="t-h5">Modalità di trattamento e sicurezza</span></h2>
     <p id="t-p5">I dati sono trattati con strumenti informatici e cartacei in modo lecito, corretto e trasparente, adottando misure tecniche e organizzative adeguate per garantire la sicurezza e la riservatezza delle informazioni.</p>
   </div>
 
-  <div class="policy-section">
-    <h2>
-      <span class="sec-icon"><i class="fas fa-clock"></i></span>
-      <span id="t-h6">Durata della conservazione</span>
-    </h2>
+  <div class="legal-section">
+    <h2><span class="legal-icon"><i class="fas fa-clock"></i></span><span id="t-h6">Durata della conservazione</span></h2>
     <p id="t-p6">I dati personali saranno conservati per il tempo necessario a rispondere alla tua richiesta e, comunque, non oltre <strong>24 mesi</strong> dalla raccolta, salvo obblighi di legge contrari.</p>
   </div>
 
-  <div class="policy-section">
-    <h2>
-      <span class="sec-icon"><i class="fas fa-hand-paper"></i></span>
-      <span id="t-h7">I tuoi diritti</span>
-    </h2>
+  <div class="legal-section">
+    <h2><span class="legal-icon"><i class="fas fa-hand-paper"></i></span><span id="t-h7">I tuoi diritti</span></h2>
     <p id="t-p7">Hai il diritto di esercitare in qualsiasi momento i seguenti diritti, contattando i titolari ai recapiti indicati sopra:</p>
     <div class="diritti-grid">
       <div class="diritto-item"><i class="fas fa-eye"></i> <span id="t-d1">Accesso ai dati</span></div>
@@ -434,33 +320,23 @@
     </div>
   </div>
 
-  <div class="policy-section">
-    <h2>
-      <span class="sec-icon"><i class="fas fa-gavel"></i></span>
-      <span id="t-h8">Reclami</span>
-    </h2>
+  <div class="legal-section">
+    <h2><span class="legal-icon"><i class="fas fa-gavel"></i></span><span id="t-h8">Reclami</span></h2>
     <p id="t-p8">Se ritieni che il trattamento dei tuoi dati personali violi la normativa vigente, puoi presentare un reclamo all'Autorità Garante per la Protezione dei Dati Personali: <a href="https://www.garanteprivacy.it" target="_blank" rel="noopener noreferrer">www.garanteprivacy.it</a></p>
   </div>
 
-  <div class="policy-section">
-    <h2>
-      <span class="sec-icon"><i class="fas fa-cookie-bite"></i></span>
-      <span id="t-h9">Cookie e strumenti di tracciamento</span>
-    </h2>
+  <div class="legal-section">
+    <h2><span class="legal-icon"><i class="fas fa-cookie-bite"></i></span><span id="t-h9">Cookie e strumenti di tracciamento</span></h2>
     <p id="t-p9">Il sito utilizza esclusivamente cookie tecnici necessari al funzionamento, senza profilazione o finalità commerciali. Per maggiori dettagli consulta la nostra <a href="cookie.html" id="t-cookielink">Cookie Policy</a>.</p>
   </div>
 
-  <div class="policy-section">
-    <h2>
-      <span class="sec-icon"><i class="fas fa-sync-alt"></i></span>
-      <span id="t-h10">Aggiornamenti</span>
-    </h2>
+  <div class="legal-section">
+    <h2><span class="legal-icon"><i class="fas fa-sync-alt"></i></span><span id="t-h10">Aggiornamenti</span></h2>
     <p id="t-p10">Questa informativa potrà essere aggiornata in caso di modifiche normative o organizzative. Ti invitiamo a consultarla regolarmente.</p>
   </div>
 
 </div>
 
-<!-- FOOTER — coerente con index.html -->
 <footer>
   <div class="foot-brand-solo">
     <div class="foot-brand-name">Spizzicotecnica <span>&</span> SPI System</div>
@@ -468,12 +344,8 @@
     <p class="foot-piva">P. IVA Spizzicotecnica di Spizzico Antonio: <span>05857040728</span><br>P. IVA SPI System di Spizzico Giuseppe: <span>08791580726</span></p>
   </div>
   <div class="foot-bottom">
-    <p id="footerCopy">&copy; 2026 Spizzicotecnica & SPI System – Tutti i diritti riservati</p>
-    <p>
-      <a href="privacy.html">Privacy Policy</a> &nbsp;|&nbsp;
-      <a href="cookie.html">Cookie Policy</a> &nbsp;|&nbsp;
-      <a href="index.html" id="footerHome">Home</a>
-    </p>
+    <p id="footerCopy">&copy; 2026 SpizzicoTecnica & SPI System — Tutti i diritti riservati.</p>
+    <p><a href="privacy.html">Privacy Policy</a> &nbsp;|&nbsp; <a href="cookie.html">Cookie Policy</a> &nbsp;|&nbsp; <a href="index.html" id="footerHome">Home</a></p>
   </div>
   <p class="foot-credit"><span id="footCreditLabel">Sito realizzato da</span> <span style="color:rgba(240,112,32,.5);font-weight:600">SPI System</span></p>
 </footer>
@@ -505,19 +377,18 @@ window.addEventListener('load',function(){
   }
 });
 
-var currentLang = lsGet('lang') || 'it';
+var currentLang=lsGet('lang')||'it';
 
-var pvT = {
-  it: {
-    eyebrow:'Informativa legale', back:'Torna al sito', heroTitle:'Informativa <em>Privacy</em>',
+var pvT={
+  it:{
+    eyebrow:'Informativa legale', back:'Torna al sito', crumb:'Privacy Policy', heroTitle:'Informativa <em>Privacy</em>',
     h1:'Il nostro impegno',
     p1:'Spizzicotecnica e SPI System, in qualità di titolari del trattamento, sono impegnati a proteggere la tua privacy e a trattare i tuoi dati personali nel pieno rispetto del Regolamento UE 2016/679 (GDPR).',
     h2:'Titolari del trattamento', tit:'Titolare',
     h3:'Finalità e base giuridica',
     p2:'I dati personali forniti tramite il modulo di richiesta preventivo vengono trattati esclusivamente per rispondere alla tua richiesta e fornirti informazioni sui nostri prodotti e servizi.',
     p3:'Il trattamento avviene sulla base del consenso esplicito da te fornito spuntando l\u2019apposita casella (art. 6, comma 1, lett. a GDPR).',
-    h4:'Dati raccolti',
-    p4:'Raccogliamo i seguenti dati personali attraverso il modulo di contatto:',
+    h4:'Dati raccolti', p4:'Raccogliamo i seguenti dati personali attraverso il modulo di contatto:',
     li1:'Nome e cognome', li2:'Numero di telefono', li3:'Indirizzo', li4:'Tipologia di attività', li5:'Prodotti di interesse',
     h5:'Modalità di trattamento e sicurezza',
     p5:'I dati sono trattati con strumenti informatici e cartacei in modo lecito, corretto e trasparente, adottando misure tecniche e organizzative adeguate per garantire la sicurezza e la riservatezza delle informazioni.',
@@ -533,24 +404,19 @@ var pvT = {
     p9link:'Cookie Policy',
     h10:'Aggiornamenti',
     p10:'Questa informativa potrà essere aggiornata in caso di modifiche normative o organizzative. Ti invitiamo a consultarla regolarmente.',
-    footer:'© 2026 Spizzicotecnica & SPI System – Tutti i diritti riservati',
-    home:'Home',
+    footer:'© 2026 SpizzicoTecnica & SPI System — Tutti i diritti riservati.', home:'Home',
     footTag:'Soluzioni professionali di cassa, pesatura e gestione per il tuo punto vendita, da oltre 35 anni.',
-    footLinksTitle:'Link utili',
-    footContactTitle:'Contatti',
-    footCredit:'Sito realizzato da',
-    navChi:'Chi Siamo', navProd:'Prodotti', navCont:'Contatti', navPrev:'Preventivo'
+    footCredit:'Sito realizzato da'
   },
-  en: {
-    eyebrow:'Legal notice', back:'Back to site', heroTitle:'Privacy <em>Policy</em>',
+  en:{
+    eyebrow:'Legal notice', back:'Back to site', crumb:'Privacy Policy', heroTitle:'Privacy <em>Policy</em>',
     h1:'Our commitment',
     p1:'Spizzicotecnica and SPI System, as data controllers, are committed to protecting your privacy and processing your personal data in full compliance with EU Regulation 2016/679 (GDPR).',
     h2:'Data controllers', tit:'Controller',
     h3:'Purpose and legal basis',
     p2:'The personal data provided through the quote request form is processed solely to respond to your request and provide information about our products and services.',
     p3:'Processing is based on the explicit consent you provide by ticking the relevant box (Art. 6(1)(a) GDPR).',
-    h4:'Data collected',
-    p4:'We collect the following personal data through the contact form:',
+    h4:'Data collected', p4:'We collect the following personal data through the contact form:',
     li1:'First and last name', li2:'Phone number', li3:'Address', li4:'Type of business', li5:'Products of interest',
     h5:'Processing methods and security',
     p5:'Data is processed using IT and paper tools in a lawful, fair and transparent manner, adopting adequate technical and organisational measures to ensure the security and confidentiality of the information.',
@@ -566,93 +432,65 @@ var pvT = {
     p9link:'Cookie Policy',
     h10:'Updates',
     p10:'This notice may be updated in the event of regulatory or organisational changes. We invite you to check it periodically.',
-    footer:'© 2026 Spizzicotecnica & SPI System – All rights reserved',
-    home:'Home',
+    footer:'© 2026 SpizzicoTecnica & SPI System — All rights reserved.', home:'Home',
     footTag:'Professional cash, weighing and management solutions for your business, for over 35 years.',
-    footLinksTitle:'Quick links',
-    footContactTitle:'Contacts',
-    footCredit:'Website by',
-    navChi:'About Us', navProd:'Products', navCont:'Contacts', navPrev:'Quote'
+    footCredit:'Website by'
   }
 };
 
-function updateLangBtn(lang){
-  var btn=document.getElementById('langBtn');
-  if(!btn)return;
-  btn.classList.toggle('is-en',lang==='en');
-}
+function updateLangBtn(lang){var btn=document.getElementById('langBtn');if(!btn)return;btn.classList.toggle('is-en',lang==='en');}
 
 function applyPvLang(lang){
-  currentLang=lang;
-  lsSet('lang',lang);
-  document.documentElement.lang=lang;
+  currentLang=lang;lsSet('lang',lang);document.documentElement.lang=lang;
   var t=pvT[lang];
   updateLangBtn(lang);
+  var ey=document.getElementById('heroEyebrow');if(ey)ey.textContent=t.eyebrow;
+  var bk=document.getElementById('backTxt');if(bk)bk.textContent=t.back;
+  var cr=document.getElementById('crumbCurrent');if(cr)cr.textContent=t.crumb;
+  var ht=document.getElementById('heroTitle');if(ht)ht.innerHTML=t.heroTitle;
 
-  var ey=document.getElementById('heroEyebrow'); if(ey) ey.textContent=t.eyebrow;
-  var bk=document.getElementById('backTxt'); if(bk) bk.textContent=t.back;
-  var ht=document.getElementById('heroTitle'); if(ht) ht.innerHTML=t.heroTitle;
+  for(var i=1;i<=10;i++){var h=document.getElementById('t-h'+i);if(h)h.textContent=t['h'+i];}
+  var p1=document.getElementById('t-p1');if(p1)p1.textContent=t.p1;
+  var p2=document.getElementById('t-p2');if(p2)p2.textContent=t.p2;
+  var p3=document.getElementById('t-p3');if(p3)p3.textContent=t.p3;
+  var p4=document.getElementById('t-p4');if(p4)p4.textContent=t.p4;
+  var p5=document.getElementById('t-p5');if(p5)p5.textContent=t.p5;
+  var p6=document.getElementById('t-p6');if(p6)p6.innerHTML=t.p6;
+  var p7=document.getElementById('t-p7');if(p7)p7.textContent=t.p7;
+  var p10=document.getElementById('t-p10');if(p10)p10.textContent=t.p10;
 
-  for(var i=1;i<=10;i++){
-    var h=document.getElementById('t-h'+i); if(h) h.textContent=t['h'+i];
-  }
-  var p1=document.getElementById('t-p1'); if(p1) p1.textContent=t.p1;
-  var p2=document.getElementById('t-p2'); if(p2) p2.textContent=t.p2;
-  var p3=document.getElementById('t-p3'); if(p3) p3.textContent=t.p3;
-  var p4=document.getElementById('t-p4'); if(p4) p4.textContent=t.p4;
-  var p5=document.getElementById('t-p5'); if(p5) p5.textContent=t.p5;
-  var p6=document.getElementById('t-p6'); if(p6) p6.innerHTML=t.p6;
-  var p7=document.getElementById('t-p7'); if(p7) p7.textContent=t.p7;
-  var p10=document.getElementById('t-p10'); if(p10) p10.textContent=t.p10;
+  var tit1=document.getElementById('t-tit1');if(tit1)tit1.textContent=t.tit;
+  var tit2=document.getElementById('t-tit2');if(tit2)tit2.textContent=t.tit;
 
-  var tit1=document.getElementById('t-tit1'); if(tit1) tit1.textContent=t.tit;
-  var tit2=document.getElementById('t-tit2'); if(tit2) tit2.textContent=t.tit;
-
-  for(var j=1;j<=5;j++){
-    var li=document.getElementById('t-li'+j); if(li) li.textContent=t['li'+j];
-  }
-  for(var k=1;k<=7;k++){
-    var d=document.getElementById('t-d'+k); if(d) d.textContent=t['d'+k];
-  }
+  for(var j=1;j<=5;j++){var li=document.getElementById('t-li'+j);if(li)li.textContent=t['li'+j];}
+  for(var k=1;k<=7;k++){var d=document.getElementById('t-d'+k);if(d)d.textContent=t['d'+k];}
 
   var p8=document.getElementById('t-p8');
   if(p8){
     var garanteLink=p8.querySelector('a');
-    p8.innerHTML='';
-    p8.appendChild(document.createTextNode(t.p8pre));
-    if(garanteLink) p8.appendChild(garanteLink);
+    p8.innerHTML='';p8.appendChild(document.createTextNode(t.p8pre));if(garanteLink)p8.appendChild(garanteLink);
   }
-
   var p9=document.getElementById('t-p9');
   if(p9){
     var ckLink=document.getElementById('t-cookielink');
-    if(ckLink) ckLink.textContent=t.p9link;
-    p9.innerHTML='';
-    p9.appendChild(document.createTextNode(t.p9pre));
-    if(ckLink) p9.appendChild(ckLink);
-    p9.appendChild(document.createTextNode('.'));
+    if(ckLink)ckLink.textContent=t.p9link;
+    p9.innerHTML='';p9.appendChild(document.createTextNode(t.p9pre));if(ckLink)p9.appendChild(ckLink);p9.appendChild(document.createTextNode('.'));
   }
 
-  var fc=document.getElementById('footerCopy'); if(fc) fc.textContent=t.footer;
-  var fh=document.getElementById('footerHome'); if(fh) fh.textContent=t.home;
-  var ftag=document.getElementById('footTag'); if(ftag) ftag.textContent=t.footTag;
-  var fcl=document.getElementById('footCreditLabel'); if(fcl) fcl.textContent=t.footCredit;
+  var fc=document.getElementById('footerCopy');if(fc)fc.textContent=t.footer;
+  var fh=document.getElementById('footerHome');if(fh)fh.textContent=t.home;
+  var ftag=document.getElementById('footTag');if(ftag)ftag.textContent=t.footTag;
+  var fcl=document.getElementById('footCreditLabel');if(fcl)fcl.textContent=t.footCredit;
 }
 
 updateLangBtn(currentLang);
-if(currentLang!=='it') applyPvLang(currentLang);
+if(currentLang!=='it')applyPvLang(currentLang);
 
-document.getElementById('langBtn').addEventListener('click', function(){
-  applyPvLang(currentLang==='it' ? 'en' : 'it');
-});
+document.getElementById('langBtn').addEventListener('click',function(){applyPvLang(currentLang==='it'?'en':'it');});
 
-window.addEventListener('pageshow', function(e){
-  if(e.persisted){
-    var l=lsGet('lang')||'it';
-    if(l!==currentLang)applyPvLang(l);
-  }
+window.addEventListener('pageshow',function(e){
+  if(e.persisted){var l=lsGet('lang')||'it';if(l!==currentLang)applyPvLang(l);}
 });
 </script>
-
 </body>
 </html>
