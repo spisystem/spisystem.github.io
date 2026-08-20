@@ -1155,12 +1155,12 @@ body.intro-active{overflow:hidden}
         <div class="about-row">
           <span class="about-row-num">01</span>
           <div class="a-icon"><i class="fas fa-cash-register"></i></div>
-          <div class="about-row-txt"><p>Verifiche periodiche</p><span>Registratori di cassa</span></div>
+          <div class="about-row-txt"><p>Registratori di cassa</p><span>Verifiche periodiche</span></div>
         </div>
         <div class="about-row">
           <span class="about-row-num">02</span>
           <div class="a-icon"><i class="fas fa-weight-hanging"></i></div>
-          <div class="about-row-txt"><p>Verifiche periodiche</p><span>Bilance elettroniche</span></div>
+          <div class="about-row-txt"><p>Bilance elettroniche</p><span>Verifiche periodiche</span></div>
         </div>
       </div>
     </div>
@@ -1454,8 +1454,8 @@ var translations={
     'h-head-1':'Tecnologia','h-head-em':'intelligente','h-head-2':'per la tua attività',
     'about-eyebrow':'La nostra storia','about-title':'Chi Siamo',
     'about-lead':'Siamo un\'azienda multimarche con una lunga esperienza nel settore, specializzata nella fornitura e assistenza di soluzioni professionali per il punto vendita. Qualità, innovazione e affidabilità.',
-    'about-card1-p':'Verifiche periodiche','about-card1-s':'Registratori di cassa',
-    'about-card2-p':'Verifiche periodiche','about-card2-s':'Bilance elettroniche',
+    'about-card1-p':'Registratori di cassa','about-card1-s':'Verifiche periodiche',
+    'about-card2-p':'Bilance elettroniche','about-card2-s':'Verifiche periodiche',
     'stat1-lb':'Esperienza','stat2-lb':'Installazioni','stats-panel-label':'In numeri',
     'prod-eyebrow':'Il nostro catalogo','prod-title':'Prodotti',
     'prod-lead':'Dai registratori di cassa alle bilance elettroniche, dai sistemi gestionali alle soluzioni per il punto vendita: un catalogo completo, pensato per farti trovare in pochi secondi il prodotto giusto per la tua attività.',
@@ -1514,8 +1514,8 @@ var translations={
     'h-head-1':'Smart','h-head-em':'technology','h-head-2':'for your business',
     'about-eyebrow':'Our story','about-title':'About Us',
     'about-lead':'We are a multi-brand company with extensive sector experience, specialised in supplying and servicing professional point-of-sale solutions. Quality, innovation and reliability.',
-    'about-card1-p':'Periodic inspections','about-card1-s':'Cash registers',
-    'about-card2-p':'Periodic inspections','about-card2-s':'Electronic scales',
+    'about-card1-p':'Cash registers','about-card1-s':'Periodic inspections',
+    'about-card2-p':'Electronic scales','about-card2-s':'Periodic inspections',
     'stat1-lb':'Experience','stat2-lb':'Installations','stats-panel-label':'In numbers',
     'prod-eyebrow':'Our catalogue','prod-title':'Products',
     'prod-lead':'From cash registers to electronic scales, from management systems to point-of-sale solutions: a complete catalogue designed to help you find the right product for your business in seconds.',
@@ -1621,8 +1621,8 @@ function applyLang(lang){
   var at=document.querySelector('#chi-siamo .sec-title');if(at&&at.childNodes[0])at.childNodes[0].textContent=t['about-title'];
   var al=document.querySelector('.about-lead');if(al)al.textContent=t['about-lead'];
   var cards=document.querySelectorAll('.about-row');
-  if(cards[0]){cards[0].querySelector('p').textContent=t['about-card1-p'];cards[0].querySelector('span').textContent=t['about-card1-s'];}
-  if(cards[1]){cards[1].querySelector('p').textContent=t['about-card2-p'];cards[1].querySelector('span').textContent=t['about-card2-s'];}
+  if(cards[0]){cards[0].querySelector('.about-row-txt p').textContent=t['about-card1-p'];cards[0].querySelector('.about-row-txt span').textContent=t['about-card1-s'];}
+  if(cards[1]){cards[1].querySelector('.about-row-txt p').textContent=t['about-card2-p'];cards[1].querySelector('.about-row-txt span').textContent=t['about-card2-s'];}
   var slbs=document.querySelectorAll('.stat-lb');
   if(slbs[0])slbs[0].textContent=t['stat1-lb'];
   if(slbs[1])slbs[1].textContent=t['stat2-lb'];
